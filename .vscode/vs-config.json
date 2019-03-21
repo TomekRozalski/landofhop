@@ -1,0 +1,12 @@
+{
+	"javascript.validate.enable": true,
+	"javascript.implicitProjectConfig.checkJs": true,
+    "editor.formatOnSave": true,
+    "[javascript]": {
+        "editor.formatOnSave": false
+    },
+    "[javascriptreact]": {
+        "editor.formatOnSave": false
+    },
+    "eslint.autoFixOnSave": true
+}
