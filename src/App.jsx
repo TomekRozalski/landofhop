@@ -12,7 +12,7 @@ class App extends Component {
 			return first + second;
 		}
 
-		const b = addTwo('sdf', 3); // Visual Studio Code shows an error
+		const b = addTwo('dsd', 3); // Visual Studio Code shows an error
 
 		const myObj = {
 			first: {

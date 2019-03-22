@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { addLocaleData } from 'react-intl';
+import en from 'react-intl/locale-data/en';
+import pl from 'react-intl/locale-data/pl';
 
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import GlobalStateProvider from 'config/GlobalStateProvider';
+import { unregisterServiceWorker } from './utils';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+addLocaleData([...en, ...pl]);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(<GlobalStateProvider />, document.getElementById('root'));
+
+unregisterServiceWorker();
