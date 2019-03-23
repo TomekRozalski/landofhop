@@ -1,25 +1,24 @@
 import React from 'react';
-// import { Provider } from 'react-redux';
+import { Provider } from 'react-redux';
 
-// import store from '../reducers';
-// import {
-// 	Language,
-// 	Navigation,
-// 	OtherProviders,
-// 	Routes,
-// } from './index';
+import store from 'store/store';
+import {
+	Dictionary,
+	Language,
+	Navigation,
+	Routes,
+} from './index';
 
 const GlobalStateProvider = () => (
-	<div>GlobalStateProvider</div>
-	// <Provider store={store}>
-	// 	<Language>
-	// 		<Navigation>
-	// 			<OtherProviders>
-	// 				<Routes />
-	// 			</OtherProviders>
-	// 		</Navigation>
-	// 	</Language>
-	// </Provider>
+	<Provider store={store}>
+		<Language>
+			<Navigation>
+				<Dictionary>
+					<Routes />
+				</Dictionary>
+			</Navigation>
+		</Language>
+	</Provider>
 );
 
 export default GlobalStateProvider;
