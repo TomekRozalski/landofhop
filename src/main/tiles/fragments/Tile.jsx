@@ -3,13 +3,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import { getNameByLanguage } from 'utils/helpers';
+import { beverageBasics } from '../utils';
 import { NoImage } from './index';
-
-// interface LinkTypes {
-// 	blur: number
-// 	image: string | boolean | null
-// 	size: string
-// }
 
 const StyledLink = styled(Link)`
 	display: block;
@@ -50,10 +45,6 @@ const Hidden = styled.span`
 	position: absolute;
 `;
 
-// interface TileTypes extends BeverageBasicInfo {
-// 	language: Languages
-// }
-
 const Tile = ({
 	badge,
 	brand: {
@@ -62,7 +53,7 @@ const Tile = ({
 	},
 	name,
 	language,
-	short_id,
+	short_id: shortId,
 }) => {
 	const [blur, setBlur] = useState(true);
 	const [image, setImage] = useState(null);
@@ -71,6 +62,19 @@ const Tile = ({
 
 	const smallImage = new Image();
 	const largeImage = new Image();
+
+	const largeImageLoaded = () => {
+		setImage(largeImage.src);
+		setBlur(false);
+	};
+
+	const loadLarge = () => {
+		const imageType = window.devicePixelRatio > 1 ? 'retina' : 'regular';
+		const imagePath = `/img/${brandBadge}/${shortId}/${badge}/covers/${imageType}.jpg`;
+		largeImage.src = imagePath;
+
+		largeImage.addEventListener('load', largeImageLoaded);
+	};
 
 	const smallImageLoaded = () => {
 		switch (smallImage.height) {
@@ -90,24 +94,11 @@ const Tile = ({
 	};
 
 	const loadSmall = () => {
-		const imagePath = `/img/${brandBadge}/${short_id}/${badge}/covers/glance.jpg`;
+		const imagePath = `/img/${brandBadge}/${shortId}/${badge}/covers/glance.jpg`;
 		smallImage.src = imagePath;
 
 		smallImage.addEventListener('load', smallImageLoaded);
 		smallImage.addEventListener('error', wrongImagePath);
-	};
-
-	const largeImageLoaded = () => {
-		setImage(largeImage.src);
-		setBlur(false);
-	};
-
-	const loadLarge = () => {
-		const imageType = window.devicePixelRatio > 1 ? 'retina' : 'regular';
-		const imagePath = `/img/${brandBadge}/${short_id}/${badge}/covers/${imageType}.jpg`;
-		largeImage.src = imagePath;
-
-		largeImage.addEventListener('load', largeImageLoaded);
 	};
 
 	useEffect(() => {
@@ -130,7 +121,7 @@ const Tile = ({
 				image={image || null}
 				blur={blur ? 1 : 0}
 				size={size}
-				to={`details/${short_id}/${brandBadge}/${badge}`}
+				to={`details/${shortId}/${brandBadge}/${badge}`}
 			>
 				<NoImage image={image} />
 				<Hidden>{title}</Hidden>
@@ -138,5 +129,7 @@ const Tile = ({
 		</li>
 	);
 };
+
+Tile.propTypes = beverageBasics;
 
 export default Tile;

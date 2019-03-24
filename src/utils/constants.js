@@ -8,7 +8,9 @@ export default {
 	},
 	api_endpoints: {
 		authenticate_token: 'auth/',
+		beverage_details: 'beverages/details/',
 		beverage_list: 'beverages/list/',
+		beverage_remove: 'beverages/',
 		login: 'login/',
 	},
 	server_responses: {

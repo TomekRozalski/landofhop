@@ -11,10 +11,10 @@ export const Tiles = lazy(async () => {
 	return import('../main/tiles/Tiles').finally(NProgress.done);
 });
 
-// export const Details = lazy(async () => {
-// 	NProgress.start();
-// 	return import('../main/Details').finally(NProgress.done);
-// });
+export const Details = lazy(async () => {
+	NProgress.start();
+	return import('../main/details/Details').finally(NProgress.done);
+});
 
 export const Contact = lazy(() => {
 	NProgress.start();
@@ -36,7 +36,7 @@ const Routes = () => (
 				<Suspense fallback={<Spinner center />}>
 					<Switch>
 						<Route path="/" exact component={Tiles} />
-						{/* <Route path="/details/:short_id/:brand/:badge" exact component={Details} /> */}
+						<Route path="/details/:short_id/:brand/:badge" exact component={Details} />
 						<Route path="/contact" exact component={Contact} />
 						<Route component={NotFound} />
 					</Switch>
