@@ -1,3 +1,15 @@
 {
-	"appError": "Znaleziono nieprawidłowy token w localStorage!"
+	"appError.invalidToken": "Znaleziono nieprawidłowy token w localStorage!",
+	"header.closeNavbar": "Zamknij menu",
+	"header.languageMenuTitle": "Zmień język",
+	"header.openNavbar": "Otwórz menu",
+	"loginbar.emailLabel": "Email",
+	"loginbar.passwordLabel": "Hasło",
+	"loginbar.submit": "wyślij",
+	"navbar.aboutName": "O stronie",
+	"navbar.expiredAccessToken": "Token dostępowy jest przedawniony",
+	"navbar.login": "Zaloguj",
+	"navbar.logout": "Wyloguj",
+	"navbar.searchLabel": "Szukaj",
+	"navbar.tokenExpires": "Token wygasa"
 }

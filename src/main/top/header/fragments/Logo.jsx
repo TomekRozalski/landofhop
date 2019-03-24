@@ -46,7 +46,7 @@ const Title = styled.h1`
 `;
 
 const Logo = () => (
-	<LogoWrapper data-testid="logo">
+	<LogoWrapper>
 		<StyledLink to="/">
 			<Title>
 				<Logomark />

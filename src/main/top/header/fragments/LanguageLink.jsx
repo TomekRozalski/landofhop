@@ -67,7 +67,6 @@ const LanguageLink = ({ languageName }) => {
 			<LangButton
 				onClick={() => changeLanguage(languageName)}
 				active={languageName === language}
-				data-testid={`language-link-${languageName}`}
 			>
 				{ languageName }
 			</LangButton>

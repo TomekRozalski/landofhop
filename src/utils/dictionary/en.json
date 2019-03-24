@@ -1,3 +1,15 @@
 {
-	"appError": "Ivalid token found in localStorage!"
+	"appError.invalidToken": "Ivalid token found in localStorage!",
+	"header.closeNavbar": "Close navbar",
+	"header.languageMenuTitle": "Change language",
+	"header.openNavbar": "Open navbar",
+	"loginbar.emailLabel": "Email",
+	"loginbar.passwordLabel": "Password",
+	"loginbar.submit": "submit",
+	"navbar.aboutName": "About",
+	"navbar.expiredAccessToken": "Expired access token",
+	"navbar.login": "Log in",
+	"navbar.logout": "Log out",
+	"navbar.searchLabel": "Search",
+	"navbar.tokenExpires": "Token expires"
 }

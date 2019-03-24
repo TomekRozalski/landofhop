@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NProgress from 'nprogress';
 
-import { Header } from 'main/top';
+import { Header, Loginbar, Navbar } from 'main/top';
 import { GlobalStyle } from 'utils/theme';
 import { ContentWrapper, Spinner } from 'elements';
 
@@ -29,8 +29,8 @@ export const Tiles = lazy(async () => {
 const Routes = () => (
 	<Router>
 		<>
-			{/* <Navbar />
-			<Loginbar /> */}
+			<Navbar />
+			<Loginbar />
 			<Header />
 			<ContentWrapper>
 				<Suspense fallback={<Spinner center />}>

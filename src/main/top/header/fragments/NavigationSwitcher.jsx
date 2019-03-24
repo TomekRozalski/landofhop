@@ -47,10 +47,7 @@ const NavigationSwitcher = ({ intl }) => {
 
 	return (
 		<Wrapper>
-			<Button
-				onClick={toggleNavbar}
-				data-testid="navigation-switcher"
-			>
+			<Button onClick={toggleNavbar}>
 				<KebabMenu
 					title={
 						intl.formatMessage({
