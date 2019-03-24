@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Formik } from 'formik';
 
-import { NavigationContext } from 'config';
+import { AuthenticationContext } from 'config';
 import {
 	colors,
 	gutters,
@@ -38,7 +38,7 @@ const LoginbarContainer = styled.div`
 `;
 
 const Loginbar = () => {
-	const { logIn } = useContext(NavigationContext);
+	const { logIn } = useContext(AuthenticationContext);
 
 	return (
 		<Wrapper>

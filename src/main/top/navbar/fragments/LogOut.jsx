@@ -2,12 +2,12 @@ import React, { useContext } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 
-import { NavigationContext } from 'config';
+import { AuthenticationContext } from 'config';
 import { Unlocked } from 'elements/icons';
 import { ListItem, StyledLink } from './index';
 
 const LogOut = () => {
-	const { logOut } = useContext(NavigationContext);
+	const { logOut } = useContext(AuthenticationContext);
 
 	return (
 		<>

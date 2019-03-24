@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import { grid } from 'utils';
@@ -34,4 +34,4 @@ const Navbar = () => (
 	</Wrapper>
 );
 
-export default memo(Navbar);
+export default Navbar;

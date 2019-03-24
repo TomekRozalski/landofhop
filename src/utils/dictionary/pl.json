@@ -1,5 +1,9 @@
 {
 	"appError.invalidToken": "Znaleziono nieprawidłowy token w localStorage!",
+	"errorMessage.close": "Zamknij okno",
+	"errorMessage.goBackToMainPage": "Wróć do strony głównej",
+	"errorMessage.reloadTheAppIfNecessary": "Przeładuj okno jeśli zajdzie taka potrzeba",
+	"errorMessage.title": "Wystąpił błąd",
 	"header.closeNavbar": "Zamknij menu",
 	"header.languageMenuTitle": "Zmień język",
 	"header.openNavbar": "Otwórz menu",
@@ -7,6 +11,7 @@
 	"loginbar.passwordLabel": "Hasło",
 	"loginbar.submit": "wyślij",
 	"navbar.aboutName": "O stronie",
+	"navbar.addNewBeverage": "Dodaj piwo",
 	"navbar.expiredAccessToken": "Token dostępowy jest przedawniony",
 	"navbar.login": "Zaloguj",
 	"navbar.logout": "Wyloguj",

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { isDate } from 'lodash';
 
-import { NavigationContext } from 'config';
+import { AuthenticationContext } from 'config';
 
 import {
 	ExpirationDate,
@@ -16,7 +16,7 @@ import {
 } from './index';
 
 const Menu = () => {
-	const { token, tokenExpiration } = useContext(NavigationContext);
+	const { token, tokenExpiration } = useContext(AuthenticationContext);
 
 	return (
 		<MenuWrapper>

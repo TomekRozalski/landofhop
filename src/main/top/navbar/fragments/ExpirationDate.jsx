@@ -1,11 +1,11 @@
-import React, { memo, useContext } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 import 'moment/locale/pl';
 import { isBoolean, isDate } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 
-import { LanguageContext, NavigationContext } from 'config';
+import { LanguageContext, AuthenticationContext } from 'config';
 import { colors, gutters } from 'utils/theme';
 
 const ExpirationItem = styled.li`
@@ -23,7 +23,7 @@ const ExpirationItem = styled.li`
 
 const ExpirationDate = () => {
 	const { language } = useContext(LanguageContext);
-	const { tokenExpiration } = useContext(NavigationContext);
+	const { tokenExpiration } = useContext(AuthenticationContext);
 
 	if (isBoolean(tokenExpiration)) {
 		return (
@@ -48,4 +48,4 @@ const ExpirationDate = () => {
 	return null;
 };
 
-export default memo(ExpirationDate);
+export default ExpirationDate;

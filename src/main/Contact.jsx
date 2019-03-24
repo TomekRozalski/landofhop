@@ -7,12 +7,8 @@ const Wrapper = styled.ul`
 	${grid}
 `;
 
-const Contact = () => {
-	console.log('contact render');
-
-	return (
-		<Wrapper>Contact</Wrapper>
-	);
-};
+const Contact = () => (
+	<Wrapper>Contact</Wrapper>
+);
 
 export default Contact;
