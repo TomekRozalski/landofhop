@@ -11,5 +11,7 @@
 	"navbar.login": "Zaloguj",
 	"navbar.logout": "Wyloguj",
 	"navbar.searchLabel": "Szukaj",
-	"navbar.tokenExpires": "Token wygasa"
+	"navbar.tokenExpires": "Token wygasa",
+	"notFound.countDown": "Przekierowanie do strony głównej za { seconds, plural, one {# sekundę} other {# sekundy}}",
+	"notFound.title": "404 Nie znaleziono"
 }
