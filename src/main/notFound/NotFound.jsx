@@ -32,7 +32,7 @@ const NotFound = () => {
 
 	useInterval(() => {
 		setSeconds(seconds - 1);
-	}, 3000);
+	}, 1000);
 
 	return (
 		seconds === 0

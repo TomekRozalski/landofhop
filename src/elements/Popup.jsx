@@ -98,28 +98,28 @@ const ResetInfo = styled.small`
 `;
 
 const Popup = ({ appError, close, reset }) => (
-	<Card data-testid="error-message">
+	<Card>
 		<CardInside>
 			<BrokenBottle />
 			<TextContent>
 				<Header>
-					<FormattedMessage id="errorMessage.title" />
+					<FormattedMessage id="appError.title" />
 				</Header>
-				<Error data-testid="error-message-text">{ appError }</Error>
+				<Error><FormattedMessage id={appError} /></Error>
 			</TextContent>
 			{
 				reset ? (
 					<>
 						<ResetLink href="/">
-							<FormattedMessage id="errorMessage.goBackToMainPage" />
+							<FormattedMessage id="appError.goBackToMainPage" />
 						</ResetLink>
 						<ResetInfo>
-							<FormattedMessage id="errorMessage.reloadTheAppIfNecessary" />
+							<FormattedMessage id="appError.reloadTheAppIfNecessary" />
 						</ResetInfo>
 					</>
 				) : (
-					<ResetLink onClick={close} data-testid="error-message-close-button">
-						<FormattedMessage id="errorMessage.close" />
+					<ResetLink onClick={close}>
+						<FormattedMessage id="appError.close" />
 					</ResetLink>
 				)
 			}

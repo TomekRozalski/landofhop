@@ -18,12 +18,12 @@ export const Tiles = lazy(async () => {
 
 export const Contact = lazy(() => {
 	NProgress.start();
-	return import('../main/Contact').finally(NProgress.done);
+	return import('../main/contact/Contact').finally(NProgress.done);
 });
 
 export const NotFound = lazy(() => {
 	NProgress.start();
-	return import('../main/NotFound').finally(NProgress.done);
+	return import('../main/notFound/NotFound').finally(NProgress.done);
 });
 
 const Routes = () => (

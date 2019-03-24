@@ -3,16 +3,14 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import jwt from 'jsonwebtoken';
 
-import { constants, dictionary } from '../utils';
+import { constants } from '../utils';
 import { AppErrorContext } from './AppError';
-import { LanguageContext } from './Language';
 import { NavigationContext } from './Navigation';
 
 export const AuthenticationContext = React.createContext({});
 
 const Authentication = ({ children }) => {
 	const { setAppError } = useContext(AppErrorContext);
-	const { language } = useContext(LanguageContext);
 	const { navbar, setLoginbar, setNavbar } = useContext(NavigationContext);
 
 	const [tokenExpiration, setTokenExpiration] = useState(null);
@@ -70,7 +68,7 @@ const Authentication = ({ children }) => {
 			return false;
 		}
 
-		setAppError(dictionary[language]['appError.invalidToken']);
+		setAppError('appError.invalidToken');
 		return false;
 	};
 

@@ -7,10 +7,6 @@ const Navigation = ({ children }) => {
 	const [loginbar, setLoginbar] = useState(false);
 	const [navbar, setNavbar] = useState(false);
 
-	const toggleNavbar = () => {
-		setNavbar(!navbar);
-	};
-
 	return (
 		<NavigationContext.Provider
 			value={{
@@ -19,7 +15,7 @@ const Navigation = ({ children }) => {
 				setLoginbar,
 				setNavbar,
 				toggleLoginbar: () => setLoginbar(!loginbar),
-				toggleNavbar,
+				toggleNavbar: () => setNavbar(!navbar),
 			}}
 		>
 			{ children }
