@@ -8,26 +8,31 @@ const getBeveragesList = ({
 	brand,
 	short_id: shortId,
 }) => (
-	async (dispatch) => {
-		dispatch({
-			type: actionsName.GET_BEVERAGE_DETAILS_PENDING,
-		});
+	dispatch => (
+		new Promise((resolve, reject) => {
+			dispatch({
+				type: actionsName.GET_BEVERAGE_DETAILS_PENDING,
+			});
 
-		try {
 			const endpoint = `${constants.servers.main}${constants.api_endpoints.beverage_details}${shortId}/${brand}/${badge}`;
-			const res = await fetch(endpoint);
-			const details = await res.json();
 
-			dispatch({
-				type: actionsName.GET_BEVERAGE_DETAILS_FULFILLED,
-				payload: { details },
-			});
-		} catch {
-			dispatch({
-				type: actionsName.GET_BEVERAGE_DETAILS_REJECTED,
-			});
-		}
-	}
+			fetch(endpoint)
+				.then(res => res.json())
+				.then((details) => {
+					dispatch({
+						type: actionsName.GET_BEVERAGE_DETAILS_FULFILLED,
+						payload: { details },
+					});
+					resolve(details);
+				})
+				.catch(() => {
+					dispatch({
+						type: actionsName.GET_BEVERAGE_DETAILS_REJECTED,
+					});
+					reject();
+				});
+		})
+	)
 );
 
 getBeveragesList.propTypes = {

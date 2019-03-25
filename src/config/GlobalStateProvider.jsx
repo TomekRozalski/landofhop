@@ -5,6 +5,7 @@ import store from 'store/store';
 import {
 	AppError,
 	Authentication,
+	BeverageDetails,
 	Dictionary,
 	Language,
 	Navigation,
@@ -18,7 +19,9 @@ const GlobalStateProvider = () => (
 				<Navigation>
 					<Authentication>
 						<Dictionary>
-							<Routes />
+							<BeverageDetails>
+								<Routes />
+							</BeverageDetails>
 						</Dictionary>
 					</Authentication>
 				</Navigation>

@@ -60,7 +60,7 @@ export default (state = initialState, action) => (
 			return;
 
 		case actionsName.GET_BEVERAGE_DETAILS_FULFILLED:
-			draft.details.list = sortBeverages(unionBy(action.payload.details, state.details.list, 'id'));
+			draft.details.list = sortBeverages(unionBy([action.payload.details], state.details.list, 'id'));
 			draft.details.isError = false;
 			draft.details.isLoading = false;
 			return;

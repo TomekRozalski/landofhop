@@ -1,5 +1,6 @@
 import AppError, { AppErrorContext } from './AppError';
 import Authentication, { AuthenticationContext } from './Authentication';
+import BeverageDetails, { BeverageDetailsContext } from './BeverageDetails';
 import Dictionary from './Dictionary';
 import GlobalStateProvider from './GlobalStateProvider';
 import Language, { LanguageContext } from './Language';
@@ -11,6 +12,8 @@ export {
 	AppErrorContext,
 	Authentication,
 	AuthenticationContext,
+	BeverageDetails,
+	BeverageDetailsContext,
 	Dictionary,
 	GlobalStateProvider,
 	Language,

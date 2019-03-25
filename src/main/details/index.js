@@ -1,7 +1,9 @@
+import Admin from './admin/Admin';
 import Gallery from './gallery/Gallery';
-import Header from './header/Header';
+import Heading from './heading/Heading';
 
 export {
+	Admin,
 	Gallery,
-	Header,
+	Heading,
 };

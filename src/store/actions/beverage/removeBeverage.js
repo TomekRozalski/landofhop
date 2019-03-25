@@ -2,7 +2,7 @@ import { constants } from 'utils';
 import actionsName from '../../actionsName';
 
 const removeBeverage = ({ id, token }) => (
-	async dispatch => (
+	dispatch => (
 		new Promise((resolve, reject) => {
 			dispatch({
 				type: actionsName.REMOVE_BEVERAGE_PENDING,
