@@ -21,7 +21,7 @@ const Admin = () => {
 	return (
 		<Wrapper>
 			<p>{ moment(beverage.added).format('DD.MM.YYYY') }</p>
-			{/* <Link to={`/update-beverage/${params.short_id}/${params.brand}/${params.badge}`}>Update beverage</Link> */}
+			{/* <Link to={`/update-beverage/${params.shortId}/${params.brand}/${params.badge}`}>Update beverage</Link> */}
 			<RemoveButton id={beverage.id} />
 		</Wrapper>
 	);

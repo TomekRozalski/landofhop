@@ -71,7 +71,7 @@ Details.propTypes = {
 		params: PropTypes.shape({
 			badge: PropTypes.string.isRequired,
 			brand: PropTypes.string.isRequired,
-			short_id: PropTypes.string.isRequired,
+			shortId: PropTypes.string.isRequired,
 		}).isRequired,
 	}).isRequired,
 };
@@ -86,7 +86,7 @@ const mapStateToProps = ({ beverages }, { match: { params } }) => ({
 	savedBeverage: beverages.details.list.find(beverage => (
 		beverage.badge === params.badge
 		&& beverage.label.general.brand.badge === params.brand
-		&& beverage.short_id === params.short_id
+		&& beverage.shortId === params.shortId
 	)),
 });
 

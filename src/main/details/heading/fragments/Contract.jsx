@@ -19,7 +19,7 @@ const Contract = () => {
 	const producerValues = get(beverage, 'producer.general.contract');
 	const editorialValues = get(beverage, 'editorial.general.contract');
 
-	console.log('-->', labelValues, producerValues, editorialValues);
+	// console.log('-->', labelValues, producerValues, editorialValues);
 
 	// const formattedName = getNameByLanguage({ values, language });
 

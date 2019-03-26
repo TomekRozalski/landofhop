@@ -36,7 +36,7 @@ const Routes = () => (
 				<Suspense fallback={<Spinner center />}>
 					<Switch>
 						<Route path="/" exact component={Tiles} />
-						<Route path="/details/:short_id/:brand/:badge" exact component={Details} />
+						<Route path="/details/:shortId/:brand/:badge" exact component={Details} />
 						<Route path="/contact" exact component={Contact} />
 						<Route component={NotFound} />
 					</Switch>

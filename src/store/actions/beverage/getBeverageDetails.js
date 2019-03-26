@@ -6,7 +6,7 @@ import actionsName from '../../actionsName';
 const getBeveragesList = ({
 	badge,
 	brand,
-	short_id: shortId,
+	shortId,
 }) => (
 	dispatch => (
 		new Promise((resolve, reject) => {
@@ -38,7 +38,7 @@ const getBeveragesList = ({
 getBeveragesList.propTypes = {
 	badge: PropTypes.string.isRequired,
 	brand: PropTypes.string.isRequired,
-	short_id: PropTypes.string.isRequired,
+	shortId: PropTypes.string.isRequired,
 };
 
 export default getBeveragesList;

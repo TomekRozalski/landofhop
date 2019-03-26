@@ -19,7 +19,7 @@ const beverageBasics = shape({
 			language: string.isRequired,
 		})
 	)).isRequired,
-	short_id: string.isRequired,
+	shortId: string.isRequired,
 });
 
 export default beverageBasics;

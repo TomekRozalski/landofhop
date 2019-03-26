@@ -53,7 +53,7 @@ const Tile = ({
 	},
 	name,
 	language,
-	short_id: shortId,
+	shortId,
 }) => {
 	const [blur, setBlur] = useState(true);
 	const [image, setImage] = useState(null);
