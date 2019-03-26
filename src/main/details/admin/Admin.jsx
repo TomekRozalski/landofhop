@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 // import { Link } from 'react-router-dom';
+import moment from 'moment';
 
+import { BeverageDetailsContext } from 'config';
 import { fonts } from 'utils/theme';
-import { beverageDetails } from 'main/details/utils';
+
 import { RemoveButton } from './fragments';
 
 const Wrapper = styled.div`
@@ -13,19 +15,16 @@ const Wrapper = styled.div`
 	/* text-align: center; */
 `;
 
-const Admin = ({ beverage }) => {
-	console.log('beverage', beverage);
+const Admin = () => {
+	const { beverage } = useContext(BeverageDetailsContext);
 
 	return (
 		<Wrapper>
+			<p>{ moment(beverage.added).format('DD.MM.YYYY') }</p>
 			{/* <Link to={`/update-beverage/${params.short_id}/${params.brand}/${params.badge}`}>Update beverage</Link> */}
 			<RemoveButton id={beverage.id} />
 		</Wrapper>
 	);
-};
-
-Admin.propTypes = {
-	beverage: beverageDetails.isRequired,
 };
 
 export default Admin;

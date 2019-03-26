@@ -56,7 +56,7 @@ const Details = ({
 
 			*/}
 
-			<Admin beverage={beverage} />
+			<Admin />
 			<Helmet><title>{`Land of Hop. ${params.brand}. ${params.badge}`}</title></Helmet>
 		</Wrapper>
 	);

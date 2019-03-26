@@ -1,4 +1,4 @@
-import { shape, string } from 'prop-types';
+import { arrayOf, shape, string } from 'prop-types';
 
 const beverageDetails = shape({
 	id: string.isRequired,
@@ -6,10 +6,12 @@ const beverageDetails = shape({
 	badge: string.isRequired,
 	label: shape({
 		general: shape({
-			name: shape({
-				language: string,
-				value: string.isRequired,
-			}).isRequired,
+			name: arrayOf(
+				shape({
+					language: string,
+					value: string.isRequired,
+				}),
+			).isRequired,
 		}).isRequired,
 	}).isRequired,
 	added: string.isRequired,
