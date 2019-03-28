@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useRef } from 'react';
 import styled from 'styled-components';
 import { get } from 'lodash';
-import * as PIXI from 'pixi.js';
+import * as Pixi from 'pixi.js';
 
 import { BeverageDetailsContext } from 'config';
 import { fonts } from 'utils/theme';
@@ -22,50 +22,44 @@ const Gallery = () => {
 	let pixiApp;
 	const myCanvas = useRef();
 
-	const Application = PIXI.Application;
-	const loader = PIXI.loader;
-	const resources = PIXI.loader.resources;
-	const Sprite = PIXI.Sprite;
-	const Text = PIXI.Text;
+	const {
+		Application,
+		loader,
+		Sprite,
+		Text,
+	} = Pixi;
 
-	const checkHowManyImages = () => {
-		// @ToDo - think about a loop
-		// const smallImage = new Image();
-		// const imagePath = `/img/browar-kormoran/BpgUx9/1-na-100/container/0${i}.jpg`;
-		// smallImage.src = imagePath;
-
-		// smallImage.addEventListener('load', smallImageLoaded);
-		// smallImage.addEventListener('error', wrongImagePath);
-	};
+	const { resources } = loader;
 
 	useEffect(() => {
 		pixiApp = new Application({
 			width: 220,
 			height: 500,
 			transparent: true,
+			antialias: true,
 		});
 
 		myCanvas.current.appendChild(pixiApp.view);
 
-		const message = new Text('');
+		const style = new Pixi.TextStyle({
+			font: `300 1.5rem / 1 ${fonts.primary}`,
+		});
+
+		const message = new Text('', style);
 
 		const isLoading = () => {
-			console.log('isLoading');
-
-			const spinner = new Sprite(resources['/img/paradrop.png'].texture);
+			const spinner = new Sprite(resources['/img/land-of-hop-logotype.svg'].texture);
 			spinner.rotation = 0 * Math.PI / 180;
 
-			const { height, width } = pixiApp.renderer;
-
 			spinner.scale.set(0.5, 0.5);
-			spinner.position.set(width / 2 - 50, height / 2 - 50);
+			spinner.position.set(110, 230);
 			spinner.anchor.set(0.5, 0.5);
 
 			const animate = () => {
 				spinner.rotation += 0.05;
 			};
 
-			message.position.set(width / 2, height / 2 + 100);
+			message.position.set(110, 300);
 			message.anchor.set(0.5);
 
 			pixiApp.stage.addChild(message);
@@ -77,69 +71,124 @@ const Gallery = () => {
 		const setup = () => {
 			const containers = [];
 
-			for (let i = 1; i <= 9; i += 1) {
-				const container = new Sprite(resources[`/img/browar-kormoran/BpgUx9/1-na-100/container/0${i}.jpg`].texture);
+			for (let i = 1; i <= 20; i += 1) {
+				const order = i.toString().padStart(2, '0');
+				const container = new Sprite(resources[`/img/browar-kormoran/BpgUx9/1-na-100/container/${order}.jpg`].texture);
 				containers.push(container);
-				container.alpha = 0;
+				// container.alpha = 0;
 
 				container.scale.set(0.5);
-				container.interactive = true;
+				container.visible = false;
 
-				container.on('pointerdown', () => {
-					console.log('yes');
-				});
+				pixiApp.stage.addChild(container);
+				// container.interactive = true;
 
-				const onDragStart = (event) => {
-					container.data = event.data;
-					container.dragging = true;
-				};
+				// container.on('pointerdown', () => {
+				// 	console.log('yes');
+				// });
 
-				const onDragEnd = () => {
-					delete container.data;
-					container.dragging = false;
-				};
+				// const onDragStart = (event) => {
+				// 	container.data = event.data;
+				// 	container.dragging = true;
+				// };
 
-				const onDragMove = () => {
-					if (container.dragging === true) {
-						const newPosition = container.data.getLocalPosition(container.parent);
-						container.x = newPosition.x;
-						container.y = newPosition.y;
-					}
-				};
+				// const onDragEnd = () => {
+				// 	delete container.data;
+				// 	container.dragging = false;
+				// };
 
-				container
-					.on('pointerdown', onDragStart)
-					.on('pointerup', onDragEnd)
-					.on('pointerupoutside', onDragEnd)
-					.on('pointermove', onDragMove);
+				// const onDragMove = () => {
+				// 	if (container.dragging === true) {
+				// 		const newPosition = container.data.getLocalPosition(container.parent);
+				// 		container.x = newPosition.x;
+				// 		container.y = newPosition.y;
+				// 	}
+				// };
 
-				pixiApp.ticker.add((delta) => {
-					if (container.dragging === true) {
-						container.rotation += 0.1 * delta;
-					}
-				});
+				// container
+				// 	.on('pointerdown', onDragStart)
+				// 	.on('pointerup', onDragEnd)
+				// 	.on('pointerupoutside', onDragEnd)
+				// 	.on('pointermove', onDragMove);
 
-				setTimeout(() => {
-					const animate = () => {
-						if (container.alpha < 1) {
-							container.alpha += 0.2;
-						}
-					};
+				// pixiApp.ticker.add((delta) => {
+				// 	if (container.dragging === true) {
+				// 		container.rotation += 0.1 * delta;
+				// 	}
+				// });
 
-					pixiApp.ticker.add(animate);
-					pixiApp.stage.addChild(container);
-				}, 50 * i);
+				// setTimeout(() => {
+				// const animate = () => {
+				// 	if (container.alpha < 1) {
+				// 		container.alpha += 0.2;
+				// 	}
+				// };
+
+				// pixiApp.ticker.add(animate);
+				// pixiApp.stage.addChild(container);
+				// }, 50 * i);
 			}
+
+			const rectangle = new Pixi.Graphics();
+			rectangle.beginFill(0, 0);
+			rectangle.drawRect(0, 0, 220, 500);
+			rectangle.endFill();
+
+			rectangle.interactive = true;
+
+			let allowMove = false;
+			let from = 0;
+			let current = 0;
+
+			const onDragStart = (event) => {
+				allowMove = true;
+				from = event.data.global.x;
+			};
+
+			const onDragEnd = () => {
+				allowMove = false;
+			};
+
+			const onDragMove = (event) => {
+				if (event.target && allowMove) {
+					current = event.data.global.x;
+
+					let value = (current - from).toFixed() % 20;
+					if (value <= 0) {
+						value = 20 + value;
+					}
+
+					containers.forEach((item) => {
+						item.visible = false;
+					});
+
+					containers[value - 1].visible = true;
+				}
+			};
+
+			rectangle
+				.on('pointerdown', onDragStart)
+				.on('pointerup', onDragEnd)
+				.on('pointerupoutside', onDragEnd)
+				.on('pointermove', onDragMove);
+
+			containers[5].visible = true;
+
+			pixiApp.stage.addChild(rectangle);
 		};
 
 		const loadProgressHandler = (load) => {
-			message.text = `${load.progress}%`;
+			message.text = `${load.progress.toFixed(2)}%`;
 		};
 
-		const images = new Array(9).fill('').map((item, i) => `/img/browar-kormoran/BpgUx9/1-na-100/container/0${i + 1}.jpg`);
+		const images = new Array(20).fill('').map((item, i) => {
+			const order = (i + 1).toString().padStart(2, '0');
 
-		PIXI.loader
-			.add('/img/paradrop.png', isLoading)
+			return `/img/browar-kormoran/BpgUx9/1-na-100/container/${order}.jpg`;
+		});
+
+		loader
+			.add('/img/land-of-hop-logotype.svg', isLoading)
 			.add(images)
 			.on('progress', loadProgressHandler)
 			.load(setup);
