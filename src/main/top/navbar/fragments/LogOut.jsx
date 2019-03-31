@@ -18,7 +18,7 @@ const LogOut = () => {
 				</StyledLink>
 			</ListItem>
 			<ListItem>
-				<StyledLink as={Link} to="add-new-beverage">
+				<StyledLink as={Link} to="/add-new-beverage">
 					<FormattedMessage id="navbar.addNewBeverage" />
 				</StyledLink>
 			</ListItem>
