@@ -6,6 +6,7 @@
 	"appError.reloadTheAppIfNecessary": "Przeładuj okno jeśli zajdzie taka potrzeba",
 	"appError.title": "Wystąpił błąd",
 	"app.fullTitle": "Land of Hop, reaktywny katalog piw",
+	"dashboard.addNewBeverage.title": "Dodaj nowe piwo",
 	"details.contractor": "uwarzono przez { brand } dla:",
 	"details.removeBeverage.areYouSure": "Na pewno?",
 	"details.removeBeverage.remove": "Usuń z bazy",

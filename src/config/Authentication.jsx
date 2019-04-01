@@ -68,6 +68,7 @@ const Authentication = ({ children }) => {
 			return false;
 		}
 
+		setToken(false);
 		setAppError('appError.invalidToken');
 		return false;
 	};
@@ -111,6 +112,8 @@ const Authentication = ({ children }) => {
 			if (tokenIsNotExpired) {
 				authenticateToken(storageToken);
 			}
+		} else {
+			setToken(false);
 		}
 	}, []);
 

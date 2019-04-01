@@ -11,7 +11,11 @@ export default {
 		beverage_details: 'beverages/details/',
 		beverage_list: 'beverages/list/',
 		beverage_remove: 'beverages/',
+		countries_list: 'countries/list/',
+		ingredients_list: 'ingredients/list/',
+		institutions_list: 'institutions/list/',
 		login: 'login/',
+		places_list: 'places/list/',
 	},
 	server_responses: {
 		authentication_secceeded: 'Authentication succeeded',

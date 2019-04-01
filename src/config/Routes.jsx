@@ -43,9 +43,20 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 	const { token, tokenExpiration } = useContext(AuthenticationContext);
 
 	return (
-		token && isDate(tokenExpiration)
-			? <Route {...rest} render={props => <Component {...props} />} />
-			: <Redirect to="/" />
+		<Route
+			{...rest}
+			render={(props) => {
+				if (token && isDate(tokenExpiration)) {
+					return <Component {...props} />;
+				}
+
+				if (token === null) {
+					return <Spinner center />;
+				}
+
+				return <Redirect to="/" />;
+			}}
+		/>
 	);
 };
 

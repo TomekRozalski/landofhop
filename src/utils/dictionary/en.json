@@ -6,6 +6,7 @@
 	"appError.reloadTheAppIfNecessary": "Reload the app if necessary",
 	"appError.title": "An error has occurred",
 	"app.fullTitle": "Land of Hop, reactive beer catalog",
+	"dashboard.addNewBeverage.title": "Add new beer",
 	"details.contractor": "brewed by { brand } for:",
 	"details.removeBeverage.areYouSure": "Are you sure?",
 	"details.removeBeverage.remove": "Remove from the database",
