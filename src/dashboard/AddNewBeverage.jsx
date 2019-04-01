@@ -1,24 +1,25 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import { Helmet } from 'react-helmet';
 
 import { BeverageFormWrapper } from 'dashboard/utils';
-import { MainHeader, ProgressList } from 'dashboard/elements';
+import Label from 'dashboard/Label';
 
 const AddNewBeverage = () => (
 	<BeverageFormWrapper>
 		{({
-			hideSubforms,
 			moveBack,
 			moveOn,
-			moveTo,
 			savedForms,
 			saveFormValues,
+			setTitle,
 			showSubform,
-			subform,
 			step,
+			title,
 		}) => {
-			const formBodyProps = {
+			if (!title) {
+				setTitle('dashboard.addNewBeverage.title');
+			}
+
+			const commonProps = {
 				moveBack,
 				moveOn,
 				savedForms,
@@ -26,21 +27,19 @@ const AddNewBeverage = () => (
 				showSubform,
 			};
 
+			if (step === 1) {
+				return <Label {...commonProps} />;
+			}
+
+			return null;
+
+
 			return (
 				<>
-					{/* <Subforms
-						hide={hideSubforms}
-						showSubform={showSubform}
-						subform={subform}
-					/> */}
-					<MainHeader title="dashboard.addNewBeverage.title" />
-					<ProgressList step={step} moveTo={moveTo} />
+					<div>sdf</div>
 					{/* { step === 1 && <Label {...formBodyProps} /> } */}
 					{/* { step === 2 && <Producer {...formBodyProps} /> } */}
 					{/* { step === 3 && <Editorial {...formBodyProps} finalSubmit={finalSubmit} /> } */}
-					<FormattedMessage id="dashboard.addNewBeverage.title">
-						{title => <Helmet><title>{title}</title></Helmet>}
-					</FormattedMessage>
 				</>
 			);
 		}}

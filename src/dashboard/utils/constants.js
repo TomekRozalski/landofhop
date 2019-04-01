@@ -1,9 +1,13 @@
 export default {
 	forms: {
 		beverage: {
-			label: 'beverage_label',
-			producer: 'beverage_producer',
-			editorial: 'beverage_editorial',
+			label: 'label',
+			producer: 'producer',
+			editorial: 'editorial',
 		},
 	},
+	institution: 'institution',
+	place: 'place',
+	country: 'country',
+	ingredients: 'ingredients',
 };

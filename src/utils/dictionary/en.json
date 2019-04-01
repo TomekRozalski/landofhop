@@ -7,6 +7,8 @@
 	"appError.title": "An error has occurred",
 	"app.fullTitle": "Land of Hop, reactive beer catalog",
 	"dashboard.addNewBeverage.title": "Add new beer",
+	"dashboard.labelInfo.title": "Label",
+	"dashboard.labelInfo.description": "Data which could be taken just from the container",
 	"details.contractor": "brewed by { brand } for:",
 	"details.removeBeverage.areYouSure": "Are you sure?",
 	"details.removeBeverage.remove": "Remove from the database",

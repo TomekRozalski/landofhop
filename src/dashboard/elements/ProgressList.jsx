@@ -46,9 +46,6 @@ const ProgressList = ({
 ProgressList.propTypes = {
 	moveTo: PropTypes.func.isRequired,
 	step: PropTypes.number.isRequired,
-	[constants.forms.beverage.label]: PropTypes.bool.isRequired,
-	[constants.forms.beverage.producer]: PropTypes.bool.isRequired,
-	[constants.forms.beverage.editorial]: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => {
