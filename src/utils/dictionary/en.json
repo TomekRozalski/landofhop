@@ -6,15 +6,32 @@
 	"appError.reloadTheAppIfNecessary": "Reload the app if necessary",
 	"appError.title": "An error has occurred",
 	"app.fullTitle": "Land of Hop, reactive beer catalog",
+
 	"dashboard.addNewBeverage.title": "Add new beer",
+	"dashboard.badge": "Badge",
+
+	"dashboard.brandInfo": "Informations connected with branding",
+	"dashboard.brewingInfo": "Informations connected with brewing",
 	"dashboard.labelInfo.title": "Label",
 	"dashboard.labelInfo.description": "Data which could be taken just from the container",
+	"dashboard.loadError": "Load error",
+	"dashboard.loading": "Loading…",
+	"dashboard.name": "Name",
+	"dashboard.selectLanguage": "Select language…",
+
 	"details.contractor": "brewed by { brand } for:",
 	"details.removeBeverage.areYouSure": "Are you sure?",
 	"details.removeBeverage.remove": "Remove from the database",
 	"header.closeNavbar": "Close navbar",
 	"header.languageMenuTitle": "Change language",
 	"header.openNavbar": "Open navbar",
+
+	"language.english": "English",
+	"language.german": "German",
+	"language.notApplicable": "Not applicable",
+	"language.polish": "Polish",
+	"language.spanish": "Spanish",
+
 	"loginbar.emailLabel": "Email",
 	"loginbar.passwordLabel": "Password",
 	"loginbar.submit": "submit",

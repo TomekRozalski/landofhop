@@ -62,6 +62,7 @@ const Authentication = ({ children }) => {
 				return true;
 			}
 
+			setToken(false);
 			setTokenExpiration(false);
 			setNavbar(true);
 			setLoginbar(true);

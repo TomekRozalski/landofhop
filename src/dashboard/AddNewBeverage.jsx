@@ -27,21 +27,22 @@ const AddNewBeverage = () => (
 				showSubform,
 			};
 
-			if (step === 1) {
-				return <Label {...commonProps} />;
+			if (title) {
+				if (step === 1) {
+					return <Label {...commonProps} />;
+				}
 			}
 
 			return null;
 
-
-			return (
-				<>
-					<div>sdf</div>
-					{/* { step === 1 && <Label {...formBodyProps} /> } */}
-					{/* { step === 2 && <Producer {...formBodyProps} /> } */}
-					{/* { step === 3 && <Editorial {...formBodyProps} finalSubmit={finalSubmit} /> } */}
-				</>
-			);
+			// return (
+			// 	<>
+			// 		<div>sdf</div>
+			// 		{/* { step === 1 && <Label {...formBodyProps} /> } */}
+			// 		{/* { step === 2 && <Producer {...formBodyProps} /> } */}
+			// 		{/* { step === 3 && <Editorial {...formBodyProps} finalSubmit={finalSubmit} /> } */}
+			// 	</>
+			// );
 		}}
 	</BeverageFormWrapper>
 );

@@ -3,6 +3,13 @@ export default {
 		pl: 'pl',
 		en: 'en',
 	},
+	dataLanguages: {
+		pl: 'pl',
+		en: 'en',
+		de: 'de',
+		es: 'es',
+		none: '-',
+	},
 	servers: {
 		main: 'http://localhost:3100/',
 	},
@@ -19,5 +26,8 @@ export default {
 	},
 	server_responses: {
 		authentication_secceeded: 'Authentication succeeded',
+	},
+	fermentations: {
+		top: 'top',
 	},
 };
