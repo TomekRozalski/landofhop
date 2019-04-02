@@ -1,7 +1,6 @@
-/* eslint react/prop-types: 0 */
 import React from 'react';
-import { get } from 'lodash';
 
+import { constants } from 'dashboard/utils';
 import {
 	// AddButton,
 	FormSection,
@@ -9,26 +8,20 @@ import {
 	// SubmitButton,
 	SubSection,
 } from 'dashboard/elements';
-
-import { constants } from 'dashboard/utils';
-import { fields } from './utils';
-
 import {
 	Badge,
 	Name,
 } from './fragments';
 
-const FormBody = ({ showSubform }) => ({
-	errors,
-	setFieldValue,
-	touched,
-	values,
-}) => {
+const FormBody = ({ showSubform }) => (formikBag) => {
+	console.log('FormBody renders');
+
 	const formName = constants.forms.beverage.label;
 
 	const commonProps = {
+		...formikBag,
 		formName,
-		setFieldValue,
+		showSubform,
 	};
 
 	return (
@@ -36,26 +29,10 @@ const FormBody = ({ showSubform }) => ({
 			title="dashboard.labelInfo.title"
 			description="dashboard.labelInfo.description"
 		>
-			<Badge
-				{...commonProps}
-				errors={{
-					badge: get(errors, [fields.badge]),
-				}}
-			/>
+			<Badge {...commonProps} />
 			{/* -------------------------------- */}
 			<SubSection title="dashboard.brandInfo" />
-			<Name
-				{...commonProps}
-				errors={{
-					name: get(errors, [fields.name]),
-				}}
-				touched={{
-					name: get(touched, [fields.name]),
-				}}
-				values={{
-					name: get(values, [fields.name]),
-				}}
-			/>
+			<Name {...commonProps} />
 		</FormSection>
 	);
 };

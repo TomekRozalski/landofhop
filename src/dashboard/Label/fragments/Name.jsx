@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { memo, useContext } from 'react';
 import { func, shape, string } from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Field, FieldArray } from 'formik';
@@ -23,6 +23,7 @@ const Name = ({
 	touched,
 	values,
 }) => {
+	console.log('Name renders');
 	const { language } = useContext(LanguageContext);
 
 	return (
@@ -92,4 +93,11 @@ Name.propTypes = {
 	}).isRequired,
 };
 
-export default Name;
+export default memo(
+	Name,
+	(prevProps, nextProps) => (
+		prevProps.values[fields.name] === nextProps.values[fields.name]
+		&& prevProps.errors[fields.name] === nextProps.errors[fields.name]
+		&& prevProps.touched[fields.name] === nextProps.touched[fields.name]
+	),
+);

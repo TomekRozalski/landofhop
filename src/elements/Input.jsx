@@ -37,10 +37,11 @@ const Field = styled.input.attrs({
 `;
 
 const Input = ({ field, search, ...props }) => {
-	const { disabled, error } = props;
+	const { disabled } = props;
 
 	const name = get(field, 'name');
 	const touched = get(props, `form.touched.${name}`);
+	const error = get(props, `form.errors.${name}`);
 	const success = !error && touched && !disabled && field.value !== '';
 	const warning = error && touched && !disabled;
 
