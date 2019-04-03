@@ -1,4 +1,4 @@
-import beverageBasics from './beverageBasics';
+import beverageBasics from './beverageBasics.types';
 
 export {
 	beverageBasics,

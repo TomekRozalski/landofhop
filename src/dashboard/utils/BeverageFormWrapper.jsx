@@ -111,7 +111,7 @@ BeverageFormWrapper.propTypes = {
 	areIngredientsLoaded: PropTypes.bool.isRequired,
 	areInstitutionsLoaded: PropTypes.bool.isRequired,
 	arePlacesLoaded: PropTypes.bool.isRequired,
-	children: PropTypes.node.isRequired,
+	children: PropTypes.func.isRequired,
 	clearBeverageDashboard: PropTypes.func.isRequired,
 	// getBeveragesList: PropTypes.func.isRequired,
 	getCountriesList: PropTypes.func.isRequired,

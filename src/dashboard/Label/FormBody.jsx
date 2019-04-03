@@ -1,38 +1,30 @@
+/* eslint react/prop-types: 0 */
 import React from 'react';
 
-import { constants } from 'dashboard/utils';
 import {
-	// AddButton,
 	FormSection,
-	// ResetButton,
-	// SubmitButton,
-	SubSection,
+	ResetButton,
+	SubmitButton,
 } from 'dashboard/elements';
-import {
-	Badge,
-	Name,
-} from './fragments';
+import Fieldset from './Fieldset';
 
-const FormBody = ({ showSubform }) => (formikBag) => {
+const FormBody = ({ showSubform }) => ({ isSubmitting, isValid }) => {
 	console.log('FormBody renders');
-
-	const formName = constants.forms.beverage.label;
-
-	const commonProps = {
-		...formikBag,
-		formName,
-		showSubform,
-	};
 
 	return (
 		<FormSection
 			title="dashboard.labelInfo.title"
 			description="dashboard.labelInfo.description"
 		>
-			<Badge {...commonProps} />
+			<Fieldset showSubform={showSubform} />
 			{/* -------------------------------- */}
-			<SubSection title="dashboard.brandInfo" />
-			<Name {...commonProps} />
+			<ResetButton type="reset" />
+			<SubmitButton
+				text="dashboard.continue"
+				type="submit"
+				disabled={!isValid}
+				isSubmitting={isSubmitting}
+			/>
 		</FormSection>
 	);
 };

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import { LanguageContext } from 'config';
 import { getNameByLanguage } from 'utils/helpers';
 import { beverageBasics } from '../utils';
 import { NoImage } from './index';
@@ -52,9 +53,10 @@ const Tile = ({
 		name: brandName,
 	},
 	name,
-	language,
 	shortId,
 }) => {
+	const { language } = useContext(LanguageContext);
+
 	const [blur, setBlur] = useState(true);
 	const [image, setImage] = useState(null);
 	const [size, setSize] = useState('l');
@@ -123,7 +125,7 @@ const Tile = ({
 				size={size}
 				to={`details/${shortId}/${brandBadge}/${badge}`}
 			>
-				<NoImage image={image} />
+				<NoImage image={!!image} />
 				<Hidden>{title}</Hidden>
 			</StyledLink>
 		</li>

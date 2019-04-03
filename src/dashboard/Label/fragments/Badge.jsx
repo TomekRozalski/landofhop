@@ -1,31 +1,32 @@
-import React, { memo } from 'react';
-import { string } from 'prop-types';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { FastField } from 'formik';
 
 import { Input, Label } from 'elements';
 import { InputWrapper, LabelWrapper } from 'dashboard/elements';
-import { fields } from '../utils';
+import { fields, fragmentTypes } from '../utils';
 
-const Badge = ({ formName }) => (
-	<>
-		<LabelWrapper>
-			<Label htmlFor={`${formName}-${fields.badge}`} required>
-				<FormattedMessage id={`dashboard.${fields.badge}`} />
-			</Label>
-		</LabelWrapper>
-		<InputWrapper place="wide">
-			<FastField
-				component={Input}
-				id={`${formName}-${fields.badge}`}
-				name={fields.badge}
-			/>
-		</InputWrapper>
-	</>
-);
+const Badge = ({ formName }) => {
+	console.log('Badge renders');
 
-Badge.propTypes = {
-	formName: string.isRequired,
+	return (
+		<>
+			<LabelWrapper>
+				<Label htmlFor={`${formName}-${fields.badge}`} required>
+					<FormattedMessage id={`dashboard.${fields.badge}`} />
+				</Label>
+			</LabelWrapper>
+			<InputWrapper place="wide">
+				<FastField
+					component={Input}
+					id={`${formName}-${fields.badge}`}
+					name={fields.badge}
+				/>
+			</InputWrapper>
+		</>
+	);
 };
 
-export default memo(Badge, () => true);
+Badge.propTypes = fragmentTypes;
+
+export default Badge;

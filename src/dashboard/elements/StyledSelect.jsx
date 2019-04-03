@@ -21,7 +21,13 @@ import { ErrorGroup, LoadingGroup } from './index';
 const StyledSelect = ({
 	children,
 	disable,
-	fieldName,
+	field: {
+		name: fieldName,
+		value,
+	},
+	form: {
+		setFieldValue,
+	},
 	formName,
 	intl,
 	inverse,
@@ -29,10 +35,10 @@ const StyledSelect = ({
 	isLoading,
 	multi,
 	placeholder,
-	setFieldValue,
-	warning = false,
-	value,
+	warning,
 }) => {
+	console.log('StyledSelect renders');
+
 	const setValue = (newValue) => {
 		setFieldValue(fieldName, newValue);
 	};
@@ -179,26 +185,30 @@ StyledSelect.propTypes = {
 	children: arrayOf(
 		shape({
 			label: string.isRequired,
-			values: string.isRequired,
-		}).isRequired,
+			value: string.isRequired,
+		}),
 	).isRequired,
 	disable: bool,
-	fieldName: string.isRequired,
+	field: shape({
+		name: string.isRequired,
+		value: shape({
+			label: string.isRequired,
+			value: string.isRequired,
+		}).isRequired,
+	}).isRequired,
+	form: shape({
+		setFieldValue: func.isRequired,
+	}).isRequired,
 	formName: string.isRequired,
 	intl: shape({
 		formatMessage: func.isRequired,
 	}).isRequired,
+	inverse: bool,
 	isError: bool,
 	isLoading: bool,
-	inverse: bool,
 	multi: bool,
 	placeholder: string,
-	setFieldValue: func.isRequired,
 	warning: bool,
-	value: shape({
-		label: string.isRequired,
-		values: string.isRequired,
-	}).isRequired,
 };
 
 StyledSelect.defaultProps = {

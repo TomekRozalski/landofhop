@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
@@ -30,12 +30,16 @@ const Wrapper = styled.h3`
 	}
 `;
 
-const SubSection = ({ title }) => (
-	<Wrapper><FormattedMessage id={title} /></Wrapper>
-);
+const SubSection = ({ title }) => {
+	console.log('SubSection renders');
+
+	return (
+		<Wrapper><FormattedMessage id={title} /></Wrapper>
+	);
+};
 
 SubSection.propTypes = {
 	title: PropTypes.string.isRequired,
 };
 
-export default memo(SubSection);
+export default SubSection;

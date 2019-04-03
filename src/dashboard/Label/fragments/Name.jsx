@@ -1,12 +1,11 @@
-import React, { memo, useContext } from 'react';
-import { func, shape, string } from 'prop-types';
+/* eslint react/no-array-index-key: 0 */
+import React, { useContext } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Field, FieldArray } from 'formik';
-import { get } from 'lodash';
+import { FastField, FieldArray } from 'formik';
 
 import { LanguageContext } from 'config';
 import { Input, Label } from 'elements';
-import { emptySelect, isSelectEmpty, languagesList } from 'dashboard/utils';
+import { emptySelect, languagesList } from 'dashboard/utils';
 import {
 	AddElement,
 	InputWrapper,
@@ -14,15 +13,9 @@ import {
 	RemoveElement,
 	StyledSelect,
 } from 'dashboard/elements';
-import { fields } from '../utils';
+import { fields, fragmentTypes } from '../utils';
 
-const Name = ({
-	errors,
-	formName,
-	setFieldValue,
-	touched,
-	values,
-}) => {
+const Name = ({ formName }) => {
 	console.log('Name renders');
 	const { language } = useContext(LanguageContext);
 
@@ -35,32 +28,28 @@ const Name = ({
 			</LabelWrapper>
 			<FieldArray
 				name={fields.name}
-				render={({ push, remove }) => (
-					values[fields.name].map((_, index) => {
-						const loopLength = values[fields.name].length;
+				render={({ form, push, remove }) => (
+					form.values[fields.name].map((_, index) => {
+						const loopLength = form.values[fields.name].length;
 						const lastInput = loopLength === index + 1;
 
 						return (
-							<>
+							<React.Fragment key={index}>
 								<InputWrapper place="left">
-									<Field
+									<FastField
 										component={Input}
-										error={get(errors, [fields.name, index, 'value'])}
 										id={lastInput ? `${formName}-${fields.name}-value` : null}
 										name={`${fields.name}.${index}.value`}
 									/>
 								</InputWrapper>
 								<InputWrapper place="middle">
-									<StyledSelect
-										fieldName={`${fields.name}.${index}.lang`}
+									<FastField
+										component={StyledSelect}
 										formName={formName}
-										placeholder="selectLanguage"
-										setFieldValue={setFieldValue}
-										warning={isSelectEmpty(touched, errors, `${fields.name}.${index}.lang`)}
-										value={get(values, [fields.name, index, 'lang'])}
+										name={`${fields.name}.${index}.lang`}
 									>
 										{ languagesList(language) }
-									</StyledSelect>
+									</FastField>
 								</InputWrapper>
 								{
 									lastInput && (
@@ -70,7 +59,7 @@ const Name = ({
 										</InputWrapper>
 									)
 								}
-							</>
+							</React.Fragment>
 						);
 					})
 				)}
@@ -79,25 +68,6 @@ const Name = ({
 	);
 };
 
-Name.propTypes = {
-	errors: shape({
-		[fields.name]: string,
-	}).isRequired,
-	formName: string.isRequired,
-	setFieldValue: func.isRequired,
-	touched: shape({
-		[fields.name]: string,
-	}).isRequired,
-	values: shape({
-		[fields.name]: string,
-	}).isRequired,
-};
+Name.propTypes = fragmentTypes;
 
-export default memo(
-	Name,
-	(prevProps, nextProps) => (
-		prevProps.values[fields.name] === nextProps.values[fields.name]
-		&& prevProps.errors[fields.name] === nextProps.errors[fields.name]
-		&& prevProps.touched[fields.name] === nextProps.touched[fields.name]
-	),
-);
+export default Name;

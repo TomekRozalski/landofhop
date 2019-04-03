@@ -1,6 +1,11 @@
 import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
-import { arrayOf, bool, func } from 'prop-types';
+import {
+	arrayOf,
+	bool,
+	func,
+	shape,
+} from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { FormattedMessage } from 'react-intl';
@@ -58,7 +63,9 @@ Tiles.propTypes = {
 	getBeveragesList: func.isRequired,
 	isError: bool.isRequired,
 	isLoading: bool.isRequired,
-	list: arrayOf(beverageBasics).isRequired,
+	list: arrayOf(
+		shape(beverageBasics),
+	).isRequired,
 };
 
 const mapStateToProps = ({ beverages }) => ({

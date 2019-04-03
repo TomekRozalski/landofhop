@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { isBoolean } from 'lodash';
 
-import { BrokenBottle } from '../../../elements/icons';
-import { colors } from '../../../utils/theme';
+import { BrokenBottle } from 'elements/icons';
+import { colors } from 'utils/theme';
 
 const Wrapper = styled.em`
 	display: flex;
@@ -21,18 +20,17 @@ const Wrapper = styled.em`
 `;
 
 const NoImage = ({ image }) => (
-	isBoolean(image) ? (
-		<Wrapper>
-			<BrokenBottle />
-		</Wrapper>
-	) : null
+	image
+		? null
+		: (
+			<Wrapper>
+				<BrokenBottle />
+			</Wrapper>
+		)
 );
 
 NoImage.propTypes = {
-	image: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.bool,
-	]).isRequired,
+	image: PropTypes.bool.isRequired,
 };
 
 export default NoImage;

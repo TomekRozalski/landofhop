@@ -8,7 +8,10 @@ import MainHeader from './MainHeader';
 import ProgressItem from './ProgressItem';
 import ProgressList from './ProgressList';
 import RemoveElement from './RemoveElement';
+import ResetButton from './ResetButton';
+import RevealButton from './RevealButton';
 import StyledSelect from './StyledSelect';
+import SubmitButton from './SubmitButton';
 import SubSection from './SubSection';
 import Wrapper from './Wrapper';
 
@@ -23,7 +26,10 @@ export {
 	ProgressItem,
 	ProgressList,
 	RemoveElement,
+	ResetButton,
+	RevealButton,
 	StyledSelect,
+	SubmitButton,
 	SubSection,
 	Wrapper,
 };
