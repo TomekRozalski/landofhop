@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -55,40 +55,63 @@ const Checkbox = styled.input.attrs({
 `;
 
 const ConditionalLabel = ({
-	checked,
 	children,
-	conditional,
+	field: {
+		name,
+		value,
+	},
+	form: {
+		initialValues,
+		setFieldValue,
+	},
 	formName,
 	inverse,
-	onChange,
-	required,
-	...props
-}) => (
-	<Wrapper checked={checked} inverse={inverse}>
-		<Checkbox
-			id={`${formName}-${conditional}`}
-			name={conditional}
-			onChange={onChange}
-			checked={checked}
-		/>
-		<Label htmlFor={`${formName}-${conditional}`} withPadding {...props}>{ children }</Label>
-		{ checked && <Checkmark /> }
-	</Wrapper>
-);
+	...rest
+}) => {
+	const checked = value !== false;
+
+	const setValue = ({ target: { checked: isChecked } }) => {
+		if (isChecked) {
+			setFieldValue(name, initialValues[name]);
+		} else {
+			setFieldValue(name, false);
+		}
+	};
+
+	useEffect(() => {
+		setFieldValue(name, false);
+	}, []);
+
+	return (
+		<Wrapper checked={checked} inverse={inverse}>
+			<Checkbox
+				id={`${formName}-is${name}`}
+				onChange={setValue}
+				checked={checked}
+			/>
+			<Label htmlFor={`${formName}-is${name}`} withPadding {...rest}>{ children }</Label>
+			{ checked && <Checkmark /> }
+		</Wrapper>
+
+	);
+};
 
 ConditionalLabel.propTypes = {
-	checked: PropTypes.bool.isRequired,
 	children: PropTypes.node.isRequired,
-	conditional: PropTypes.string.isRequired,
+	field: PropTypes.shape({
+		name: PropTypes.string.isRequired,
+		value: PropTypes.any.isRequired,
+	}).isRequired,
+	form: PropTypes.shape({
+		initialValues: PropTypes.object.isRequired,
+		setFieldValue: PropTypes.func.isRequired,
+	}).isRequired,
 	formName: PropTypes.string.isRequired,
 	inverse: PropTypes.bool,
-	onChange: PropTypes.func.isRequired,
-	required: PropTypes.bool,
 };
 
 ConditionalLabel.defaultProps = {
 	inverse: false,
-	required: false,
 };
 
 export default ConditionalLabel;

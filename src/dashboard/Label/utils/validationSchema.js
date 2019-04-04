@@ -43,12 +43,12 @@ export default Yup.object().shape({
 		label: Yup.string().required('danger'),
 		value: Yup.string().required('danger'),
 	}).required('danger'),
-	[fields.isCooperation]: Yup.boolean(),
-	[fields.cooperation]: Yup.array()
-		.when([fields.isCooperation], {
-			is: true,
-			then: Yup.array().min(1, 'danger').required('danger'),
-		}),
+
+	// [fields.cooperation]: Yup.concat(
+	// 	Yup.array().min(1, 'danger').required('danger'),
+	// 	Yup.bool(),
+	// ),
+
 	[fields.isContract]: Yup.boolean(),
 	[fields.contract]: Yup.object()
 		.when([fields.isContract], {

@@ -8,7 +8,6 @@ import { FormattedMessage } from 'react-intl';
 
 import {
 	ConditionalLabel,
-	ConditionalLabelNext,
 	InputWrapper,
 	LabelWrapper,
 	StyledSelect,
@@ -38,23 +37,16 @@ const Cooperation = (props) => {
 		<>
 			<LabelWrapper>
 				<FastField
-					component={ConditionalLabelNext}
-					name={fields.cooperation}
-				/>
-
-				{/* <ConditionalLabel
-					// checked={values[fields.isCooperation]}
-					conditional={fields.isCooperation}
+					component={ConditionalLabel}
 					formName={formName}
-					// onChange={onCheckboxChange}
+					name={fields.cooperation}
 				>
 					<FormattedMessage id={`dashboard.${fields.cooperation}`} />
-				</ConditionalLabel> */}
+				</FastField>
 			</LabelWrapper>
 			<InputWrapper place="wide">
 				<FastField
 					component={StyledSelect}
-					// disable={values[fields.isCooperation] === false}
 					formName={formName}
 					isError={isError}
 					isLoading={isLoading}

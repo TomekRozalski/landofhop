@@ -16,7 +16,6 @@ export default {
 		label: '',
 		value: '',
 	},
-	[fields.isCooperation]: false,
 	[fields.cooperation]: [],
 	[fields.isContract]: false,
 	[fields.contract]: {

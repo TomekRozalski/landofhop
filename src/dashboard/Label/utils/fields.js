@@ -4,7 +4,7 @@ export default {
 	name: 'name',
 	series: 'series',
 	brand: 'brand',
-	isCooperation: 'isCooperation',
+	// isCooperation: 'isCooperation', @ToDo: To remove
 	cooperation: 'cooperation',
 	isContract: 'isContract',
 	contract: 'contract',

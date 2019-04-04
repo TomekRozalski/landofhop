@@ -14,6 +14,7 @@
 	"dashboard.brandInfo": "Informations connected with branding",
 	"dashboard.brewingInfo": "Informations connected with brewing",
 	"dashboard.continue": "Continue",
+	"dashboard.cooperation": "Cooperation",
 	"dashboard.labelInfo.title": "Label",
 	"dashboard.labelInfo.description": "Data which could be taken just from the container",
 	"dashboard.loadError": "Load error",

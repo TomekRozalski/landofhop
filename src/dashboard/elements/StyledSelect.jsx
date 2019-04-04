@@ -20,7 +20,6 @@ import { ErrorGroup, LoadingGroup } from './index';
 
 const StyledSelect = ({
 	children,
-	disable,
 	field: {
 		name: fieldName,
 		value,
@@ -57,7 +56,7 @@ const StyledSelect = ({
 				components={{
 					Input: input,
 				}}
-				isDisabled={disable}
+				isDisabled={value === false}
 				isMulti={multi}
 				isClearable={false}
 				onChange={setValue}
@@ -186,7 +185,6 @@ StyledSelect.propTypes = {
 			value: string.isRequired,
 		}),
 	).isRequired,
-	disable: bool,
 	field: shape({
 		name: string.isRequired,
 		value: shape({
@@ -210,7 +208,6 @@ StyledSelect.propTypes = {
 };
 
 StyledSelect.defaultProps = {
-	disable: false,
 	isError: false,
 	isLoading: false,
 	inverse: false,
