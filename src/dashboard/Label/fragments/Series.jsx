@@ -17,7 +17,6 @@ import {
 import { fields, fragmentTypes } from '../utils';
 
 const Series = ({ formName }) => {
-	console.log('Series renders');
 	const { language } = useContext(LanguageContext);
 
 	return (

@@ -37,8 +37,6 @@ const StyledSelect = ({
 	placeholder,
 	warning,
 }) => {
-	console.log('StyledSelect renders');
-
 	const setValue = (newValue) => {
 		setFieldValue(fieldName, newValue);
 	};

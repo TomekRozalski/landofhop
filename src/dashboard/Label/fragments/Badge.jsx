@@ -6,26 +6,22 @@ import { Input, Label } from 'elements';
 import { InputWrapper, LabelWrapper } from 'dashboard/elements';
 import { fields, fragmentTypes } from '../utils';
 
-const Badge = ({ formName }) => {
-	console.log('Badge renders');
-
-	return (
-		<>
-			<LabelWrapper>
-				<Label htmlFor={`${formName}-${fields.badge}`} required>
-					<FormattedMessage id={`dashboard.${fields.badge}`} />
-				</Label>
-			</LabelWrapper>
-			<InputWrapper place="wide">
-				<FastField
-					component={Input}
-					id={`${formName}-${fields.badge}`}
-					name={fields.badge}
-				/>
-			</InputWrapper>
-		</>
-	);
-};
+const Badge = ({ formName }) => (
+	<>
+		<LabelWrapper>
+			<Label htmlFor={`${formName}-${fields.badge}`} required>
+				<FormattedMessage id={`dashboard.${fields.badge}`} />
+			</Label>
+		</LabelWrapper>
+		<InputWrapper place="wide">
+			<FastField
+				component={Input}
+				id={`${formName}-${fields.badge}`}
+				name={fields.badge}
+			/>
+		</InputWrapper>
+	</>
+);
 
 Badge.propTypes = fragmentTypes;
 

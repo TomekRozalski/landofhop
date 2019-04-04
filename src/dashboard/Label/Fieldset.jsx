@@ -7,11 +7,11 @@ import {
 	Badge,
 	Name,
 	Series,
+	Brand,
+	Cooperation,
 } from './fragments';
 
 const Fieldset = ({ showSubform }) => {
-	console.log('Fieldset renders');
-
 	const commonProps = {
 		formName: constants.forms.beverage.label,
 		showSubform,
@@ -24,6 +24,10 @@ const Fieldset = ({ showSubform }) => {
 			<SubSection title="dashboard.brandInfo" />
 			<Name {...commonProps} />
 			<Series {...commonProps} />
+			<Brand {...commonProps} />
+			{/* <AddButton onClick={() => { showSubform(Forms.INSTITUTION) }} /> */}
+			<Cooperation {...commonProps} />
+			{/* <Contract {...formikProps} /> */}
 		</>
 	);
 };

@@ -16,7 +16,6 @@ import {
 import { fields, fragmentTypes } from '../utils';
 
 const Name = ({ formName }) => {
-	console.log('Name renders');
 	const { language } = useContext(LanguageContext);
 
 	return (

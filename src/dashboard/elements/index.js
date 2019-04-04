@@ -1,4 +1,6 @@
 import AddElement from './AddElement';
+import ConditionalLabel from './ConditionalLabel';
+import ConditionalLabelNext from './ConditionalLabelNext';
 import ErrorGroup from './ErrorGroup';
 import FormSection from './FormSection';
 import InputWrapper from './InputWrapper';
@@ -17,6 +19,8 @@ import Wrapper from './Wrapper';
 
 export {
 	AddElement,
+	ConditionalLabel,
+	ConditionalLabelNext,
 	ErrorGroup,
 	FormSection,
 	InputWrapper,

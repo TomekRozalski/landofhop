@@ -30,13 +30,9 @@ const Wrapper = styled.h3`
 	}
 `;
 
-const SubSection = ({ title }) => {
-	console.log('SubSection renders');
-
-	return (
-		<Wrapper><FormattedMessage id={title} /></Wrapper>
-	);
-};
+const SubSection = ({ title }) => (
+	<Wrapper><FormattedMessage id={title} /></Wrapper>
+);
 
 SubSection.propTypes = {
 	title: PropTypes.string.isRequired,
