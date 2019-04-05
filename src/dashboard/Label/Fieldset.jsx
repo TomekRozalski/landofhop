@@ -9,6 +9,7 @@ import {
 	Series,
 	Brand,
 	Cooperation,
+	Contract,
 } from 'dashboard/fragments';
 import { fields } from './utils';
 
@@ -28,7 +29,7 @@ const Fieldset = ({ showSubform }) => {
 			<Brand {...commonProps} fieldName={fields.brand} />
 			{/* <AddButton onClick={() => { showSubform(Forms.INSTITUTION) }} /> */}
 			<Cooperation {...commonProps} fieldName={fields.cooperation} />
-			{/* <Contract {...formikProps} /> */}
+			<Contract {...commonProps} fieldName={fields.contract} />
 		</>
 	);
 };

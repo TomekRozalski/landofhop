@@ -57,7 +57,7 @@ const StyledSelect = ({
 				components={{
 					Input: input,
 				}}
-				isDisabled={value === false}
+				isDisabled={value === null}
 				isMulti={multi}
 				isClearable={false}
 				onChange={setValue}

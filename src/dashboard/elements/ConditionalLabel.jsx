@@ -68,18 +68,18 @@ const ConditionalLabel = ({
 	inverse,
 	...rest
 }) => {
-	const checked = value !== false;
+	const checked = value !== null;
 
 	const setValue = ({ target: { checked: isChecked } }) => {
 		if (isChecked) {
 			setFieldValue(name, initialValues[name]);
 		} else {
-			setFieldValue(name, false);
+			setFieldValue(name, null);
 		}
 	};
 
 	useEffect(() => {
-		setFieldValue(name, false);
+		setFieldValue(name, null);
 	}, []);
 
 	return (

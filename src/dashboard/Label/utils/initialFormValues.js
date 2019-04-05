@@ -17,24 +17,19 @@ export default {
 		value: '',
 	},
 	[fields.cooperation]: [],
-	[fields.isContract]: false,
 	[fields.contract]: {
 		label: '',
 		value: '',
 	},
-	[fields.isPlace]: false,
 	[fields.place]: {
 		label: '',
 		value: '',
 	},
 	[fields.tale]: [],
-	[fields.isBarcode]: false,
 	[fields.barcode]: '',
 	// -----------
-	[fields.isFermentation]: false,
 	[fields.fermentation]: [constants.fermentations.top],
 	[fields.style]: [],
-	[fields.isExtract]: false,
 	[fields.extract]: {
 		relate: {
 			label: '',
@@ -46,7 +41,6 @@ export default {
 		},
 		value: 0,
 	},
-	[fields.isAlcohol]: false,
 	[fields.alcohol]: {
 		relate: {
 			label: '',
@@ -62,17 +56,11 @@ export default {
 		},
 		value: 0,
 	},
-	[fields.isFiltration]: false,
 	[fields.filtration]: false,
-	[fields.isPasteurization]: false,
 	[fields.pasteurization]: false,
-	[fields.isRefermentation]: false,
 	[fields.refermentation]: false,
-	[fields.isAged]: false,
 	[fields.aged]: [],
-	[fields.isDryHopped]: false,
 	[fields.dryHopped]: false,
-	[fields.isExpirationDate]: false,
 	[fields.expirationDate]: {
 		value: 0,
 		unit: {
@@ -87,17 +75,11 @@ export default {
 	[fields.isSmokedMalt]: false,
 	[fields.smokedMalt]: false,
 	// -----------
-	[fields.isBitterness]: false,
 	[fields.bitterness]: 0,
-	[fields.isSweetness]: false,
 	[fields.sweetness]: 0,
-	[fields.isFullness]: false,
 	[fields.fullness]: 0,
-	[fields.isPower]: false,
 	[fields.power]: 0,
-	[fields.isHoppyness]: false,
 	[fields.hoppyness]: 0,
-	[fields.isTemperature]: false,
 	[fields.temperature]: {
 		from: 0,
 		to: 0,
