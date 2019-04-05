@@ -5,11 +5,16 @@ import { FastField } from 'formik';
 import { get } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 
-import { Label } from 'elements';
-import { InputWrapper, LabelWrapper, StyledSelect } from 'dashboard/elements';
-import { fields, fragmentTypes } from '../utils';
+import {
+	ConditionalLabel,
+	InputWrapper,
+	LabelWrapper,
+	StyledSelect,
+} from 'dashboard/elements';
+import { fragmentTypes } from './utils';
 
-const Brand = ({
+const Cooperation = ({
+	fieldName,
 	formName,
 	institutions,
 	isError,
@@ -17,9 +22,13 @@ const Brand = ({
 }) => (
 	<>
 		<LabelWrapper>
-			<Label htmlFor={`${formName}-${fields.brand}`} required>
-				<FormattedMessage id={`dashboard.${fields.brand}`} />
-			</Label>
+			<FastField
+				component={ConditionalLabel}
+				formName={formName}
+				name={fieldName}
+			>
+				<FormattedMessage id={`dashboard.${fieldName}`} />
+			</FastField>
 		</LabelWrapper>
 		<InputWrapper place="wide">
 			<FastField
@@ -27,7 +36,8 @@ const Brand = ({
 				formName={formName}
 				isError={isError}
 				isLoading={isLoading}
-				name={fields.brand}
+				multi
+				name={fieldName}
 			>
 				{ institutions }
 			</FastField>
@@ -35,7 +45,7 @@ const Brand = ({
 	</>
 );
 
-Brand.propTypes = {
+Cooperation.propTypes = {
 	...fragmentTypes,
 	institutions: PropTypes.arrayOf(
 		PropTypes.shape({
@@ -53,4 +63,4 @@ const mapStateToProps = state => ({
 	isLoading: get(state, 'dashboard.lists.institutions.isLoading', false),
 });
 
-export default connect(mapStateToProps)(Brand);
+export default connect(mapStateToProps)(Cooperation);

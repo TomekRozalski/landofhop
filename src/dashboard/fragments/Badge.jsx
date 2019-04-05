@@ -4,20 +4,20 @@ import { FastField } from 'formik';
 
 import { Input, Label } from 'elements';
 import { InputWrapper, LabelWrapper } from 'dashboard/elements';
-import { fields, fragmentTypes } from '../utils';
+import { fragmentTypes } from './utils';
 
-const Badge = ({ formName }) => (
+const Badge = ({ fieldName, formName }) => (
 	<>
 		<LabelWrapper>
-			<Label htmlFor={`${formName}-${fields.badge}`} required>
-				<FormattedMessage id={`dashboard.${fields.badge}`} />
+			<Label htmlFor={`${formName}-${fieldName}`} required>
+				<FormattedMessage id={`dashboard.${fieldName}`} />
 			</Label>
 		</LabelWrapper>
 		<InputWrapper place="wide">
 			<FastField
 				component={Input}
-				id={`${formName}-${fields.badge}`}
-				name={fields.badge}
+				id={`${formName}-${fieldName}`}
+				name={fieldName}
 			/>
 		</InputWrapper>
 	</>

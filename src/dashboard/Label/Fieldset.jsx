@@ -9,7 +9,8 @@ import {
 	Series,
 	Brand,
 	Cooperation,
-} from './fragments';
+} from 'dashboard/fragments';
+import { fields } from './utils';
 
 const Fieldset = ({ showSubform }) => {
 	const commonProps = {
@@ -19,14 +20,14 @@ const Fieldset = ({ showSubform }) => {
 
 	return (
 		<>
-			<Badge {...commonProps} />
+			<Badge {...commonProps} fieldName={fields.badge} />
 			{/* -------------------------------- */}
 			<SubSection title="dashboard.brandInfo" />
-			<Name {...commonProps} />
-			<Series {...commonProps} />
-			<Brand {...commonProps} />
+			<Name {...commonProps} fieldName={fields.name} />
+			<Series {...commonProps} fieldName={fields.series} />
+			<Brand {...commonProps} fieldName={fields.brand} />
 			{/* <AddButton onClick={() => { showSubform(Forms.INSTITUTION) }} /> */}
-			<Cooperation {...commonProps} />
+			<Cooperation {...commonProps} fieldName={fields.cooperation} />
 			{/* <Contract {...formikProps} /> */}
 		</>
 	);

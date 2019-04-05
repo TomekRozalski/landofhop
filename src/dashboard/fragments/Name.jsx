@@ -13,23 +13,23 @@ import {
 	RemoveElement,
 	StyledSelect,
 } from 'dashboard/elements';
-import { fields, fragmentTypes } from '../utils';
+import { fragmentTypes } from './utils';
 
-const Name = ({ formName }) => {
+const Name = ({ fieldName, formName }) => {
 	const { language } = useContext(LanguageContext);
 
 	return (
 		<>
 			<LabelWrapper>
-				<Label htmlFor={`${formName}-${fields.name}`} required>
-					<FormattedMessage id={`dashboard.${fields.name}`} />
+				<Label htmlFor={`${formName}-${fieldName}`} required>
+					<FormattedMessage id={`dashboard.${fieldName}`} />
 				</Label>
 			</LabelWrapper>
 			<FieldArray
-				name={fields.name}
+				name={fieldName}
 				render={({ form, push, remove }) => (
-					form.values[fields.name].map((_, index) => {
-						const loopLength = form.values[fields.name].length;
+					form.values[fieldName].map((_, index) => {
+						const loopLength = form.values[fieldName].length;
 						const lastInput = loopLength === index + 1;
 
 						return (
@@ -37,15 +37,15 @@ const Name = ({ formName }) => {
 								<InputWrapper place="left">
 									<FastField
 										component={Input}
-										id={lastInput ? `${formName}-${fields.name}-value` : null}
-										name={`${fields.name}.${index}.value`}
+										id={lastInput ? `${formName}-${fieldName}-value` : null}
+										name={`${fieldName}.${index}.value`}
 									/>
 								</InputWrapper>
 								<InputWrapper place="middle">
 									<FastField
 										component={StyledSelect}
 										formName={formName}
-										name={`${fields.name}.${index}.lang`}
+										name={`${fieldName}.${index}.lang`}
 									>
 										{ languagesList(language) }
 									</FastField>

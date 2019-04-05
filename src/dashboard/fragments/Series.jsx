@@ -14,22 +14,22 @@ import {
 	RevealButton,
 	StyledSelect,
 } from 'dashboard/elements';
-import { fields, fragmentTypes } from '../utils';
+import { fragmentTypes } from './utils';
 
-const Series = ({ formName }) => {
+const Series = ({ fieldName, formName }) => {
 	const { language } = useContext(LanguageContext);
 
 	return (
 		<>
 			<LabelWrapper>
-				<Label htmlFor={`${formName}-${fields.series}`}>
-					<FormattedMessage id={`dashboard.${fields.series}`} />
+				<Label htmlFor={`${formName}-${fieldName}`}>
+					<FormattedMessage id={`dashboard.${fieldName}`} />
 				</Label>
 			</LabelWrapper>
 			<FieldArray
-				name={fields.series}
+				name={fieldName}
 				render={({ form, push, remove }) => {
-					const values = form.values[fields.series];
+					const values = form.values[fieldName];
 					if (values && values.length) {
 						return values.map((_, index) => {
 							const loopLength = values.length;
@@ -40,15 +40,15 @@ const Series = ({ formName }) => {
 									<InputWrapper place="left">
 										<FastField
 											component={Input}
-											id={lastInput ? `${formName}-${fields.series}-value` : null}
-											name={`${fields.series}.${index}.value`}
+											id={lastInput ? `${formName}-${fieldName}-value` : null}
+											name={`${fieldName}.${index}.value`}
 										/>
 									</InputWrapper>
 									<InputWrapper place="middle">
 										<FastField
 											component={StyledSelect}
 											formName={formName}
-											name={`${fields.series}.${index}.lang`}
+											name={`${fieldName}.${index}.lang`}
 											placeholder="selectLanguage"
 										>
 											{ languagesList(language) }

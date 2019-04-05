@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+	any,
 	arrayOf,
 	bool,
 	func,
@@ -187,10 +188,7 @@ StyledSelect.propTypes = {
 	).isRequired,
 	field: shape({
 		name: string.isRequired,
-		value: shape({
-			label: string.isRequired,
-			value: string.isRequired,
-		}).isRequired,
+		value: any.isRequired,
 	}).isRequired,
 	form: shape({
 		setFieldValue: func.isRequired,
