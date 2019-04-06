@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { Field } from 'formik';
+import { FastField } from 'formik';
 
 import { fields } from '../utils';
 import { InputGroup, StyledInput, StyledLabel } from './index';
@@ -11,7 +11,7 @@ const Email = ({ errors }) => (
 		<StyledLabel htmlFor={`login-${fields.email}`} required>
 			<FormattedMessage id="loginbar.emailLabel" />
 		</StyledLabel>
-		<Field
+		<FastField
 			component={StyledInput}
 			error={errors[fields.email]}
 			id={`login-${fields.email}`}

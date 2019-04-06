@@ -8,6 +8,7 @@ import Main from './Main';
 import Overlay from './Overlay';
 import Scroll from './Scroll';
 import Spinner from './Spinner';
+import Textarea from './Textarea';
 
 export {
 	Button,
@@ -20,4 +21,5 @@ export {
 	Overlay,
 	Scroll,
 	Spinner,
+	Textarea,
 };

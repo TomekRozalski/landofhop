@@ -1,4 +1,3 @@
-import { constants } from 'utils';
 import fields from './fields';
 
 export default {
@@ -6,29 +5,17 @@ export default {
 	// -----------
 	[fields.name]: [{
 		value: '',
-		lang: {
-			label: '',
-			value: '',
-		},
+		lang: '',
 	}],
 	[fields.series]: [],
-	[fields.brand]: {
-		label: '',
-		value: '',
-	},
+	[fields.brand]: '',
 	[fields.cooperation]: [],
-	[fields.contract]: {
-		label: '',
-		value: '',
-	},
-	[fields.place]: {
-		label: '',
-		value: '',
-	},
+	[fields.contract]: '',
+	[fields.place]: '',
 	[fields.tale]: [],
-	[fields.barcode]: '',
+	[fields.barcode]: null,
 	// -----------
-	[fields.fermentation]: [constants.fermentations.top],
+	[fields.fermentation]: null,
 	[fields.style]: [],
 	[fields.extract]: {
 		relate: {

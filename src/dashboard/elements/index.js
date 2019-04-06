@@ -11,6 +11,7 @@ import ProgressList from './ProgressList';
 import RemoveElement from './RemoveElement';
 import ResetButton from './ResetButton';
 import RevealButton from './RevealButton';
+import StyledMarkdown from './StyledMarkdown';
 import StyledSelect from './StyledSelect';
 import SubmitButton from './SubmitButton';
 import SubSection from './SubSection';
@@ -30,6 +31,7 @@ export {
 	RemoveElement,
 	ResetButton,
 	RevealButton,
+	StyledMarkdown,
 	StyledSelect,
 	SubmitButton,
 	SubSection,

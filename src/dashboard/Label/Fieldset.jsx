@@ -10,6 +10,11 @@ import {
 	Brand,
 	Cooperation,
 	Contract,
+	Place,
+	Tale,
+	Barcode,
+	Fermentation,
+	Style,
 } from 'dashboard/fragments';
 import { fields } from './utils';
 
@@ -30,6 +35,14 @@ const Fieldset = ({ showSubform }) => {
 			{/* <AddButton onClick={() => { showSubform(Forms.INSTITUTION) }} /> */}
 			<Cooperation {...commonProps} fieldName={fields.cooperation} />
 			<Contract {...commonProps} fieldName={fields.contract} />
+			<Place {...commonProps} fieldName={fields.place} />
+			{/* <AddButton onClick={() => { showSubform(Forms.PLACE) }} /> */}
+			<Tale {...commonProps} fieldName={fields.tale} />
+			<Barcode {...commonProps} fieldName={fields.barcode} />
+			{/* -------------------------------- */}
+			<SubSection title="dashboard.brewingInfo" />
+			<Fermentation {...commonProps} fieldName={fields.fermentation} />
+			<Style {...commonProps} fieldName={fields.style} />
 		</>
 	);
 };

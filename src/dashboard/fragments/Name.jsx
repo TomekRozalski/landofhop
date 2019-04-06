@@ -37,7 +37,7 @@ const Name = ({ fieldName, formName }) => {
 								<InputWrapper place="left">
 									<FastField
 										component={Input}
-										id={lastInput ? `${formName}-${fieldName}-value` : null}
+										id={lastInput ? `${formName}-${fieldName}` : null}
 										name={`${fieldName}.${index}.value`}
 									/>
 								</InputWrapper>

@@ -29,5 +29,7 @@ export default {
 	},
 	fermentations: {
 		top: 'top',
+		bottom: 'bottom',
+		spontaneous: 'spontaneous',
 	},
 };

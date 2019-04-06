@@ -188,7 +188,7 @@ StyledSelect.propTypes = {
 	).isRequired,
 	field: shape({
 		name: string.isRequired,
-		value: any.isRequired,
+		value: any,
 	}).isRequired,
 	form: shape({
 		setFieldValue: func.isRequired,

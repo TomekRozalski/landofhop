@@ -1,7 +1,4 @@
 export default {
-	lang: {
-		label: '',
-		value: '',
-	},
+	lang: '',
 	value: '',
 };

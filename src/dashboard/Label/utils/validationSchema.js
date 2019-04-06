@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
 
+import { constants } from 'utils';
 import fields from './fields';
 
 const today = new Date();
@@ -13,7 +14,8 @@ export default Yup.object().shape({
 		.matches(/^[a-z\d-]+$/, 'danger')
 		.required('danger'),
 	// -----------
-	[fields.name]: Yup.array()
+	[fields.name]: Yup
+		.array()
 		.of(
 			Yup.object().shape({
 				lang: Yup.object().shape({
@@ -27,7 +29,8 @@ export default Yup.object().shape({
 		)
 		.required('danger')
 		.min(1, 'danger'),
-	[fields.series]: Yup.array()
+	[fields.series]: Yup
+		.array()
 		.of(
 			Yup.object().shape({
 				lang: Yup.object().shape({
@@ -39,10 +42,13 @@ export default Yup.object().shape({
 					.required('danger'),
 			}),
 		),
-	[fields.brand]: Yup.object().shape({
-		label: Yup.string().required('danger'),
-		value: Yup.string().required('danger'),
-	}).required('danger'),
+	[fields.brand]: Yup
+		.object()
+		.shape({
+			label: Yup.string().required('danger'),
+			value: Yup.string().required('danger'),
+		})
+		.required('danger'),
 	[fields.cooperation]: Yup
 		.array()
 		.min(1, 'danger')
@@ -54,58 +60,57 @@ export default Yup.object().shape({
 			value: Yup.string().required('danger'),
 		})
 		.nullable(true),
+	[fields.place]: Yup
+		.object()
+		.shape({
+			label: Yup.string().required('danger'),
+			value: Yup.string().required('danger'),
+		})
+		.nullable(true),
+	[fields.tale]: Yup
+		.array()
+		.of(
+			Yup.object().shape({
+				lang: Yup.object().shape({
+					label: Yup.string().required('danger'),
+					value: Yup.string().required('danger'),
+				}),
+				value: Yup.string()
+					.min(12, 'danger')
+					.required('danger'),
+			}),
+		),
+	[fields.barcode]: Yup
+		.string()
+		.transform(v => (v === null ? 'abdef' : v))
+		.min(5, 'danger')
+		.required('danger'),
+	// -----------
+	[fields.fermentation]: Yup
+		.array()
+		.of(
+			Yup.mixed().oneOf([
+				constants.fermentations.top,
+				constants.fermentations.bottom,
+				constants.fermentations.spontaneous,
+			]),
+		)
+		.nullable(true),
+	[fields.style]: Yup
+		.array()
+		.of(
+			Yup.object().shape({
+				lang: Yup.object().shape({
+					label: Yup.string().required('danger'),
+					value: Yup.string().required('danger'),
+				}),
+				value: Yup.string()
+					.min(3, 'danger')
+					.required('danger'),
+			}),
+		),
 
 
-	// [fields.isPlace]: Yup.boolean(),
-	// [fields.place]: Yup.object()
-	// 	.when([fields.isPlace], {
-	// 		is: true,
-	// 		then: Yup.object().shape({
-	// 			label: Yup.string().required('danger'),
-	// 			value: Yup.string().required('danger'),
-	// 		}),
-	// 	}),
-	// [fields.tale]: Yup.array()
-	// 	.of(
-	// 		Yup.object().shape({
-	// 			lang: Yup.object().shape({
-	// 				label: Yup.string().required('danger'),
-	// 				value: Yup.string().required('danger'),
-	// 			}),
-	// 			value: Yup.string()
-	// 				.min(12, 'danger')
-	// 				.required('danger'),
-	// 		}),
-	// 	),
-	// [fields.isBarcode]: Yup.boolean(),
-	// [fields.barcode]: Yup.string()
-	// 	.when([fields.isBarcode], {
-	// 		is: true,
-	// 		then: (
-	// 			Yup.string()
-	// 				.min(5, 'danger')
-	// 				.required('danger')
-	// 		),
-	// 	}),
-	// // -----------
-	// [fields.isFermentation]: Yup.boolean(),
-	// [fields.fermentation]: Yup.array()
-	// 	.when([fields.isFermentation], {
-	// 		is: true,
-	// 		then: Yup.array().min(1, 'danger').required('danger'),
-	// 	}),
-	// [fields.style]: Yup.array()
-	// 	.of(
-	// 		Yup.object().shape({
-	// 			lang: Yup.object().shape({
-	// 				label: Yup.string().required('danger'),
-	// 				value: Yup.string().required('danger'),
-	// 			}),
-	// 			value: Yup.string()
-	// 				.min(3, 'danger')
-	// 				.required('danger'),
-	// 		}),
-	// 	),
 	// [fields.isExtract]: Yup.boolean(),
 	// [fields.extract]: Yup.object()
 	// 	.when([fields.isExtract], {

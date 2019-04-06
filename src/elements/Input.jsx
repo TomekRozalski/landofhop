@@ -37,11 +37,10 @@ const Field = styled.input.attrs({
 `;
 
 const Input = ({ field, search, ...props }) => {
-	const { disabled } = props;
-
+	const disabled = get(field, 'value') === null;
 	const name = get(field, 'name');
-	const touched = get(props, `form.touched.${name}`);
 	const error = get(props, `form.errors.${name}`);
+	const touched = get(props, `form.touched.${name}`);
 	const success = !error && touched && !disabled && field.value !== '';
 	const warning = error && touched && !disabled;
 
@@ -52,19 +51,20 @@ const Input = ({ field, search, ...props }) => {
 			warning={warning}
 		>
 			<Field
+				disabled={disabled}
 				withIcon={search || success || warning}
 				{...field}
-				{...props}
+				value={field.value || ''}
 			/>
 		</FieldStatusIndicator>
 	);
 };
 
 Input.propTypes = {
-	disabled: PropTypes.bool,
 	error: PropTypes.string,
 	field: PropTypes.shape({
 		name: PropTypes.string,
+		value: PropTypes.any,
 	}),
 	form: PropTypes.shape({
 		touched: PropTypes.any,
@@ -73,10 +73,10 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
-	disabled: false,
 	error: null,
 	field: {
-		name: null,
+		name: '',
+		value: '',
 	},
 	form: {
 		touched: {},
