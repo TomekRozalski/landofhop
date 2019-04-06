@@ -55,6 +55,7 @@ const Input = ({ field, search, ...props }) => {
 				withIcon={search || success || warning}
 				{...field}
 				value={field.value || ''}
+				{...props}
 			/>
 		</FieldStatusIndicator>
 	);

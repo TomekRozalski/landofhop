@@ -1,3 +1,4 @@
+import AddButton from './AddButton';
 import AddElement from './AddElement';
 import ConditionalLabel from './ConditionalLabel';
 import ErrorGroup from './ErrorGroup';
@@ -11,6 +12,7 @@ import ProgressList from './ProgressList';
 import RemoveElement from './RemoveElement';
 import ResetButton from './ResetButton';
 import RevealButton from './RevealButton';
+import SecondaryForm from './SecondaryForm';
 import StyledMarkdown from './StyledMarkdown';
 import StyledSelect from './StyledSelect';
 import SubmitButton from './SubmitButton';
@@ -18,6 +20,7 @@ import SubSection from './SubSection';
 import Wrapper from './Wrapper';
 
 export {
+	AddButton,
 	AddElement,
 	ConditionalLabel,
 	ErrorGroup,
@@ -31,6 +34,7 @@ export {
 	RemoveElement,
 	ResetButton,
 	RevealButton,
+	SecondaryForm,
 	StyledMarkdown,
 	StyledSelect,
 	SubmitButton,

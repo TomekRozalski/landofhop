@@ -9,6 +9,10 @@
 
 	"dashboard.addNew": "Dodaj",
 	"dashboard.addNewBeverage.title": "Dodaj nowe piwo",
+	"dashboard.addNewCountry.title": "Dodaj nowy kraj",
+	"dashboard.addNewIngredient.title": "Dadaj nowy składnik",
+	"dashboard.addNewInstitution.title": "Dodaj nową instytucję",
+	"dashboard.addNewPlace.title": "Dodaj nowe miejsce",
 	"dashboard.badge": "Identyfikator",
 	"dashboard.barcode": "Kod kreskowy",
 	"dashboard.brand": "Marka",
@@ -25,6 +29,7 @@
 	"dashboard.name": "Nazwa",
 	"dashboard.place": "Miejsce",
 	"dashboard.resetTheForm": "Zresetuj ten formularz",
+	"dashboard.resign": "Zrezygnuj",
 	"dashboard.reveal": "Dodaj",
 	"dashboard.select": "Wybierz…",
 	"dashboard.selectLanguage": "Wybierz język…",

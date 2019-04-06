@@ -9,6 +9,10 @@
 
 	"dashboard.addNew": "Add new",
 	"dashboard.addNewBeverage.title": "Add new beer",
+	"dashboard.addNewCountry.title": "Add new country",
+	"dashboard.addNewIngredient.title": "Add new ingredient",
+	"dashboard.addNewInstitution.title": "Add new institution",
+	"dashboard.addNewPlace.title": "Add new place",
 	"dashboard.badge": "Badge",
 	"dashboard.barcode": "Barcode",
 	"dashboard.brand": "Brand",
@@ -25,6 +29,7 @@
 	"dashboard.name": "Name",
 	"dashboard.place": "Place",
 	"dashboard.resetTheForm": "Reset the form",
+	"dashboard.resign": "Resign",
 	"dashboard.reveal": "Reveal",
 	"dashboard.select": "Select…",
 	"dashboard.selectLanguage": "Select language…",

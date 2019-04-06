@@ -6,7 +6,7 @@ import { Input, Label } from 'elements';
 import { InputWrapper, LabelWrapper } from 'dashboard/elements';
 import { fragmentTypes } from './utils';
 
-const Badge = ({ fieldName, formName }) => (
+const Badge = ({ fieldName, formName, inverse }) => (
 	<>
 		<LabelWrapper>
 			<Label htmlFor={`${formName}-${fieldName}`} required>
@@ -17,6 +17,7 @@ const Badge = ({ fieldName, formName }) => (
 			<FastField
 				component={Input}
 				id={`${formName}-${fieldName}`}
+				inverse={inverse}
 				name={fieldName}
 			/>
 		</InputWrapper>

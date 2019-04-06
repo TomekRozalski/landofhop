@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { constants } from 'dashboard/utils';
 // import AddNewCountry from './AddNewCountry';
 // import AddNewIngredient from './AddNewIngredient';
-// import AddNewInstitution from './AddNewInstitution';
+import AddNewInstitution from './AddNewInstitution';
 // import AddNewPlace from './AddNewPlace';
 
 const Subforms = ({
@@ -15,8 +15,8 @@ const Subforms = ({
 	const subformProps = { hide, showSubform };
 
 	switch (subform) {
-	// case constants.forms.institution:
-	// 	return (<AddNewInstitution {...subformProps} />);
+	case constants.forms.institution:
+		return (<AddNewInstitution {...subformProps} />);
 	// case constants.forms.place:
 	// 	return (<AddNewPlace {...subformProps} />);
 	// case constants.forms.country:

@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { constants } from 'dashboard/utils';
-import { SubSection } from 'dashboard/elements';
+import { AddButton, SubSection } from 'dashboard/elements';
 import {
 	Badge,
 	Name,
@@ -32,11 +32,11 @@ const Fieldset = ({ showSubform }) => {
 			<Name {...commonProps} fieldName={fields.name} />
 			<Series {...commonProps} fieldName={fields.series} />
 			<Brand {...commonProps} fieldName={fields.brand} />
-			{/* <AddButton onClick={() => { showSubform(Forms.INSTITUTION) }} /> */}
+			<AddButton onClick={() => { showSubform(constants.forms.institution); }} />
 			<Cooperation {...commonProps} fieldName={fields.cooperation} />
 			<Contract {...commonProps} fieldName={fields.contract} />
 			<Place {...commonProps} fieldName={fields.place} />
-			{/* <AddButton onClick={() => { showSubform(Forms.PLACE) }} /> */}
+			<AddButton onClick={() => { showSubform(constants.forms.place); }} />
 			<Tale {...commonProps} fieldName={fields.tale} />
 			<Barcode {...commonProps} fieldName={fields.barcode} />
 			{/* -------------------------------- */}

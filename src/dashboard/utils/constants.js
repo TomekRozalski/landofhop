@@ -5,9 +5,9 @@ export default {
 			producer: 'producer',
 			editorial: 'editorial',
 		},
+		institution: 'institution',
+		place: 'place',
+		country: 'country',
+		ingredients: 'ingredients',
 	},
-	institution: 'institution',
-	place: 'place',
-	country: 'country',
-	ingredients: 'ingredients',
 };
