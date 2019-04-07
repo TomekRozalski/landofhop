@@ -4,14 +4,15 @@ import { Formik } from 'formik';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { NavigationContext } from 'config';
+import { AppErrorContext, AuthenticationContext } from 'config';
 import { getInstitutionsList as getInstitutionsListAction } from 'store/actions';
 import { SecondaryForm } from 'dashboard/elements';
 import { initialFormValues, onSubmit, validationSchema } from './utils';
 import FormBody from './FormBody';
 
 const AddNewInstitution = ({ hide, getInstitutionsList }) => {
-	const { setAppError, token } = useContext(NavigationContext);
+	const { token } = useContext(AuthenticationContext);
+	const { setAppError } = useContext(AppErrorContext);
 
 	return (
 		<SecondaryForm>

@@ -4,7 +4,7 @@ const fragment = {
 	fieldName: string.isRequired,
 	formName: string.isRequired,
 	inverse: bool,
-	showSubform: func.isRequired,
+	showSubform: func,
 };
 
 export default fragment;

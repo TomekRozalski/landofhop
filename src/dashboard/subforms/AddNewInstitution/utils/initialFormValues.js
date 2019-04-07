@@ -6,6 +6,6 @@ export default {
 		lang: '',
 		value: '',
 	}],
-	[fields.WEBSITE]: null,
-	[fields.CONSORTIUM]: null,
+	[fields.website]: 'http://',
+	[fields.consortium]: '',
 };

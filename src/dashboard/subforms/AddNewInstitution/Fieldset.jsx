@@ -1,29 +1,12 @@
 import React, { memo } from 'react';
-// import PropTypes from 'prop-types';
 
 import { constants } from 'dashboard/utils';
-// import { AddButton, SubSection } from 'dashboard/elements';
 import {
 	Badge,
-	// Name,
-	// Series,
-	// Brand,
-	// Cooperation,
-	// Contract,
-	// Place,
-	// Tale,
-	// Barcode,
-	// Fermentation,
-	// Style,
+	Name,
+	Consortium,
+	Website,
 } from 'dashboard/fragments';
-
-// import {
-// 	Badge,
-// 	Consortium,
-// 	Name,
-// 	Website,
-// } from './fragments';
-
 import { fields } from './utils';
 
 const Fieldset = () => {
@@ -35,6 +18,9 @@ const Fieldset = () => {
 	return (
 		<>
 			<Badge {...commonProps} fieldName={fields.badge} />
+			<Name {...commonProps} fieldName={fields.name} />
+			<Consortium {...commonProps} fieldName={fields.consortium} />
+			<Website {...commonProps} fieldName={fields.website} />
 		</>
 	);
 };

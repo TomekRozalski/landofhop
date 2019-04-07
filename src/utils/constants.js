@@ -21,6 +21,7 @@ export default {
 		countries_list: 'countries/list/',
 		ingredients_list: 'ingredients/list/',
 		institutions_list: 'institutions/list/',
+		institution_save: 'institutions/',
 		login: 'login/',
 		places_list: 'places/list/',
 	},

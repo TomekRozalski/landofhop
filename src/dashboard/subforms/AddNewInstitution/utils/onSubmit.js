@@ -1,59 +1,35 @@
-// import { get } from 'lodash';
+import { get } from 'lodash';
 
-// import { Endpoints, Languages, Server } from '../../../../utils/enums';
-// import { InstitutionTypes } from '../utils/types';
+import { constants } from 'utils';
 
-// interface OutputName {
-// 	language?: string
-// 	value: string
-// }
+const normalizeData = ({
+	badge,
+	consortium,
+	name,
+	website,
+}) => {
+	const data = {
+		badge,
+		name: name.map(({ lang, value }) => {
+			const output = { value };
+			if (get(lang, 'value') !== constants.dataLanguages.none) {
+				output.language = get(lang, 'value');
+			}
 
-// const normalizeData = ({
-// 	badge,
-// 	consortium,
-// 	isConsortium,
-// 	isWebsite,
-// 	name,
-// 	website,
-// }: InstitutionTypes) => {
-// 	const data: {
-// 		badge: string
-// 		name: OutputName[]
-// 		consortium?: string
-// 		website?: string
-// 	} = {
-// 		badge,
-// 		name: name.map(({ lang, value }) => {
-// 			const output: OutputName = { value };
-// 			if (get(lang, 'value') !== Languages.NONE) {
-// 				output.language = get(lang, 'value')
-// 			}
+			return output;
+		}),
+	};
 
-// 			return output;
-// 		}),
-// 	};
+	if (consortium !== null) {
+		data.consortium = get(consortium, 'value');
+	}
 
-// 	if (isConsortium) {
-// 		data.consortium = get(consortium, 'value');
-// 	}
+	if (website !== null) {
+		data.website = website.replace(/^https?:\/\//, '');
+	}
 
-// 	if (isWebsite) {
-// 		data.website = website.replace(/^https?:\/\//, '');
-// 	}
-
-// 	return data;
-// }
-
-// interface FirstProps {
-// 	getInstitutionsList: () => void
-// 	hide: () => void
-// 	setAppError: (error: string) => void
-// 	token: string | null
-// }
-
-// interface ActionsType {
-// 	setSubmitting: (status: boolean) => void
-// }
+	return data;
+};
 
 const onSubmit = ({
 	getInstitutionsList,
@@ -64,25 +40,25 @@ const onSubmit = ({
 	values,
 	{ setSubmitting },
 ) => {
-	// const data = normalizeData(values);
+	const data = normalizeData(values);
 	setSubmitting(true);
 
-	// fetch(Server.MAIN + Endpoints.INSTITUTION_SAVE, {
-	// 	method: 'POST',
-	// 	headers: {
-	// 		'Content-Type': 'application/json',
-	// 		'Authorization': `Bearer ${token}`,
-	// 	},
-	// 	body: JSON.stringify(data),
-	// })
-	// 	.then(res => res.json())
-	// 	.then(getInstitutionsList)
-	// 	.then(() => setSubmitting(false))
-	// 	.then(hide)
-	// 	.catch((err) => {
-	// 		setAppError(err);
-	// 		setSubmitting(false);
-	// 	});
+	fetch(constants.servers.main + constants.api_endpoints.institution_save, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${token}`,
+		},
+		body: JSON.stringify(data),
+	})
+		.then(res => res.json())
+		.then(getInstitutionsList)
+		.then(() => setSubmitting(false))
+		.then(hide)
+		.catch((err) => {
+			setAppError(err.message);
+			setSubmitting(false);
+		});
 };
 
 export default onSubmit;

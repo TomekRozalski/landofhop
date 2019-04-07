@@ -61,6 +61,7 @@ const ConditionalLabel = ({
 		value,
 	},
 	form: {
+		initialValues,
 		setFieldValue,
 	},
 	formName,
@@ -71,7 +72,7 @@ const ConditionalLabel = ({
 
 	const setValue = ({ target: { checked: isChecked } }) => {
 		if (isChecked) {
-			setFieldValue(name, '');
+			setFieldValue(name, initialValues[name]);
 		} else {
 			setFieldValue(name, null);
 		}
@@ -102,6 +103,7 @@ ConditionalLabel.propTypes = {
 		value: PropTypes.any,
 	}).isRequired,
 	form: PropTypes.shape({
+		initialValues: PropTypes.shape({}).isRequired,
 		setFieldValue: PropTypes.func.isRequired,
 	}).isRequired,
 	formName: PropTypes.string.isRequired,

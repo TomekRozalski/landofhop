@@ -15,7 +15,7 @@ import {
 } from 'dashboard/elements';
 import { fragmentTypes } from './utils';
 
-const Name = ({ fieldName, formName }) => {
+const Name = ({ fieldName, formName, inverse }) => {
 	const { language } = useContext(LanguageContext);
 
 	return (
@@ -38,6 +38,7 @@ const Name = ({ fieldName, formName }) => {
 									<FastField
 										component={Input}
 										id={lastInput ? `${formName}-${fieldName}` : null}
+										inverse={inverse}
 										name={`${fieldName}.${index}.value`}
 									/>
 								</InputWrapper>
@@ -45,6 +46,7 @@ const Name = ({ fieldName, formName }) => {
 									<FastField
 										component={StyledSelect}
 										formName={formName}
+										inverse={inverse}
 										name={`${fieldName}.${index}.lang`}
 									>
 										{ languagesList(language) }

@@ -1,3 +1,5 @@
+import { constants } from 'utils';
+
 import fields from './fields';
 
 export default {
@@ -13,9 +15,9 @@ export default {
 	[fields.contract]: '',
 	[fields.place]: '',
 	[fields.tale]: [],
-	[fields.barcode]: null,
+	[fields.barcode]: '',
 	// -----------
-	[fields.fermentation]: null,
+	[fields.fermentation]: [constants.fermentations.top],
 	[fields.style]: [],
 	[fields.extract]: {
 		relate: {
