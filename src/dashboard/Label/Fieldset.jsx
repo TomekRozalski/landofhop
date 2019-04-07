@@ -15,6 +15,7 @@ import {
 	Barcode,
 	Fermentation,
 	Style,
+	Extract,
 } from 'dashboard/fragments';
 import { fields } from './utils';
 
@@ -43,6 +44,33 @@ const Fieldset = ({ showSubform }) => {
 			<SubSection title="dashboard.brewingInfo" />
 			<Fermentation {...commonProps} fieldName={fields.fermentation} />
 			<Style {...commonProps} fieldName={fields.style} />
+			<Extract {...commonProps} fieldName={fields.extract} />
+			{/* <Alcohol {...commonProps} /> */}
+			{/* <Filtration {...commonProps} /> */}
+			{/* <Pasteurization {...commonProps} /> */}
+			{/* <Refermentation {...commonProps} /> */}
+			{/* <Aged {...commonProps} /> */}
+			{/* <DryHopped {...commonProps} /> */}
+			{/* <ExpirationDate {...commonProps} /> */}
+			{/* -------------------------------- */}
+			{/* <SubSection title="dashboard.ingredientsInfo" /> */}
+			{/* <Ingredients {...commonProps} /> */}
+			{/* <IngredientsList {...commonProps} /> */}
+			{/* <AddButton onClick={() => { showSubform(Forms.INGREDIENT) }} /> */}
+			{/* <IngredientsComplete {...commonProps} /> */}
+			{/* <SmokedMalt {...commonProps} /> */}
+			{/* -------------------------------- */}
+			{/* <SubSection title="dashboard.impressionsInfo" /> */}
+			{/* <Bitterness {...commonProps} /> */}
+			{/* <Sweetness {...commonProps} /> */}
+			{/* <Fullness {...commonProps} /> */}
+			{/* <Power {...commonProps} /> */}
+			{/* <Hoppyness {...commonProps} /> */}
+			{/* <Temperature {...commonProps} /> */}
+			{/* -------------------------------- */}
+			{/* <SubSection title="dashboard.otherInfo" /> */}
+			{/* <Container {...commonProps} /> */}
+			{/* <Price {...commonProps} /> */}
 		</>
 	);
 };

@@ -18,11 +18,13 @@ export default {
 		beverage_details: 'beverages/details/',
 		beverage_list: 'beverages/list/',
 		beverage_remove: 'beverages/',
+		country_save: 'countries/',
 		countries_list: 'countries/list/',
+		institution_save: 'institutions/',
 		ingredients_list: 'ingredients/list/',
 		institutions_list: 'institutions/list/',
-		institution_save: 'institutions/',
 		login: 'login/',
+		place_save: 'places/',
 		places_list: 'places/list/',
 	},
 	server_responses: {
@@ -32,5 +34,16 @@ export default {
 		top: 'top',
 		bottom: 'bottom',
 		spontaneous: 'spontaneous',
+	},
+	extract: {
+		relates: {
+			weight: 'weight',
+			plato: 'plato',
+			blg: 'blg',
+		},
+		units: {
+			percent: 'percent',
+			degree: 'degree',
+		},
 	},
 };

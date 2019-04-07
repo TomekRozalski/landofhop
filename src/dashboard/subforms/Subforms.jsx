@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { constants } from 'dashboard/utils';
-// import AddNewCountry from './AddNewCountry';
+import AddNewCountry from './AddNewCountry';
 // import AddNewIngredient from './AddNewIngredient';
 import AddNewInstitution from './AddNewInstitution';
-// import AddNewPlace from './AddNewPlace';
+import AddNewPlace from './AddNewPlace';
 
 const Subforms = ({
 	hide,
@@ -17,10 +17,10 @@ const Subforms = ({
 	switch (subform) {
 	case constants.forms.institution:
 		return (<AddNewInstitution {...subformProps} />);
-	// case constants.forms.place:
-	// 	return (<AddNewPlace {...subformProps} />);
-	// case constants.forms.country:
-	// 	return (<AddNewCountry {...subformProps} />);
+	case constants.forms.place:
+		return (<AddNewPlace {...subformProps} />);
+	case constants.forms.country:
+		return (<AddNewCountry {...subformProps} />);
 	// case constants.forms.ingredients:
 	// 	return (<AddNewIngredient {...subformProps} />);
 	default:

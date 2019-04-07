@@ -1,5 +1,6 @@
 import { constants } from 'utils';
 
+import { extractUnitList, extractRelateList } from 'dashboard/utils';
 import fields from './fields';
 
 export default {
@@ -20,14 +21,8 @@ export default {
 	[fields.fermentation]: [constants.fermentations.top],
 	[fields.style]: [],
 	[fields.extract]: {
-		relate: {
-			label: '',
-			value: '',
-		},
-		unit: {
-			label: '',
-			value: '',
-		},
+		relate: extractRelateList()[0],
+		unit: extractUnitList()[0],
 		value: 0,
 	},
 	[fields.alcohol]: {

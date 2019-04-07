@@ -54,7 +54,7 @@ const Input = ({ field, search, ...props }) => {
 				disabled={disabled}
 				withIcon={search || success || warning}
 				{...field}
-				value={field.value || ''}
+				value={field.value === null ? '' : field.value}
 				{...props}
 			/>
 		</FieldStatusIndicator>
