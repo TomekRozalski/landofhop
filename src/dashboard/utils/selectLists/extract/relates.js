@@ -1,7 +1,6 @@
 import { constants, dictionary } from 'utils';
 
-
-const extractRelate = (language = constants.siteLanguages.pl) => ([
+const extractRelates = (language = constants.siteLanguages.pl) => ([
 	{
 		label: dictionary[language]['extractRelate.weight'],
 		value: constants.extract.relates.weight,
@@ -16,4 +15,4 @@ const extractRelate = (language = constants.siteLanguages.pl) => ([
 	},
 ]);
 
-export default extractRelate;
+export default extractRelates;

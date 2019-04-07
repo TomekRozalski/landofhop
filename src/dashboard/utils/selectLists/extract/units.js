@@ -1,6 +1,6 @@
 import { constants } from 'utils';
 
-const extractUnit = () => ([
+const extractUnits = () => ([
 	{
 		label: '%',
 		value: constants.extract.units.percent,
@@ -11,4 +11,4 @@ const extractUnit = () => ([
 	},
 ]);
 
-export default extractUnit;
+export default extractUnits;

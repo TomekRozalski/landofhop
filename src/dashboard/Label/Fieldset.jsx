@@ -16,6 +16,7 @@ import {
 	Fermentation,
 	Style,
 	Extract,
+	Alcohol,
 } from 'dashboard/fragments';
 import { fields } from './utils';
 
@@ -45,7 +46,7 @@ const Fieldset = ({ showSubform }) => {
 			<Fermentation {...commonProps} fieldName={fields.fermentation} />
 			<Style {...commonProps} fieldName={fields.style} />
 			<Extract {...commonProps} fieldName={fields.extract} />
-			{/* <Alcohol {...commonProps} /> */}
+			<Alcohol {...commonProps} fieldName={fields.alcohol} />
 			{/* <Filtration {...commonProps} /> */}
 			{/* <Pasteurization {...commonProps} /> */}
 			{/* <Refermentation {...commonProps} /> */}

@@ -1,4 +1,6 @@
 {
+	"alcoholRelate.abv": "Abv",
+	"alcoholRelate.capacity": "Capacity",
 	"appError.close": "Close the window",
 	"appError.fetchFailed.beverageList": "Beverage list fetch failed",
 	"appError.goBackToMainPage": "Go back to the main page",
@@ -13,6 +15,7 @@
 	"dashboard.addNewIngredient.title": "Add new ingredient",
 	"dashboard.addNewInstitution.title": "Add new institution",
 	"dashboard.addNewPlace.title": "Add new place",
+	"dashboard.alcohol": "Alcohol",
 	"dashboard.badge": "Badge",
 	"dashboard.barcode": "Barcode",
 	"dashboard.brand": "Brand",

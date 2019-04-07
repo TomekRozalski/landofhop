@@ -1,6 +1,12 @@
 import { constants } from 'utils';
 
-import { extractUnitList, extractRelateList } from 'dashboard/utils';
+import {
+	alcoholRelatesList,
+	alcoholScopesList,
+	alcoholUnitsList,
+	extractUnitsList,
+	extractRelatesList,
+} from 'dashboard/utils';
 import fields from './fields';
 
 export default {
@@ -21,23 +27,14 @@ export default {
 	[fields.fermentation]: [constants.fermentations.top],
 	[fields.style]: [],
 	[fields.extract]: {
-		relate: extractRelateList()[0],
-		unit: extractUnitList()[0],
+		relate: extractRelatesList()[0],
+		unit: extractUnitsList()[0],
 		value: 0,
 	},
 	[fields.alcohol]: {
-		relate: {
-			label: '',
-			value: '',
-		},
-		scope: {
-			label: '',
-			value: '',
-		},
-		unit: {
-			label: '',
-			value: '',
-		},
+		relate: alcoholRelatesList()[0],
+		scope: alcoholScopesList()[0],
+		unit: alcoholUnitsList()[0],
 		value: 0,
 	},
 	[fields.filtration]: false,

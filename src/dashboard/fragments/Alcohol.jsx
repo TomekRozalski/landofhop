@@ -4,7 +4,7 @@ import { FastField } from 'formik';
 
 import { LanguageContext } from 'config';
 import { Input } from 'elements';
-import { extractUnitsList, extractRelatesList } from 'dashboard/utils';
+import { alcoholUnitsList, alcoholRelatesList, alcoholScopesList } from 'dashboard/utils';
 import {
 	ConditionalLabel,
 	InputWrapper,
@@ -13,7 +13,7 @@ import {
 } from 'dashboard/elements';
 import { fragmentTypes } from './utils';
 
-const Extract = ({ fieldName, formName }) => {
+const Alcohol = ({ fieldName, formName }) => {
 	const { language } = useContext(LanguageContext);
 
 	return (
@@ -41,7 +41,7 @@ const Extract = ({ fieldName, formName }) => {
 					formName={formName}
 					name={`${fieldName}.unit`}
 				>
-					{ extractUnitsList() }
+					{ alcoholUnitsList() }
 				</FastField>
 			</InputWrapper>
 			<InputWrapper place="left">
@@ -50,13 +50,22 @@ const Extract = ({ fieldName, formName }) => {
 					formName={formName}
 					name={`${fieldName}.relate`}
 				>
-					{ extractRelatesList(language) }
+					{ alcoholRelatesList(language) }
+				</FastField>
+			</InputWrapper>
+			<InputWrapper place="middle">
+				<FastField
+					component={StyledSelect}
+					formName={formName}
+					name={`${fieldName}.scope`}
+				>
+					{ alcoholScopesList(language) }
 				</FastField>
 			</InputWrapper>
 		</>
 	);
 };
 
-Extract.propTypes = fragmentTypes;
+Alcohol.propTypes = fragmentTypes;
 
-export default Extract;
+export default Alcohol;

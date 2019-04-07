@@ -1,15 +1,22 @@
+
+import alcoholRelatesList from './selectLists/alcohol/relates';
+import alcoholScopesList from './selectLists/alcohol/scopes';
+import alcoholUnitsList from './selectLists/alcohol/units';
 import BeverageFormWrapper from './BeverageFormWrapper';
 import constants from './constants';
 import emptySelect from './emptySelect';
-import extractRelateList from './selectLists/extract/relates';
-import extractUnitList from './selectLists/extract/units';
+import extractRelatesList from './selectLists/extract/relates';
+import extractUnitsList from './selectLists/extract/units';
 import languagesList from './selectLists/languages';
 
 export {
+	alcoholRelatesList,
+	alcoholScopesList,
+	alcoholUnitsList,
 	BeverageFormWrapper,
 	constants,
 	emptySelect,
-	extractRelateList,
-	extractUnitList,
+	extractRelatesList,
+	extractUnitsList,
 	languagesList,
 };

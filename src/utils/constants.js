@@ -46,4 +46,14 @@ export default {
 			degree: 'degree',
 		},
 	},
+	alcohol: {
+		relates: {
+			capacity: 'capacity',
+			abv: 'abv',
+		},
+		units: {
+			percent: 'percent',
+			degree: 'degree',
+		},
+	},
 };

@@ -1,4 +1,6 @@
 {
+	"alcoholRelate.abv": "Abv",
+	"alcoholRelate.capacity": "obj.",
 	"appError.close": "Zamknij okno",
 	"appError.fetchFailed.beverageList": "Nie udało się pobrać listy pozycji",
 	"appError.goBackToMainPage": "Wróć do strony głównej",
@@ -13,6 +15,7 @@
 	"dashboard.addNewIngredient.title": "Dadaj nowy składnik",
 	"dashboard.addNewInstitution.title": "Dodaj nową instytucję",
 	"dashboard.addNewPlace.title": "Dodaj nowe miejsce",
+	"dashboard.alcohol": "Alkohol",
 	"dashboard.badge": "Identyfikator",
 	"dashboard.barcode": "Kod kreskowy",
 	"dashboard.brand": "Marka",
