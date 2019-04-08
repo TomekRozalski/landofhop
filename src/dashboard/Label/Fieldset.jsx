@@ -4,19 +4,22 @@ import PropTypes from 'prop-types';
 import { constants } from 'dashboard/utils';
 import { AddButton, SubSection } from 'dashboard/elements';
 import {
-	Badge,
-	Name,
-	Series,
-	Brand,
-	Cooperation,
-	Contract,
-	Place,
-	Tale,
-	Barcode,
-	Fermentation,
-	Style,
-	Extract,
 	Alcohol,
+	Badge,
+	Barcode,
+	Brand,
+	Contract,
+	Cooperation,
+	Extract,
+	Fermentation,
+	Filtration,
+	Name,
+	Pasteurization,
+	Place,
+	Refermentation,
+	Series,
+	Style,
+	Tale,
 } from 'dashboard/fragments';
 import { fields } from './utils';
 
@@ -47,9 +50,9 @@ const Fieldset = ({ showSubform }) => {
 			<Style {...commonProps} fieldName={fields.style} />
 			<Extract {...commonProps} fieldName={fields.extract} />
 			<Alcohol {...commonProps} fieldName={fields.alcohol} />
-			{/* <Filtration {...commonProps} /> */}
-			{/* <Pasteurization {...commonProps} /> */}
-			{/* <Refermentation {...commonProps} /> */}
+			<Filtration {...commonProps} fieldName={fields.filtration} />
+			<Pasteurization {...commonProps} fieldName={fields.pasteurization} />
+			<Refermentation {...commonProps} fieldName={fields.refermentation} />
 			{/* <Aged {...commonProps} /> */}
 			{/* <DryHopped {...commonProps} /> */}
 			{/* <ExpirationDate {...commonProps} /> */}
