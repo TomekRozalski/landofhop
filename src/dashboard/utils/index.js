@@ -5,6 +5,7 @@ import alcoholUnitsList from './selectLists/alcohol/units';
 import BeverageFormWrapper from './BeverageFormWrapper';
 import constants from './constants';
 import emptySelect from './emptySelect';
+import expirationDateUnitsList from './selectLists/expirationDate/units';
 import extractRelatesList from './selectLists/extract/relates';
 import extractUnitsList from './selectLists/extract/units';
 import languagesList from './selectLists/languages';
@@ -16,6 +17,7 @@ export {
 	BeverageFormWrapper,
 	constants,
 	emptySelect,
+	expirationDateUnitsList,
 	extractRelatesList,
 	extractUnitsList,
 	languagesList,

@@ -1,4 +1,6 @@
 {
+	"agedType.barrel": "W beczce",
+	"agedType.wood": "Z drewnem",
 	"alcoholRelate.abv": "Abv",
 	"alcoholRelate.capacity": "obj.",
 	"appError.close": "Zamknij okno",
@@ -15,6 +17,7 @@
 	"dashboard.addNewIngredient.title": "Dadaj nowy składnik",
 	"dashboard.addNewInstitution.title": "Dodaj nową instytucję",
 	"dashboard.addNewPlace.title": "Dodaj nowe miejsce",
+	"dashboard.aged": "Leżakowanie",
 	"dashboard.alcohol": "Alkohol",
 	"dashboard.badge": "Identyfikator",
 	"dashboard.barcode": "Kod kreskowy",
@@ -28,6 +31,8 @@
 	"dashboard.contract": "Kontrakt",
 	"dashboard.cooperation": "Kooperacja",
 	"dashboard.country": "Kraj",
+	"dashboard.dryHopped": "Chmielone na zimno",
+	"dashboard.expirationDate": "Termin ważności do spożycia",
 	"dashboard.extract": "Ekstrakt",
 	"dashboard.fermentation": "Fermentacja",
 	"dashboard.filtration": "Filtracja",

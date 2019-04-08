@@ -1,4 +1,6 @@
 {
+	"agedType.barrel": "Barrel",
+	"agedType.wood": "Wood",
 	"alcoholRelate.abv": "Abv",
 	"alcoholRelate.capacity": "Capacity",
 	"appError.close": "Close the window",
@@ -15,6 +17,7 @@
 	"dashboard.addNewIngredient.title": "Add new ingredient",
 	"dashboard.addNewInstitution.title": "Add new institution",
 	"dashboard.addNewPlace.title": "Add new place",
+	"dashboard.aged": "Aged",
 	"dashboard.alcohol": "Alcohol",
 	"dashboard.badge": "Badge",
 	"dashboard.barcode": "Barcode",
@@ -28,6 +31,8 @@
 	"dashboard.continue": "Continue",
 	"dashboard.cooperation": "Cooperation",
 	"dashboard.country": "Country",
+	"dashboard.dryHopped": "Dry hopped",
+	"dashboard.expirationDate": "Expiration date",
 	"dashboard.extract": "Extract",
 	"dashboard.fermentation": "Fermentation",
 	"dashboard.filtration": "Filtration",

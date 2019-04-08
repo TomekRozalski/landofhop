@@ -4,6 +4,7 @@ import {
 	alcoholRelatesList,
 	alcoholScopesList,
 	alcoholUnitsList,
+	expirationDateUnitsList,
 	extractUnitsList,
 	extractRelatesList,
 } from 'dashboard/utils';
@@ -44,10 +45,7 @@ export default {
 	[fields.dryHopped]: false,
 	[fields.expirationDate]: {
 		value: 0,
-		unit: {
-			label: '',
-			value: '',
-		},
+		unit: expirationDateUnitsList()[0],
 	},
 	// -----------
 	[fields.ingredients]: [],

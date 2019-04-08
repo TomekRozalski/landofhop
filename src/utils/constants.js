@@ -56,4 +56,8 @@ export default {
 			degree: 'degree',
 		},
 	},
+	agedTypes: {
+		barrel: 'barrel',
+		wood: 'wood',
+	},
 };

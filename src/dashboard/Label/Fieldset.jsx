@@ -4,12 +4,15 @@ import PropTypes from 'prop-types';
 import { constants } from 'dashboard/utils';
 import { AddButton, SubSection } from 'dashboard/elements';
 import {
+	Aged,
 	Alcohol,
 	Badge,
 	Barcode,
 	Brand,
 	Contract,
 	Cooperation,
+	DryHopped,
+	ExpirationDate,
 	Extract,
 	Fermentation,
 	Filtration,
@@ -53,9 +56,9 @@ const Fieldset = ({ showSubform }) => {
 			<Filtration {...commonProps} fieldName={fields.filtration} />
 			<Pasteurization {...commonProps} fieldName={fields.pasteurization} />
 			<Refermentation {...commonProps} fieldName={fields.refermentation} />
-			{/* <Aged {...commonProps} /> */}
-			{/* <DryHopped {...commonProps} /> */}
-			{/* <ExpirationDate {...commonProps} /> */}
+			<Aged {...commonProps} fieldName={fields.aged} />
+			<DryHopped {...commonProps} fieldName={fields.dryHopped} />
+			<ExpirationDate {...commonProps} fieldName={fields.expirationDate} />
 			{/* -------------------------------- */}
 			{/* <SubSection title="dashboard.ingredientsInfo" /> */}
 			{/* <Ingredients {...commonProps} /> */}
