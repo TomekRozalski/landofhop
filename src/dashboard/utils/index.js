@@ -4,6 +4,7 @@ import alcoholScopesList from './selectLists/alcohol/scopes';
 import alcoholUnitsList from './selectLists/alcohol/units';
 import BeverageFormWrapper from './BeverageFormWrapper';
 import constants from './constants';
+import emptyIngredients from './emptyIngredients';
 import emptySelect from './emptySelect';
 import expirationDateUnitsList from './selectLists/expirationDate/units';
 import extractRelatesList from './selectLists/extract/relates';
@@ -16,6 +17,7 @@ export {
 	alcoholUnitsList,
 	BeverageFormWrapper,
 	constants,
+	emptyIngredients,
 	emptySelect,
 	expirationDateUnitsList,
 	extractRelatesList,

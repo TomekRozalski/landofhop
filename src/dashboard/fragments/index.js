@@ -14,6 +14,7 @@ import ExpirationDate from './ExpirationDate';
 import Extract from './Extract';
 import Fermentation from './Fermentation';
 import Filtration from './Filtration';
+import Ingredients from './Ingredients';
 import Institution from './Institution';
 import Latitude from './Latitude';
 import Longitude from './Longitude';
@@ -43,6 +44,7 @@ export {
 	Extract,
 	Fermentation,
 	Filtration,
+	Ingredients,
 	Institution,
 	Latitude,
 	Longitude,

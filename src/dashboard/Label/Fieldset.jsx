@@ -16,6 +16,7 @@ import {
 	Extract,
 	Fermentation,
 	Filtration,
+	Ingredients,
 	Name,
 	Pasteurization,
 	Place,
@@ -60,8 +61,8 @@ const Fieldset = ({ showSubform }) => {
 			<DryHopped {...commonProps} fieldName={fields.dryHopped} />
 			<ExpirationDate {...commonProps} fieldName={fields.expirationDate} />
 			{/* -------------------------------- */}
-			{/* <SubSection title="dashboard.ingredientsInfo" /> */}
-			{/* <Ingredients {...commonProps} /> */}
+			<SubSection title="dashboard.ingredientsInfo" />
+			<Ingredients {...commonProps} fieldName={fields.ingredients} />
 			{/* <IngredientsList {...commonProps} /> */}
 			{/* <AddButton onClick={() => { showSubform(Forms.INGREDIENT) }} /> */}
 			{/* <IngredientsComplete {...commonProps} /> */}
