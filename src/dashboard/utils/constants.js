@@ -8,6 +8,6 @@ export default {
 		institution: 'institution',
 		place: 'place',
 		country: 'country',
-		ingredients: 'ingredients',
+		ingredient: 'ingredient',
 	},
 };

@@ -71,7 +71,7 @@ const Fieldset = ({ showSubform }) => {
 				resetWhenEmpty={fields.areIngredientsComplete}
 			/>
 			<IngredientsList {...commonProps} fieldName={fields.ingredientsList} />
-			{/* <AddButton onClick={() => { showSubform(Forms.INGREDIENT) }} /> */}
+			<AddButton onClick={() => { showSubform(constants.forms.ingredient); }} />
 			<IngredientsComplete {...commonProps} fieldName={fields.areIngredientsComplete} />
 			<SmokedMalt {...commonProps} fieldName={fields.smokedMalt} />
 			{/* -------------------------------- */}

@@ -9,6 +9,7 @@ import emptySelect from './emptySelect';
 import expirationDateUnitsList from './selectLists/expirationDate/units';
 import extractRelatesList from './selectLists/extract/relates';
 import extractUnitsList from './selectLists/extract/units';
+import ingredientTypesList from './selectLists/ingredient/types';
 import languagesList from './selectLists/languages';
 
 export {
@@ -22,5 +23,6 @@ export {
 	expirationDateUnitsList,
 	extractRelatesList,
 	extractUnitsList,
+	ingredientTypesList,
 	languagesList,
 };

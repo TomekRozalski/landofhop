@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { constants } from 'dashboard/utils';
 import AddNewCountry from './AddNewCountry';
-// import AddNewIngredient from './AddNewIngredient';
+import AddNewIngredient from './AddNewIngredient';
 import AddNewInstitution from './AddNewInstitution';
 import AddNewPlace from './AddNewPlace';
 
@@ -21,8 +21,8 @@ const Subforms = ({
 		return (<AddNewPlace {...subformProps} />);
 	case constants.forms.country:
 		return (<AddNewCountry {...subformProps} />);
-	// case constants.forms.ingredients:
-	// 	return (<AddNewIngredient {...subformProps} />);
+	case constants.forms.ingredient:
+		return (<AddNewIngredient {...subformProps} />);
 	default:
 		return null;
 	}

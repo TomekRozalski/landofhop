@@ -28,6 +28,7 @@ import Series from './Series';
 import SmokedMalt from './SmokedMalt';
 import Style from './Style';
 import Tale from './Tale';
+import Type from './Type';
 import Website from './Website';
 
 export {
@@ -61,5 +62,6 @@ export {
 	SmokedMalt,
 	Style,
 	Tale,
+	Type,
 	Website,
 };
