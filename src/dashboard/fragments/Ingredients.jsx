@@ -1,5 +1,6 @@
 /* eslint react/no-array-index-key: 0 */
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { FastField, FieldArray } from 'formik';
 
@@ -17,7 +18,7 @@ import {
 } from 'dashboard/elements';
 import { fragmentTypes } from './utils';
 
-const Ingredients = ({ fieldName, formName }) => {
+const Ingredients = ({ fieldName, formName, resetWhenEmpty }) => {
 	const { language } = useContext(LanguageContext);
 
 	return (
@@ -31,6 +32,15 @@ const Ingredients = ({ fieldName, formName }) => {
 				name={fieldName}
 				render={({ form, push, remove }) => {
 					const values = form.values[fieldName];
+
+					if (
+						resetWhenEmpty
+						&& form.values[resetWhenEmpty] !== null
+						&& values.length === 0
+					) {
+						form.setFieldValue(resetWhenEmpty, null);
+					}
+
 					if (values && values.length > 0) {
 						return values.map((_, index) => {
 							const loopLength = values.length;
@@ -84,6 +94,13 @@ const Ingredients = ({ fieldName, formName }) => {
 	);
 };
 
-Ingredients.propTypes = fragmentTypes;
+Ingredients.propTypes = {
+	...fragmentTypes,
+	resetWhenEmpty: PropTypes.string,
+};
+
+Ingredients.defaultProps = {
+	resetWhenEmpty: null,
+};
 
 export default Ingredients;

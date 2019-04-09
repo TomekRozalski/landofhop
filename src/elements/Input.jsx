@@ -53,6 +53,7 @@ const Input = ({ field, search, ...props }) => {
 			<Field
 				disabled={disabled}
 				withIcon={search || success || warning}
+				onChange={() => {}}
 				{...field}
 				value={field.value === null ? '' : field.value}
 				{...props}
