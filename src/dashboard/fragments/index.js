@@ -2,6 +2,7 @@ import Aged from './Aged';
 import Alcohol from './Alcohol';
 import Badge from './Badge';
 import Barcode from './Barcode';
+import Bitterness from './Bitterness';
 import Brand from './Brand';
 import City from './City';
 import Code from './Code';
@@ -14,6 +15,8 @@ import ExpirationDate from './ExpirationDate';
 import Extract from './Extract';
 import Fermentation from './Fermentation';
 import Filtration from './Filtration';
+import Fullness from './Fullness';
+import Hoppyness from './Hoppyness';
 import Ingredients from './Ingredients';
 import IngredientsComplete from './IngredientsComplete';
 import IngredientsList from './IngredientsList';
@@ -23,11 +26,14 @@ import Longitude from './Longitude';
 import Name from './Name';
 import Pasteurization from './Pasteurization';
 import Place from './Place';
+import Power from './Power';
 import Refermentation from './Refermentation';
 import Series from './Series';
 import SmokedMalt from './SmokedMalt';
 import Style from './Style';
+import Sweetness from './Sweetness';
 import Tale from './Tale';
+import Temperature from './Temperature';
 import Type from './Type';
 import Website from './Website';
 
@@ -36,6 +42,7 @@ export {
 	Alcohol,
 	Badge,
 	Barcode,
+	Bitterness,
 	Brand,
 	City,
 	Code,
@@ -48,6 +55,8 @@ export {
 	Extract,
 	Fermentation,
 	Filtration,
+	Fullness,
+	Hoppyness,
 	Ingredients,
 	IngredientsComplete,
 	IngredientsList,
@@ -57,11 +66,14 @@ export {
 	Name,
 	Pasteurization,
 	Place,
+	Power,
 	Refermentation,
 	Series,
 	SmokedMalt,
 	Style,
+	Sweetness,
 	Tale,
+	Temperature,
 	Type,
 	Website,
 };

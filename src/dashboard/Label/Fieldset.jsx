@@ -8,6 +8,7 @@ import {
 	Alcohol,
 	Badge,
 	Barcode,
+	Bitterness,
 	Brand,
 	Contract,
 	Cooperation,
@@ -16,17 +17,22 @@ import {
 	Extract,
 	Fermentation,
 	Filtration,
+	Fullness,
+	Hoppyness,
 	Ingredients,
 	IngredientsComplete,
 	IngredientsList,
 	Name,
 	Pasteurization,
 	Place,
+	Power,
 	Refermentation,
 	Series,
 	SmokedMalt,
 	Style,
+	Sweetness,
 	Tale,
+	Temperature,
 } from 'dashboard/fragments';
 import { fields } from './utils';
 
@@ -75,13 +81,13 @@ const Fieldset = ({ showSubform }) => {
 			<IngredientsComplete {...commonProps} fieldName={fields.areIngredientsComplete} />
 			<SmokedMalt {...commonProps} fieldName={fields.smokedMalt} />
 			{/* -------------------------------- */}
-			{/* <SubSection title="dashboard.impressionsInfo" /> */}
-			{/* <Bitterness {...commonProps} /> */}
-			{/* <Sweetness {...commonProps} /> */}
-			{/* <Fullness {...commonProps} /> */}
-			{/* <Power {...commonProps} /> */}
-			{/* <Hoppyness {...commonProps} /> */}
-			{/* <Temperature {...commonProps} /> */}
+			<SubSection title="dashboard.impressionsInfo" />
+			<Bitterness {...commonProps} fieldName={fields.bitterness} />
+			<Sweetness {...commonProps} fieldName={fields.sweetness} />
+			<Fullness {...commonProps} fieldName={fields.fullness} />
+			<Power {...commonProps} fieldName={fields.power} />
+			<Hoppyness {...commonProps} fieldName={fields.hoppyness} />
+			<Temperature {...commonProps} fieldName={fields.temperature} />
 			{/* -------------------------------- */}
 			{/* <SubSection title="dashboard.otherInfo" /> */}
 			{/* <Container {...commonProps} /> */}

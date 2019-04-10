@@ -61,4 +61,9 @@ export default {
 		barrel: 'barrel',
 		wood: 'wood',
 	},
+	temperature: {
+		units: {
+			celcius: 'celcius',
+		},
+	},
 };

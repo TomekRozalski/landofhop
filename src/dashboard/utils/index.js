@@ -11,6 +11,7 @@ import extractRelatesList from './selectLists/extract/relates';
 import extractUnitsList from './selectLists/extract/units';
 import ingredientTypesList from './selectLists/ingredient/types';
 import languagesList from './selectLists/languages';
+import temperatureUnitsList from './selectLists/temperature/units';
 
 export {
 	alcoholRelatesList,
@@ -25,4 +26,5 @@ export {
 	extractUnitsList,
 	ingredientTypesList,
 	languagesList,
+	temperatureUnitsList,
 };

@@ -15,6 +15,7 @@ import RevealButton from './RevealButton';
 import SecondaryForm from './SecondaryForm';
 import StyledMarkdown from './StyledMarkdown';
 import StyledSelect from './StyledSelect';
+import StyledSlider from './StyledSlider';
 import StyledSwitch from './StyledSwitch';
 import SubmitButton from './SubmitButton';
 import SubSection from './SubSection';
@@ -38,6 +39,7 @@ export {
 	SecondaryForm,
 	StyledMarkdown,
 	StyledSelect,
+	StyledSlider,
 	StyledSwitch,
 	SubmitButton,
 	SubSection,

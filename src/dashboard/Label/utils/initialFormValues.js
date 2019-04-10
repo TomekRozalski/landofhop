@@ -7,6 +7,7 @@ import {
 	expirationDateUnitsList,
 	extractUnitsList,
 	extractRelatesList,
+	temperatureUnitsList,
 } from 'dashboard/utils';
 import fields from './fields';
 
@@ -62,10 +63,7 @@ export default {
 	[fields.temperature]: {
 		from: 0,
 		to: 0,
-		unit: {
-			label: '',
-			value: '',
-		},
+		unit: temperatureUnitsList()[0],
 	},
 	// -----------
 	[fields.container]: {
