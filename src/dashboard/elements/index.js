@@ -1,5 +1,6 @@
 import AddButton from './AddButton';
 import AddElement from './AddElement';
+import CapWireFlipSwitch from './CapWireFlipSwitch';
 import ConditionalLabel from './ConditionalLabel';
 import ErrorGroup from './ErrorGroup';
 import FormSection from './FormSection';
@@ -13,6 +14,7 @@ import RemoveElement from './RemoveElement';
 import ResetButton from './ResetButton';
 import RevealButton from './RevealButton';
 import SecondaryForm from './SecondaryForm';
+import StyledDateInput from './StyledDateInput';
 import StyledMarkdown from './StyledMarkdown';
 import StyledSelect from './StyledSelect';
 import StyledSlider from './StyledSlider';
@@ -24,6 +26,7 @@ import Wrapper from './Wrapper';
 export {
 	AddButton,
 	AddElement,
+	CapWireFlipSwitch,
 	ConditionalLabel,
 	ErrorGroup,
 	FormSection,
@@ -37,6 +40,7 @@ export {
 	ResetButton,
 	RevealButton,
 	SecondaryForm,
+	StyledDateInput,
 	StyledMarkdown,
 	StyledSelect,
 	StyledSlider,

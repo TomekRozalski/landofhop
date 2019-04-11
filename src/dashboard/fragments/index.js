@@ -7,6 +7,7 @@ import Brand from './Brand';
 import City from './City';
 import Code from './Code';
 import Consortium from './Consortium';
+import Container from './Container';
 import Contract from './Contract';
 import Cooperation from './Cooperation';
 import Country from './Country';
@@ -27,6 +28,7 @@ import Name from './Name';
 import Pasteurization from './Pasteurization';
 import Place from './Place';
 import Power from './Power';
+import Price from './Price';
 import Refermentation from './Refermentation';
 import Series from './Series';
 import SmokedMalt from './SmokedMalt';
@@ -47,6 +49,7 @@ export {
 	City,
 	Code,
 	Consortium,
+	Container,
 	Contract,
 	Cooperation,
 	Country,
@@ -67,6 +70,7 @@ export {
 	Pasteurization,
 	Place,
 	Power,
+	Price,
 	Refermentation,
 	Series,
 	SmokedMalt,

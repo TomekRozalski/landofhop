@@ -10,6 +10,7 @@ import {
 	Barcode,
 	Bitterness,
 	Brand,
+	Container,
 	Contract,
 	Cooperation,
 	DryHopped,
@@ -26,6 +27,7 @@ import {
 	Pasteurization,
 	Place,
 	Power,
+	Price,
 	Refermentation,
 	Series,
 	SmokedMalt,
@@ -89,9 +91,9 @@ const Fieldset = ({ showSubform }) => {
 			<Hoppyness {...commonProps} fieldName={fields.hoppyness} />
 			<Temperature {...commonProps} fieldName={fields.temperature} />
 			{/* -------------------------------- */}
-			{/* <SubSection title="dashboard.otherInfo" /> */}
-			{/* <Container {...commonProps} /> */}
-			{/* <Price {...commonProps} /> */}
+			<SubSection title="dashboard.otherInfo" />
+			<Container {...commonProps} fieldName={fields.container} />
+			<Price {...commonProps} fieldName={fields.price} />
 		</>
 	);
 };

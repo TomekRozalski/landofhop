@@ -5,7 +5,7 @@ import Switch from 'react-switch';
 
 import { colors, gutters } from 'utils/theme';
 
-const Wrapper = styled(Switch)`
+export const Wrapper = styled(Switch)`
 	.react-switch-bg,
 	.react-switch-handle {
 		border-radius: 0 !important;

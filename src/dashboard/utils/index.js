@@ -3,7 +3,12 @@ import alcoholRelatesList from './selectLists/alcohol/relates';
 import alcoholScopesList from './selectLists/alcohol/scopes';
 import alcoholUnitsList from './selectLists/alcohol/units';
 import BeverageFormWrapper from './BeverageFormWrapper';
+import containerColorsList from './selectLists/container/colors';
+import containerMaterialsList from './selectLists/container/material';
+import containerTypesList from './selectLists/container/types';
+import containerUnitsList from './selectLists/container/units';
 import constants from './constants';
+import currenciesList from './selectLists/currencies';
 import emptyIngredients from './emptyIngredients';
 import emptySelect from './emptySelect';
 import expirationDateUnitsList from './selectLists/expirationDate/units';
@@ -18,7 +23,12 @@ export {
 	alcoholScopesList,
 	alcoholUnitsList,
 	BeverageFormWrapper,
+	containerColorsList,
+	containerMaterialsList,
+	containerTypesList,
+	containerUnitsList,
 	constants,
+	currenciesList,
 	emptyIngredients,
 	emptySelect,
 	expirationDateUnitsList,

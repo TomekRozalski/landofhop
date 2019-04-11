@@ -4,6 +4,10 @@ import {
 	alcoholRelatesList,
 	alcoholScopesList,
 	alcoholUnitsList,
+	containerColorsList,
+	containerMaterialsList,
+	containerTypesList,
+	containerUnitsList,
 	expirationDateUnitsList,
 	extractUnitsList,
 	extractRelatesList,
@@ -67,22 +71,10 @@ export default {
 	},
 	// -----------
 	[fields.container]: {
-		color: {
-			label: '',
-			value: '',
-		},
-		material: {
-			label: '',
-			value: '',
-		},
-		unit: {
-			label: '',
-			value: '',
-		},
-		type: {
-			label: '',
-			value: '',
-		},
+		color: containerColorsList()[0],
+		material: containerMaterialsList()[0],
+		unit: containerUnitsList()[0],
+		type: containerTypesList()[0],
 		capacityValue: 0,
 		hasCapWireFlip: false,
 	},
