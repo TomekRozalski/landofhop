@@ -1,10 +1,10 @@
 /* eslint react/no-array-index-key: 0 */
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { FastField, FieldArray } from 'formik';
+import { FastField, Field, FieldArray } from 'formik';
 
 import { Input, Label } from 'elements';
-import { emptySelect, currenciesList } from 'dashboard/utils';
+import { currenciesList } from 'dashboard/utils';
 import {
 	AddElement,
 	InputWrapper,
@@ -29,15 +29,11 @@ const Price = ({ fieldName, formName }) => (
 				const values = form.values[fieldName];
 
 				const addNewElement = () => {
-					const now = new Date();
-
 					push({
 						currency: '',
-						date: now,
+						date: new Date(),
 						value: '',
 					});
-
-					// setDate([ ...date, moment(now).format('DD.MM.YYYY, HH:mm:ss') ]);
 				};
 
 				if (values && values.length) {
@@ -50,8 +46,9 @@ const Price = ({ fieldName, formName }) => (
 								<InputWrapper place="left">
 									<FastField
 										component={Input}
-										id={lastInput ? `${formName}-${fieldName}-value` : null}
+										id={lastInput ? `${formName}-${fieldName}` : null}
 										name={`${fieldName}.${index}.value`}
+										type="number"
 									/>
 								</InputWrapper>
 								<InputWrapper place="middle">
@@ -65,7 +62,7 @@ const Price = ({ fieldName, formName }) => (
 									</FastField>
 								</InputWrapper>
 								<InputWrapper place="middle">
-									<FastField
+									<Field
 										component={StyledDateInput}
 										name={`${fieldName}.${index}.date`}
 									/>
