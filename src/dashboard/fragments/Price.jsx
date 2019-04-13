@@ -2,6 +2,8 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { FastField, Field, FieldArray } from 'formik';
+import MaskedInput from 'react-text-mask';
+import moment from 'moment';
 
 import { Input, Label } from 'elements';
 import { currenciesList } from 'dashboard/utils';
@@ -11,7 +13,6 @@ import {
 	LabelWrapper,
 	RemoveElement,
 	RevealButton,
-	StyledDateInput,
 	StyledSelect,
 } from 'dashboard/elements';
 import { fragmentTypes } from './utils';
@@ -31,7 +32,7 @@ const Price = ({ fieldName, formName }) => (
 				const addNewElement = () => {
 					push({
 						currency: '',
-						date: new Date(),
+						date: moment().format('DD.MM.YYYY, HH:mm:ss'),
 						value: '',
 					});
 				};
@@ -63,8 +64,18 @@ const Price = ({ fieldName, formName }) => (
 								</InputWrapper>
 								<InputWrapper place="middle">
 									<Field
-										component={StyledDateInput}
 										name={`${fieldName}.${index}.date`}
+										render={({ field }) => {
+											console.log('field', field);
+											return (
+												<MaskedInput
+													mask={[/[0-3]/, /[0-9]/, '.', /[0-1]/, /[0-9]/, '.20', /[1-2]/, /[0-9]/, ', ', /[0-2]/, /[0-9]/, ':', /[0-5]/, /[0-9]/, ':', /[0-5]/, /[0-9]/]}
+													{...field}
+													id={`${fieldName}.${index}.date`}
+													placeholder="02"
+												/>
+											);
+										}}
 									/>
 								</InputWrapper>
 								{
