@@ -2,7 +2,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { FastField, Field, FieldArray } from 'formik';
-import MaskedInput from 'react-text-mask';
 import moment from 'moment';
 
 import { Input, Label } from 'elements';
@@ -64,18 +63,8 @@ const Price = ({ fieldName, formName }) => (
 								</InputWrapper>
 								<InputWrapper place="middle">
 									<Field
+										component={Input}
 										name={`${fieldName}.${index}.date`}
-										render={({ field }) => {
-											console.log('field', field);
-											return (
-												<MaskedInput
-													mask={[/[0-3]/, /[0-9]/, '.', /[0-1]/, /[0-9]/, '.20', /[1-2]/, /[0-9]/, ', ', /[0-2]/, /[0-9]/, ':', /[0-5]/, /[0-9]/, ':', /[0-5]/, /[0-9]/]}
-													{...field}
-													id={`${fieldName}.${index}.date`}
-													placeholder="02"
-												/>
-											);
-										}}
 									/>
 								</InputWrapper>
 								{

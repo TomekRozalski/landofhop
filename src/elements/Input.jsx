@@ -6,7 +6,7 @@ import { get } from 'lodash';
 import { colors, fonts, gutters } from 'utils/theme';
 import FieldStatusIndicator from './FieldStatusIndicator';
 
-const Field = styled.input.attrs({
+export const StyledInput = styled.input.attrs({
 	type: 'text',
 })`
 	${({ inverse, withIcon }) => `
@@ -50,7 +50,7 @@ const Input = ({ field, search, ...props }) => {
 			success={success}
 			warning={warning}
 		>
-			<Field
+			<StyledInput
 				disabled={disabled}
 				withIcon={search || success || warning}
 				onChange={() => {}}

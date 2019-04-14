@@ -14,7 +14,6 @@ import RemoveElement from './RemoveElement';
 import ResetButton from './ResetButton';
 import RevealButton from './RevealButton';
 import SecondaryForm from './SecondaryForm';
-import StyledDateInput from './StyledDateInput';
 import StyledMarkdown from './StyledMarkdown';
 import StyledSelect from './StyledSelect';
 import StyledSlider from './StyledSlider';
@@ -40,7 +39,6 @@ export {
 	ResetButton,
 	RevealButton,
 	SecondaryForm,
-	StyledDateInput,
 	StyledMarkdown,
 	StyledSelect,
 	StyledSlider,
