@@ -1,7 +1,7 @@
 /* eslint react/no-array-index-key: 0 */
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { FastField, Field, FieldArray } from 'formik';
+import { FastField, FieldArray } from 'formik';
 import moment from 'moment';
 
 import { Input, Label } from 'elements';
@@ -62,7 +62,7 @@ const Price = ({ fieldName, formName }) => (
 									</FastField>
 								</InputWrapper>
 								<InputWrapper place="middle">
-									<Field
+									<FastField
 										component={Input}
 										name={`${fieldName}.${index}.date`}
 									/>

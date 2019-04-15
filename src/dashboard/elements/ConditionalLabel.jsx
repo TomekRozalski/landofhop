@@ -1,5 +1,12 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import {
+	any,
+	bool,
+	func,
+	node,
+	shape,
+	string,
+} from 'prop-types';
 import styled from 'styled-components';
 
 import { Label } from 'elements';
@@ -63,6 +70,7 @@ const ConditionalLabel = ({
 	form: {
 		initialValues,
 		setFieldValue,
+		setTouched,
 	},
 	formName,
 	inverse,
@@ -75,6 +83,7 @@ const ConditionalLabel = ({
 			setFieldValue(name, initialValues[name]);
 		} else {
 			setFieldValue(name, null);
+			setTouched(name, false);
 		}
 	};
 
@@ -97,17 +106,18 @@ const ConditionalLabel = ({
 };
 
 ConditionalLabel.propTypes = {
-	children: PropTypes.node.isRequired,
-	field: PropTypes.shape({
-		name: PropTypes.string.isRequired,
-		value: PropTypes.any,
+	children: node.isRequired,
+	field: shape({
+		name: string.isRequired,
+		value: any,
 	}).isRequired,
-	form: PropTypes.shape({
-		initialValues: PropTypes.shape({}).isRequired,
-		setFieldValue: PropTypes.func.isRequired,
+	form: shape({
+		initialValues: shape({}).isRequired,
+		setFieldValue: func.isRequired,
+		setTouched: func.isRequired,
 	}).isRequired,
-	formName: PropTypes.string.isRequired,
-	inverse: PropTypes.bool,
+	formName: string.isRequired,
+	inverse: bool,
 };
 
 ConditionalLabel.defaultProps = {
