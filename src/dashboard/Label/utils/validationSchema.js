@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import moment from 'moment';
 
 import { constants } from 'utils';
 import fields from './fields';
@@ -109,54 +110,45 @@ export default Yup.object().shape({
 					.required('danger'),
 			}),
 		),
+	[fields.extract]: Yup
+		.object()
+		.shape({
+			value: Yup.number()
+				.min(0, 'danger')
+				.max(100, 'danger')
+				.required('danger'),
+			unit: Yup.object().shape({
+				label: Yup.string().required('danger'),
+				value: Yup.string().required('danger'),
+			}),
+			relate: Yup.object().shape({
+				label: Yup.string().required('danger'),
+				value: Yup.string().required('danger'),
+			}),
+		})
+		.nullable(true),
+	[fields.alcohol]: Yup
+		.object()
+		.shape({
+			value: Yup.number()
+				.min(0, 'danger')
+				.max(100, 'danger')
+				.required('danger'),
+			unit: Yup.object().shape({
+				label: Yup.string().required('danger'),
+				value: Yup.string().required('danger'),
+			}),
+			relate: Yup.object().shape({
+				label: Yup.string().required('danger'),
+				value: Yup.string().required('danger'),
+			}),
+			scope: Yup.object().shape({
+				label: Yup.string().required('danger'),
+				value: Yup.string().required('danger'),
+			}),
+		})
+		.nullable(true),
 
-
-	// [fields.isExtract]: Yup.boolean(),
-	// [fields.extract]: Yup.object()
-	// 	.when([fields.isExtract], {
-	// 		is: true,
-	// 		then: (
-	// 			Yup.object().shape({
-	// 				value: Yup.number()
-	// 					.min(0, 'danger')
-	// 					.max(100, 'danger')
-	// 					.required('danger'),
-	// 				unit: Yup.object().shape({
-	// 					label: Yup.string().required('danger'),
-	// 					value: Yup.string().required('danger'),
-	// 				}),
-	// 				relate: Yup.object().shape({
-	// 					label: Yup.string().required('danger'),
-	// 					value: Yup.string().required('danger'),
-	// 				}),
-	// 			})
-	// 		),
-	// 	}),
-	// [fields.isAlcohol]: Yup.boolean(),
-	// [fields.alcohol]: Yup.object()
-	// 	.when([fields.isAlcohol], {
-	// 		is: true,
-	// 		then: (
-	// 			Yup.object().shape({
-	// 				value: Yup.number()
-	// 					.min(0, 'danger')
-	// 					.max(100, 'danger')
-	// 					.required('danger'),
-	// 				unit: Yup.object().shape({
-	// 					label: Yup.string().required('danger'),
-	// 					value: Yup.string().required('danger'),
-	// 				}),
-	// 				relate: Yup.object().shape({
-	// 					label: Yup.string().required('danger'),
-	// 					value: Yup.string().required('danger'),
-	// 				}),
-	// 				scope: Yup.object().shape({
-	// 					label: Yup.string().required('danger'),
-	// 					value: Yup.string().required('danger'),
-	// 				}),
-	// 			})
-	// 		),
-	// 	}),
 	// [fields.isAged]: Yup.boolean(),
 	// [fields.aged]: Yup.array()
 	// 	.when([fields.isAged], {
@@ -269,21 +261,36 @@ export default Yup.object().shape({
 	// 	}),
 	// 	hasCapWireFlip: Yup.boolean(),
 	// }),
-	// [fields.price]: Yup.array()
-	// 	.of(
-	// 		Yup.object().shape({
-	// 			currency: Yup.object().shape({
-	// 				label: Yup.string().required('danger'),
-	// 				value: Yup.string().required('danger'),
-	// 			}),
-	// 			date: Yup
-	// 				.date()
-	// 				.min(new Date('2017/06/20'))
-	// 				.max(tomorrow)
-	// 				.required('danger'),
-	// 			value: Yup.number()
-	// 				.min(0, 'danger')
-	// 				.required('danger'),
-	// 		}),
-	// 	),
+	[fields.price]: Yup.array()
+		.of(
+			Yup.object().shape({
+				currency: Yup.object().shape({
+					label: Yup.string().required('danger'),
+					value: Yup.string().required('danger'),
+				}),
+				date: Yup
+					.mixed()
+					.test('isCorrectDate', 'danger', (value) => {
+						const group = value
+							.match(/^(\d\d).(\d\d).(\d\d\d\d), (\d\d):(\d\d):(\d\d)$/, 'g');
+
+						if (!group) {
+							return false;
+						}
+
+						const [day, month, year, hour, minute, second] = group.slice(1);
+						const formattedDate = moment(`${year}-${month}-${day} ${hour}:${minute}:${second}`);
+
+						if (formattedDate.format() === 'Invalid date') {
+							return false;
+						}
+
+						return formattedDate.isAfter('2017-06-20')
+							&& formattedDate.isBefore(tomorrow);
+					}),
+				value: Yup.number()
+					.min(0, 'danger')
+					.required('danger'),
+			}),
+		),
 });
