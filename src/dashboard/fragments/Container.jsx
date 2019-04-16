@@ -2,7 +2,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { FastField } from 'formik';
 
-import { Input } from 'elements';
+import { Input, Label } from 'elements';
 import {
 	containerColorsList,
 	containerMaterialsList,
@@ -11,7 +11,6 @@ import {
 } from 'dashboard/utils';
 import {
 	CapWireFlipSwitch,
-	ConditionalLabel,
 	InputWrapper,
 	LabelWrapper,
 	StyledSelect,
@@ -21,13 +20,9 @@ import { fragmentTypes } from './utils';
 const Container = ({ fieldName, formName }) => (
 	<>
 		<LabelWrapper>
-			<FastField
-				component={ConditionalLabel}
-				formName={formName}
-				name={fieldName}
-			>
+			<Label htmlFor={`${formName}-${fieldName}`} required>
 				<FormattedMessage id={`dashboard.${fieldName}`} />
-			</FastField>
+			</Label>
 		</LabelWrapper>
 		<InputWrapper place="left">
 			<FastField
