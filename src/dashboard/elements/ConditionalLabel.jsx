@@ -79,7 +79,10 @@ const ConditionalLabel = ({
 	const checked = value !== null;
 
 	const setValue = ({ target: { checked: isChecked } }) => {
+		console.log('setValue', name, isChecked);
+
 		if (isChecked) {
+			console.log('initialValues', initialValues);
 			setFieldValue(name, initialValues[name]);
 		} else {
 			setFieldValue(name, null);

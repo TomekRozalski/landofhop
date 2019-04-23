@@ -2,6 +2,7 @@ import React from 'react';
 
 import { BeverageFormWrapper } from 'dashboard/utils';
 import Label from 'dashboard/Label';
+import Producer from 'dashboard/Producer';
 
 const AddNewBeverage = () => (
 	<BeverageFormWrapper>
@@ -30,6 +31,10 @@ const AddNewBeverage = () => (
 			if (title) {
 				if (step === 1) {
 					return <Label {...commonProps} />;
+				}
+
+				if (step === 2) {
+					return <Producer {...commonProps} />;
 				}
 			}
 
