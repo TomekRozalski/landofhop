@@ -8,6 +8,7 @@ import containerMaterialsList from './selectLists/container/material';
 import containerTypesList from './selectLists/container/types';
 import containerUnitsList from './selectLists/container/units';
 import constants from './constants';
+import ContainerTypes from './container.types';
 import currenciesList from './selectLists/currencies';
 import emptyIngredients from './emptyIngredients';
 import emptySelect from './emptySelect';
@@ -28,6 +29,7 @@ export {
 	containerTypesList,
 	containerUnitsList,
 	constants,
+	ContainerTypes,
 	currenciesList,
 	emptyIngredients,
 	emptySelect,

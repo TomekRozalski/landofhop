@@ -7,9 +7,10 @@ import { initialFormValues, onSubmit, validationSchema } from './utils';
 import FormBody from './FormBody';
 
 const Container = ({
+	moveBack,
 	moveOn,
 	savedForms: {
-		[constants.forms.beverage.label]: values,
+		[constants.forms.beverage.editorial]: values,
 	},
 	saveFormValues,
 	showSubform,
@@ -17,11 +18,11 @@ const Container = ({
 }) => (
 	<Formik
 		initialValues={update
-			? values || assign({}, initialFormValues, update.label)
+			? values || assign({}, initialFormValues, update.editorial)
 			: values || initialFormValues
 		}
-		isInitialValid={update ? true : !!values}
-		onSubmit={onSubmit({ moveOn, saveFormValues })}
+		isInitialValid
+		onSubmit={onSubmit({ moveBack, moveOn, saveFormValues })}
 		validationSchema={validationSchema}
 		render={FormBody({ showSubform })}
 	/>

@@ -35,6 +35,8 @@
 	"dashboard.cooperation": "Cooperation",
 	"dashboard.country": "Country",
 	"dashboard.dryHopped": "Dry hopped",
+	"dashboard.editorialInfo.title": "Editorial",
+	"dashboard.editorialInfo.description": "Final information, from the editorial office, somehow unofficial",
 	"dashboard.expirationDate": "Expiration date",
 	"dashboard.extract": "Extract",
 	"dashboard.fermentation": "Fermentation",

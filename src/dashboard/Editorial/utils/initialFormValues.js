@@ -1,11 +1,25 @@
+import {
+	containerColorsList,
+	containerMaterialsList,
+	containerTypesList,
+	containerUnitsList,
+} from 'dashboard/utils';
 import fields from './fields';
 
 export default {
+	[fields.badge]: '',
+	// -----------
+	[fields.name]: [{
+		value: '',
+		lang: '',
+	}],
 	[fields.series]: [],
+	[fields.brand]: '',
 	[fields.cooperation]: null,
 	[fields.contract]: null,
 	[fields.place]: null,
 	[fields.tale]: [],
+	[fields.barcode]: null,
 	// -----------
 	[fields.fermentation]: null,
 	[fields.style]: [],
@@ -30,5 +44,13 @@ export default {
 	[fields.hoppyness]: null,
 	[fields.temperature]: null,
 	// -----------
+	[fields.container]: {
+		color: containerColorsList()[0],
+		material: containerMaterialsList()[0],
+		unit: containerUnitsList()[0],
+		type: containerTypesList()[0],
+		capacityValue: 0,
+		hasCapWireFlip: false,
+	},
 	[fields.price]: [],
 };

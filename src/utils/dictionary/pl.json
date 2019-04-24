@@ -35,6 +35,8 @@
 	"dashboard.cooperation": "Kooperacja",
 	"dashboard.country": "Kraj",
 	"dashboard.dryHopped": "Chmielone na zimno",
+	"dashboard.editorialInfo.title": "Redakcyjne",
+	"dashboard.editorialInfo.description": "Informacje końcowe, od redakcji, niejako nieoficjalne",
 	"dashboard.expirationDate": "Termin ważności do spożycia",
 	"dashboard.extract": "Ekstrakt",
 	"dashboard.fermentation": "Fermentacja",

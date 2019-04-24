@@ -1,9 +1,14 @@
 export default {
+	badge: 'badge',
+	// -----------
+	name: 'name',
 	series: 'series',
+	brand: 'brand',
 	cooperation: 'cooperation',
 	contract: 'contract',
 	place: 'place',
 	tale: 'tale',
+	barcode: 'barcode',
 	// -----------
 	fermentation: 'fermentation',
 	style: 'style',
@@ -28,5 +33,6 @@ export default {
 	hoppyness: 'hoppyness',
 	temperature: 'temperature',
 	// -----------
+	container: 'container',
 	price: 'price',
 };

@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { assign } from 'lodash';
 
-import { constants } from 'dashboard/utils';
+import { constants, ContainerTypes } from 'dashboard/utils';
 import { initialFormValues, onSubmit, validationSchema } from './utils';
 import FormBody from './FormBody';
 
@@ -29,18 +28,7 @@ const Container = ({
 	/>
 );
 
-Container.propTypes = {
-	moveBack: PropTypes.func.isRequired,
-	moveOn: PropTypes.func.isRequired,
-	savedForms: PropTypes.shape({}),
-	saveFormValues: PropTypes.func.isRequired,
-	showSubform: PropTypes.func.isRequired,
-	update: PropTypes.shape({}),
-};
-
-Container.defaultProps = {
-	savedForms: {},
-	update: null,
-};
+Container.propTypes = ContainerTypes.propTypes;
+Container.defaultProps = ContainerTypes.defaultProps;
 
 export default Container;
