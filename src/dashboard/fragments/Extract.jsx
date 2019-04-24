@@ -23,6 +23,11 @@ const Extract = ({ fieldName, formName }) => {
 					component={ConditionalLabel}
 					formName={formName}
 					name={fieldName}
+					reset={{
+						relate: extractRelatesList()[0],
+						unit: extractUnitsList()[0],
+						value: 0,
+					}}
 				>
 					<FormattedMessage id={`dashboard.${fieldName}`} />
 				</FastField>

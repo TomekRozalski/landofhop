@@ -14,6 +14,7 @@ const Longitude = ({ fieldName, formName }) => (
 				formName={formName}
 				inverse
 				name={fieldName}
+				reset={0}
 			>
 				<FormattedMessage id={`dashboard.${fieldName}`} />
 			</FastField>

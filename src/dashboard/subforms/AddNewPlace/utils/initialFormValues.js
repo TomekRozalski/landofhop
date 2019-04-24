@@ -7,6 +7,6 @@ export default {
 	}],
 	[fields.country]: '',
 	[fields.institution]: '',
-	[fields.longitude]: 0,
-	[fields.latitude]: 0,
+	[fields.longitude]: null,
+	[fields.latitude]: null,
 };

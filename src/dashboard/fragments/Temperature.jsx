@@ -19,6 +19,11 @@ const Temperature = ({ fieldName, formName }) => (
 				component={ConditionalLabel}
 				formName={formName}
 				name={fieldName}
+				reset={{
+					from: 0,
+					to: 0,
+					unit: temperatureUnitsList()[0],
+				}}
 			>
 				<FormattedMessage id={`dashboard.${fieldName}`} />
 			</FastField>

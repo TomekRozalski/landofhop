@@ -19,6 +19,7 @@ const Fermentation = ({ fieldName, formName }) => (
 				component={ConditionalLabel}
 				formName={formName}
 				name={fieldName}
+				reset={[constants.fermentations.top]}
 			>
 				<FormattedMessage id={`dashboard.${fieldName}`} />
 			</FastField>

@@ -14,6 +14,7 @@ const Website = ({ fieldName, formName }) => (
 				formName={formName}
 				inverse
 				name={fieldName}
+				reset="http://"
 			>
 				<FormattedMessage id={`dashboard.${fieldName}`} />
 			</FastField>

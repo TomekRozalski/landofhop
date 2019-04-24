@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+/* eslint react/forbid-prop-types: 0 */
+import React from 'react';
 import {
 	any,
 	bool,
@@ -68,31 +69,24 @@ const ConditionalLabel = ({
 		value,
 	},
 	form: {
-		initialValues,
 		setFieldValue,
 		setTouched,
 	},
 	formName,
 	inverse,
+	reset,
 	...rest
 }) => {
 	const checked = value !== null;
 
 	const setValue = ({ target: { checked: isChecked } }) => {
-		console.log('setValue', name, isChecked);
-
 		if (isChecked) {
-			console.log('initialValues', initialValues);
-			setFieldValue(name, initialValues[name]);
+			setFieldValue(name, reset);
 		} else {
 			setFieldValue(name, null);
 			setTouched(name, false);
 		}
 	};
-
-	useEffect(() => {
-		setFieldValue(name, null);
-	}, []);
 
 	return (
 		<Wrapper checked={checked} inverse={inverse}>
@@ -104,7 +98,6 @@ const ConditionalLabel = ({
 			<Label htmlFor={`${formName}-is${name}`} withPadding {...rest}>{ children }</Label>
 			{ checked && <Checkmark /> }
 		</Wrapper>
-
 	);
 };
 
@@ -115,12 +108,12 @@ ConditionalLabel.propTypes = {
 		value: any,
 	}).isRequired,
 	form: shape({
-		initialValues: shape({}).isRequired,
 		setFieldValue: func.isRequired,
 		setTouched: func.isRequired,
 	}).isRequired,
 	formName: string.isRequired,
 	inverse: bool,
+	reset: any.isRequired,
 };
 
 ConditionalLabel.defaultProps = {

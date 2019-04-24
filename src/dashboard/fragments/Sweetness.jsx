@@ -18,6 +18,7 @@ const Sweetness = ({ fieldName, formName }) => (
 				component={ConditionalLabel}
 				formName={formName}
 				name={fieldName}
+				reset={0}
 			>
 				<FormattedMessage id={`dashboard.${fieldName}`} />
 			</FastField>

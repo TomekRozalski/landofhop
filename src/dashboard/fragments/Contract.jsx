@@ -26,6 +26,7 @@ const Contract = ({
 				component={ConditionalLabel}
 				formName={formName}
 				name={fieldName}
+				reset=""
 			>
 				<FormattedMessage id={`dashboard.${fieldName}`} />
 			</FastField>

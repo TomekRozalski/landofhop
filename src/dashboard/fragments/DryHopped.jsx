@@ -17,6 +17,7 @@ const DryHopped = ({ fieldName, formName }) => (
 				component={ConditionalLabel}
 				formName={formName}
 				name={fieldName}
+				reset={false}
 			>
 				<FormattedMessage id={`dashboard.${fieldName}`} />
 			</FastField>

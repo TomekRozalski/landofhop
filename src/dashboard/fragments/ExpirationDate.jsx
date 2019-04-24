@@ -19,6 +19,10 @@ const ExpirationDate = ({ fieldName, formName }) => (
 				component={ConditionalLabel}
 				formName={formName}
 				name={fieldName}
+				reset={{
+					value: 0,
+					unit: expirationDateUnitsList()[0],
+				}}
 			>
 				<FormattedMessage id={`dashboard.${fieldName}`} />
 			</FastField>

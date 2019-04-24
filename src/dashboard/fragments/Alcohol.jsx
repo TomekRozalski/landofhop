@@ -23,6 +23,12 @@ const Alcohol = ({ fieldName, formName }) => {
 					component={ConditionalLabel}
 					formName={formName}
 					name={fieldName}
+					reset={{
+						relate: alcoholRelatesList()[0],
+						scope: alcoholScopesList()[0],
+						unit: alcoholUnitsList()[0],
+						value: 0,
+					}}
 				>
 					<FormattedMessage id={`dashboard.${fieldName}`} />
 				</FastField>

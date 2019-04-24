@@ -27,6 +27,7 @@ const Consortium = ({
 				formName={formName}
 				inverse
 				name={fieldName}
+				reset=""
 			>
 				<FormattedMessage id={`dashboard.${fieldName}`} />
 			</FastField>
