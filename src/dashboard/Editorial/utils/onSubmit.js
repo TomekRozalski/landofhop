@@ -1,4 +1,5 @@
 import { constants } from 'dashboard/utils';
+import { scrollContentTop } from 'elements/ContentWrapper';
 
 const onSubmit = ({
 	moveBack,
@@ -10,11 +11,6 @@ const onSubmit = ({
 		values,
 	});
 
-	// const scroll = document.querySelector('[data-testid="scroll"]'); // @ToDo: do we have data-testid?
-	// if (scroll) {
-	// 	scroll.scrollTop = 0;
-	// }
-
 	if (values.submitDirection === 'forward') {
 		moveOn();
 	}
@@ -22,6 +18,8 @@ const onSubmit = ({
 	if (values.submitDirection === 'backward') {
 		moveBack();
 	}
+
+	scrollContentTop();
 };
 
 export default onSubmit;

@@ -1,4 +1,5 @@
 import { constants } from 'dashboard/utils';
+import { scrollContentTop } from 'elements/ContentWrapper';
 
 const onSubmit = ({
 	moveOn,
@@ -9,13 +10,8 @@ const onSubmit = ({
 		values,
 	});
 
-	const scroll = document.querySelector('[data-testid="scroll"]'); // @ToDo: do we have data-testid?
-
-	if (scroll) {
-		scroll.scrollTop = 0;
-	}
-
 	moveOn();
+	scrollContentTop();
 };
 
 export default onSubmit;
