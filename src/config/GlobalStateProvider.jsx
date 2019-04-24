@@ -12,21 +12,29 @@ import {
 	Routes,
 } from './index';
 
+const ProviderComposer = ({ contexts, children }) => (
+	contexts.reduceRight(
+		(kids, parent) => React.cloneElement(parent, {
+			children: kids,
+		}),
+		children,
+	)
+);
+
 const GlobalStateProvider = () => (
 	<Provider store={store}>
-		<Language>
-			<AppError>
-				<Navigation>
-					<Authentication>
-						<Dictionary>
-							<BeverageDetails>
-								<Routes />
-							</BeverageDetails>
-						</Dictionary>
-					</Authentication>
-				</Navigation>
-			</AppError>
-		</Language>
+		<ProviderComposer
+			contexts={[
+				<Language />,
+				<AppError />,
+				<Navigation />,
+				<Authentication />,
+				<Dictionary />,
+				<BeverageDetails />,
+			]}
+		>
+			<Routes />
+		</ProviderComposer>
 	</Provider>
 );
 
