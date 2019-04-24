@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators, compose } from 'redux';
+import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { Helmet } from 'react-helmet';
@@ -132,7 +132,7 @@ const mapStateToProps = ({ dashboard }) => ({
 	savedForms: dashboard.savedForms,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({
+const mapDispatchToProps = {
 	clearBeverageDashboard: clearBeverageDashboardAction,
 	getBeveragesList: getBeveragesListAction,
 	getCountriesList: getCountriesListAction,
@@ -140,7 +140,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 	getInstitutionsList: getInstitutionsListAction,
 	getPlacesList: getPlacesListAction,
 	saveFormValues: saveFormValuesAction,
-}, dispatch);
+};
 
 const enhanced = compose(
 	withRouter,

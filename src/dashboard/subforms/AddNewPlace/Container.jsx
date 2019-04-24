@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import { AppErrorContext, AuthenticationContext } from 'config';
 import { getPlacesList as getPlacesListAction } from 'store/actions';
@@ -37,8 +36,8 @@ AddNewPlace.propTypes = {
 	showSubform: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators({
+const mapDispatchToProps = {
 	getPlacesList: getPlacesListAction,
-}, dispatch);
+};
 
 export default connect(null, mapDispatchToProps)(AddNewPlace);

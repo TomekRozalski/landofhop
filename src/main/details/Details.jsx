@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import { BeverageDetailsContext } from 'config';
 import { getBeverageDetails as getBeverageDetailsAction } from 'store/actions';
@@ -90,8 +89,8 @@ const mapStateToProps = ({ beverages }, { match: { params } }) => ({
 	)),
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({
+const mapDispatchToProps = {
 	getBeverageDetails: getBeverageDetailsAction,
-}, dispatch);
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Details);

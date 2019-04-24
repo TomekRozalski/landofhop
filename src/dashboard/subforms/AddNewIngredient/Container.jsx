@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import { AppErrorContext, AuthenticationContext } from 'config';
 import { getIngredientsList as getIngredientsListAction } from 'store/actions';
@@ -36,8 +35,8 @@ AddNewIngredient.propTypes = {
 	hide: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators({
+const mapDispatchToProps = {
 	getIngredientsList: getIngredientsListAction,
-}, dispatch);
+};
 
 export default connect(null, mapDispatchToProps)(AddNewIngredient);

@@ -7,7 +7,6 @@ import {
 	shape,
 } from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { FormattedMessage } from 'react-intl';
 import { Helmet } from 'react-helmet';
 
@@ -74,8 +73,8 @@ const mapStateToProps = ({ beverages }) => ({
 	list: beverages.basics.list,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({
+const mapDispatchToProps = {
 	getBeveragesList: getBeveragesListAction,
-}, dispatch);
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tiles);
