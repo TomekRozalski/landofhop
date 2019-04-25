@@ -19,6 +19,7 @@
 	"dashboard.addNewPlace.title": "Add new place",
 	"dashboard.aged": "Aged",
 	"dashboard.alcohol": "Alcohol",
+	"dashboard.alcoholScope": "Margin of error of the amount of alcohol",
 	"dashboard.areIngredientsComplete": "Are ingredients complete",
 	"dashboard.badge": "Badge",
 	"dashboard.barcode": "Barcode",

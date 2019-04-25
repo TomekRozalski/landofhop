@@ -5,6 +5,7 @@ import { constants } from 'dashboard/utils';
 import { AddButton, SubSection } from 'dashboard/elements';
 import {
 	Aged,
+	AlcoholScope,
 	Color,
 	Contract,
 	Cooperation,
@@ -37,7 +38,7 @@ const Fieldset = ({ showSubform }) => {
 			<SubSection title="dashboard.brewingInfo" />
 			<Fermentation {...commonProps} fieldName={fields.fermentation} />
 			<Style {...commonProps} fieldName={fields.style} />
-			{/* AlcoholScope */}
+			<AlcoholScope {...commonProps} fieldName={fields.alcoholScope} />
 			<Filtration {...commonProps} fieldName={fields.filtration} />
 			<Pasteurization {...commonProps} fieldName={fields.pasteurization} />
 			<Refermentation {...commonProps} fieldName={fields.refermentation} />

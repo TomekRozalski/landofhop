@@ -19,6 +19,7 @@
 	"dashboard.addNewPlace.title": "Dodaj nowe miejsce",
 	"dashboard.aged": "Leżakowanie",
 	"dashboard.alcohol": "Alkohol",
+	"dashboard.alcoholScope": "Margines błędu ilości alkoholu",
 	"dashboard.areIngredientsComplete": "Skład jest kompletny",
 	"dashboard.badge": "Identyfikator",
 	"dashboard.barcode": "Kod kreskowy",

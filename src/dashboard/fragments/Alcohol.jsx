@@ -24,8 +24,8 @@ const Alcohol = ({ fieldName, formName }) => {
 					formName={formName}
 					name={fieldName}
 					reset={{
-						relate: alcoholRelatesList()[0],
-						scope: alcoholScopesList()[0],
+						relate: alcoholRelatesList(language)[0],
+						scope: alcoholScopesList({ withEmpty: true })[0],
 						unit: alcoholUnitsList()[0],
 						value: 0,
 					}}
@@ -65,7 +65,7 @@ const Alcohol = ({ fieldName, formName }) => {
 					formName={formName}
 					name={`${fieldName}.scope`}
 				>
-					{ alcoholScopesList(language) }
+					{ alcoholScopesList({ withEmpty: true }) }
 				</FastField>
 			</InputWrapper>
 		</>
