@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 
 const ContainerTypes = {
 	propTypes: {
+		finalSubmit: PropTypes.func,
 		moveBack: PropTypes.func.isRequired,
 		moveOn: PropTypes.func.isRequired,
 		savedForms: PropTypes.shape({}),
@@ -10,6 +11,7 @@ const ContainerTypes = {
 		update: PropTypes.shape({}),
 	},
 	defaultProps: {
+		finalSubmit: () => {},
 		savedForms: {},
 		update: null,
 	},

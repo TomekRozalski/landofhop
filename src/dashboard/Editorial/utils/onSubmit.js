@@ -2,17 +2,17 @@ import { constants } from 'dashboard/utils';
 import { scrollContentTop } from 'elements/ContentWrapper';
 
 const onSubmit = ({
+	finalSubmit,
 	moveBack,
-	moveOn,
 	saveFormValues,
-}) => (values) => {
+}) => (values, { setSubmitting }) => {
 	saveFormValues({
 		formName: constants.forms.beverage.editorial,
 		values,
 	});
 
 	if (values.submitDirection === 'forward') {
-		moveOn();
+		finalSubmit({ setSubmitting, values });
 	}
 
 	if (values.submitDirection === 'backward') {

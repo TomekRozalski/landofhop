@@ -7,8 +7,8 @@ import { initialFormValues, onSubmit, validationSchema } from './utils';
 import FormBody from './FormBody';
 
 const Container = ({
+	finalSubmit,
 	moveBack,
-	moveOn,
 	savedForms: {
 		[constants.forms.beverage.editorial]: values,
 	},
@@ -22,7 +22,7 @@ const Container = ({
 			: values || initialFormValues
 		}
 		isInitialValid
-		onSubmit={onSubmit({ moveBack, moveOn, saveFormValues })}
+		onSubmit={onSubmit({ finalSubmit, moveBack, saveFormValues })}
 		validationSchema={validationSchema}
 		render={FormBody({ showSubform })}
 	/>

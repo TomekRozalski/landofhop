@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -7,6 +7,7 @@ import { FormattedMessage } from 'react-intl';
 import { Helmet } from 'react-helmet';
 import { get } from 'lodash';
 
+import { AppErrorContext, AuthenticationContext } from 'config';
 import {
 	clearBeverageDashboard as clearBeverageDashboardAction,
 	getBeveragesList as getBeveragesListAction,
@@ -17,6 +18,7 @@ import {
 	saveFormValues as saveFormValuesAction,
 } from 'store/actions';
 import { Spinner } from 'elements';
+import { scrollContentTop } from 'elements/ContentWrapper';
 import { MainHeader, ProgressList } from 'dashboard/elements';
 import Subforms from 'dashboard/subforms';
 
@@ -27,15 +29,18 @@ const BeverageFormWrapper = ({
 	arePlacesLoaded,
 	children,
 	clearBeverageDashboard,
-	// getBeveragesList,
+	getBeveragesList,
 	getCountriesList,
 	getIngredientsList,
 	getInstitutionsList,
 	getPlacesList,
-	// history: { push },
+	history: { push },
 	savedForms,
 	saveFormValues,
 }) => {
+	const { setAppError } = useContext(AppErrorContext);
+	const { token } = useContext(AuthenticationContext);
+
 	const [step, setStep] = useState(1);
 	const [subform, setSubform] = useState(null);
 	const [title, setTitle] = useState('');
@@ -62,6 +67,7 @@ const BeverageFormWrapper = ({
 	};
 
 	const showSubform = (subformToSet) => {
+		scrollContentTop();
 		setSubform(subformToSet);
 	};
 
@@ -89,14 +95,18 @@ const BeverageFormWrapper = ({
 			<ProgressList step={step} moveTo={moveTo} />
 			{
 				children({
+					getBeveragesList,
 					moveBack,
 					moveOn,
+					push,
 					savedForms,
 					saveFormValues,
+					setAppError,
 					setTitle,
 					showSubform,
 					step,
 					title,
+					token,
 				})
 			}
 			<FormattedMessage id={title}>
@@ -113,11 +123,14 @@ BeverageFormWrapper.propTypes = {
 	arePlacesLoaded: PropTypes.bool.isRequired,
 	children: PropTypes.func.isRequired,
 	clearBeverageDashboard: PropTypes.func.isRequired,
-	// getBeveragesList: PropTypes.func.isRequired,
+	getBeveragesList: PropTypes.func.isRequired,
 	getCountriesList: PropTypes.func.isRequired,
 	getIngredientsList: PropTypes.func.isRequired,
 	getInstitutionsList: PropTypes.func.isRequired,
 	getPlacesList: PropTypes.func.isRequired,
+	history: PropTypes.shape({
+		push: PropTypes.func.isRequired,
+	}).isRequired,
 	savedForms: PropTypes.shape({
 
 	}).isRequired,

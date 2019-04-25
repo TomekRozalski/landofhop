@@ -4,22 +4,35 @@ import { BeverageFormWrapper } from 'dashboard/utils';
 import Label from 'dashboard/Label';
 import Producer from 'dashboard/Producer';
 import Editorial from 'dashboard/Editorial';
+import saveBeverage from 'dashboard/utils/api/saveBeverage';
 
 const AddNewBeverage = () => (
 	<BeverageFormWrapper>
 		{({
+			getBeveragesList,
 			moveBack,
 			moveOn,
+			push,
 			savedForms,
 			saveFormValues,
+			setAppError,
 			setTitle,
 			showSubform,
 			step,
 			title,
+			token,
 		}) => {
 			if (!title) {
 				setTitle('dashboard.addNewBeverage.title');
 			}
+
+			const finalSubmit = saveBeverage({
+				getBeveragesList,
+				push,
+				savedForms,
+				setAppError,
+				token,
+			});
 
 			const commonProps = {
 				moveBack,
@@ -29,30 +42,13 @@ const AddNewBeverage = () => (
 				showSubform,
 			};
 
-			if (title) {
-				if (step === 1) {
-					return <Label {...commonProps} />;
-				}
-
-				if (step === 2) {
-					return <Producer {...commonProps} />;
-				}
-
-				if (step === 3) {
-					return <Editorial {...commonProps} />;
-				}
-			}
-
-			return null;
-
-			// return (
-			// 	<>
-			// 		<div>sdf</div>
-			// 		{/* { step === 1 && <Label {...formBodyProps} /> } */}
-			// 		{/* { step === 2 && <Producer {...formBodyProps} /> } */}
-			// 		{/* { step === 3 && <Editorial {...formBodyProps} finalSubmit={finalSubmit} /> } */}
-			// 	</>
-			// );
+			return (
+				<>
+					{ step === 1 && <Label {...commonProps} /> }
+					{ step === 2 && <Producer {...commonProps} /> }
+					{ step === 3 && <Editorial {...commonProps} finalSubmit={finalSubmit} /> }
+				</>
+			);
 		}}
 	</BeverageFormWrapper>
 );

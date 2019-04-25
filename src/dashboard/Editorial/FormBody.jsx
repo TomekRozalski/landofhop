@@ -21,7 +21,6 @@ const FormBody = ({ showSubform }) => ({ isSubmitting, isValid, setFieldValue })
 			disabled={!isValid}
 			isSubmitting={isSubmitting}
 			onClick={() => { setFieldValue('submitDirection', 'forward'); }}
-			text="dashboard.continue"
 			type="submit"
 		/>
 	</FormSection>
