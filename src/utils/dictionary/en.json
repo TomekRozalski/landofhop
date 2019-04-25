@@ -11,6 +11,7 @@
 	"appError.title": "An error has occurred",
 	"app.fullTitle": "Land of Hop, reactive beer catalog",
 
+	"dashboard.added": "Added",
 	"dashboard.addNew": "Add new",
 	"dashboard.addNewBeverage.title": "Add new beer",
 	"dashboard.addNewCountry.title": "Add new country",
@@ -81,6 +82,7 @@
 	"dashboard.tale": "Tale",
 	"dashboard.temperature": "Recommended serving temperature",
 	"dashboard.type": "Type",
+	"dashboard.updated": "Updated",
 	"dashboard.website": "Website",
 
 	"details.contractor": "brewed by { brand } for:",

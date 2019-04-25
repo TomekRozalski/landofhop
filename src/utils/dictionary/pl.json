@@ -11,6 +11,7 @@
 	"appError.title": "Wystąpił błąd",
 	"app.fullTitle": "Land of Hop, reaktywny katalog piw",
 
+	"dashboard.added": "Dodano",
 	"dashboard.addNew": "Dodaj",
 	"dashboard.addNewBeverage.title": "Dodaj nowe piwo",
 	"dashboard.addNewCountry.title": "Dodaj nowy kraj",
@@ -81,6 +82,7 @@
 	"dashboard.tale": "Opis",
 	"dashboard.temperature": "Zalecana temperatura serwowania",
 	"dashboard.type": "Typ",
+	"dashboard.updated": "Ostatnio poprawiono",
 	"dashboard.website": "Strona internetowa",
 
 	"details.contractor": "uwarzono przez { brand } dla:",

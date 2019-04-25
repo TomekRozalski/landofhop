@@ -1,3 +1,4 @@
+import Added from './Added';
 import Aged from './Aged';
 import Alcohol from './Alcohol';
 import AlcoholScope from './AlcoholScope';
@@ -40,9 +41,11 @@ import Sweetness from './Sweetness';
 import Tale from './Tale';
 import Temperature from './Temperature';
 import Type from './Type';
+import Updated from './Updated';
 import Website from './Website';
 
 export {
+	Added,
 	Aged,
 	Alcohol,
 	AlcoholScope,
@@ -85,5 +88,6 @@ export {
 	Tale,
 	Temperature,
 	Type,
+	Updated,
 	Website,
 };

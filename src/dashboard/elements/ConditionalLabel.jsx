@@ -70,7 +70,7 @@ const ConditionalLabel = ({
 	},
 	form: {
 		setFieldValue,
-		setTouched,
+		setFieldTouched,
 	},
 	formName,
 	inverse,
@@ -84,7 +84,7 @@ const ConditionalLabel = ({
 			setFieldValue(name, reset);
 		} else {
 			setFieldValue(name, null);
-			setTouched(name, false);
+			setFieldTouched(name, false);
 		}
 	};
 
@@ -109,7 +109,7 @@ ConditionalLabel.propTypes = {
 	}).isRequired,
 	form: shape({
 		setFieldValue: func.isRequired,
-		setTouched: func.isRequired,
+		setFieldTouched: func.isRequired,
 	}).isRequired,
 	formName: string.isRequired,
 	inverse: bool,

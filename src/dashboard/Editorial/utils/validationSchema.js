@@ -67,11 +67,13 @@ export default Yup.object().shape({
 		.string()
 		.matches(/^#[0-9abcdef]{6}$/)
 		.nullable(true),
-	// [fields.sweetness]: Yup
-	// 	.number()
-	// 	.min(0, 'danger')
-	// 	.max(100, 'danger')
-	// 	.nullable(true),
+	[fields.clarity]: Yup
+		.object()
+		.shape({
+			label: Yup.string().required('danger'),
+			value: Yup.string().required('danger'),
+		})
+		.nullable(true),
 	// -----------
 	[fields.price]: Yup.array()
 		.of(
@@ -105,6 +107,52 @@ export default Yup.object().shape({
 					.required('danger'),
 			}),
 		),
-	// added
-	// updated
+	[fields.added]: Yup
+		.mixed()
+		.test('isCorrectDate', 'danger', (value) => {
+			if (value === null) {
+				return true;
+			}
+
+			const group = value
+				.match(/^(\d\d).(\d\d).(\d\d\d\d), (\d\d):(\d\d):(\d\d)$/, 'g');
+
+			if (!group) {
+				return false;
+			}
+
+			const [day, month, year, hour, minute, second] = group.slice(1);
+			const formattedDate = moment(`${year}-${month}-${day} ${hour}:${minute}:${second}`);
+
+			if (formattedDate.format() === 'Invalid date') {
+				return false;
+			}
+
+			return formattedDate.isAfter('2017-06-20')
+				&& formattedDate.isBefore(tomorrow);
+		}),
+	[fields.updated]: Yup
+		.mixed()
+		.test('isCorrectDate', 'danger', (value) => {
+			if (value === null) {
+				return true;
+			}
+
+			const group = value
+				.match(/^(\d\d).(\d\d).(\d\d\d\d), (\d\d):(\d\d):(\d\d)$/, 'g');
+
+			if (!group) {
+				return false;
+			}
+
+			const [day, month, year, hour, minute, second] = group.slice(1);
+			const formattedDate = moment(`${year}-${month}-${day} ${hour}:${minute}:${second}`);
+
+			if (formattedDate.format() === 'Invalid date') {
+				return false;
+			}
+
+			return formattedDate.isAfter('2017-06-20')
+				&& formattedDate.isBefore(tomorrow);
+		}),
 });

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { constants } from 'dashboard/utils';
 import { AddButton, SubSection } from 'dashboard/elements';
 import {
+	Added,
 	Aged,
 	AlcoholScope,
 	Clarity,
@@ -18,6 +19,7 @@ import {
 	Price,
 	Refermentation,
 	Style,
+	Updated,
 } from 'dashboard/fragments';
 import { fields } from './utils';
 
@@ -52,8 +54,8 @@ const Fieldset = ({ showSubform }) => {
 			{/* -------------------------------- */}
 			<SubSection title="dashboard.otherInfo" />
 			<Price {...commonProps} fieldName={fields.price} />
-			{/* Added */}
-			{/* Updated */}
+			<Added {...commonProps} fieldName={fields.added} />
+			<Updated {...commonProps} fieldName={fields.updated} />
 		</>
 	);
 };
