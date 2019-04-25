@@ -1,6 +1,7 @@
 import AddButton from './AddButton';
 import AddElement from './AddElement';
 import CapWireFlipSwitch from './CapWireFlipSwitch';
+import ColorPreview from './ColorPreview';
 import ConditionalLabel from './ConditionalLabel';
 import ErrorGroup from './ErrorGroup';
 import FormSection from './FormSection';
@@ -26,6 +27,7 @@ export {
 	AddButton,
 	AddElement,
 	CapWireFlipSwitch,
+	ColorPreview,
 	ConditionalLabel,
 	ErrorGroup,
 	FormSection,

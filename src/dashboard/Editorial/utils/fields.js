@@ -1,38 +1,21 @@
 export default {
-	badge: 'badge',
-	// -----------
-	name: 'name',
-	series: 'series',
-	brand: 'brand',
 	cooperation: 'cooperation',
 	contract: 'contract',
 	place: 'place',
-	tale: 'tale',
-	barcode: 'barcode',
 	// -----------
 	fermentation: 'fermentation',
 	style: 'style',
-	extract: 'extract',
-	alcohol: 'alcohol',
+	alcoholScope: 'alcoholScope',
 	filtration: 'filtration',
 	pasteurization: 'pasteurization',
 	refermentation: 'refermentation',
 	aged: 'aged',
 	dryHopped: 'dryHopped',
-	expirationDate: 'expirationDate',
 	// -----------
-	ingredients: 'ingredients',
-	ingredientsList: 'ingredientsList',
-	areIngredientsComplete: 'areIngredientsComplete',
-	smokedMalt: 'smokedMalt',
+	color: 'color',
+	clarity: 'clarity',
 	// -----------
-	bitterness: 'bitterness',
-	sweetness: 'sweetness',
-	fullness: 'fullness',
-	power: 'power',
-	hoppyness: 'hoppyness',
-	temperature: 'temperature',
-	// -----------
-	container: 'container',
 	price: 'price',
+	added: 'added',
+	updated: 'updated',
 };
