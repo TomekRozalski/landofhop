@@ -6,6 +6,7 @@ import { AddButton, SubSection } from 'dashboard/elements';
 import {
 	Aged,
 	AlcoholScope,
+	Clarity,
 	Color,
 	Contract,
 	Cooperation,
@@ -47,7 +48,7 @@ const Fieldset = ({ showSubform }) => {
 			{/* -------------------------------- */}
 			<SubSection title="dashboard.impressionsInfo" />
 			<Color {...commonProps} fieldName={fields.color} />
-			{/* Clarity */}
+			<Clarity {...commonProps} fieldName={fields.clarity} />
 			{/* -------------------------------- */}
 			<SubSection title="dashboard.otherInfo" />
 			<Price {...commonProps} fieldName={fields.price} />

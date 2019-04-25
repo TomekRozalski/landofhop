@@ -3,6 +3,7 @@ import alcoholRelatesList from './selectLists/alcohol/relates';
 import alcoholScopesList from './selectLists/alcohol/scopes';
 import alcoholUnitsList from './selectLists/alcohol/units';
 import BeverageFormWrapper from './BeverageFormWrapper';
+import clarityList from './selectLists/clarity';
 import containerColorsList from './selectLists/container/colors';
 import containerMaterialsList from './selectLists/container/material';
 import containerTypesList from './selectLists/container/types';
@@ -24,6 +25,7 @@ export {
 	alcoholScopesList,
 	alcoholUnitsList,
 	BeverageFormWrapper,
+	clarityList,
 	containerColorsList,
 	containerMaterialsList,
 	containerTypesList,

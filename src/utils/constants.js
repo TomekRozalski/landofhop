@@ -66,4 +66,12 @@ export default {
 			celcius: 'celcius',
 		},
 	},
+	clarity: {
+		clear: 'clear',
+		crystalline: 'crystalline',
+		hazy: 'hazy',
+		misty: 'misty',
+		muddy: 'muddy',
+		opalescent: 'opalescent',
+	},
 };

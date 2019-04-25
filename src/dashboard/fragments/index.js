@@ -6,6 +6,7 @@ import Barcode from './Barcode';
 import Bitterness from './Bitterness';
 import Brand from './Brand';
 import City from './City';
+import Clarity from './Clarity';
 import Code from './Code';
 import Color from './Color';
 import Consortium from './Consortium';
@@ -50,6 +51,7 @@ export {
 	Bitterness,
 	Brand,
 	City,
+	Clarity,
 	Code,
 	Color,
 	Consortium,
