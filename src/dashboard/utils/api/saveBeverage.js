@@ -1,10 +1,10 @@
-// import { assign } from 'lodash';
+import { assign } from 'lodash';
 
 import { constants } from 'dashboard/utils';
 import {
 	Label as LabelNormalizer,
-	// Producer as ProducerNormalizer,
-	// Editorial as EditorialNormalizer,
+	Producer as ProducerNormalizer,
+	Editorial as EditorialNormalizer,
 } from '../normalizers/toRequest';
 
 const saveBeverage = ({
@@ -18,19 +18,17 @@ const saveBeverage = ({
 	values,
 }) => {
 	const labelData = LabelNormalizer(savedForms[constants.forms.beverage.label]);
-	// const producerData = ProducerNormalizer(savedForms[Forms.BEVERAGE_PRODUCER]);
-	// const editorialData = EditorialNormalizer(values);
+	const producerData = ProducerNormalizer(savedForms[constants.forms.beverage.producer]);
+	const editorialData = EditorialNormalizer(values);
 
-	// const accumulator = assign(
-	// 	{},
-	// 	labelData,
-	// 	producerData,
-	// 	editorialData,
-	// );
+	const accumulator = assign(
+		{},
+		labelData,
+		producerData,
+		editorialData,
+	);
 
-	console.log('final submit, saveBeverage values', values);
-	console.log('savedForms', savedForms);
-	console.log('labelData', labelData);
+	console.log('accumulator', accumulator);
 
 	setSubmitting(true);
 

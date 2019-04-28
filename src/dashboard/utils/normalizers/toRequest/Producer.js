@@ -1,21 +1,15 @@
 import { isEmpty, isNull } from 'lodash';
 
-import { constants } from 'utils';
 import { convertStringToDate } from 'dashboard/utils';
 
 const none = '-';
 
-const Label = ({
-	badge,
-	// -----------
-	name,
+const Producer = ({
 	series,
-	brand,
 	cooperation,
 	contract,
 	place,
 	tale,
-	barcode,
 	// -----------
 	fermentation,
 	style,
@@ -40,21 +34,11 @@ const Label = ({
 	hoppyness,
 	temperature,
 	// -----------
-	container,
 	price,
-	// -----------
-	id,
 }) => {
 	const values = {
-		badge,
-		label: {
+		producer: {
 			general: {
-				name: name.map(({ lang, value }) => (
-					lang.value === none ? ({ value }) : ({
-						language: lang.value,
-						value,
-					})
-				)),
 				...(series.length && {
 					series: series.map(({ lang, value }) => (
 						lang.value === none ? ({ value }) : ({
@@ -63,7 +47,6 @@ const Label = ({
 						})
 					)),
 				}),
-				brand: brand.value,
 				...(!isNull(cooperation) && { cooperation: cooperation.map(({ value }) => value) }),
 				...(!isNull(contract) && { contract: contract.value }),
 				...(!isNull(place) && { place: place.value }),
@@ -75,7 +58,6 @@ const Label = ({
 						})
 					)),
 				}),
-				...(!isNull(barcode) && { barcode }),
 			},
 			brewing: {
 				...(!isNull(fermentation) && { fermentation }),
@@ -145,18 +127,6 @@ const Label = ({
 					},
 				}),
 			},
-			container: {
-				color: container.color.value,
-				material: container.material.value,
-				unit: container.unit.value,
-				type: container.type.value,
-				value: container.capacityValue,
-				...(
-					container.type.value === constants.container.types.bottle
-					&& container.hasCapWireFlip
-					&& { hasCapWireFlip: true }
-				),
-			},
 			...(price.length && {
 				price: price.map(({ date, currency, value }) => ({
 					date: convertStringToDate(date),
@@ -165,22 +135,29 @@ const Label = ({
 				})),
 			}),
 		},
-		...(id && { id }),
 	};
 
-	if (isEmpty(values.label.brewing)) {
-		delete values.label.brewing;
+	if (isEmpty(values.producer.general)) {
+		delete values.producer.general;
 	}
 
-	if (isEmpty(values.label.ingredients)) {
-		delete values.label.ingredients;
+	if (isEmpty(values.producer.brewing)) {
+		delete values.producer.brewing;
 	}
 
-	if (isEmpty(values.label.impressions)) {
-		delete values.label.impressions;
+	if (isEmpty(values.producer.ingredients)) {
+		delete values.producer.ingredients;
+	}
+
+	if (isEmpty(values.producer.impressions)) {
+		delete values.producer.impressions;
+	}
+
+	if (isEmpty(values.producer)) {
+		delete values.producer;
 	}
 
 	return values;
 };
 
-export default Label;
+export default Producer;
