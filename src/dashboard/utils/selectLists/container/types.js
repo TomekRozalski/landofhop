@@ -1,11 +1,13 @@
+import { constants } from 'utils';
+
 const types = () => ([
 	{
 		label: 'Butelka',
-		value: 'bottle',
+		value: constants.container.types.bottle,
 	},
 	{
 		label: 'Puszka',
-		value: 'can',
+		value: constants.container.types.can,
 	},
 ]);
 

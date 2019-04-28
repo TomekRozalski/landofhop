@@ -19,7 +19,7 @@ const alcoholScopes = ({ withEmpty }) => {
 	if (withEmpty) {
 		values.unshift({
 			label: '--',
-			value: '--',
+			value: '-',
 		});
 	}
 

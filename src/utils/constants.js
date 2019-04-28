@@ -1,17 +1,17 @@
 export default {
-	siteLanguages: {
-		pl: 'pl',
-		en: 'en',
+	agedTypes: {
+		barrel: 'barrel',
+		wood: 'wood',
 	},
-	dataLanguages: {
-		pl: 'pl',
-		en: 'en',
-		de: 'de',
-		es: 'es',
-		none: '-',
-	},
-	servers: {
-		main: 'http://localhost:3100/',
+	alcohol: {
+		relates: {
+			capacity: 'capacity',
+			abv: 'abv',
+		},
+		units: {
+			percent: 'percent',
+			degree: 'degree',
+		},
 	},
 	api_endpoints: {
 		authenticate_token: 'auth/',
@@ -28,13 +28,26 @@ export default {
 		place_save: 'places/',
 		places_list: 'places/list/',
 	},
-	server_responses: {
-		authentication_secceeded: 'Authentication succeeded',
+	clarity: {
+		clear: 'clear',
+		crystalline: 'crystalline',
+		hazy: 'hazy',
+		misty: 'misty',
+		muddy: 'muddy',
+		opalescent: 'opalescent',
 	},
-	fermentations: {
-		top: 'top',
-		bottom: 'bottom',
-		spontaneous: 'spontaneous',
+	container: {
+		types: {
+			bottle: 'bottle',
+			can: 'can',
+		},
+	},
+	dataLanguages: {
+		pl: 'pl',
+		en: 'en',
+		de: 'de',
+		es: 'es',
+		none: '-',
 	},
 	extract: {
 		relates: {
@@ -47,31 +60,24 @@ export default {
 			degree: 'degree',
 		},
 	},
-	alcohol: {
-		relates: {
-			capacity: 'capacity',
-			abv: 'abv',
-		},
-		units: {
-			percent: 'percent',
-			degree: 'degree',
-		},
+	fermentations: {
+		top: 'top',
+		bottom: 'bottom',
+		spontaneous: 'spontaneous',
 	},
-	agedTypes: {
-		barrel: 'barrel',
-		wood: 'wood',
+	server_responses: {
+		authentication_secceeded: 'Authentication succeeded',
+	},
+	servers: {
+		main: 'http://localhost:3100/',
+	},
+	siteLanguages: {
+		pl: 'pl',
+		en: 'en',
 	},
 	temperature: {
 		units: {
 			celcius: 'celcius',
 		},
-	},
-	clarity: {
-		clear: 'clear',
-		crystalline: 'crystalline',
-		hazy: 'hazy',
-		misty: 'misty',
-		muddy: 'muddy',
-		opalescent: 'opalescent',
 	},
 };
