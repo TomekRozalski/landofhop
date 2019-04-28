@@ -18,6 +18,8 @@ export default {
 	[fields.clarity]: null,
 	// -----------
 	[fields.price]: [],
+	[fields.images]: null,
+	[fields.cap]: false,
 	[fields.added]: null,
 	[fields.updated]: null,
 };
