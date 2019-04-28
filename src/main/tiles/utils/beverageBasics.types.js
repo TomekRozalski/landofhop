@@ -7,15 +7,15 @@ const beverageBasics = {
 		badge: string.isRequired,
 		name: arrayOf(
 			shape({
+				language: string,
 				value: string.isRequired,
-				language: string.isRequired,
 			}),
 		).isRequired,
 	}).isRequired,
 	id: string.isRequired,
 	name: arrayOf((
 		shape({
-			language: string.isRequired,
+			language: string,
 			value: string.isRequired,
 		})
 	)).isRequired,

@@ -1,6 +1,7 @@
 import { assign } from 'lodash';
 
-import { constants } from 'dashboard/utils';
+import { constants } from 'utils';
+import { constants as dashboardConstants } from 'dashboard/utils';
 import {
 	Label as LabelNormalizer,
 	Producer as ProducerNormalizer,
@@ -17,8 +18,12 @@ const saveBeverage = ({
 	setSubmitting,
 	values,
 }) => {
-	const labelData = LabelNormalizer(savedForms[constants.forms.beverage.label]);
-	const producerData = ProducerNormalizer(savedForms[constants.forms.beverage.producer]);
+	setSubmitting(true);
+
+	const { label, producer } = dashboardConstants.forms.beverage;
+
+	const labelData = LabelNormalizer(savedForms[label]);
+	const producerData = ProducerNormalizer(savedForms[producer]);
 	const editorialData = EditorialNormalizer(values);
 
 	const accumulator = assign(
@@ -28,34 +33,24 @@ const saveBeverage = ({
 		editorialData,
 	);
 
-	console.log('accumulator', accumulator);
-
-	setSubmitting(true);
-
-	// fetch(Server.MAIN + Endpoints.BEVERAGE_SAVE, {
-	// 	method: 'POST',
-	// 	headers: {
-	// 		'Content-Type': 'application/json',
-	// 		'Authorization': `Bearer ${token}`,
-	// 	},
-	// 	body: JSON.stringify(accumulator),
-	// })
-	// 	.then(res => res.json())
-	// 	.then(getBeveragesList)
-	// 	.then(() => setSubmitting(false))
-	// 	.then(clearBeverageDashboard)
-	// 	.then(() => {
-	// 		const scroll = document.querySelector('[data-testid="scroll"]');
-	// 		scroll && (scroll.scrollTop = 0);
-
-	// 		push('/');
-	// 	})
-	// 	.catch((err) => {
-	// 		setAppError(err);
-	// 		setSubmitting(false);
-	// 	});
-
-	setSubmitting(false);
+	fetch(constants.servers.main + constants.api_endpoints.beverage_save, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${token}`,
+		},
+		body: JSON.stringify(accumulator),
+	})
+		.then(res => res.json())
+		.then(getBeveragesList)
+		.then(() => setSubmitting(false))
+		.then(() => {
+			push('/');
+		})
+		.catch((err) => {
+			setAppError(err);
+			setSubmitting(false);
+		});
 };
 
 export default saveBeverage;
