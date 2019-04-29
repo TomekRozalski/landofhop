@@ -19,6 +19,11 @@ export const AddNewBeverage = lazy(() => {
 	return import('../dashboard/AddNewBeverage').finally(NProgress.done);
 });
 
+export const UpdateBeverage = lazy(() => {
+	NProgress.start();
+	return import('../dashboard/UpdateBeverage').finally(NProgress.done);
+});
+
 export const Contact = lazy(() => {
 	NProgress.start();
 	return import('../main/contact/Contact').finally(NProgress.done);
@@ -77,6 +82,7 @@ const Routes = () => (
 						<Route path="/details/:shortId/:brand/:badge" exact component={Details} />
 						<Route path="/contact" exact component={Contact} />
 						<PrivateRoute path="/add-new-beverage" exact component={AddNewBeverage} />
+						<PrivateRoute path="/update-beverage/:shortId/:brand/:badge" exact component={UpdateBeverage} />
 						<Route component={NotFound} />
 					</Switch>
 				</Suspense>

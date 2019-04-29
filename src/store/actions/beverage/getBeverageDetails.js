@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { constants } from 'utils';
 import actionsName from '../../actionsName';
 
-const getBeveragesList = ({
+const getBeverageDetails = ({
 	badge,
 	brand,
 	shortId,
@@ -35,10 +35,10 @@ const getBeveragesList = ({
 	)
 );
 
-getBeveragesList.propTypes = {
+getBeverageDetails.propTypes = {
 	badge: PropTypes.string.isRequired,
 	brand: PropTypes.string.isRequired,
 	shortId: PropTypes.string.isRequired,
 };
 
-export default getBeveragesList;
+export default getBeverageDetails;

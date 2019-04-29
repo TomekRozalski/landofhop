@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 import { BeverageDetailsContext } from 'config';
@@ -18,10 +18,22 @@ const Wrapper = styled.div`
 const Admin = () => {
 	const { beverage } = useContext(BeverageDetailsContext);
 
+	const {
+		badge,
+		label: {
+			general: {
+				brand: {
+					badge: brand,
+				},
+			},
+		},
+		shortId,
+	} = beverage;
+
 	return (
 		<Wrapper>
 			<p>{ moment(beverage.added).format('DD.MM.YYYY') }</p>
-			{/* <Link to={`/update-beverage/${params.shortId}/${params.brand}/${params.badge}`}>Update beverage</Link> */}
+			<Link to={`/update-beverage/${shortId}/${brand}/${badge}`}>Update beverage</Link>
 			<RemoveButton id={beverage.id} />
 		</Wrapper>
 	);
