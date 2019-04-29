@@ -27,6 +27,7 @@ const Editorial = ({
 	cap,
 	added,
 	updated,
+	id,
 }) => {
 	const values = {
 		editorial: {
@@ -69,9 +70,10 @@ const Editorial = ({
 			}),
 			...(!isNull(images) && { images }),
 			cap,
-			...(!isNull(added) && { added: convertStringToDate(added) }),
-			...(!isNull(updated) && { updated: convertStringToDate(updated) }),
 		},
+		...(!isNull(added) && { added: convertStringToDate(added) }),
+		...(!isNull(updated) && { updated: convertStringToDate(updated) }),
+		...(id && { id }),
 	};
 
 	if (isEmpty(values.editorial.general)) {

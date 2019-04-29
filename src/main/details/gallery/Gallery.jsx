@@ -32,6 +32,8 @@ const Gallery = () => {
 	const { resources } = loader;
 
 	useEffect(() => {
+		console.log('useEffect');
+
 		pixiApp = new Application({
 			width: 220,
 			height: 500,

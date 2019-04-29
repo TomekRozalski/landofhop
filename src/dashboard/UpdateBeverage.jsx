@@ -13,7 +13,7 @@ import { BeverageFormWrapper } from 'dashboard/utils';
 import Label from 'dashboard/Label';
 import Producer from 'dashboard/Producer';
 import Editorial from 'dashboard/Editorial';
-import saveBeverage from 'dashboard/utils/api/saveBeverage';
+import updateBeverage from 'dashboard/utils/api/updateBeverage';
 
 import {
 	Label as labelNormalizer,
@@ -36,6 +36,8 @@ const UpdateBeverage = ({
 	useEffect(() => {
 		if (beverage) {
 			setIsBeverageProcessing(false);
+
+			console.log('beverage', beverage);
 
 			const labelValues = labelNormalizer(beverage);
 			const producerValues = producerNormalizer(beverage);
@@ -75,7 +77,7 @@ const UpdateBeverage = ({
 					setTitle('dashboard.updateBeverage.title');
 				}
 
-				const finalSubmit = saveBeverage({
+				const finalSubmit = updateBeverage({
 					getBeveragesList,
 					push,
 					savedForms,

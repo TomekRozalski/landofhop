@@ -19,6 +19,7 @@ export default {
 		beverage_list: 'beverages/list/',
 		beverage_remove: 'beverages/',
 		beverage_save: 'beverages/',
+		beverage_update: 'beverages/',
 		country_save: 'countries/',
 		countries_list: 'countries/list/',
 		ingredient_save: 'ingredients/',
