@@ -1,4 +1,3 @@
-/* eslint no-shadow: 0 */
 import { get, isBoolean, isNumber } from 'lodash';
 
 import { constants } from 'utils';
@@ -6,10 +5,6 @@ import {
 	alcoholRelatesList,
 	alcoholScopesList,
 	alcoholUnitsList,
-	containerColorsList,
-	containerMaterialsList,
-	containerTypesList,
-	containerUnitsList,
 	convertDateToString,
 	currenciesList,
 	expirationDateUnitsList,
@@ -21,67 +16,46 @@ import LanguageNormalizer from './Language';
 
 const { none } = constants;
 
-const Label = ({
-	badge,
-	label: {
-		general: {
-			name,
-			series,
-			brand,
-			cooperation,
-			contract,
-			place,
-			tale,
-			barcode,
-		},
-		brewing,
-		ingredients,
-		impressions,
-		container,
-		price,
-	},
-}) => {
+const Producer = (beverage) => {
+	// general
+	const series = get(beverage, 'producer.general.series');
+	const cooperation = get(beverage, 'producer.general.cooperation');
+	const contract = get(beverage, 'producer.general.contract');
+	const place = get(beverage, 'producer.general.place');
+	const tale = get(beverage, 'producer.general.tale');
 	// brewing
-	const fermentation = get(brewing, 'fermentation');
-	const style = get(brewing, 'style');
-	const extract = get(brewing, 'extract');
-	const alcohol = get(brewing, 'alcohol');
-	const filtration = get(brewing, 'filtration');
-	const pasteurization = get(brewing, 'pasteurization');
-	const refermentation = get(brewing, 'refermentation');
-	const aged = get(brewing, 'aged');
-	const dryHopped = get(brewing, 'dryHopped');
-	const expirationDate = get(brewing, 'expirationDate');
+	const fermentation = get(beverage, 'producer.brewing.fermentation');
+	const style = get(beverage, 'producer.brewing.style');
+	const extract = get(beverage, 'producer.brewing.extract');
+	const alcohol = get(beverage, 'producer.brewing.alcohol');
+	const filtration = get(beverage, 'producer.brewing.filtration');
+	const pasteurization = get(beverage, 'producer.brewing.pasteurization');
+	const refermentation = get(beverage, 'producer.brewing.refermentation');
+	const aged = get(beverage, 'producer.brewing.aged');
+	const dryHopped = get(beverage, 'producer.brewing.dryHopped');
+	const expirationDate = get(beverage, 'producer.brewing.expirationDate');
 	// ingredients
-	const description = get(ingredients, 'description');
-	const list = get(ingredients, 'list');
-	const areIngredientsComplete = get(ingredients, 'complete');
-	const smokedMalt = get(ingredients, 'smokedMalt');
+	const description = get(beverage, 'producer.ingredients.description');
+	const list = get(beverage, 'producer.ingredients.list');
+	const areIngredientsComplete = get(beverage, 'producer.ingredients.complete');
+	const smokedMalt = get(beverage, 'producer.ingredients.smokedMalt');
 	// impressions
-	const bitterness = get(impressions, 'bitterness');
-	const sweetness = get(impressions, 'sweetness');
-	const fullness = get(impressions, 'fullness');
-	const power = get(impressions, 'power');
-	const hoppyness = get(impressions, 'hoppyness');
-	const temperature = get(impressions, 'temperature');
+	const bitterness = get(beverage, 'producer.impressions.bitterness');
+	const sweetness = get(beverage, 'producer.impressions.sweetness');
+	const fullness = get(beverage, 'producer.impressions.fullness');
+	const power = get(beverage, 'producer.impressions.power');
+	const hoppyness = get(beverage, 'producer.impressions.hoppyness');
+	const temperature = get(beverage, 'producer.impressions.temperature');
+	// other
+	const price = get(beverage, 'producer.price');
 
 	return {
-		badge,
-		// ----------------------------------
-		name: name.map(({ language, value }) => ({
-			lang: LanguageNormalizer(language),
-			value,
-		})),
 		...(series && {
 			series: series.map(({ language, value }) => ({
 				lang: LanguageNormalizer(language),
 				value,
 			})),
 		}),
-		brand: {
-			label: brand.name[0].value,
-			value: brand.id,
-		},
 		...(cooperation && {
 			cooperation: cooperation.map(({ id, name }) => ({
 				label: name[0].value,
@@ -106,7 +80,6 @@ const Label = ({
 				value,
 			})),
 		}),
-		...(barcode && { barcode }),
 		// ----------------------------------
 		...(fermentation && { fermentation }),
 		...(style && {
@@ -171,14 +144,6 @@ const Label = ({
 			},
 		}),
 		// ----------------------------------
-		container: {
-			capacityValue: container.value,
-			color: containerColorsList().find(item => item.value === container.color),
-			material: containerMaterialsList().find(item => item.value === container.material),
-			unit: containerUnitsList().find(item => item.value === container.unit),
-			type: containerTypesList().find(item => item.value === container.type),
-			...(isBoolean(container.hasCapWireFlip) && { hasCapWireFlip: container.hasCapWireFlip }),
-		},
 		...(price && {
 			price: price.map(({ currency, date, value }) => ({
 				currency: currenciesList().find(item => item.value === currency),
@@ -189,4 +154,4 @@ const Label = ({
 	};
 };
 
-export default Label;
+export default Producer;

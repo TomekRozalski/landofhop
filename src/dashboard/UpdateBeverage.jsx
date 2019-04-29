@@ -17,8 +17,8 @@ import saveBeverage from 'dashboard/utils/api/saveBeverage';
 
 import {
 	Label as labelNormalizer,
-	// Producer as producerNormalizer,
-	// Editorial as editorialNormalizer,
+	Producer as producerNormalizer,
+	Editorial as editorialNormalizer,
 } from 'dashboard/utils/normalizers/fromResponse';
 
 const UpdateBeverage = ({
@@ -38,11 +38,13 @@ const UpdateBeverage = ({
 			setIsBeverageProcessing(false);
 
 			const labelValues = labelNormalizer(beverage);
+			const producerValues = producerNormalizer(beverage);
+			const editorialValues = editorialNormalizer(beverage);
 
 			setUpdate({
 				label: labelValues,
-				// producer: producerValues,
-				// editorial: editorialValues,
+				producer: producerValues,
+				editorial: editorialValues,
 			});
 		} else {
 			getBeverageDetails(params);

@@ -66,6 +66,7 @@ export default {
 		bottom: 'bottom',
 		spontaneous: 'spontaneous',
 	},
+	none: '-',
 	server_responses: {
 		authentication_secceeded: 'Authentication succeeded',
 	},

@@ -3,7 +3,7 @@ import { isEmpty, isNull } from 'lodash';
 import { constants } from 'utils';
 import { convertStringToDate } from 'dashboard/utils';
 
-const none = '-';
+const { none } = constants;
 
 const Label = ({
 	badge,
