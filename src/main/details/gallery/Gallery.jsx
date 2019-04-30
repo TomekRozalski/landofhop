@@ -16,8 +16,19 @@ const Wrapper = styled.div`
 const Gallery = () => {
 	const { beverage } = useContext(BeverageDetailsContext);
 
-	const { badge, shortId } = beverage;
-	const brand = get(beverage, 'label.general.brand.badge');
+	const {
+		badge,
+		label: {
+			general: {
+				brand: {
+					badge: brand,
+				},
+			},
+		},
+		shortId,
+	} = beverage;
+
+	const imagesAmount = get(beverage, 'editorial.images', 0);
 
 	let pixiApp;
 	const myCanvas = useRef();
@@ -32,168 +43,176 @@ const Gallery = () => {
 	const { resources } = loader;
 
 	useEffect(() => {
-		console.log('useEffect');
+		console.log('imagesAmount', imagesAmount);
+		if (imagesAmount) {
+			console.log('useEffect');
 
-		pixiApp = new Application({
-			width: 220,
-			height: 500,
-			transparent: true,
-			antialias: true,
-		});
+			pixiApp = new Application({
+				width: 220,
+				height: 500,
+				transparent: true,
+				antialias: true,
+			});
 
-		myCanvas.current.appendChild(pixiApp.view);
+			myCanvas.current.appendChild(pixiApp.view);
 
-		const style = new Pixi.TextStyle({
-			font: `300 1.5rem / 1 ${fonts.primary}`,
-		});
+			const style = new Pixi.TextStyle({
+				font: `300 1.5rem / 1 ${fonts.primary}`,
+			});
 
-		const message = new Text('', style);
+			const message = new Text('', style);
 
-		const isLoading = () => {
-			const spinner = new Sprite(resources['/img/land-of-hop-logotype.svg'].texture);
-			spinner.rotation = 0 * Math.PI / 180;
+			const isLoading = () => {
+				const spinner = new Sprite(resources['/img/land-of-hop-logotype.svg'].texture);
+				spinner.rotation = 0 * Math.PI / 180;
 
-			spinner.scale.set(0.5, 0.5);
-			spinner.position.set(110, 230);
-			spinner.anchor.set(0.5, 0.5);
+				spinner.scale.set(0.5, 0.5);
+				spinner.position.set(110, 230);
+				spinner.anchor.set(0.5, 0.5);
 
-			const animate = () => {
-				spinner.rotation += 0.05;
+				const animate = () => {
+					spinner.rotation += 0.05;
+				};
+
+				message.position.set(110, 300);
+				message.anchor.set(0.5);
+
+				pixiApp.stage.addChild(message);
+
+				pixiApp.ticker.add(animate);
+				pixiApp.stage.addChild(spinner);
 			};
 
-			message.position.set(110, 300);
-			message.anchor.set(0.5);
+			const setup = () => {
+				const containers = [];
 
-			pixiApp.stage.addChild(message);
+				for (let i = 1; i <= imagesAmount; i += 1) {
+					const order = i.toString().padStart(2, '0');
+					const container = new Sprite(resources[`/img/${brand}/${shortId}/${badge}/container/${order}.jpg`].texture);
+					containers.push(container);
+					// container.alpha = 0;
 
-			pixiApp.ticker.add(animate);
-			pixiApp.stage.addChild(spinner);
-		};
+					container.scale.set(0.5);
+					container.visible = false;
 
-		const setup = () => {
-			const containers = [];
+					pixiApp.stage.addChild(container);
+					// container.interactive = true;
 
-			for (let i = 1; i <= 20; i += 1) {
-				const order = i.toString().padStart(2, '0');
-				const container = new Sprite(resources[`/img/browar-kormoran/BpgUx9/1-na-100/container/${order}.jpg`].texture);
-				containers.push(container);
-				// container.alpha = 0;
+					// container.on('pointerdown', () => {
+					// 	console.log('yes');
+					// });
 
-				container.scale.set(0.5);
-				container.visible = false;
+					// const onDragStart = (event) => {
+					// 	container.data = event.data;
+					// 	container.dragging = true;
+					// };
 
-				pixiApp.stage.addChild(container);
-				// container.interactive = true;
+					// const onDragEnd = () => {
+					// 	delete container.data;
+					// 	container.dragging = false;
+					// };
 
-				// container.on('pointerdown', () => {
-				// 	console.log('yes');
-				// });
+					// const onDragMove = () => {
+					// 	if (container.dragging === true) {
+					// 		const newPosition = container.data.getLocalPosition(container.parent);
+					// 		container.x = newPosition.x;
+					// 		container.y = newPosition.y;
+					// 	}
+					// };
 
-				// const onDragStart = (event) => {
-				// 	container.data = event.data;
-				// 	container.dragging = true;
-				// };
+					// container
+					// 	.on('pointerdown', onDragStart)
+					// 	.on('pointerup', onDragEnd)
+					// 	.on('pointerupoutside', onDragEnd)
+					// 	.on('pointermove', onDragMove);
 
-				// const onDragEnd = () => {
-				// 	delete container.data;
-				// 	container.dragging = false;
-				// };
+					// pixiApp.ticker.add((delta) => {
+					// 	if (container.dragging === true) {
+					// 		container.rotation += 0.1 * delta;
+					// 	}
+					// });
 
-				// const onDragMove = () => {
-				// 	if (container.dragging === true) {
-				// 		const newPosition = container.data.getLocalPosition(container.parent);
-				// 		container.x = newPosition.x;
-				// 		container.y = newPosition.y;
-				// 	}
-				// };
+					// setTimeout(() => {
+					// const animate = () => {
+					// 	if (container.alpha < 1) {
+					// 		container.alpha += 0.2;
+					// 	}
+					// };
 
-				// container
-				// 	.on('pointerdown', onDragStart)
-				// 	.on('pointerup', onDragEnd)
-				// 	.on('pointerupoutside', onDragEnd)
-				// 	.on('pointermove', onDragMove);
-
-				// pixiApp.ticker.add((delta) => {
-				// 	if (container.dragging === true) {
-				// 		container.rotation += 0.1 * delta;
-				// 	}
-				// });
-
-				// setTimeout(() => {
-				// const animate = () => {
-				// 	if (container.alpha < 1) {
-				// 		container.alpha += 0.2;
-				// 	}
-				// };
-
-				// pixiApp.ticker.add(animate);
-				// pixiApp.stage.addChild(container);
-				// }, 50 * i);
-			}
-
-			const rectangle = new Pixi.Graphics();
-			rectangle.beginFill(0, 0);
-			rectangle.drawRect(0, 0, 220, 500);
-			rectangle.endFill();
-
-			rectangle.interactive = true;
-
-			let allowMove = false;
-			let from = 0;
-			let current = 0;
-
-			const onDragStart = (event) => {
-				allowMove = true;
-				from = event.data.global.x;
-			};
-
-			const onDragEnd = () => {
-				allowMove = false;
-			};
-
-			const onDragMove = (event) => {
-				if (event.target && allowMove) {
-					current = event.data.global.x;
-
-					let value = (current - from).toFixed() % 20;
-					if (value <= 0) {
-						value = 20 + value;
-					}
-
-					containers.forEach((item) => {
-						item.visible = false;
-					});
-
-					containers[value - 1].visible = true;
+					// pixiApp.ticker.add(animate);
+					// pixiApp.stage.addChild(container);
+					// }, 50 * i);
 				}
+
+				const rectangle = new Pixi.Graphics();
+				rectangle.beginFill(0, 0);
+				rectangle.drawRect(0, 0, 220, 500);
+				rectangle.endFill();
+
+				rectangle.interactive = true;
+
+				let allowMove = false;
+				let from = 0;
+				let current = 0;
+
+				const onDragStart = (event) => {
+					allowMove = true;
+					from = event.data.global.x;
+				};
+
+				const onDragEnd = () => {
+					allowMove = false;
+				};
+
+				const onDragMove = (event) => {
+					if (event.target && allowMove) {
+						current = event.data.global.x;
+
+						let value = (current - from).toFixed() % imagesAmount;
+						if (value <= 0) {
+							value = imagesAmount + value;
+						}
+
+						containers.forEach((item) => {
+							item.visible = false;
+						});
+
+						containers[value - 1].visible = true;
+					}
+				};
+
+				rectangle
+					.on('pointerdown', onDragStart)
+					.on('pointerup', onDragEnd)
+					.on('pointerupoutside', onDragEnd)
+					.on('pointermove', onDragMove);
+
+				containers[5].visible = true;
+
+				pixiApp.stage.addChild(rectangle);
 			};
 
-			rectangle
-				.on('pointerdown', onDragStart)
-				.on('pointerup', onDragEnd)
-				.on('pointerupoutside', onDragEnd)
-				.on('pointermove', onDragMove);
+			const loadProgressHandler = (load) => {
+				message.text = `${load.progress.toFixed(2)}%`;
+			};
 
-			containers[5].visible = true;
+			const images = new Array(imagesAmount).fill('').map((item, i) => {
+				const order = (i + 1).toString().padStart(2, '0');
 
-			pixiApp.stage.addChild(rectangle);
-		};
+				return `/img/${brand}/${shortId}/${badge}/container/${order}.jpg`;
+			});
 
-		const loadProgressHandler = (load) => {
-			message.text = `${load.progress.toFixed(2)}%`;
-		};
+			loader
+				.add('/img/land-of-hop-logotype.svg', isLoading)
+				.add(images)
+				.on('progress', loadProgressHandler)
+				.load(setup);
 
-		const images = new Array(20).fill('').map((item, i) => {
-			const order = (i + 1).toString().padStart(2, '0');
-
-			return `/img/browar-kormoran/BpgUx9/1-na-100/container/${order}.jpg`;
-		});
-
-		loader
-			.add('/img/land-of-hop-logotype.svg', isLoading)
-			.add(images)
-			.on('progress', loadProgressHandler)
-			.load(setup);
+			return () => {
+				console.log('unmount');
+				loader.reset();
+			};
+		}
 	}, []);
 
 	console.log('->', brand, shortId, badge);
