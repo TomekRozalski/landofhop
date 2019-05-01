@@ -187,7 +187,7 @@ const Gallery = () => {
 					.on('pointerupoutside', onDragEnd)
 					.on('pointermove', onDragMove);
 
-				containers[5].visible = true;
+				containers[0].visible = true;
 
 				pixiApp.stage.addChild(rectangle);
 			};
