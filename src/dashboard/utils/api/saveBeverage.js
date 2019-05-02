@@ -33,7 +33,7 @@ const saveBeverage = ({
 		editorialData,
 	);
 
-	fetch(constants.servers.main + constants.api_endpoints.beverage_save, {
+	return fetch(constants.servers.main + constants.api_endpoints.beverage_save, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',

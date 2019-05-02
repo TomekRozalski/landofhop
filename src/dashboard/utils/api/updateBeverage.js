@@ -33,7 +33,7 @@ const updateBeverage = ({
 		editorialData,
 	);
 
-	fetch(constants.servers.main + constants.api_endpoints.beverage_update, {
+	return fetch(constants.servers.main + constants.api_endpoints.beverage_update, {
 		method: 'PUT',
 		headers: {
 			'Content-Type': 'application/json',

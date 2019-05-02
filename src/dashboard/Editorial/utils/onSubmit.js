@@ -12,14 +12,14 @@ const onSubmit = ({
 	});
 
 	if (values.submitDirection === 'forward') {
-		finalSubmit({ setSubmitting, values });
+		finalSubmit({ setSubmitting, values })
+			.then(scrollContentTop);
 	}
 
 	if (values.submitDirection === 'backward') {
 		moveBack();
+		scrollContentTop();
 	}
-
-	scrollContentTop();
 };
 
 export default onSubmit;
