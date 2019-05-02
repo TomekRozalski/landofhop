@@ -7,7 +7,7 @@ import { BeverageDetailsContext, LanguageContext } from 'config';
 // import { getNameByLanguage } from 'utils/helpers';
 import { fonts } from 'utils/theme';
 
-const Wrapper = styled.h1`
+const Wrapper = styled.p`
 	font: 300 1.5rem / 2.2rem ${fonts.primary};
 `;
 
@@ -23,12 +23,13 @@ const Contract = () => {
 
 	// const formattedName = getNameByLanguage({ values, language });
 
+	return null;
 	return (
 		<Wrapper>
 			<FormattedMessage
 				id="details.contractor"
 				values={{
-					brand: 'Browar Miś',
+					brand: 'test',
 				}}
 			/>
 		</Wrapper>

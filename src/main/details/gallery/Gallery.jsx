@@ -29,7 +29,7 @@ const Gallery = () => {
 		shortId,
 	} = beverage;
 
-	const imagesPath = `/img/${brand}/${shortId}/${badge}/container/${pixelRatio}`;
+	const imagesPath = `/img/${brand}/${badge}/${shortId}/container/${pixelRatio}`;
 
 	const imagesAmount = get(beverage, 'editorial.images', 0);
 
@@ -160,11 +160,11 @@ const Gallery = () => {
 				.add(images)
 				.on('progress', loadProgressHandler)
 				.load(setup);
-
-			return () => {
-				loader.reset();
-			};
 		}
+
+		return () => {
+			loader.reset();
+		};
 	}, []);
 
 	return <Wrapper ref={myCanvas} />;

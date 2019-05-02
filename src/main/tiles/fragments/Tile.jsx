@@ -58,7 +58,7 @@ const Tile = ({
 	const { pixelRatio } = useContext(DeviceContext);
 	const { language } = useContext(LanguageContext);
 
-	const coversPath = `/img/${brandBadge}/${shortId}/${badge}/covers`;
+	const coversPath = `/img/${brandBadge}/${badge}/${shortId}/covers`;
 
 	const [blur, setBlur] = useState(true);
 	const [image, setImage] = useState(null);
