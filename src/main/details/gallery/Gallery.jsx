@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { get } from 'lodash';
 import * as Pixi from 'pixi.js';
 
-import { BeverageDetailsContext } from 'config';
+import { BeverageDetailsContext, DeviceContext } from 'config';
 import { fonts } from 'utils/theme';
 
 const Wrapper = styled.div`
@@ -14,6 +14,7 @@ const Wrapper = styled.div`
 `;
 
 const Gallery = () => {
+	const { pixelRatio } = useContext(DeviceContext);
 	const { beverage } = useContext(BeverageDetailsContext);
 
 	const {
@@ -27,6 +28,8 @@ const Gallery = () => {
 		},
 		shortId,
 	} = beverage;
+
+	const imagesPath = `/img/${brand}/${shortId}/${badge}/container/${pixelRatio}`;
 
 	const imagesAmount = get(beverage, 'editorial.images', 0);
 
@@ -43,10 +46,7 @@ const Gallery = () => {
 	const { resources } = loader;
 
 	useEffect(() => {
-		console.log('imagesAmount', imagesAmount);
 		if (imagesAmount) {
-			console.log('useEffect');
-
 			pixiApp = new Application({
 				width: 220,
 				height: 500,
@@ -88,60 +88,13 @@ const Gallery = () => {
 
 				for (let i = 1; i <= imagesAmount; i += 1) {
 					const order = i.toString().padStart(2, '0');
-					const container = new Sprite(resources[`/img/${brand}/${shortId}/${badge}/container/${order}.jpg`].texture);
+					const container = new Sprite(resources[`${imagesPath}/${order}.jpg`].texture);
 					containers.push(container);
-					// container.alpha = 0;
 
 					container.scale.set(0.5);
 					container.visible = false;
 
 					pixiApp.stage.addChild(container);
-					// container.interactive = true;
-
-					// container.on('pointerdown', () => {
-					// 	console.log('yes');
-					// });
-
-					// const onDragStart = (event) => {
-					// 	container.data = event.data;
-					// 	container.dragging = true;
-					// };
-
-					// const onDragEnd = () => {
-					// 	delete container.data;
-					// 	container.dragging = false;
-					// };
-
-					// const onDragMove = () => {
-					// 	if (container.dragging === true) {
-					// 		const newPosition = container.data.getLocalPosition(container.parent);
-					// 		container.x = newPosition.x;
-					// 		container.y = newPosition.y;
-					// 	}
-					// };
-
-					// container
-					// 	.on('pointerdown', onDragStart)
-					// 	.on('pointerup', onDragEnd)
-					// 	.on('pointerupoutside', onDragEnd)
-					// 	.on('pointermove', onDragMove);
-
-					// pixiApp.ticker.add((delta) => {
-					// 	if (container.dragging === true) {
-					// 		container.rotation += 0.1 * delta;
-					// 	}
-					// });
-
-					// setTimeout(() => {
-					// const animate = () => {
-					// 	if (container.alpha < 1) {
-					// 		container.alpha += 0.2;
-					// 	}
-					// };
-
-					// pixiApp.ticker.add(animate);
-					// pixiApp.stage.addChild(container);
-					// }, 50 * i);
 				}
 
 				const rectangle = new Pixi.Graphics();
@@ -199,7 +152,7 @@ const Gallery = () => {
 			const images = new Array(imagesAmount).fill('').map((item, i) => {
 				const order = (i + 1).toString().padStart(2, '0');
 
-				return `/img/${brand}/${shortId}/${badge}/container/${order}.jpg`;
+				return `${imagesPath}/${order}.jpg`;
 			});
 
 			loader
@@ -209,13 +162,10 @@ const Gallery = () => {
 				.load(setup);
 
 			return () => {
-				console.log('unmount');
 				loader.reset();
 			};
 		}
 	}, []);
-
-	console.log('->', brand, shortId, badge);
 
 	return <Wrapper ref={myCanvas} />;
 };

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { LanguageContext } from 'config';
+import { DeviceContext, LanguageContext } from 'config';
 import { getNameByLanguage } from 'utils/helpers';
 import { beverageBasics } from '../utils';
 import { NoImage } from './index';
@@ -55,7 +55,10 @@ const Tile = ({
 	name,
 	shortId,
 }) => {
+	const { pixelRatio } = useContext(DeviceContext);
 	const { language } = useContext(LanguageContext);
+
+	const coversPath = `/img/${brandBadge}/${shortId}/${badge}/covers`;
 
 	const [blur, setBlur] = useState(true);
 	const [image, setImage] = useState(null);
@@ -71,8 +74,7 @@ const Tile = ({
 	};
 
 	const loadLarge = () => {
-		const imageType = window.devicePixelRatio > 1 ? 'retina' : 'regular';
-		const imagePath = `/img/${brandBadge}/${shortId}/${badge}/covers/${imageType}.jpg`;
+		const imagePath = `${coversPath}/${pixelRatio}.jpg`;
 		largeImage.src = imagePath;
 
 		largeImage.addEventListener('load', largeImageLoaded);
@@ -96,7 +98,7 @@ const Tile = ({
 	};
 
 	const loadSmall = () => {
-		const imagePath = `/img/${brandBadge}/${shortId}/${badge}/covers/glance.jpg`;
+		const imagePath = `${coversPath}/glance.jpg`;
 		smallImage.src = imagePath;
 
 		smallImage.addEventListener('load', smallImageLoaded);

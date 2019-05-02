@@ -6,6 +6,7 @@ import {
 	AppError,
 	Authentication,
 	BeverageDetails,
+	Device,
 	Dictionary,
 	Language,
 	Navigation,
@@ -14,19 +15,21 @@ import {
 
 const GlobalStateProvider = () => (
 	<Provider store={store}>
-		<Language>
-			<AppError>
-				<Navigation>
-					<Authentication>
-						<Dictionary>
-							<BeverageDetails>
-								<Routes />
-							</BeverageDetails>
-						</Dictionary>
-					</Authentication>
-				</Navigation>
-			</AppError>
-		</Language>
+		<Device>
+			<Language>
+				<AppError>
+					<Navigation>
+						<Authentication>
+							<Dictionary>
+								<BeverageDetails>
+									<Routes />
+								</BeverageDetails>
+							</Dictionary>
+						</Authentication>
+					</Navigation>
+				</AppError>
+			</Language>
+		</Device>
 	</Provider>
 );
 
