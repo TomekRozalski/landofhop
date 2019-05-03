@@ -88,8 +88,10 @@
 	"dashboard.updated": "Updated",
 	"dashboard.website": "Website",
 
+	"details.city": "city",
 	"details.contractor": "brewed by { brand } for:",
-	"details.country": "Country",
+	"details.country": "country",
+	"details.fermentation": "fermentation",
 	"details.owner": "(belonging to { brand })",
 	"details.removeBeverage.areYouSure": "Are you sure?",
 	"details.removeBeverage.remove": "Remove from the database",

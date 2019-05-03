@@ -88,8 +88,10 @@
 	"dashboard.updated": "Ostatnio poprawiono",
 	"dashboard.website": "Strona internetowa",
 
+	"details.city": "miejscowość",
 	"details.contractor": "uwarzono przez { brand } dla:",
-	"details.country": "Kraj",
+	"details.country": "kraj",
+	"details.fermentation": "fermentacja",
 	"details.owner": "(należący do { brand })",
 	"details.removeBeverage.areYouSure": "Na pewno?",
 	"details.removeBeverage.remove": "Usuń z bazy",

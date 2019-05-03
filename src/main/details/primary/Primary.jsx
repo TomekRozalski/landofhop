@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
+	City,
 	Country,
+	Fermentation,
 } from './fragments';
 
 const DefinitionList = styled.dl`
@@ -12,8 +14,8 @@ const DefinitionList = styled.dl`
 const Header = () => (
 	<DefinitionList>
 		<Country />
-		{/* <City /> */}
-		{/* <Fermentation /> */}
+		<City />
+		<Fermentation />
 		{/* <Style /> */}
 		{/* <Extract /> */}
 		{/* <Alcohol /> */}
