@@ -9,7 +9,6 @@ import {
 
 const Wrapper = styled.div`
 	grid-column: 3 / 5;
-	margin: 3rem 0;
 `;
 
 const Header = () => (

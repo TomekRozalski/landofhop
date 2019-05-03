@@ -11,7 +11,6 @@ import { RemoveButton } from './fragments';
 
 const Wrapper = styled.div`
 	grid-column: 3 / 5;
-	margin: 3rem 0;
 	/* font: 500 3rem / 4rem ${fonts.primary}; */
 	/* text-align: center; */
 `;

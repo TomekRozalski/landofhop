@@ -89,6 +89,7 @@
 	"dashboard.website": "Strona internetowa",
 
 	"details.contractor": "uwarzono przez { brand } dla:",
+	"details.country": "Kraj",
 	"details.owner": "(należący do { brand })",
 	"details.removeBeverage.areYouSure": "Na pewno?",
 	"details.removeBeverage.remove": "Usuń z bazy",

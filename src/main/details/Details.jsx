@@ -18,6 +18,8 @@ import { beverageDetails } from './utils';
 
 const Wrapper = styled.div`
 	${grid}
+	grid-template-rows: auto 1fr auto;
+	margin: 3rem auto;
 `;
 
 const Details = ({
