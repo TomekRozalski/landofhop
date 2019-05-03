@@ -9,6 +9,7 @@ import {
 } from '../normalizers/toRequest';
 
 const updateBeverage = ({
+	reFetchDetails,
 	getBeveragesList,
 	push,
 	savedForms,
@@ -43,6 +44,7 @@ const updateBeverage = ({
 	})
 		.then(res => res.json())
 		.then(getBeveragesList)
+		.then(reFetchDetails)
 		.then(() => setSubmitting(false))
 		.then(() => {
 			push('/');

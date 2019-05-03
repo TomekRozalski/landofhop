@@ -37,8 +37,6 @@ const UpdateBeverage = ({
 		if (beverage) {
 			setIsBeverageProcessing(false);
 
-			console.log('beverage', beverage);
-
 			const labelValues = labelNormalizer(beverage);
 			const producerValues = producerNormalizer(beverage);
 			const editorialValues = editorialNormalizer(beverage);
@@ -52,6 +50,8 @@ const UpdateBeverage = ({
 			getBeverageDetails(params);
 		}
 	}, [beverage]);
+
+	const reFetchDetails = () => getBeverageDetails(params);
 
 	if (isLoading || isBeverageProcessing) {
 		return <Spinner center />;
@@ -78,6 +78,7 @@ const UpdateBeverage = ({
 				}
 
 				const finalSubmit = updateBeverage({
+					reFetchDetails,
 					getBeveragesList,
 					push,
 					savedForms,

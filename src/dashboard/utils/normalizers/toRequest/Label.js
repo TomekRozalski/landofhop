@@ -1,4 +1,9 @@
-import { isEmpty, isNull } from 'lodash';
+import {
+	isBoolean,
+	isEmpty,
+	isNull,
+	isNumber,
+} from 'lodash';
 
 import { constants } from 'utils';
 import { convertStringToDate } from 'dashboard/utils';
@@ -102,15 +107,15 @@ const Label = ({
 						value: alcohol.value,
 					},
 				}),
-				...(!isNull(filtration) && { filtration }),
-				...(!isNull(pasteurization) && { pasteurization }),
-				...(!isNull(refermentation) && { refermentation }),
+				...(isBoolean(filtration) && { filtration }),
+				...(isBoolean(pasteurization) && { pasteurization }),
+				...(isBoolean(refermentation) && { refermentation }),
 				...(!isNull(aged) && {
 					aged: {
 						type: aged,
 					},
 				}),
-				...(!isNull(dryHopped) && { dryHopped }),
+				...(isBoolean(dryHopped) && { dryHopped }),
 				...(!isNull(expirationDate) && {
 					expirationDate: {
 						value: expirationDate.value,
@@ -128,15 +133,15 @@ const Label = ({
 					)),
 				}),
 				...(!isNull(ingredientsList) && { list: ingredientsList.map(({ value }) => value) }),
-				...(!isNull(areIngredientsComplete) && { complete: areIngredientsComplete }),
-				...(!isNull(smokedMalt) && { smokedMalt }),
+				...(isBoolean(areIngredientsComplete) && { complete: areIngredientsComplete }),
+				...(isBoolean(smokedMalt) && { smokedMalt }),
 			},
 			impressions: {
-				...(!isNull(bitterness) && { bitterness }),
-				...(!isNull(sweetness) && { sweetness }),
-				...(!isNull(fullness) && { fullness }),
-				...(!isNull(power) && { power }),
-				...(!isNull(hoppyness) && { hoppyness }),
+				...(isNumber(bitterness) && { bitterness }),
+				...(isNumber(sweetness) && { sweetness }),
+				...(isNumber(fullness) && { fullness }),
+				...(isNumber(power) && { power }),
+				...(isNumber(hoppyness) && { hoppyness }),
 				...(!isNull(temperature) && {
 					temperature: {
 						from: temperature.from,

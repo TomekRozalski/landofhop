@@ -8,6 +8,7 @@ import { fonts } from 'utils/theme';
 
 const Wrapper = styled.div`
 	grid-column: 1 / 3;
+	grid-row: 1 / 4;
 	margin: 3rem 0;
 	font: 500 3rem / 4rem ${fonts.primary};
 	text-align: center;

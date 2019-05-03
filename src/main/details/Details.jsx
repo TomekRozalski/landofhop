@@ -8,7 +8,12 @@ import { BeverageDetailsContext } from 'config';
 import { getBeverageDetails as getBeverageDetailsAction } from 'store/actions';
 import { grid } from 'utils';
 import { Spinner } from 'elements';
-import { Admin, Gallery, Heading } from './index';
+import {
+	Admin,
+	Gallery,
+	Heading,
+	Primary,
+} from './index';
 import { beverageDetails } from './utils';
 
 const Wrapper = styled.div`
@@ -45,12 +50,14 @@ const Details = ({
 			<Gallery />
 			<Heading />
 
+			<Primary />
+
 			{/*
 
 				<Navigation />
-				<Obverse />
+				<Primary />
 				<Tale />
-				<Reverse />
+				<Secondary />
 				<Other />
 
 			*/}
