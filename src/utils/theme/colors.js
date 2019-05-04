@@ -12,6 +12,9 @@ export default {
 		600: '#f5f5f5',
 		700: '#fff',
 	},
+	highlight: {
+		light: '#f0f0e4',
+	},
 	success: {
 		strong: '#4cb231',
 		light: '#beddb5',

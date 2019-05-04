@@ -3,6 +3,7 @@ import ContentWrapper from './ContentWrapper';
 import { DL, DT, DD } from './DefinitionList';
 import ErrorMessage from './ErrorMessage';
 import FieldStatusIndicator from './FieldStatusIndicator';
+import Highlight from './Highlight';
 import Input from './Input';
 import Label from './Label';
 import Main from './Main';
@@ -17,6 +18,7 @@ export {
 	DL, DT, DD,
 	ErrorMessage,
 	FieldStatusIndicator,
+	Highlight,
 	Input,
 	Label,
 	Main,

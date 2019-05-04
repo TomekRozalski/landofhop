@@ -44,6 +44,17 @@ export default {
 			can: 'can',
 		},
 	},
+	details: {
+		separators: {
+			item: ', ',
+			section: ' / ',
+		},
+		type: {
+			label: 'label',
+			producer: 'producer',
+			editorial: 'editorial',
+		},
+	},
 	dataLanguages: {
 		pl: 'pl',
 		en: 'en',

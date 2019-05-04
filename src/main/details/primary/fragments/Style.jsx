@@ -9,19 +9,20 @@ const Style = () => {
 	const { beverage } = useContext(BeverageDetailsContext);
 	const { language } = useContext(LanguageContext);
 
-	const fermentations = get(beverage, 'label.brewing.style', []);
+	const styles = get(beverage, 'label.brewing.style', []);
 
-	return fermentations.length ? (
+	return styles.length ? (
 		<>
 			<DT><FormattedMessage id="details.style" /></DT>
 			<DD>
 				{
-					fermentations
+					styles
 						.map(({ language: itemLang, value }) => (
 							itemLang === language
-								? value
-								: <span lang={itemLang}>{ value }</span>
+								? <span key={value}>value</span>
+								: <span key={value} lang={itemLang}>{ value }</span>
 						))
+						.reduce((prev, curr) => [prev, ', ', curr])
 				}
 			</DD>
 		</>
