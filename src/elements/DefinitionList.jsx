@@ -31,6 +31,5 @@ export const DD = styled.dd`
     &:not(:last-of-type)::after {
         content: ', ';
         color: ${colors.gray[200]};
-        opacity: .5;
     }
 `;

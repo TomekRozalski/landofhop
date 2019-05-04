@@ -5,6 +5,7 @@ import {
 	City,
 	Country,
 	Fermentation,
+	Style,
 } from './fragments';
 
 const DefinitionList = styled.dl`
@@ -16,7 +17,7 @@ const Header = () => (
 		<Country />
 		<City />
 		<Fermentation />
-		{/* <Style /> */}
+		<Style />
 		{/* <Extract /> */}
 		{/* <Alcohol /> */}
 		{/* <Filtered /> */}

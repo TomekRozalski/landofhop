@@ -13,7 +13,17 @@ const Fermentation = () => {
 	return fermentations.length ? (
 		<>
 			<DT><FormattedMessage id="details.fermentation" /></DT>
-			<DD>{ fermentations.map(item => <FormattedMessage id={`fermentationType.${item}`} />) }</DD>
+			<DD>
+				{
+					fermentations
+						.map(item => (
+							<FormattedMessage
+								key={item}
+								id={`fermentationType.${item}`}
+							/>
+						))
+				}
+			</DD>
 		</>
 	) : null;
 };
