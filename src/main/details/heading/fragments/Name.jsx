@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { get } from 'lodash';
 
-
 import { BeverageDetailsContext, LanguageContext } from 'config';
 import { getNameByLanguage } from 'utils/helpers';
 import { fonts } from 'utils/theme';

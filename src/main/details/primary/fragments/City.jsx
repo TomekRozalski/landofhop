@@ -3,31 +3,65 @@ import { get } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 
 import { BeverageDetailsContext, LanguageContext } from 'config';
+import { constants } from 'utils';
 import { getNameByLanguage } from 'utils/helpers';
-
-import { DT, DD } from 'elements';
+import { DT, DD, Highlight } from 'elements';
 
 const City = () => {
 	const { beverage } = useContext(BeverageDetailsContext);
 	const { language } = useContext(LanguageContext);
 
-	const names = get(beverage, 'label.general.place.city');
+	const labelValues = get(beverage, 'label.general.place.city');
+	const producerValues = get(beverage, 'producer.general.place.city');
+	const editorialValues = get(beverage, 'editorial.general.place.city');
 
-	if (!names) {
-		return null;
-	}
+	const { separators, type } = constants.details;
 
-	const { language: valueLanguage, value } = getNameByLanguage({ values: names, language });
-	const langAttribute = valueLanguage && valueLanguage !== language
-		? valueLanguage
-		: null;
+	const contracts = [
+		{ type: type.label, value: labelValues },
+		{ type: type.producer, value: producerValues },
+		{ type: type.editorial, value: editorialValues },
+	];
 
-	return (
+	const formattedValue = contracts
+		.reduce((acc, curr) => {
+			if (!acc.length && curr.value) {
+				return [curr];
+			}
+
+			return (
+				curr.value
+					? [...acc, separators.section, curr]
+					: acc
+			);
+		}, [])
+		.map((item) => {
+			if (item === separators.section) {
+				return item;
+			}
+
+			const {
+				value: city,
+				language: cityLanguage,
+			} = getNameByLanguage({ values: item.value, language });
+
+			return (
+				<Highlight
+					key={`${item.type} ${city}`}
+					lang={cityLanguage === language ? null : cityLanguage}
+					type={item.type}
+				>
+					{ city }
+				</Highlight>
+			);
+		});
+
+	return formattedValue.length ? (
 		<>
 			<DT><FormattedMessage id="details.city" /></DT>
-			<DD lang={langAttribute}>{ value }</DD>
+			<DD>{ formattedValue }</DD>
 		</>
-	);
+	) : null;
 };
 
 export default City;
