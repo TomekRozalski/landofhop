@@ -23,11 +23,17 @@ const Fermentation = () => {
 	];
 
 	const formattedFermentations = fermentations
-		.reduce((acc, curr) => (
-			acc.length
-				? [...acc, separators.section, curr]
-				: [curr]
-		), [])
+		.reduce((acc, curr) => {
+			if (!acc.length) {
+				return [curr];
+			}
+
+			return (
+				curr.value.length
+					? [...acc, separators.section, curr]
+					: acc
+			);
+		}, [])
 		.reduce((acc, curr) => {
 			if (curr !== separators.section) {
 				const typeArray = curr.value
@@ -38,11 +44,11 @@ const Fermentation = () => {
 					), [])
 					.map(item => (
 						item === separators.item ? item : (
-							<Highlight type={curr.type}>
-								<FormattedMessage
-									key={`${curr.type} ${item}`}
-									id={`fermentationType.${item}`}
-								/>
+							<Highlight
+								key={`${curr.type} ${item}`}
+								type={curr.type}
+							>
+								<FormattedMessage id={`fermentationType.${item}`} />
 							</Highlight>
 						)
 					));
