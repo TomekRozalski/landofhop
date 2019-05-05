@@ -9,8 +9,8 @@ import Consortium from './Consortium';
 
 const Wrapper = styled.h3`
 	display: inline-block;
-	margin-right: .6rem;
-	font: 400 2rem / 3.5rem ${fonts.primary};
+	margin: 1rem .6rem 0 0;
+	font: 400 2rem / 1 ${fonts.primary};
 `;
 
 const Brand = () => {
@@ -23,14 +23,12 @@ const Brand = () => {
 		? valueLanguage
 		: null;
 
-	const consortium = get(beverage, 'label.general.brand.consortium');
-
-	return consortium ? (
+	return (
 		<>
 			<Wrapper lang={langAttribute}>{ value }</Wrapper>
 			<Consortium />
 		</>
-	) : <Wrapper lang={langAttribute}>{ value }</Wrapper>;
+	);
 };
 
 export default Brand;

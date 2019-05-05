@@ -16,8 +16,13 @@ const Consortium = () => {
 	const { beverage } = useContext(BeverageDetailsContext);
 	const { language } = useContext(LanguageContext);
 
-	const names = get(beverage, 'label.general.brand.consortium');
-	const { language: valueLanguage, value } = getNameByLanguage({ values: names, language });
+	const values = get(beverage, 'label.general.brand.consortium');
+
+	if (!values) {
+		return null;
+	}
+
+	const { language: valueLanguage, value } = getNameByLanguage({ values, language });
 	const langAttribute = valueLanguage && valueLanguage !== language
 		? valueLanguage
 		: null;

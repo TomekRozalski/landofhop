@@ -6,6 +6,7 @@ import {
 	Contract,
 	Cooperation,
 	Name,
+	Series,
 } from './fragments';
 
 const Wrapper = styled.div`
@@ -17,6 +18,7 @@ const Header = () => (
 		<Cooperation />
 		<Contract />
 		<Brand />
+		<Series />
 		<Name />
 	</Wrapper>
 );

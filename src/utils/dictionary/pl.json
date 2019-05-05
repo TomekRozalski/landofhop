@@ -93,6 +93,7 @@
 	"details.cooperator": "uwarzono w kooperacji z: { brand }",
 	"details.country": "kraj",
 	"details.fermentation": "fermentacja",
+	"details.fromSeries": "z serii: { series }",
 	"details.owner": "(należący do { brand })",
 	"details.removeBeverage.areYouSure": "Na pewno?",
 	"details.removeBeverage.remove": "Usuń z bazy",
