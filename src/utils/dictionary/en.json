@@ -90,6 +90,7 @@
 
 	"details.city": "city",
 	"details.contractor": "brewed by { brand } for:",
+	"details.cooperator": "brewed in cooperation with: { brand }",
 	"details.country": "country",
 	"details.fermentation": "fermentation",
 	"details.owner": "(belonging to { brand })",

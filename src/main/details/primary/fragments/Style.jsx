@@ -46,7 +46,7 @@ const Style = () => {
 					.map(item => (
 						item === separators.item ? item : (
 							<Highlight
-								key={`${curr.type} ${item}`}
+								key={`${curr.type} ${item.value}`}
 								lang={item.language === language ? null : item.language}
 								type={curr.type}
 							>

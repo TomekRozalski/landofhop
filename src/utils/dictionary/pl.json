@@ -90,6 +90,7 @@
 
 	"details.city": "miejscowość",
 	"details.contractor": "uwarzono przez { brand } dla:",
+	"details.cooperator": "uwarzono w kooperacji z: { brand }",
 	"details.country": "kraj",
 	"details.fermentation": "fermentacja",
 	"details.owner": "(należący do { brand })",

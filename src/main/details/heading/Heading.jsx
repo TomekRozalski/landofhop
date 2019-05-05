@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import {
 	Brand,
 	Contract,
+	Cooperation,
 	Name,
 } from './fragments';
 
@@ -13,10 +14,10 @@ const Wrapper = styled.div`
 
 const Header = () => (
 	<Wrapper>
+		<Cooperation />
 		<Contract />
 		<Brand />
 		<Name />
-
 	</Wrapper>
 );
 

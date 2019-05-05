@@ -15,23 +15,23 @@ const Wrapper = styled.p`
 	font: 300 1.5rem / 2.2rem ${fonts.primary};
 `;
 
-const Contract = () => {
+const Cooperation = () => {
 	const { beverage } = useContext(BeverageDetailsContext);
 	const { language } = useContext(LanguageContext);
 
-	const labelValues = get(beverage, 'label.general.contract');
-	const producerValues = get(beverage, 'producer.general.contract');
-	const editorialValues = get(beverage, 'editorial.general.contract');
+	const labelValues = get(beverage, 'label.general.cooperation');
+	const producerValues = get(beverage, 'producer.general.cooperation');
+	const editorialValues = get(beverage, 'editorial.general.cooperation');
 
 	const { separators, type } = constants.details;
 
-	const contracts = [
+	const cooperations = [
 		{ type: type.label, value: labelValues },
 		{ type: type.producer, value: producerValues },
 		{ type: type.editorial, value: editorialValues },
 	];
 
-	const formattedValue = contracts
+	const formattedValue = cooperations
 		.reduce((acc, curr) => {
 			if (!acc.length && curr.value) {
 				return [curr];
@@ -43,33 +43,42 @@ const Contract = () => {
 					: acc
 			);
 		}, [])
-		.map((item) => {
-			if (item === separators.section) {
-				return item;
+		.reduce((acc, curr) => {
+			if (curr !== separators.section) {
+				const typeArray = curr.value
+					.reduce((acc, curr) => {
+						const formattedName = getNameByLanguage({ values: curr.name, language });
+
+						return (
+							acc.length
+								? [...acc, separators.item, formattedName]
+								: [formattedName]
+						);
+					}, [])
+					.map(item => (
+						item === separators.item
+							? item
+							: <span key={item.value} lang={item.language}>{item.value}</span>
+					));
+
+				const withHighligh = (
+					<Highlight key={curr.type} type={curr.type}>
+						<FormattedMessage
+							id="details.cooperator"
+							values={{ brand: <>{typeArray}</> }}
+						/>
+					</Highlight>
+				);
+
+				return [...acc, withHighligh];
 			}
 
-			const {
-				value: brand,
-				language: brandLanguage,
-			} = getNameByLanguage({ values: item.value.name, language });
-
-			return (
-				<Highlight
-					key={`${item.type} ${brand}`}
-					lang={brandLanguage === language ? null : brandLanguage}
-					type={item.type}
-				>
-					<FormattedMessage
-						id="details.contractor"
-						values={{ brand }}
-					/>
-				</Highlight>
-			);
-		});
+			return [...acc, curr];
+		}, []);
 
 	return formattedValue.length ? (
 		<Wrapper>{ formattedValue }</Wrapper>
 	) : null;
 };
 
-export default Contract;
+export default Cooperation;
