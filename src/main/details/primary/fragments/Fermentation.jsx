@@ -24,7 +24,7 @@ const Fermentation = () => {
 
 	const formattedFermentations = fermentations
 		.reduce((acc, curr) => {
-			if (!acc.length) {
+			if (!acc.length && curr.value.length) {
 				return [curr];
 			}
 
