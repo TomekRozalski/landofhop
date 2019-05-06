@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import {
 	City,
 	Country,
+	Extract,
 	Fermentation,
 	Style,
 } from './fragments';
@@ -18,7 +19,7 @@ const Header = () => (
 		<City />
 		<Fermentation />
 		<Style />
-		{/* <Extract /> */}
+		<Extract />
 		{/* <Alcohol /> */}
 		{/* <Filtered /> */}
 		{/* <Pasteurized /> */}

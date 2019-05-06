@@ -92,12 +92,14 @@
 	"details.contractor": "uwarzono przez { brand } dla:",
 	"details.cooperator": "uwarzono w kooperacji z: { brand }",
 	"details.country": "kraj",
+	"details.extract": "ekstrakt",
 	"details.fermentation": "fermentacja",
 	"details.fromSeries": "z serii: { series }",
 	"details.owner": "(należący do { brand })",
 	"details.removeBeverage.areYouSure": "Na pewno?",
 	"details.removeBeverage.remove": "Usuń z bazy",
 	"details.style": "styl",
+
 
 	"extractRelate.blg": "Blg",
 	"extractRelate.plato": "Plato",

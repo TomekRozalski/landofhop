@@ -92,6 +92,7 @@
 	"details.contractor": "brewed by { brand } for:",
 	"details.cooperator": "brewed in cooperation with: { brand }",
 	"details.country": "country",
+	"details.extract": "extract",
 	"details.fermentation": "fermentation",
 	"details.fromSeries": "from the series: { series }",
 	"details.owner": "(belonging to { brand })",
