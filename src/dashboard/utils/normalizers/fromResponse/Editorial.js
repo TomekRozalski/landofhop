@@ -65,8 +65,8 @@ const Editorial = (beverage) => {
 			})),
 		}),
 		...(alcoholScope && {
-			alcoholScope: alcoholScopesList().find(item => item.value === alcoholScope)
-				|| alcoholScopesList().find(item => item.value === none),
+			alcoholScope: alcoholScopesList({}).find(item => item.value === alcoholScope)
+				|| alcoholScopesList({}).find(item => item.value === none),
 		}),
 		...(isBoolean(filtration) && { filtration }),
 		...(isBoolean(pasteurization) && { pasteurization }),

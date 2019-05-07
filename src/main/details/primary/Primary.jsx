@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
+	Alcohol,
 	City,
 	Country,
 	Extract,
@@ -20,7 +21,7 @@ const Header = () => (
 		<Fermentation />
 		<Style />
 		<Extract />
-		{/* <Alcohol /> */}
+		<Alcohol />
 		{/* <Filtered /> */}
 		{/* <Pasteurized /> */}
 	</DefinitionList>

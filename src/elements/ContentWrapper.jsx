@@ -13,7 +13,9 @@ const ContentWrapper = ({ children }) => {
 	const scrollBlock = React.createRef();
 
 	const scrollTop = () => {
-		scrollBlock.current.scrollTop = 0;
+		if (scrollBlock.current) {
+			scrollBlock.current.scrollTop = 0;
+		}
 	};
 
 	scrollContentTop = scrollTop;

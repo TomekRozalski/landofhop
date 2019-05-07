@@ -88,6 +88,7 @@
 	"dashboard.updated": "Updated",
 	"dashboard.website": "Website",
 
+	"details.alcohol": "alcohol",
 	"details.city": "city",
 	"details.contractor": "brewed by { brand } for:",
 	"details.cooperator": "brewed in cooperation with: { brand }",
