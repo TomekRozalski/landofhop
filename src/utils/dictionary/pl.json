@@ -95,12 +95,15 @@
 	"details.country": "kraj",
 	"details.extract": "ekstrakt",
 	"details.fermentation": "fermentacja",
+	"details.filtration": "filtracja",
 	"details.fromSeries": "z serii: { series }",
+	"details.no": "nie",
 	"details.owner": "(należący do { brand })",
+	"details.pasteurization": "pasteryzacja",
 	"details.removeBeverage.areYouSure": "Na pewno?",
 	"details.removeBeverage.remove": "Usuń z bazy",
 	"details.style": "styl",
-
+	"details.yes": "tak",
 
 	"extractRelate.blg": "Blg",
 	"extractRelate.plato": "Plato",

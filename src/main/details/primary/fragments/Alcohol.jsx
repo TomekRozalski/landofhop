@@ -75,8 +75,6 @@ const Alcohol = () => {
 				);
 			};
 
-			console.log('item.value', item.value);
-
 			return (
 				<Highlight
 					key={`${item.type} ${item.value.value}`}

@@ -7,6 +7,8 @@ import {
 	Country,
 	Extract,
 	Fermentation,
+	Filtration,
+	Pasteurization,
 	Style,
 } from './fragments';
 
@@ -22,8 +24,8 @@ const Header = () => (
 		<Style />
 		<Extract />
 		<Alcohol />
-		{/* <Filtered /> */}
-		{/* <Pasteurized /> */}
+		<Filtration />
+		<Pasteurization />
 	</DefinitionList>
 );
 
