@@ -13,12 +13,13 @@ import {
 	Gallery,
 	Heading,
 	Primary,
+	Tale,
 } from './index';
 import { beverageDetails } from './utils';
 
 const Wrapper = styled.div`
 	${grid}
-	grid-template-rows: auto 1fr auto;
+	grid-template-rows: auto auto 1fr auto;
 	margin: 3rem auto;
 `;
 
@@ -51,13 +52,11 @@ const Details = ({
 		<Wrapper>
 			<Gallery />
 			<Heading />
-
+			{/* <Navigation /> */}
 			<Primary />
+			<Tale />
 
 			{/*
-
-				<Navigation />
-				<Primary />
 				<Tale />
 				<Secondary />
 				<Other />

@@ -10,19 +10,19 @@ import { DT, DD, Highlight } from 'elements';
 const Fermentation = () => {
 	const { beverage } = useContext(BeverageDetailsContext);
 
-	const labelFermentations = get(beverage, 'label.brewing.fermentation', []);
-	const producerFermentations = get(beverage, 'producer.brewing.fermentation', []);
-	const editorialFermentations = get(beverage, 'editorial.brewing.fermentation', []);
+	const labelValue = get(beverage, 'label.brewing.fermentation', []);
+	const producerValue = get(beverage, 'producer.brewing.fermentation', []);
+	const editorialValue = get(beverage, 'editorial.brewing.fermentation', []);
 
 	const { separators, type } = constants.details;
 
-	const fermentations = [
-		{ type: type.label, value: labelFermentations },
-		{ type: type.producer, value: producerFermentations },
-		{ type: type.editorial, value: editorialFermentations },
+	const values = [
+		{ type: type.label, value: labelValue },
+		{ type: type.producer, value: producerValue },
+		{ type: type.editorial, value: editorialValue },
 	];
 
-	const formattedFermentations = fermentations
+	const formattedValues = values
 		.reduce((acc, curr) => {
 			if (!acc.length && curr.value.length) {
 				return [curr];
@@ -59,10 +59,10 @@ const Fermentation = () => {
 			return [...acc, curr];
 		}, []);
 
-	return formattedFermentations.length ? (
+	return formattedValues.length ? (
 		<>
 			<DT><FormattedMessage id="details.fermentation" /></DT>
-			<DD>{ formattedFermentations }</DD>
+			<DD>{ formattedValues }</DD>
 		</>
 	) : null;
 };

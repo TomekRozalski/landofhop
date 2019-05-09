@@ -16,7 +16,7 @@ const DefinitionList = styled.dl`
 	grid-column: 3 / 5;
 `;
 
-const Header = () => (
+const Primary = () => (
 	<DefinitionList>
 		<Country />
 		<City />
@@ -29,4 +29,4 @@ const Header = () => (
 	</DefinitionList>
 );
 
-export default Header;
+export default Primary;
