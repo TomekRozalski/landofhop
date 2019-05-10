@@ -1,14 +1,21 @@
+/* eslint-disable no-shadow */
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { get } from 'lodash';
 
 import { BeverageDetailsContext, LanguageContext } from 'config';
 import { constants } from 'utils';
-import { getNameByLanguage } from 'utils/helpers';
+import { colors } from 'utils/theme';
 import { Highlight } from 'elements';
 
 const Wrapper = styled.div`
 	grid-column: 3 / 5;
+	${({ empty }) => (!empty && `
+		border-width: 1px 0;
+		border-style: dotted;
+		border-color: ${colors.gray[400]};
+		padding: .5rem 0;
+	`)}
 `;
 
 const Tale = () => {
@@ -37,31 +44,28 @@ const Tale = () => {
 					: acc
 			);
 		}, [])
-		.map((item) => {
-			const {
-				value: tale,
-				language: taleLanguage,
-			} = getNameByLanguage({ values: item.value, language });
+		.filter(item => item.value.find(description => description.language === language))
+		.reduce((acc, { type, value }) => [
+			...acc,
+			{
+				type,
+				value: value.find(description => description.language === language),
+			},
+		], [])
+		.map(({ type, value }) => (
+			<Highlight
+				key={type}
+				lang={value.language === language ? null : value.language}
+				type={type}
+				block
+			>
+				{ value.value }
+			</Highlight>
+		));
 
-			return (
-				<div>
-					<Highlight
-						key={item.type}
-						lang={taleLanguage === language ? null : taleLanguage}
-						type={item.type}
-					>
-						{ tale }
-					</Highlight>
-					<hr />
-				</div>
-			);
-		});
-
-	return formattedValues.length ? (
-		<Wrapper>
-			{formattedValues}
-		</Wrapper>
-	) : null;
+	return formattedValues.length
+		? <Wrapper>{formattedValues}</Wrapper>
+		: <Wrapper empty />;
 };
 
 export default Tale;
