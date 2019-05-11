@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FastField } from 'formik';
+import { FastField, Field } from 'formik';
 import { get } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 
@@ -32,7 +32,7 @@ const Cooperation = ({
 			</FastField>
 		</LabelWrapper>
 		<InputWrapper place="wide">
-			<FastField
+			<Field
 				component={StyledSelect}
 				formName={formName}
 				isError={isError}
@@ -41,7 +41,7 @@ const Cooperation = ({
 				name={fieldName}
 			>
 				{ institutions }
-			</FastField>
+			</Field>
 		</InputWrapper>
 	</>
 );
