@@ -2,8 +2,13 @@ import React from 'react';
 import { Formik } from 'formik';
 import { assign } from 'lodash';
 
-import { constants, ContainerTypes } from 'dashboard/utils';
-import { initialFormValues, onSubmit, validationSchema } from './utils';
+import { constants, convertDateToString, ContainerTypes } from 'dashboard/utils';
+import {
+	fields,
+	initialFormValues,
+	onSubmit,
+	validationSchema,
+} from './utils';
 import FormBody from './FormBody';
 
 const Container = ({
@@ -18,7 +23,14 @@ const Container = ({
 }) => (
 	<Formik
 		initialValues={update
-			? values || assign({}, initialFormValues, update.editorial)
+			? values || assign(
+				{},
+				initialFormValues,
+				update.editorial,
+				{
+					[fields.updated]: convertDateToString(new Date()),
+				},
+			)
 			: values || initialFormValues
 		}
 		isInitialValid
