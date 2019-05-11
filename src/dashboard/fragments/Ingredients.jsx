@@ -40,14 +40,14 @@ const Ingredients = ({ fieldName, formName }) => {
 										<FormattedMessage id={`dashboard.${fieldName}`} />
 									</Label>
 								</LabelWrapper>
-								<InputWrapper place="left">
+								<InputWrapper place="wide">
 									<FastField
 										component={Textarea}
 										id={`${formName}-${fieldName}${index}-value`}
 										name={`${fieldName}.${index}.value`}
 									/>
 								</InputWrapper>
-								<InputWrapper place="middle">
+								<InputWrapper place="wide">
 									<StyledMarkdown>
 										{values[index].value}
 									</StyledMarkdown>
