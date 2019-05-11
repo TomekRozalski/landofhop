@@ -21,7 +21,6 @@ import {
 	Fullness,
 	Hoppyness,
 	Ingredients,
-	IngredientsComplete,
 	IngredientsList,
 	Name,
 	Pasteurization,
@@ -73,14 +72,9 @@ const Fieldset = ({ showSubform }) => {
 			<ExpirationDate {...commonProps} fieldName={fields.expirationDate} />
 			{/* -------------------------------- */}
 			<SubSection title="dashboard.ingredientsInfo" />
-			<Ingredients
-				{...commonProps}
-				fieldName={fields.ingredients}
-				resetWhenEmpty={fields.areIngredientsComplete}
-			/>
+			<Ingredients {...commonProps} fieldName={fields.ingredients} />
 			<IngredientsList {...commonProps} fieldName={fields.ingredientsList} />
 			<AddButton onClick={() => { showSubform(constants.forms.ingredient); }} />
-			<IngredientsComplete {...commonProps} fieldName={fields.areIngredientsComplete} />
 			<SmokedMalt {...commonProps} fieldName={fields.smokedMalt} />
 			{/* -------------------------------- */}
 			<SubSection title="dashboard.impressionsInfo" />

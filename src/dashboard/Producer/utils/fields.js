@@ -18,7 +18,6 @@ export default {
 	// -----------
 	ingredients: 'ingredients',
 	ingredientsList: 'ingredientsList',
-	areIngredientsComplete: 'areIngredientsComplete',
 	smokedMalt: 'smokedMalt',
 	// -----------
 	bitterness: 'bitterness',

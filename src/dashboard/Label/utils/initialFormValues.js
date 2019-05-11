@@ -34,7 +34,6 @@ export default {
 	// -----------
 	[fields.ingredients]: [],
 	[fields.ingredientsList]: null,
-	[fields.areIngredientsComplete]: null,
 	[fields.smokedMalt]: null,
 	// -----------
 	[fields.bitterness]: null,

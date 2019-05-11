@@ -55,7 +55,6 @@ const Label = ({
 	// ingredients
 	const description = get(ingredients, 'description');
 	const list = get(ingredients, 'list');
-	const areIngredientsComplete = get(ingredients, 'complete');
 	const smokedMalt = get(ingredients, 'smokedMalt');
 	// impressions
 	const bitterness = get(impressions, 'bitterness');
@@ -144,7 +143,8 @@ const Label = ({
 		}),
 		// ----------------------------------
 		...(description && {
-			ingredients: description.map(({ language, value }) => ({
+			ingredients: description.map(({ complete, language, value }) => ({
+				complete,
 				lang: LanguageNormalizer(language),
 				value,
 			})),
@@ -155,7 +155,6 @@ const Label = ({
 				value: id,
 			})),
 		}),
-		...(isBoolean(areIngredientsComplete) && { areIngredientsComplete }),
 		...(isBoolean(smokedMalt) && { smokedMalt }),
 		// ----------------------------------
 		...(bitterness && isNumber(bitterness) && { bitterness }),

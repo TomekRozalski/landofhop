@@ -7,6 +7,7 @@ import ErrorGroup from './ErrorGroup';
 import FormSection from './FormSection';
 import InputWrapper from './InputWrapper';
 import LabelWrapper from './LabelWrapper';
+import LineSeparator from './LineSeparator';
 import LoadingGroup from './LoadingGroup';
 import MainHeader from './MainHeader';
 import ProgressItem from './ProgressItem';
@@ -33,6 +34,7 @@ export {
 	FormSection,
 	InputWrapper,
 	LabelWrapper,
+	LineSeparator,
 	LoadingGroup,
 	MainHeader,
 	ProgressItem,

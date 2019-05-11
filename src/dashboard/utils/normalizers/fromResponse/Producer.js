@@ -37,7 +37,6 @@ const Producer = (beverage) => {
 	// ingredients
 	const description = get(beverage, 'producer.ingredients.description');
 	const list = get(beverage, 'producer.ingredients.list');
-	const areIngredientsComplete = get(beverage, 'producer.ingredients.complete');
 	const smokedMalt = get(beverage, 'producer.ingredients.smokedMalt');
 	// impressions
 	const bitterness = get(beverage, 'producer.impressions.bitterness');
@@ -117,7 +116,8 @@ const Producer = (beverage) => {
 		}),
 		// ----------------------------------
 		...(description && {
-			ingredients: description.map(({ language, value }) => ({
+			ingredients: description.map(({ complete, language, value }) => ({
+				complete,
 				lang: LanguageNormalizer(language),
 				value,
 			})),
@@ -128,7 +128,6 @@ const Producer = (beverage) => {
 				value: id,
 			})),
 		}),
-		...(isBoolean(areIngredientsComplete) && { areIngredientsComplete }),
 		...(isBoolean(smokedMalt) && { smokedMalt }),
 		// ----------------------------------
 		...(bitterness && isNumber(bitterness) && { bitterness }),

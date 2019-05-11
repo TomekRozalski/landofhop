@@ -10,6 +10,7 @@ import {
 	AddElement,
 	InputWrapper,
 	LabelWrapper,
+	LineSeparator,
 	RemoveElement,
 	RevealButton,
 	StyledMarkdown,
@@ -21,66 +22,77 @@ const Tale = ({ fieldName, formName }) => {
 	const { language } = useContext(LanguageContext);
 
 	return (
-		<>
-			<LabelWrapper>
-				<Label htmlFor={`${formName}-${fieldName}`}>
-					<FormattedMessage id={`dashboard.${fieldName}`} />
-				</Label>
-			</LabelWrapper>
-			<FieldArray
-				name={fieldName}
-				render={({ form, push, remove }) => {
-					const values = form.values[fieldName];
-					if (values && values.length > 0) {
-						return values.map((_, index) => {
-							const loopLength = values.length;
-							const lastInput = loopLength === index + 1;
+		<FieldArray
+			name={fieldName}
+			render={({ form, push, remove }) => {
+				const values = form.values[fieldName];
+				if (values && values.length > 0) {
+					return values.map((_, index) => {
+						const loopLength = values.length;
+						const lastInput = loopLength === index + 1;
 
-							return (
-								<React.Fragment key={index}>
-									<InputWrapper place="left">
-										<FastField
-											component={Textarea}
-											id={lastInput ? `${formName}-${fieldName}-value` : null}
-											name={`${fieldName}.${index}.value`}
-										/>
-									</InputWrapper>
-									<InputWrapper place="middle">
-										<StyledMarkdown>
-											{values[index].value}
-										</StyledMarkdown>
-									</InputWrapper>
-									<InputWrapper place="wide">
-										<FastField
-											component={StyledSelect}
-											formName={formName}
-											name={`${fieldName}.${index}.lang`}
-											placeholder="selectLanguage"
-										>
-											{ languagesList(language) }
-										</FastField>
-									</InputWrapper>
-									{
-										lastInput && (
-											<InputWrapper place="right">
-												<RemoveElement onClick={() => remove(index)} />
-												<AddElement onClick={() => push(emptySelect)} />
-											</InputWrapper>
-										)
-									}
-								</React.Fragment>
-							);
-						});
-					}
+						return (
+							<React.Fragment key={index}>
+								<LabelWrapper>
+									<Label htmlFor={`${formName}-${fieldName}${index}-value`}>
+										<FormattedMessage id={`dashboard.${fieldName}`} />
+									</Label>
+								</LabelWrapper>
+								<InputWrapper place="left">
+									<FastField
+										component={Textarea}
+										id={`${formName}-${fieldName}${index}-value`}
+										name={`${fieldName}.${index}.value`}
+									/>
+								</InputWrapper>
+								<InputWrapper place="middle">
+									<StyledMarkdown>
+										{values[index].value}
+									</StyledMarkdown>
+								</InputWrapper>
+								<LabelWrapper>
+									<Label htmlFor={`${formName}-${fieldName}${index}-language`}>
+										<FormattedMessage id="dashboard.taleLanguage" />
+									</Label>
+								</LabelWrapper>
+								<InputWrapper place="wide">
+									<FastField
+										component={StyledSelect}
+										formName={formName}
+										name={`${fieldName}.${index}.lang`}
+										placeholder="selectLanguage"
+									>
+										{ languagesList(language) }
+									</FastField>
+								</InputWrapper>
+								{
+									lastInput && (
+										<InputWrapper place="right">
+											<RemoveElement onClick={() => remove(index)} />
+											<AddElement onClick={() => push(emptySelect)} />
+										</InputWrapper>
+									)
+								}
+								{ values.length !== index + 1 && <LineSeparator />}
+							</React.Fragment>
+						);
+					});
+				}
 
-					return (
+				return (
+					<>
+						<LabelWrapper>
+							<Label>
+								<FormattedMessage id={`dashboard.${fieldName}`} />
+							</Label>
+						</LabelWrapper>
 						<InputWrapper place="wide">
 							<RevealButton onClick={() => push(emptySelect)} />
 						</InputWrapper>
-					);
-				}}
-			/>
-		</>
+					</>
+				);
+			}}
+		/>
 	);
 };
 

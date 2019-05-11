@@ -25,7 +25,6 @@ const Producer = ({
 	// -----------
 	ingredients,
 	ingredientsList,
-	areIngredientsComplete,
 	smokedMalt,
 	// -----------
 	bitterness,
@@ -103,15 +102,15 @@ const Producer = ({
 			},
 			ingredients: {
 				...(ingredients.length && {
-					description: ingredients.map(({ lang, value }) => (
-						lang.value === none ? ({ value }) : ({
+					description: ingredients.map(({ complete, lang, value }) => (
+						lang.value === none ? ({ complete, value }) : ({
+							complete,
 							language: lang.value,
 							value,
 						})
 					)),
 				}),
 				...(!isNull(ingredientsList) && { list: ingredientsList.map(({ value }) => value) }),
-				...(!isNull(areIngredientsComplete) && { complete: areIngredientsComplete }),
 				...(!isNull(smokedMalt) && { smokedMalt }),
 			},
 			impressions: {

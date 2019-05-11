@@ -35,7 +35,6 @@ const Label = ({
 	// -----------
 	ingredients,
 	ingredientsList,
-	areIngredientsComplete,
 	smokedMalt,
 	// -----------
 	bitterness,
@@ -125,15 +124,15 @@ const Label = ({
 			},
 			ingredients: {
 				...(ingredients.length && {
-					description: ingredients.map(({ lang, value }) => (
-						lang.value === none ? ({ value }) : ({
+					description: ingredients.map(({ complete, lang, value }) => (
+						lang.value === none ? ({ complete, value }) : ({
+							complete,
 							language: lang.value,
 							value,
 						})
 					)),
 				}),
 				...(!isNull(ingredientsList) && { list: ingredientsList.map(({ value }) => value) }),
-				...(isBoolean(areIngredientsComplete) && { complete: areIngredientsComplete }),
 				...(isBoolean(smokedMalt) && { smokedMalt }),
 			},
 			impressions: {

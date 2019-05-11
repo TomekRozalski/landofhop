@@ -25,7 +25,6 @@ import Fullness from './Fullness';
 import Hoppyness from './Hoppyness';
 import Images from './Images';
 import Ingredients from './Ingredients';
-import IngredientsComplete from './IngredientsComplete';
 import IngredientsList from './IngredientsList';
 import Institution from './Institution';
 import Latitude from './Latitude';
@@ -74,7 +73,6 @@ export {
 	Hoppyness,
 	Images,
 	Ingredients,
-	IngredientsComplete,
 	IngredientsList,
 	Institution,
 	Latitude,

@@ -28,10 +28,7 @@ const Ingredients = () => {
 		.reduce((acc, { type, value }) => {
 			const formattedItem = {
 				type,
-				description: {
-					complete: value.complete,
-					value: value.description.find(description => description.language === language),
-				},
+				description: value.description.find(description => description.language === language),
 			};
 
 			return acc.length
@@ -46,10 +43,8 @@ const Ingredients = () => {
 			const {
 				description: {
 					complete,
-					value: {
-						language: valueLanguage,
-						value,
-					},
+					language: valueLanguage,
+					value,
 				},
 				type,
 			} = item;
