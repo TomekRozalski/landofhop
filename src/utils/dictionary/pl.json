@@ -107,6 +107,9 @@
 	"details.removeBeverage.areYouSure": "Na pewno?",
 	"details.removeBeverage.remove": "Usuń z bazy",
 	"details.style": "styl",
+	"details.temperature": "zalecana temperatura podawania",
+	"details.temperature.scope": "od { from } do { to }",
+	"details.temperature.unit.celcius": "°C",
 	"details.yes": "tak",
 
 	"extractRelate.blg": "Blg",

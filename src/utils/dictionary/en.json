@@ -107,6 +107,9 @@
 	"details.removeBeverage.areYouSure": "Are you sure?",
 	"details.removeBeverage.remove": "Remove from the database",
 	"details.style": "style",
+	"details.temperature": "recommended serving temperature",
+	"details.temperature.scope": "from { from } to { to }",
+	"details.temperature.unit.celcius": "°C",
 	"details.yes": "yes",
 
 	"extractRelate.blg": "Blg",

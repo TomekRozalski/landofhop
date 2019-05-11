@@ -7,7 +7,7 @@ import {
 	// ExpirationDate,
 	Ingredients,
 	// Price,
-	// Temperature,
+	Temperature,
 } from './fragments';
 
 const DefinitionList = styled.dl`
@@ -17,7 +17,7 @@ const DefinitionList = styled.dl`
 const Secondary = () => (
 	<DefinitionList>
 		<Ingredients />
-		{/* <Temperature /> */}
+		<Temperature />
 		{/* <ExpirationDate /> */}
 		{/* <Container /> */}
 		{/* <Barcode /> */}

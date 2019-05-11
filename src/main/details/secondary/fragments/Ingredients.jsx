@@ -50,14 +50,18 @@ const Ingredients = () => {
 			} = item;
 
 			return (
-				<Highlight
-					key={type}
-					lang={valueLanguage === language ? null : valueLanguage}
-					type={type}
-				>
+				<>
 					<DT><FormattedMessage id={`details.${complete ? 'ingredients' : 'contains'}`} /></DT>
-					<DD>{ value }</DD>
-				</Highlight>
+					<DD>
+						<Highlight
+							key={type}
+							lang={valueLanguage === language ? null : valueLanguage}
+							type={type}
+						>
+							{ value }
+						</Highlight>
+					</DD>
+				</>
 			);
 		});
 
