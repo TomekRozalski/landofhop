@@ -37,7 +37,7 @@ const Admin = () => {
 			<p>{ moment(beverage.added).format('DD.MM.YYYY') }</p>
 			<Link to={`/update-beverage/${shortId}/${brand}/${badge}`}>Update beverage</Link>
 			<RemoveButton id={beverage.id} />
-			{ cap && <img alt="" src={`/img/${brand}/${badge}/${shortId}/caps/x1.jpg`} /> }
+			{ cap && <img alt="" src={`/img/${brand}/${badge}/${shortId}/cap/x1.jpg`} /> }
 		</Wrapper>
 	);
 };

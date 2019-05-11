@@ -57,7 +57,9 @@ const Gallery = () => {
 			myCanvas.current.appendChild(pixiApp.view);
 
 			const style = new Pixi.TextStyle({
-				font: `300 1.5rem / 1 ${fonts.primary}`,
+				fontWeight: 300,
+				fontSize: '1.5rem',
+				fontFamily: fonts.primary,
 			});
 
 			const message = new Text('', style);

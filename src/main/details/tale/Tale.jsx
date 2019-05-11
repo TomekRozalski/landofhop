@@ -2,6 +2,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { get } from 'lodash';
+import Markdown from 'markdown-to-jsx';
 
 import { BeverageDetailsContext, LanguageContext } from 'config';
 import { constants } from 'utils';
@@ -59,7 +60,7 @@ const Tale = () => {
 				type={type}
 				block
 			>
-				{ value.value }
+				<Markdown options={{ forceInline: true }}>{ value.value }</Markdown>
 			</Highlight>
 		));
 

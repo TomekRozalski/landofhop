@@ -50,18 +50,17 @@ const Ingredients = () => {
 			} = item;
 
 			return (
-				<>
+				<React.Fragment key={type}>
 					<DT><FormattedMessage id={`details.${complete ? 'ingredients' : 'contains'}`} /></DT>
 					<DD>
 						<Highlight
-							key={type}
 							lang={valueLanguage === language ? null : valueLanguage}
 							type={type}
 						>
 							{ value }
 						</Highlight>
 					</DD>
-				</>
+				</React.Fragment>
 			);
 		});
 
