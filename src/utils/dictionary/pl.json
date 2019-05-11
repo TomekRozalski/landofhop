@@ -90,6 +90,7 @@
 
 	"details.alcohol": "alkohol",
 	"details.city": "miejscowość",
+	"details.contains": "zawiera",
 	"details.contractor": "uwarzono przez { brand } dla:",
 	"details.cooperator": "uwarzono w kooperacji z: { brand }",
 	"details.country": "kraj",
@@ -97,6 +98,7 @@
 	"details.fermentation": "fermentacja",
 	"details.filtration": "filtracja",
 	"details.fromSeries": "z serii: { series }",
+	"details.ingredients": "składniki",
 	"details.no": "nie",
 	"details.owner": "(należący do { brand })",
 	"details.pasteurization": "pasteryzacja",

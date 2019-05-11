@@ -90,6 +90,7 @@
 
 	"details.alcohol": "alcohol",
 	"details.city": "city",
+	"details.contains": "zawiera",
 	"details.contractor": "brewed by { brand } for:",
 	"details.cooperator": "brewed in cooperation with: { brand }",
 	"details.country": "country",
@@ -97,6 +98,7 @@
 	"details.fermentation": "fermentation",
 	"details.filtration": "filtration",
 	"details.fromSeries": "from the series: { series }",
+	"details.ingredients": "ingredients",
 	"details.no": "no",
 	"details.owner": "(belonging to { brand })",
 	"details.pasteurization": "pasteurization",

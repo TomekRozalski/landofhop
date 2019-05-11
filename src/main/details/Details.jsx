@@ -13,6 +13,7 @@ import {
 	Gallery,
 	Heading,
 	Primary,
+	Secondary,
 	Tale,
 } from './index';
 import { beverageDetails } from './utils';
@@ -55,14 +56,8 @@ const Details = ({
 			{/* <Navigation /> */}
 			<Primary />
 			<Tale />
-
-			{/*
-				<Tale />
-				<Secondary />
-				<Other />
-
-			*/}
-
+			<Secondary />
+			{/* <Other /> */}
 			<Admin />
 			<Helmet><title>{`Land of Hop. ${params.brand}. ${params.badge}`}</title></Helmet>
 		</Wrapper>
