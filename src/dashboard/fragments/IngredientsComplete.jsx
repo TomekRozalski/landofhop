@@ -2,25 +2,16 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { FastField } from 'formik';
 
-import {
-	ConditionalLabel,
-	InputWrapper,
-	LabelWrapper,
-	StyledSwitch,
-} from 'dashboard/elements';
+import { Label } from 'elements';
+import { InputWrapper, LabelWrapper, StyledSwitch } from 'dashboard/elements';
 import { fragmentTypes } from './utils';
 
 const IngredientsComplete = ({ fieldName, formName }) => (
 	<>
 		<LabelWrapper>
-			<FastField
-				component={ConditionalLabel}
-				formName={formName}
-				name={fieldName}
-				reset
-			>
+			<Label htmlFor={`${formName}-${fieldName}`}>
 				<FormattedMessage id={`dashboard.${fieldName}`} />
-			</FastField>
+			</Label>
 		</LabelWrapper>
 		<InputWrapper place="left">
 			<FastField

@@ -1,4 +1,4 @@
-/* eslint react/no-array-index-key: 0 */
+/* eslint-disable react/no-array-index-key */
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
@@ -39,6 +39,14 @@ const Ingredients = ({ fieldName, formName, resetWhenEmpty }) => {
 						&& values.length === 0
 					) {
 						form.setFieldValue(resetWhenEmpty, null);
+					}
+
+					if (
+						resetWhenEmpty
+						&& form.values[resetWhenEmpty] === null
+						&& values.length > 0
+					) {
+						form.setFieldValue(resetWhenEmpty, true);
 					}
 
 					if (values && values.length > 0) {
