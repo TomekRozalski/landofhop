@@ -19,6 +19,9 @@
 	"container.type.bottle": "bottle",
 	"container.type.can": "can",
 
+	"currency.PLN": "zł",
+	"currency.EUR": "€",
+
 	"dashboard.added": "Added",
 	"dashboard.addNew": "Add new",
 	"dashboard.addNewBeverage.title": "Add new beer",
@@ -118,6 +121,7 @@
 	"details.no": "no",
 	"details.owner": "(belonging to { brand })",
 	"details.pasteurization": "pasteurization",
+	"details.price": "cena",
 	"details.removeBeverage.areYouSure": "Are you sure?",
 	"details.removeBeverage.remove": "Remove from the database",
 	"details.smokedMalt": "contains smoked malt",

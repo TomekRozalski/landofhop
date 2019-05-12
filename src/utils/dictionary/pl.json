@@ -19,6 +19,9 @@
 	"container.type.bottle": "butelka",
 	"container.type.can": "puszka",
 
+	"currency.PLN": "zł",
+	"currency.EUR": "€",
+
 	"dashboard.added": "Dodano",
 	"dashboard.addNew": "Dodaj",
 	"dashboard.addNewBeverage.title": "Dodaj nowe piwo",
@@ -118,6 +121,7 @@
 	"details.no": "nie",
 	"details.owner": "(należący do { brand })",
 	"details.pasteurization": "pasteryzacja",
+	"details.price": "cena",
 	"details.removeBeverage.areYouSure": "Na pewno?",
 	"details.removeBeverage.remove": "Usuń z bazy",
 	"details.smokedMalt": "zawiera słód wędzony",

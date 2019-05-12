@@ -6,7 +6,7 @@ import {
 	Container,
 	ExpirationDate,
 	Ingredients,
-	// Price,
+	Price,
 	SmokedMalt,
 	Temperature,
 } from './fragments';
@@ -23,7 +23,7 @@ const Secondary = () => (
 		<ExpirationDate />
 		<Container />
 		<Barcode />
-		{/* <Price /> */}
+		<Price />
 	</DefinitionList>
 );
 
