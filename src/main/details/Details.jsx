@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 
 import { BeverageDetailsContext } from 'config';
@@ -12,6 +11,8 @@ import {
 	Admin,
 	Gallery,
 	Heading,
+	Meta,
+	Other,
 	Primary,
 	Secondary,
 	Tale,
@@ -20,7 +21,7 @@ import { beverageDetails } from './utils';
 
 const Wrapper = styled.div`
 	${grid}
-	grid-template-rows: auto auto 1fr auto;
+	grid-template-rows: auto auto 1fr auto auto;
 	margin: 3rem auto;
 `;
 
@@ -57,9 +58,10 @@ const Details = ({
 			<Primary />
 			<Tale />
 			<Secondary />
-			{/* <Other /> */}
-			<Admin />
-			<Helmet><title>{`Land of Hop. ${params.brand}. ${params.badge}`}</title></Helmet>
+			{/* <Impressions /> */}
+			<Other />
+			<Admin params={params} />
+			<Meta />
 		</Wrapper>
 	);
 };

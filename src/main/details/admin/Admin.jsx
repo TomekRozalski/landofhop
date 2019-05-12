@@ -1,45 +1,36 @@
 import React, { useContext } from 'react';
+import { shape, string } from 'prop-types';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import moment from 'moment';
-import { get } from 'lodash';
+import { isDate } from 'lodash';
 
-import { BeverageDetailsContext } from 'config';
-import { fonts } from 'utils/theme';
-
-import { RemoveButton } from './fragments';
+import { AuthenticationContext, BeverageDetailsContext } from 'config';
+import { RemoveButton, UpdateButton } from './fragments';
 
 const Wrapper = styled.div`
 	grid-column: 3 / 5;
-	/* font: 500 3rem / 4rem ${fonts.primary}; */
-	/* text-align: center; */
+	display: flex;
+	padding-top: 1rem;
 `;
 
-const Admin = () => {
+const Admin = ({ params }) => {
 	const { beverage } = useContext(BeverageDetailsContext);
+	const { token, tokenExpiration } = useContext(AuthenticationContext);
+	const { badge, brand, shortId } = params;
 
-	const cap = get(beverage, 'editorial.cap', false);
-
-	const {
-		badge,
-		label: {
-			general: {
-				brand: {
-					badge: brand,
-				},
-			},
-		},
-		shortId,
-	} = beverage;
-
-	return (
+	return (token && isDate(tokenExpiration)) ? (
 		<Wrapper>
-			<p>{ moment(beverage.added).format('DD.MM.YYYY') }</p>
-			<Link to={`/update-beverage/${shortId}/${brand}/${badge}`}>Update beverage</Link>
+			<UpdateButton to={`/update-beverage/${shortId}/${brand}/${badge}`} />
 			<RemoveButton id={beverage.id} />
-			{ cap && <img alt="" src={`/img/${brand}/${badge}/${shortId}/cap/x1.jpg`} /> }
 		</Wrapper>
-	);
+	) : null;
+};
+
+Admin.propTypes = {
+	params: shape({
+		badge: string.isRequired,
+		brand: string.isRequired,
+		shortId: string.isRequired,
+	}).isRequired,
 };
 
 export default Admin;

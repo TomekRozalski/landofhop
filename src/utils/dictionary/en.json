@@ -101,6 +101,8 @@
 	"dashboard.updated": "Updated",
 	"dashboard.website": "Website",
 
+	"details.added": "added",
+	"details.admin.updateBeverage": "Update data",
 	"details.alcohol": "alcohol",
 	"details.barcode": "barcode",
 	"details.city": "city",

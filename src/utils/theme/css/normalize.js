@@ -180,4 +180,8 @@ export default css`
 	[hidden] {
 		display: none;
 	}
+
+	dl {
+		margin: 1.5rem 0;
+	}
 `;
