@@ -111,6 +111,7 @@
 	"details.pasteurization": "pasteryzacja",
 	"details.removeBeverage.areYouSure": "Na pewno?",
 	"details.removeBeverage.remove": "Usuń z bazy",
+	"details.smokedMalt": "zawiera słód wędzony",
 	"details.style": "styl",
 	"details.temperature": "zalecana temperatura podawania",
 	"details.temperature.scope": "od { from } do { to }",

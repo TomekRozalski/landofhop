@@ -111,6 +111,7 @@
 	"details.pasteurization": "pasteurization",
 	"details.removeBeverage.areYouSure": "Are you sure?",
 	"details.removeBeverage.remove": "Remove from the database",
+	"details.smokedMalt": "contains smoked malt",
 	"details.style": "style",
 	"details.temperature": "recommended serving temperature",
 	"details.temperature.scope": "from { from } to { to }",

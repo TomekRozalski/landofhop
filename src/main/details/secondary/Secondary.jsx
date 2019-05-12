@@ -7,6 +7,7 @@ import {
 	ExpirationDate,
 	Ingredients,
 	// Price,
+	SmokedMalt,
 	Temperature,
 } from './fragments';
 
@@ -17,7 +18,7 @@ const DefinitionList = styled.dl`
 const Secondary = () => (
 	<DefinitionList>
 		<Ingredients />
-		{/* zawiera słód wędzony */}
+		<SmokedMalt />
 		<Temperature />
 		<ExpirationDate />
 		{/* <Container /> */}
