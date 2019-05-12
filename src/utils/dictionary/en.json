@@ -97,6 +97,7 @@
 	"details.contractor": "brewed by { brand } for:",
 	"details.cooperator": "brewed in cooperation with: { brand }",
 	"details.country": "country",
+	"details.dryHopped": "dry hopped",
 	"details.expirationDate": "expiration time",
 	"details.expirationDate.unit.day": "{ value, plural, one {# day} other {# days}}",
 	"details.expirationDate.unit.month": "{ value, plural, one {# month} other {# months}}",

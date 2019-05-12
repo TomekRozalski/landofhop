@@ -1,6 +1,7 @@
 import Alcohol from './Alcohol';
 import City from './City';
 import Country from './Country';
+import DryHopped from './DryHopped';
 import Extract from './Extract';
 import Fermentation from './Fermentation';
 import Filtration from './Filtration';
@@ -11,6 +12,7 @@ export {
 	Alcohol,
 	City,
 	Country,
+	DryHopped,
 	Extract,
 	Fermentation,
 	Filtration,

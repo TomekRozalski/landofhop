@@ -7,6 +7,10 @@ const colors = () => ([
 		label: 'Zielony',
 		value: 'green',
 	},
+	{
+		label: 'Srebrny',
+		value: 'silver',
+	},
 ]);
 
 export default colors;

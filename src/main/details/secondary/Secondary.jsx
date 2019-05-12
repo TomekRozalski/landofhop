@@ -17,6 +17,7 @@ const DefinitionList = styled.dl`
 const Secondary = () => (
 	<DefinitionList>
 		<Ingredients />
+		{/* zawiera słód wędzony */}
 		<Temperature />
 		<ExpirationDate />
 		{/* <Container /> */}

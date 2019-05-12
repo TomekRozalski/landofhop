@@ -5,6 +5,7 @@ import {
 	Alcohol,
 	City,
 	Country,
+	DryHopped,
 	Extract,
 	Fermentation,
 	Filtration,
@@ -26,6 +27,7 @@ const Primary = () => (
 		<Alcohol />
 		<Filtration />
 		<Pasteurization />
+		<DryHopped />
 	</DefinitionList>
 );
 
