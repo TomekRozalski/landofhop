@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-	// Barcode,
+	Barcode,
 	// Container,
 	ExpirationDate,
 	Ingredients,
@@ -20,7 +20,7 @@ const Secondary = () => (
 		<Temperature />
 		<ExpirationDate />
 		{/* <Container /> */}
-		{/* <Barcode /> */}
+		<Barcode />
 		{/* <Price /> */}
 	</DefinitionList>
 );

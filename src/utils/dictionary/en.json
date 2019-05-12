@@ -91,6 +91,7 @@
 	"dashboard.website": "Website",
 
 	"details.alcohol": "alcohol",
+	"details.barcode": "barcode",
 	"details.city": "city",
 	"details.contains": "zawiera",
 	"details.contractor": "brewed by { brand } for:",
