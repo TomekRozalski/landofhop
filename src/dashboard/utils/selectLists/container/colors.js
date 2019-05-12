@@ -1,14 +1,16 @@
-const colors = () => ([
+import { constants, dictionary } from 'utils';
+
+const colors = (language = constants.siteLanguages.pl) => ([
 	{
-		label: 'Brązowy',
+		label: dictionary[language]['container.color.brown'],
 		value: 'brown',
 	},
 	{
-		label: 'Zielony',
+		label: dictionary[language]['container.color.green'],
 		value: 'green',
 	},
 	{
-		label: 'Srebrny',
+		label: dictionary[language]['container.color.silver'],
 		value: 'silver',
 	},
 ]);

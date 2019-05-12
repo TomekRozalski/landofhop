@@ -1,12 +1,12 @@
-import { constants } from 'utils';
+import { constants, dictionary } from 'utils';
 
-const types = () => ([
+const types = (language = constants.siteLanguages.pl) => ([
 	{
-		label: 'Butelka',
+		label: dictionary[language]['container.type.bottle'],
 		value: constants.container.types.bottle,
 	},
 	{
-		label: 'Puszka',
+		label: dictionary[language]['container.type.can'],
 		value: constants.container.types.can,
 	},
 ]);

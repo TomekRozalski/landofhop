@@ -1,10 +1,12 @@
-const materials = () => ([
+import { constants, dictionary } from 'utils';
+
+const materials = (language = constants.siteLanguages.pl) => ([
 	{
-		label: 'Szkło',
+		label: dictionary[language]['container.material.glass'],
 		value: 'glass',
 	},
 	{
-		label: 'Aluminium',
+		label: dictionary[language]['container.material.aluminum'],
 		value: 'aluminum',
 	},
 ]);

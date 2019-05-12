@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import {
 	Barcode,
-	// Container,
+	Container,
 	ExpirationDate,
 	Ingredients,
 	// Price,
@@ -21,7 +21,7 @@ const Secondary = () => (
 		<SmokedMalt />
 		<Temperature />
 		<ExpirationDate />
-		{/* <Container /> */}
+		<Container />
 		<Barcode />
 		{/* <Price /> */}
 	</DefinitionList>

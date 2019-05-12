@@ -11,6 +11,14 @@
 	"appError.title": "An error has occurred",
 	"app.fullTitle": "Land of Hop, reactive beer catalog",
 
+	"container.color.brown": "brown",
+	"container.color.green": "green",
+	"container.color.silver": "silver",
+	"container.material.aluminum": "aluminum",
+	"container.material.glass": "glass",
+	"container.type.bottle": "bottle",
+	"container.type.can": "can",
+
 	"dashboard.added": "Added",
 	"dashboard.addNew": "Add new",
 	"dashboard.addNewBeverage.title": "Add new beer",
@@ -93,6 +101,7 @@
 	"details.alcohol": "alcohol",
 	"details.barcode": "barcode",
 	"details.city": "city",
+	"details.container": "container",
 	"details.contains": "zawiera",
 	"details.contractor": "brewed by { brand } for:",
 	"details.cooperator": "brewed in cooperation with: { brand }",

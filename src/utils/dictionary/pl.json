@@ -11,6 +11,14 @@
 	"appError.title": "Wystąpił błąd",
 	"app.fullTitle": "Land of Hop, reaktywny katalog piw",
 
+	"container.color.brown": "brązowa",
+	"container.color.green": "zielona",
+	"container.color.silver": "srebrna",
+	"container.material.aluminum": "aluminiowa",
+	"container.material.glass": "szklana",
+	"container.type.bottle": "butelka",
+	"container.type.can": "puszka",
+
 	"dashboard.added": "Dodano",
 	"dashboard.addNew": "Dodaj",
 	"dashboard.addNewBeverage.title": "Dodaj nowe piwo",
@@ -93,6 +101,7 @@
 	"details.alcohol": "alkohol",
 	"details.barcode": "kod kreskowy",
 	"details.city": "miejscowość",
+	"details.container": "opakowanie",
 	"details.contains": "zawiera",
 	"details.contractor": "uwarzono przez { brand } dla:",
 	"details.cooperator": "uwarzono w kooperacji z: { brand }",
