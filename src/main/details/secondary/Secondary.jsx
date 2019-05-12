@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import {
 	// Barcode,
 	// Container,
-	// ExpirationDate,
+	ExpirationDate,
 	Ingredients,
 	// Price,
 	Temperature,
@@ -18,7 +18,7 @@ const Secondary = () => (
 	<DefinitionList>
 		<Ingredients />
 		<Temperature />
-		{/* <ExpirationDate /> */}
+		<ExpirationDate />
 		{/* <Container /> */}
 		{/* <Barcode /> */}
 		{/* <Price /> */}
