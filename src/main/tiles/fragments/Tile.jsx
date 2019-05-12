@@ -10,7 +10,14 @@ import { NoImage } from './index';
 const StyledLink = styled(Link)`
 	display: block;
 	width: 100%;
-	height: ${({ size }) => (size === 'l' ? 500 : 300)}px;
+	height: ${({ size }) => {
+		if (size === 'bottle-l') {
+			return 500;
+		}
+		if (size === 'can-l') {
+			return 363;
+		}
+	}}px;
 	${({ image }) => (image && `
 		background-image: url(${image});
 		background-size: 100% 100%;
@@ -62,7 +69,7 @@ const Tile = ({
 
 	const [blur, setBlur] = useState(true);
 	const [image, setImage] = useState(null);
-	const [size, setSize] = useState('l');
+	const [size, setSize] = useState('bottle-l');
 	const [title, setTitle] = useState('');
 
 	const smallImage = new Image();
@@ -82,9 +89,12 @@ const Tile = ({
 
 	const smallImageLoaded = () => {
 		switch (smallImage.height) {
+		case 73:
+			setSize('can-l');
+			break;
 		case 100:
 		default:
-			setSize('l');
+			setSize('bottle-l');
 			break;
 		}
 
@@ -108,9 +118,37 @@ const Tile = ({
 	useEffect(() => {
 		loadSmall();
 
-		const parsedBeverageName = getNameByLanguage({ values: name, language });
-		const parsedBrandName = getNameByLanguage({ values: brandName, language });
-		setTitle(`${parsedBeverageName}, ${parsedBrandName}`);
+		const {
+			language: nameLanguage,
+			value: nameValue,
+		} = getNameByLanguage({ values: name, language });
+
+		const nameLangAttribute = nameLanguage && nameLanguage !== language
+			? nameLanguage
+			: null;
+		const formattedName = nameLangAttribute
+			? <span lang={nameLangAttribute}>{nameValue}</span>
+			: nameValue;
+
+		const {
+			language: brandLanguage,
+			value: brandValue,
+		} = getNameByLanguage({ values: brandName, language });
+
+		const brandLangAttribute = brandLanguage && brandLanguage !== language
+			? brandLanguage
+			: null;
+		const formattedBrand = brandLangAttribute
+			? <span lang={brandLangAttribute}>{brandValue}</span>
+			: brandValue;
+
+		setTitle(
+			<>
+				{formattedName}
+				{', '}
+				{formattedBrand}
+			</>,
+		);
 
 		return () => {
 			smallImage.removeEventListener('load', smallImageLoaded);

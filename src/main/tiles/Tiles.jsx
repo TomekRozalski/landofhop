@@ -19,6 +19,7 @@ import { Tile } from './fragments';
 
 const List = styled.ul`
 	${grid}
+	align-items: end;
 `;
 
 const Tiles = ({
