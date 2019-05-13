@@ -14,6 +14,9 @@ const StyledLink = styled(Link)`
 		if (size === 'bottle-l') {
 			return 500;
 		}
+		if (size === 'bottle-sm') {
+			return 446;
+		}
 		if (size === 'can-l') {
 			return 363;
 		}
@@ -91,6 +94,9 @@ const Tile = ({
 		switch (smallImage.height) {
 		case 73:
 			setSize('can-l');
+			break;
+		case 89:
+			setSize('bottle-sm');
 			break;
 		case 100:
 		default:
