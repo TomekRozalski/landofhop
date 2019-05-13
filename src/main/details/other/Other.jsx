@@ -1,12 +1,10 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { FormattedMessage } from 'react-intl';
-import moment from 'moment';
 import { get } from 'lodash';
 
 import { BeverageDetailsContext } from 'config';
 import { colors } from 'utils/theme';
-import { DT, DD, Highlight } from 'elements';
+import { Added, Updated } from './fragments';
 
 const Wrapper = styled.div`
 	grid-column: 3 / 5;
@@ -33,12 +31,8 @@ const Other = () => {
 	return (
 		<Wrapper>
 			<dl>
-				<DT><FormattedMessage id="details.added" /></DT>
-				<DD>
-					<Highlight type="editorial">
-						{ moment(beverage.added).format('DD.MM.YYYY') }
-					</Highlight>
-				</DD>
+				<Added />
+				<Updated />
 			</dl>
 			{ cap && <img alt="" src={`/img/${brand}/${badge}/${shortId}/cap/x1.jpg`} /> }
 		</Wrapper>

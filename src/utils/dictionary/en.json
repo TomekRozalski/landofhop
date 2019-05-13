@@ -131,6 +131,7 @@
 	"details.temperature": "recommended serving temperature",
 	"details.temperature.scope": "from { from } to { to }",
 	"details.temperature.unit.celcius": "°C",
+	"details.updated": "last updated",
 	"details.yes": "yes",
 
 	"extractRelate.blg": "Blg",

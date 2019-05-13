@@ -131,6 +131,7 @@
 	"details.temperature": "zalecana temperatura podawania",
 	"details.temperature.scope": "od { from } do { to }",
 	"details.temperature.unit.celcius": "°C",
+	"details.updated": "ostatnio poprawiono",
 	"details.yes": "tak",
 
 	"extractRelate.blg": "Blg",
