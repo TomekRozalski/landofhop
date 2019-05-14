@@ -10,7 +10,7 @@ const Updated = () => {
 	const { beverage } = useContext(BeverageDetailsContext);
 	const updated = get(beverage, 'updated');
 
-	return updated ? (
+	return updated && moment(updated).diff(beverage.added, 'days') > 0 ? (
 		<>
 			<DT><FormattedMessage id="details.updated" /></DT>
 			<DD>

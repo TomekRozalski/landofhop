@@ -20,6 +20,8 @@ const StyledLink = styled(Link)`
 		if (size === 'can-l') {
 			return 363;
 		}
+
+		return 'auto';
 	}}px;
 	${({ image }) => (image && `
 		background-image: url(${image});
