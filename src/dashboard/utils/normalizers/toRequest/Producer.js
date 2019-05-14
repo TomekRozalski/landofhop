@@ -1,4 +1,4 @@
-import { isEmpty, isNull } from 'lodash';
+import { isArray, isEmpty, isNull } from 'lodash';
 
 import { constants } from 'utils';
 import { convertStringToDate } from 'dashboard/utils';
@@ -92,7 +92,7 @@ const Producer = ({
 						type: aged,
 					},
 				}),
-				...(!isNull(dryHopped) && { dryHopped }),
+				...(isArray(dryHopped) && { dryHopped: dryHopped.map(hop => hop.value) }),
 				...(!isNull(expirationDate) && {
 					expirationDate: {
 						value: expirationDate.value,

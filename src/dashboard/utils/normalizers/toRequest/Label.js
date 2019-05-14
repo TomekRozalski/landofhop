@@ -1,4 +1,5 @@
 import {
+	isArray,
 	isBoolean,
 	isEmpty,
 	isNull,
@@ -114,7 +115,7 @@ const Label = ({
 						type: aged,
 					},
 				}),
-				...(isBoolean(dryHopped) && { dryHopped }),
+				...(isArray(dryHopped) && { dryHopped: dryHopped.map(hop => hop.value) }),
 				...(!isNull(expirationDate) && {
 					expirationDate: {
 						value: expirationDate.value,

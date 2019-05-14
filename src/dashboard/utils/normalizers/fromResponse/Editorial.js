@@ -2,6 +2,7 @@
 import { get, isBoolean, isNumber } from 'lodash';
 
 import { constants } from 'utils';
+import { getNameByLanguage } from 'utils/helpers';
 import {
 	alcoholScopesList,
 	clarityList,
@@ -72,7 +73,13 @@ const Editorial = (beverage) => {
 		...(isBoolean(pasteurization) && { pasteurization }),
 		...(isBoolean(refermentation) && { refermentation }),
 		...(aged && { aged: aged.type }),
-		...(isBoolean(dryHopped) && { dryHopped }),
+		...(dryHopped && {
+			dryHopped: dryHopped === true ? [] : dryHopped.map(({ id, name, type }) => ({
+				type,
+				label: getNameByLanguage({ values: name, language: constants.siteLanguages.pl }).value,
+				value: id,
+			})),
+		}),
 		// ----------------------------------
 		...(color && { color }),
 		...(clarity && { sweetness: clarityList.find(item => item.value === clarity) }),

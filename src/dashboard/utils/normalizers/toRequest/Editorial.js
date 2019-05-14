@@ -1,4 +1,4 @@
-import { isEmpty, isNull } from 'lodash';
+import { isArray, isEmpty, isNull } from 'lodash';
 
 import { constants } from 'utils';
 import { convertStringToDate } from 'dashboard/utils';
@@ -55,7 +55,7 @@ const Editorial = ({
 						type: aged,
 					},
 				}),
-				...(!isNull(dryHopped) && { dryHopped }),
+				...(isArray(dryHopped) && { dryHopped: dryHopped.map(hop => hop.value) }),
 			},
 			impressions: {
 				...(!isNull(color) && { color }),

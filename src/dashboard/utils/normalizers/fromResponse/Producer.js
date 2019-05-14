@@ -1,6 +1,7 @@
 import { get, isBoolean, isNumber } from 'lodash';
 
 import { constants } from 'utils';
+import { getNameByLanguage } from 'utils/helpers';
 import {
 	alcoholRelatesList,
 	alcoholScopesList,
@@ -107,7 +108,13 @@ const Producer = (beverage) => {
 		...(isBoolean(pasteurization) && { pasteurization }),
 		...(isBoolean(refermentation) && { refermentation }),
 		...(aged && { aged: aged.type }),
-		...(isBoolean(dryHopped) && { dryHopped }),
+		...(dryHopped && {
+			dryHopped: dryHopped === true ? [] : dryHopped.map(({ id, name, type }) => ({
+				type,
+				label: getNameByLanguage({ values: name, language: constants.siteLanguages.pl }).value,
+				value: id,
+			})),
+		}),
 		...(expirationDate && {
 			expirationDate: {
 				value: expirationDate.value,
