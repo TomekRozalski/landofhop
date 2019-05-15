@@ -11,6 +11,7 @@ import {
 	Admin,
 	Gallery,
 	Heading,
+	Impressions,
 	Meta,
 	Other,
 	Primary,
@@ -58,7 +59,7 @@ const Details = ({
 			<Primary />
 			<Tale />
 			<Secondary />
-			{/* <Impressions /> */}
+			<Impressions />
 			<Other />
 			<Admin params={params} />
 			<Meta />
