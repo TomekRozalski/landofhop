@@ -6,7 +6,7 @@ import Verified from './Verified';
 const Impressions = () => (
 	<>
 		<Provided />
-		{/* <Verified /> */}
+		<Verified />
 	</>
 );
 

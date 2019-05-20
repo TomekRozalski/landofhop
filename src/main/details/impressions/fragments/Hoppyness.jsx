@@ -8,11 +8,11 @@ import { constants } from 'utils';
 import { Highlight } from 'elements';
 import { DT, PercentIndicator } from '../elements';
 
-const Bitterness = () => {
+const Hoppyness = () => {
 	const { beverage } = useContext(BeverageDetailsContext);
 
-	const labelValues = get(beverage, 'label.impressions.bitterness');
-	const producerValues = get(beverage, 'producer.impressions.bitterness');
+	const labelValues = get(beverage, 'label.impressions.hoppyness');
+	const producerValues = get(beverage, 'producer.impressions.hoppyness');
 
 	const { type } = constants.details;
 
@@ -27,7 +27,7 @@ const Bitterness = () => {
 			<React.Fragment key={type}>
 				<DT>
 					<Highlight type={type}>
-						<FormattedMessage id="details.bitterness" />
+						<FormattedMessage id="details.hoppyness" />
 					</Highlight>
 				</DT>
 				<PercentIndicator value={value}>{value}</PercentIndicator>
@@ -37,4 +37,4 @@ const Bitterness = () => {
 	return formattedValues.length ? formattedValues : null;
 };
 
-export default Bitterness;
+export default Hoppyness;

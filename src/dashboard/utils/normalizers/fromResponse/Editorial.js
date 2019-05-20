@@ -82,7 +82,7 @@ const Editorial = (beverage) => {
 		}),
 		// ----------------------------------
 		...(color && { color }),
-		...(clarity && { sweetness: clarityList.find(item => item.value === clarity) }),
+		...(clarity && { clarity: clarityList().find(item => item.value === clarity) }),
 		// ----------------------------------
 		...(price && {
 			price: price.map(({ currency, date, value }) => ({

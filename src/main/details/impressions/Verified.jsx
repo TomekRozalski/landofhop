@@ -1,21 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
 
-// import {
-// 	Brand,
-// 	Contract,
-// 	Cooperation,
-// 	Name,
-// 	Series,
-// } from './fragments';
-
-const Wrapper = styled.div`
-	grid-column: 4 / 5;
-	background-color: green;
-`;
+import { SectionWrapper } from './elements';
+import { Clarity, Color } from './fragments';
 
 const Verified = () => (
-	<Wrapper>Verified Impressions</Wrapper>
+	<SectionWrapper type="verified">
+		<Color />
+		<Clarity />
+	</SectionWrapper>
 );
 
 export default Verified;
