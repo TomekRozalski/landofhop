@@ -28,6 +28,7 @@ const Bitterness = ({ fieldName, formName }) => (
 				component={Input}
 				id={`${formName}-${fieldName}`}
 				name={fieldName}
+				type="number"
 			/>
 		</InputWrapper>
 		<InputWrapper place="slider">

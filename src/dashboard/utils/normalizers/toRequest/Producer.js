@@ -1,4 +1,9 @@
-import { isArray, isEmpty, isNull } from 'lodash';
+import {
+	isArray,
+	isEmpty,
+	isNumber,
+	isNull,
+} from 'lodash';
 
 import { constants } from 'utils';
 import { convertStringToDate } from 'dashboard/utils';
@@ -114,11 +119,11 @@ const Producer = ({
 				...(!isNull(smokedMalt) && { smokedMalt }),
 			},
 			impressions: {
-				...(!isNull(bitterness) && { bitterness }),
-				...(!isNull(sweetness) && { sweetness }),
-				...(!isNull(fullness) && { fullness }),
-				...(!isNull(power) && { power }),
-				...(!isNull(hoppyness) && { hoppyness }),
+				...(isNumber(bitterness) && { bitterness }),
+				...(isNumber(sweetness) && { sweetness }),
+				...(isNumber(fullness) && { fullness }),
+				...(isNumber(power) && { power }),
+				...(isNumber(hoppyness) && { hoppyness }),
 				...(!isNull(temperature) && {
 					temperature: {
 						from: temperature.from,
