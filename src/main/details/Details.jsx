@@ -9,6 +9,7 @@ import { grid } from 'utils';
 import { Spinner } from 'elements';
 import {
 	Admin,
+	ControlPanel,
 	Gallery,
 	Heading,
 	Impressions,
@@ -22,7 +23,7 @@ import { beverageDetails } from './utils';
 
 const Wrapper = styled.div`
 	${grid}
-	grid-template-rows: auto auto 1fr auto auto;
+	grid-template-rows: auto auto 1fr auto auto auto;
 	margin: 3rem auto;
 `;
 
@@ -55,7 +56,7 @@ const Details = ({
 		<Wrapper>
 			<Gallery />
 			<Heading />
-			{/* <Navigation /> */}
+			<ControlPanel />
 			<Primary />
 			<Tale />
 			<Secondary />

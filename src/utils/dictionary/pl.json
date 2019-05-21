@@ -108,6 +108,9 @@
 	"dashboard.updated": "Ostatnio poprawiono",
 	"dashboard.website": "Strona internetowa",
 
+	"dataOrigin.producer": "Ta informacja pochodzi ze strony internetowej producenta",
+	"dataOrigin.editorial": "Ta informacja pochodzi od redakcji Land of Hop",
+
 	"details.added": "dodano",
 	"details.admin.updateBeverage": "Popraw informacje",
 	"details.alcohol": "alkohol",

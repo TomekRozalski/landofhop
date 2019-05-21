@@ -13,7 +13,8 @@ export default {
 		700: '#fff',
 	},
 	highlight: {
-		light: '#f6f6ef',
+		producer: '#f1f1d8',
+		editorial: '#dcf2d6',
 	},
 	success: {
 		strong: '#4cb231',
