@@ -8,7 +8,8 @@ const ColorIndicator = styled.dd`
 	margin: 0;
 	border: 1px solid ${colors.gray[400]};
 	background-color: ${({ value }) => (value || 'inherit')};
-
+	position: relative;
+	top: .4rem;
 `;
 
 export default ColorIndicator;

@@ -17,7 +17,7 @@ const Clarity = () => {
 					<FormattedMessage id="details.clarity" />
 				</Highlight>
 			</DT>
-			<span>{ value }</span>
+			<FormattedMessage id={`clarity.${value}`} />
 		</>
 	) : null;
 };

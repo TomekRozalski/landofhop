@@ -11,6 +11,13 @@
 	"appError.title": "An error has occurred",
 	"app.fullTitle": "Land of Hop, reactive beer catalog",
 
+	"clarity.crystalline": "crystalline",
+	"clarity.clear": "clear",
+	"clarity.opalescent": "opalescent",
+	"clarity.misty": "misty",
+	"clarity.hazy": "hazy",
+	"clarity.muddy": "muddy",
+
 	"container.color.brown": "brown",
 	"container.color.green": "green",
 	"container.color.silver": "silver",

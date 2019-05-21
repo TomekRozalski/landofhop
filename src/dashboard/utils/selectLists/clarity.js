@@ -1,28 +1,28 @@
-import { constants } from 'utils';
+import { dictionary, constants } from 'utils';
 
-const clarity = () => ([
+const clarity = (language = constants.siteLanguages.pl) => ([
 	{
-		label: 'Krystaliczne',
+		label: dictionary[language]['clarity.crystalline'],
 		value: constants.clarity.crystalline,
 	},
 	{
-		label: 'Czyste',
+		label: dictionary[language]['clarity.clear'],
 		value: constants.clarity.clear,
 	},
 	{
-		label: 'Opalizujące',
+		label: dictionary[language]['clarity.opalescent'],
 		value: constants.clarity.opalescent,
 	},
 	{
-		label: 'Zamglone',
+		label: dictionary[language]['clarity.misty'],
 		value: constants.clarity.misty,
 	},
 	{
-		label: 'Hazy',
+		label: dictionary[language]['clarity.hazy'],
 		value: constants.clarity.hazy,
 	},
 	{
-		label: 'Błotniste',
+		label: dictionary[language]['clarity.muddy'],
 		value: constants.clarity.muddy,
 	},
 ]);
