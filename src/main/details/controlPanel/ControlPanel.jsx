@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FormattedMessage } from 'react-intl';
 
 import { colors, fonts } from 'utils/theme';
 import { Navigation } from './fragments';
@@ -15,8 +16,17 @@ const Example = styled.div`
 	color: ${colors.gray[200]};
 	padding-left: 3rem;
 	position: relative;
+`;
 
-	::before {
+const Checkbox = styled.input.attrs({
+	type: 'checkbox',
+})`
+	display: none;
+`;
+
+const Label = styled.label`
+	::before,
+	::after {
 		display: inline-block;
 		width: 2rem;
 		height: 2rem;
@@ -26,25 +36,40 @@ const Example = styled.div`
 		top: .3rem;
 		left: 0;
 	}
+
+	::after {
+		background-color: ${({ type }) => colors.highlight[type]};
+		visibility: hidden;
+	}
+
+	${Checkbox}:checked ~ &::after {
+		visibility: visible;
+	}
 `;
 
 const ControlPanel = () => (
 	<Wrapper>
 		<Navigation />
 		<Example>
-			zaznacz informacje pochodzące ze strony internetowej producenta
-
-
-			
-{' '}
+			<Checkbox
+				id="control.producer"
+				onChange={() => { console.log('aa'); }}
+				// checked={false}
+			/>
+			<Label htmlFor="control.producer" type="producer">
+				<FormattedMessage id="details.controlPanel.selectProducerData" />
+			</Label>
 		</Example>
-		  <Example>
-			zaznacz informacje pochodzące od redakcji Land of Hop
-
-
-			
-{' '}
-    </Example>
+		<Example>
+			<Checkbox
+				id="control.editorial"
+				onChange={() => { console.log('aa'); }}
+				// checked={false}
+			/>
+			<Label htmlFor="control.editorial" type="editorial">
+				<FormattedMessage id="details.controlPanel.selectEditorialData" />
+			</Label>
+		</Example>
 	</Wrapper>
 );
 

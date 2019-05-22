@@ -108,6 +108,9 @@
 	"dashboard.updated": "Updated",
 	"dashboard.website": "Website",
 
+	"dataOrigin.producer": "This data comes from the producers website",
+	"dataOrigin.editorial": "This data is editorial",
+
 	"details.added": "added",
 	"details.admin.updateBeverage": "Update data",
 	"details.alcohol": "alcohol",
@@ -119,6 +122,8 @@
 	"details.container": "container",
 	"details.contains": "zawiera",
 	"details.contractor": "brewed by { brand } for:",
+	"details.controlPanel.selectProducerData": "highlight informations which comes from producer website",
+	"details.controlPanel.selectEditorialData": "highlight editorial informations",
 	"details.cooperator": "brewed in cooperation with: { brand }",
 	"details.country": "country",
 	"details.dryHopped": "dry hopped",

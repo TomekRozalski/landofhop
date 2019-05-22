@@ -122,6 +122,8 @@
 	"details.container": "opakowanie",
 	"details.contains": "zawiera",
 	"details.contractor": "uwarzono przez { brand } dla:",
+	"details.controlPanel.selectProducerData": "zaznacz informacje pochodzące ze strony internetowej producenta",
+	"details.controlPanel.selectEditorialData": "zaznacz informacje pochodzące od redakcji Land of Hop",
 	"details.cooperator": "uwarzono w kooperacji z: { brand }",
 	"details.country": "kraj",
 	"details.dryHopped": "chmielenie na zimno",
