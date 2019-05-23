@@ -6,6 +6,7 @@ import {
 	AppError,
 	Authentication,
 	BeverageDetails,
+	DetailsControlPanel,
 	Device,
 	Dictionary,
 	Language,
@@ -22,7 +23,9 @@ const GlobalStateProvider = () => (
 						<Authentication>
 							<Dictionary>
 								<BeverageDetails>
-									<Routes />
+									<DetailsControlPanel>
+										<Routes />
+									</DetailsControlPanel>
 								</BeverageDetails>
 							</Dictionary>
 						</Authentication>

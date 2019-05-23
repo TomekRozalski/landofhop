@@ -1,14 +1,12 @@
-import React, { useCallback, useState } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
-import { constants } from 'utils';
-import { colors, fonts } from 'utils/theme';
+import { DetailsControlPanelContext } from 'config';
+import { colors } from 'utils/theme';
 import { FormattedMessage } from 'react-intl';
 
 const Information = styled.mark`
 	display: none;
-
-
 `;
 
 const Wrapper = styled.span`
@@ -17,23 +15,36 @@ const Wrapper = styled.span`
 		margin: .5rem 0;
 		padding: .5rem 0;
 	`)}
-	${({ marked }) => (
-		marked
-			? `background: ${colors.highlight.producer};`
-			: ''
-	)}
-
+	${({ highlight }) => `background: ${colors.highlight[highlight]};`}
 
 	svg {
 		width: 16px;
 	}
 `;
 
-const Highlight = ({ type, block, children }) => {
+const Highlight = ({
+	block,
+	children,
+	lang,
+	type,
+}) => {
+	const {
+		isProducerDataHighlighted,
+		isEditorialDataHighlighted,
+	} = useContext(DetailsControlPanelContext);
+
+	let highlight = null;
+
+	if (type === 'producer' && isProducerDataHighlighted) {
+		highlight = 'producer';
+	} else if (type === 'editorial' && isEditorialDataHighlighted) {
+		highlight = 'editorial';
+	}
+
 	if (type !== 'label') {
 		return (
 			<>
-				<Wrapper block={block}>
+				<Wrapper block={block} highlight={highlight} lang={lang}>
 					{children}
 				</Wrapper>
 				<Information>
