@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { DetailsControlPanelContext } from 'config';
@@ -9,17 +10,9 @@ const Information = styled.mark`
 	display: none;
 `;
 
-const Wrapper = styled.span`
-	${({ block }) => (block && `
-		display: block;
-		margin: .5rem 0;
-		padding: .5rem 0;
-	`)}
+const Highlighter = styled.span`
+	${({ block }) => (block && 'display: block;')}
 	${({ highlight }) => `background: ${colors.highlight[highlight]};`}
-
-	svg {
-		width: 16px;
-	}
 `;
 
 const Highlight = ({
@@ -41,20 +34,28 @@ const Highlight = ({
 		highlight = 'editorial';
 	}
 
-	if (type !== 'label') {
-		return (
-			<>
-				<Wrapper block={block} highlight={highlight} lang={lang}>
-					{children}
-				</Wrapper>
-				<Information>
-					<FormattedMessage id={`dataOrigin.${type}`} />
-				</Information>
-			</>
-		);
-	}
+	return type !== 'label' ? (
+		<>
+			<Highlighter block={block} highlight={highlight} lang={lang}>
+				{children}
+			</Highlighter>
+			<Information>
+				<FormattedMessage id={`dataOrigin.${type}`} />
+			</Information>
+		</>
+	) : children;
+};
 
-	return children;
+Highlight.propTypes = {
+	block: PropTypes.bool,
+	children: PropTypes.node.isRequired,
+	lang: PropTypes.string,
+	type: PropTypes.string.isRequired,
+};
+
+Highlight.defaultProps = {
+	block: null,
+	lang: null,
 };
 
 export default Highlight;

@@ -19,6 +19,11 @@ const Wrapper = styled.div`
 	`)}
 `;
 
+const HightlightWrapper = styled.div`
+	margin: .5rem 0;
+	padding: 1rem 0;
+`;
+
 const Tale = () => {
 	const { beverage } = useContext(BeverageDetailsContext);
 	const { language } = useContext(LanguageContext);
@@ -54,14 +59,16 @@ const Tale = () => {
 			},
 		], [])
 		.map(({ type, value }) => (
-			<Highlight
-				key={type}
-				lang={value.language === language ? null : value.language}
-				type={type}
-				block
-			>
-				<Markdown options={{ forceInline: true }}>{ value.value }</Markdown>
-			</Highlight>
+			<HightlightWrapper>
+				<Highlight
+					key={type}
+					lang={value.language === language ? null : value.language}
+					type={type}
+					block
+				>
+					<Markdown options={{ forceInline: true }}>{ value.value }</Markdown>
+				</Highlight>
+			</HightlightWrapper>
 		));
 
 	return formattedValues.length
