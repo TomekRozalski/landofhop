@@ -51,7 +51,7 @@ const Details = ({
 		}
 
 		return (() => { setBeverage(null); });
-	}, []);
+	}, [savedBeverage]);
 
 	if (!beverage || isLoading) {
 		return <Spinner center />;
