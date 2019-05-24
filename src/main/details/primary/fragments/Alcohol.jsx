@@ -64,13 +64,23 @@ const Alcohol = () => {
 					break;
 				}
 
+				let formattedScope;
+
+				if (scope) {
+					if (item.type === 'editorial') {
+						formattedScope = ` ${scope}`;
+					} else {
+						formattedScope = ` (${scope})`;
+					}
+				}
+
 				return (
 					<>
 						{formattedValue}
 						{formattedUnit}
 						{' '}
 						{ relate && <FormattedMessage id={`alcoholRelate.${relate}`} /> }
-						{scope && ` (${scope})`}
+						{formattedScope}
 					</>
 				);
 			};
