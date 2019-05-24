@@ -1,4 +1,4 @@
-import { assign } from 'lodash';
+import { assign, get } from 'lodash';
 
 import { constants } from 'utils';
 import { constants as dashboardConstants } from 'dashboard/utils';
@@ -9,11 +9,12 @@ import {
 } from '../normalizers/toRequest';
 
 const updateBeverage = ({
-	reFetchDetails,
+	getBeverageDetails,
 	getBeveragesList,
 	push,
 	savedForms,
 	setAppError,
+	shortId,
 	token,
 }) => ({
 	setSubmitting,
@@ -34,6 +35,9 @@ const updateBeverage = ({
 		editorialData,
 	);
 
+	const brand = get(savedForms, [label, 'brand', 'badge'], '');
+	const badge = get(savedForms, [label, 'badge'], '');
+
 	return fetch(constants.servers.main + constants.api_endpoints.beverage_update, {
 		method: 'PUT',
 		headers: {
@@ -44,10 +48,16 @@ const updateBeverage = ({
 	})
 		.then(res => res.json())
 		.then(getBeveragesList)
-		.then(reFetchDetails)
+		.then(() => {
+			getBeverageDetails({
+				badge,
+				brand,
+				shortId,
+			});
+		})
 		.then(() => setSubmitting(false))
 		.then(() => {
-			push('/');
+			push(`/details/${shortId}/${brand}/${badge}`);
 		})
 		.catch((err) => {
 			setAppError(err);

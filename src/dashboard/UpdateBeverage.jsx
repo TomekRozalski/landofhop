@@ -51,8 +51,6 @@ const UpdateBeverage = ({
 		}
 	}, [beverage]);
 
-	const reFetchDetails = () => getBeverageDetails(params);
-
 	if (isLoading || isBeverageProcessing) {
 		return <Spinner center />;
 	}
@@ -78,11 +76,12 @@ const UpdateBeverage = ({
 				}
 
 				const finalSubmit = updateBeverage({
-					reFetchDetails,
+					getBeverageDetails,
 					getBeveragesList,
 					push,
 					savedForms,
 					setAppError,
+					shortId: params.shortId,
 					token,
 				});
 

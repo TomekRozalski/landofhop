@@ -81,6 +81,7 @@ const Label = ({
 		brand: {
 			label: brand.name[0].value,
 			value: brand.id,
+			badge: brand.badge,
 		},
 		...(cooperation && {
 			cooperation: cooperation.map(({ id, name }) => ({

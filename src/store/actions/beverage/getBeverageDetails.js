@@ -17,6 +17,12 @@ const getBeverageDetails = ({
 			const endpoint = `${constants.servers.main}${constants.api_endpoints.beverage_details}${shortId}/${brand}/${badge}`;
 
 			fetch(endpoint)
+				.then((res) => {
+					if (res.status !== 200) {
+						throw new Error();
+					}
+					return res;
+				})
 				.then(res => res.json())
 				.then((details) => {
 					dispatch({

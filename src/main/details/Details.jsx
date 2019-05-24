@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import { BeverageDetailsContext } from 'config';
+import { AppErrorContext, BeverageDetailsContext } from 'config';
 import { getBeverageDetails as getBeverageDetailsAction } from 'store/actions';
 import { grid } from 'utils';
 import { Spinner } from 'elements';
@@ -36,7 +36,12 @@ const Details = ({
 		params,
 	},
 }) => {
+	const { setAppError } = useContext(AppErrorContext);
 	const { beverage, setBeverage } = useContext(BeverageDetailsContext);
+
+	if (isError) {
+		setAppError('appError.fetchFailed.beverageDetails');
+	}
 
 	useEffect(() => {
 		if (savedBeverage) {

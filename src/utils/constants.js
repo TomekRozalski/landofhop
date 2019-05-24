@@ -81,6 +81,7 @@ export default {
 	none: '-',
 	server_responses: {
 		authentication_secceeded: 'Authentication succeeded',
+		beverage_not_found: 'Beverage not found',
 	},
 	servers: {
 		main: 'http://localhost:3100/',

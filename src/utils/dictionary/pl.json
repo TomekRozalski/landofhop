@@ -4,6 +4,7 @@
 	"alcoholRelate.abv": "Abv",
 	"alcoholRelate.capacity": "obj.",
 	"appError.close": "Zamknij okno",
+	"appError.fetchFailed.beverageDetails": "Nie udało się pobrać szczegółów pozycji",
 	"appError.fetchFailed.beverageList": "Nie udało się pobrać listy pozycji",
 	"appError.goBackToMainPage": "Wróć do strony głównej",
 	"appError.invalidToken": "Znaleziono nieprawidłowy token w localStorage!",
