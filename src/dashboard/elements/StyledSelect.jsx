@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import {
 	any,
 	arrayOf,
@@ -9,6 +10,7 @@ import {
 } from 'prop-types';
 import Select, { components } from 'react-select';
 import { injectIntl } from 'react-intl';
+import { get } from 'lodash';
 
 import {
 	colors,
@@ -18,6 +20,54 @@ import {
 } from 'utils/theme';
 import { FieldStatusIndicator } from 'elements';
 import { ErrorGroup, LoadingGroup } from './index';
+
+const MarkType = styled.div`
+	position: relative;
+
+	&::after {
+		display: inline-block;
+		width: 1rem;
+		height: 1rem;
+		border-radius: 50%;
+		position: absolute;
+		top: 50%;
+		right: 1rem;
+		transform: translateY(-50%);
+
+		${({ type }) => {
+		if (type === 'hop') {
+			return `
+					content: '';
+					background: ${colors.ingredients.hop};
+				`;
+		}
+
+		if (type === 'malt') {
+			return `
+					content: '';
+					background: ${colors.ingredients.malt};
+				`;
+		}
+
+		if (type === 'appendix') {
+			return `
+					content: '';
+					background: ${colors.ingredients.appendix};
+				`;
+		}
+
+
+		if (type === 'yeast') {
+			return `
+					content: '';
+					background: ${colors.gray[300]};
+				`;
+		}
+
+		return '';
+	}}
+	}
+`;
 
 const StyledSelect = ({
 	children,
@@ -42,6 +92,11 @@ const StyledSelect = ({
 	};
 
 	const input = props => <components.Input {...props} id={`${formName}-${fieldName}`} />;
+	const option = props => (
+		<MarkType type={get(props, 'data.type')}>
+			<components.Option {...props} />
+		</MarkType>
+	);
 
 	if (isError) {
 		return <ErrorGroup />;
@@ -56,6 +111,7 @@ const StyledSelect = ({
 			<Select
 				components={{
 					Input: input,
+					Option: option,
 				}}
 				isDisabled={value === null}
 				isMulti={multi}
@@ -141,25 +197,84 @@ const StyledSelect = ({
 						paddingTop: 0,
 						paddingBottom: 0,
 					}),
-					multiValue: base => ({
-						...base,
-						backgroundColor: colors.gray[400],
-					}),
-					multiValueLabel: base => ({
-						...base,
-						borderRadius: 0,
-						padding: '0 3px 0 6px',
-						color: colors.gray[100],
-					}),
-					multiValueRemove: base => ({
-						...base,
-						color: colors.gray[200],
-						transition: 'color .1s',
-						cursor: 'pointer',
-						':hover': {
-							color: colors.gray[100],
-						},
-					}),
+					multiValue: (base, { data }) => {
+						const type = get(data, 'type');
+
+						const getBgColor = () => {
+							switch (type) {
+							case 'hop':
+								return colors.ingredients.hop;
+							case 'malt':
+								return colors.ingredients.malt;
+							case 'appendix':
+								return colors.ingredients.appendix;
+							default:
+								return colors.gray[400];
+							}
+						};
+
+						return {
+							...base,
+							backgroundColor: getBgColor(),
+						};
+					},
+					multiValueLabel: (base, { data }) => {
+						const type = get(data, 'type');
+
+						const getColor = () => {
+							switch (type) {
+							case 'hop':
+							case 'malt':
+							case 'appendix':
+								return colors.gray[700];
+							default:
+								return colors.gray[100];
+							}
+						};
+
+						return {
+							...base,
+							borderRadius: 0,
+							padding: '0 3px 0 6px',
+							color: getColor(),
+						};
+					},
+					multiValueRemove: (base, { data }) => {
+						const type = get(data, 'type');
+
+						const getColor = () => {
+							switch (type) {
+							case 'hop':
+							case 'malt':
+							case 'appendix':
+								return colors.gray[700];
+							default:
+								return colors.gray[100];
+							}
+						};
+
+						const getHoverColor = () => {
+							switch (type) {
+							case 'hop':
+							case 'malt':
+							case 'appendix':
+								return colors.gray[100];
+							default:
+								return colors.gray[700];
+							}
+						};
+
+						return {
+							...base,
+							paddingTop: '1px',
+							color: getColor(),
+							transition: 'color .1s',
+							cursor: 'pointer',
+							':hover': {
+								color: getHoverColor(),
+							},
+						};
+					},
 					valueContainer: (base, { isMulti }) => ({
 						...base,
 						height: isMulti ? 'auto' : `${gutters.inputHeight}rem`,

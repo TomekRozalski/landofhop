@@ -1,5 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import {
+	arrayOf,
+	bool,
+	shape,
+	string,
+} from 'prop-types';
 import { connect } from 'react-redux';
 import { FastField, Field } from 'formik';
 import { get } from 'lodash';
@@ -48,14 +53,15 @@ const IngredientsList = ({
 
 IngredientsList.propTypes = {
 	...fragmentTypes,
-	ingredients: PropTypes.arrayOf(
-		PropTypes.shape({
-			label: PropTypes.string.isRequired,
-			value: PropTypes.string.isRequired,
+	ingredients: arrayOf(
+		shape({
+			label: string.isRequired,
+			value: string.isRequired,
+			type: string.isRequired,
 		}),
 	).isRequired,
-	isError: PropTypes.bool.isRequired,
-	isLoading: PropTypes.bool.isRequired,
+	isError: bool.isRequired,
+	isLoading: bool.isRequired,
 };
 
 const mapStateToProps = state => ({

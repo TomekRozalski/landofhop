@@ -16,6 +16,11 @@ export default {
 		producer: '#f1f1d8',
 		editorial: '#dcf2d6',
 	},
+	ingredients: {
+		hop: '#7bc86f',
+		malt: '#d2c938',
+		appendix: '#cd869a',
+	},
 	success: {
 		strong: '#4cb231',
 		light: '#beddb5',
