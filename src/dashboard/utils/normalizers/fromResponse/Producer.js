@@ -130,8 +130,9 @@ const Producer = (beverage) => {
 			})),
 		}),
 		...(list && {
-			ingredientsList: list.map(({ id, name }) => ({
+			ingredientsList: list.map(({ id, name, type }) => ({
 				label: name[0].value,
+				type,
 				value: id,
 			})),
 		}),
