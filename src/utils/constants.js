@@ -56,11 +56,12 @@ export default {
 		},
 	},
 	dataLanguages: {
-		pl: 'pl',
-		en: 'en',
 		de: 'de',
+		en: 'en',
 		es: 'es',
 		none: '-',
+		pl: 'pl',
+		ua: 'ua',
 	},
 	extract: {
 		relates: {

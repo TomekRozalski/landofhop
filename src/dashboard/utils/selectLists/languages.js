@@ -18,6 +18,10 @@ const languages = language => ([
 		value: constants.dataLanguages.es,
 	},
 	{
+		label: dictionary[language]['language.ukrainian'],
+		value: constants.dataLanguages.ua,
+	},
+	{
 		label: dictionary[language]['language.notApplicable'],
 		value: constants.dataLanguages.none,
 	},
