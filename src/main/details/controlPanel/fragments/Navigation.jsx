@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import {
 	arrayOf,
@@ -10,14 +10,13 @@ import { connect } from 'react-redux';
 
 import { getBeveragesList as getBeveragesListAction } from 'store/actions';
 import { BeverageDetailsContext } from 'config';
-import { colors } from 'utils/theme';
+import { StyledButton } from '../elements';
 import { beverageBasics } from '../../../tiles/utils';
 
-const Example = styled.div`
-	width: 100%;
-	height: 10rem;
+const Wrapper = styled.div`
+	display: flex;
+	justify-content: space-between;
 	margin-bottom: 2rem;
-	border: 4px solid ${colors.success.strong};
 `;
 
 const Navigation = ({
@@ -27,11 +26,40 @@ const Navigation = ({
 	list,
 }) => {
 	const { beverage } = useContext(BeverageDetailsContext);
+	const [prevLink, setPrevLink] = useState(null);
+	const [nextLink, setNextLink] = useState(null);
 
-	if (list.length >= 5 && !isLoading && !isError) {
-		const num = list.findIndex(item => item.id === beverage.id);
-		console.log('num', num);
-	}
+	useEffect(() => {
+		if (list.length >= 5 && !isLoading && !isError) {
+			const num = list.findIndex(item => item.id === beverage.id);
+
+			if (num === 0) {
+				setPrevLink(null);
+			} else {
+				const {
+					badge,
+					brand: {
+						badge: brandBadge,
+					},
+					shortId,
+				} = list[num - 1];
+				setPrevLink(`/details/${shortId}/${brandBadge}/${badge}`);
+			}
+
+			if (num === list.length) {
+				setNextLink(null);
+			} else {
+				const {
+					badge,
+					brand: {
+						badge: brandBadge,
+					},
+					shortId,
+				} = list[num + 1];
+				setNextLink(`/details/${shortId}/${brandBadge}/${badge}`);
+			}
+		}
+	}, [isError, isLoading, list]);
 
 	useEffect(() => {
 		if (list.length < 5) {
@@ -40,7 +68,10 @@ const Navigation = ({
 	}, []);
 
 	return (
-		<Example />
+		<Wrapper>
+			<StyledButton to={prevLink} type="previous" />
+			<StyledButton to={nextLink} type="next" />
+		</Wrapper>
 	);
 };
 

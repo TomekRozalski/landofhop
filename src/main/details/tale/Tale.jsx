@@ -59,9 +59,8 @@ const Tale = () => {
 			},
 		], [])
 		.map(({ type, value }) => (
-			<HightlightWrapper>
+			<HightlightWrapper key={type}>
 				<Highlight
-					key={type}
 					lang={value.language === language ? null : value.language}
 					type={type}
 					block
