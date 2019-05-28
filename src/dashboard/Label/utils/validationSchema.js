@@ -24,7 +24,7 @@ export default Yup.object().shape({
 					value: Yup.string().required('danger'),
 				}),
 				value: Yup.string()
-					.min(3, 'danger')
+					.min(1, 'danger')
 					.required('danger'),
 			}),
 		)
