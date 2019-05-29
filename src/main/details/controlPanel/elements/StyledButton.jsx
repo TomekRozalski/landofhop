@@ -33,15 +33,23 @@ const Arrow = styled.div`
 
 		return '';
 	}});
+
+	::before {
+		display: block;
+		width: 100%;
+		height: 100%;
+		content: '';
+	}
 `;
 
-const StyledButton = ({ to, type }) => (
+const StyledButton = ({ children, to, type }) => (
 	<Wrapper to={to}>
-		<Arrow type={type}>arrow</Arrow>
+		<Arrow type={type}>{ children }</Arrow>
 	</Wrapper>
 );
 
 StyledButton.propTypes = {
+	children: PropTypes.node.isRequired,
 	to: PropTypes.string.isRequired,
 	type: PropTypes.oneOf(['previous', 'next']).isRequired,
 };

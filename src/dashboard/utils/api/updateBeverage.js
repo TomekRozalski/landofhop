@@ -14,7 +14,6 @@ const updateBeverage = ({
 	push,
 	savedForms,
 	setAppError,
-	shortId,
 	token,
 }) => ({
 	setSubmitting,
@@ -23,6 +22,7 @@ const updateBeverage = ({
 	setSubmitting(true);
 
 	const { label, producer } = dashboardConstants.forms.beverage;
+	const { shortId } = values;
 
 	const labelData = LabelNormalizer(savedForms[label]);
 	const producerData = ProducerNormalizer(savedForms[producer]);
@@ -34,6 +34,10 @@ const updateBeverage = ({
 		producerData,
 		editorialData,
 	);
+
+	console.log('editorialData', editorialData);
+	console.log('shortId', shortId);
+	console.log('accumulator', accumulator);
 
 	const brand = get(savedForms, [label, 'brand', 'badge'], '');
 	const badge = get(savedForms, [label, 'badge'], '');

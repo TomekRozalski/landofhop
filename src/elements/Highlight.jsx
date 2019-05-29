@@ -12,7 +12,7 @@ const Information = styled.mark`
 
 const Highlighter = styled.span`
 	${({ block }) => (block && 'display: block;')}
-	${({ highlight }) => `background: ${colors.highlight[highlight]};`}
+	${({ highlight }) => highlight && `background: ${colors.highlight[highlight]};`}
 `;
 
 const Highlight = ({
@@ -34,16 +34,20 @@ const Highlight = ({
 		highlight = 'editorial';
 	}
 
-	return type !== 'label' ? (
+	return (
 		<>
 			<Highlighter block={block} highlight={highlight} lang={lang}>
 				{children}
 			</Highlighter>
-			<Information>
-				<FormattedMessage id={`dataOrigin.${type}`} />
-			</Information>
+			{
+				type !== 'label' && (
+					<Information>
+						<FormattedMessage id={`dataOrigin.${type}`} />
+					</Information>
+				)
+			}
 		</>
-	) : children;
+	);
 };
 
 Highlight.propTypes = {

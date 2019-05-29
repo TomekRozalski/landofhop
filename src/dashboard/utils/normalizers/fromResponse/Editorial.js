@@ -37,6 +37,7 @@ const Editorial = (beverage) => {
 	const added = get(beverage, 'added');
 	const updated = get(beverage, 'updated');
 	const id = get(beverage, 'id');
+	const shortId = get(beverage, 'shortId');
 
 	return {
 		...(cooperation && {
@@ -96,6 +97,7 @@ const Editorial = (beverage) => {
 		...(added && { added: convertDateToString(added) }),
 		...(updated && { updated: convertDateToString(updated) }),
 		...(id && { id }),
+		...(shortId && { shortId }),
 	};
 };
 

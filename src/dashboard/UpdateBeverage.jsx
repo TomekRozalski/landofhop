@@ -81,7 +81,6 @@ const UpdateBeverage = ({
 					push,
 					savedForms,
 					setAppError,
-					shortId: params.shortId,
 					token,
 				});
 

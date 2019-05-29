@@ -28,6 +28,7 @@ const Editorial = ({
 	added,
 	updated,
 	id,
+	shortId,
 }) => {
 	const values = {
 		editorial: {
@@ -74,6 +75,7 @@ const Editorial = ({
 		...(!isNull(added) && { added: convertStringToDate(added) }),
 		...(!isNull(updated) && { updated: convertStringToDate(updated) }),
 		...(id && { id }),
+		...(shortId && { shortId }),
 	};
 
 	if (isEmpty(values.editorial.general)) {

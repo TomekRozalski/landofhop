@@ -23,6 +23,9 @@ export default (language) => {
 	case 'pl':
 		label = dictionary.pl['language.polish'];
 		break;
+	case 'ua':
+		label = dictionary.pl['language.ukrainian'];
+		break;
 	default:
 		break;
 	}

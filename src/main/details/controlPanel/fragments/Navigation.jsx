@@ -46,7 +46,8 @@ const Navigation = ({
 				setPrevLink(`/details/${shortId}/${brandBadge}/${badge}`);
 			}
 
-			if (num === list.length) {
+
+			if (num + 1 === list.length) {
 				setNextLink(null);
 			} else {
 				const {
@@ -69,8 +70,8 @@ const Navigation = ({
 
 	return (
 		<Wrapper>
-			<StyledButton to={prevLink} type="previous" />
-			<StyledButton to={nextLink} type="next" />
+			<StyledButton to={prevLink} type="previous">poprzednie piwo</StyledButton>
+			<StyledButton to={nextLink} type="next">następne piwo</StyledButton>
 		</Wrapper>
 	);
 };
