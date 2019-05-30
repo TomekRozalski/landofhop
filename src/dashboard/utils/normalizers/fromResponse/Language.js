@@ -1,37 +1,21 @@
 import { constants, dictionary } from 'utils';
 
 export default (language) => {
+	const dataLanguages = Object.values(constants.dataLanguages);
+
 	if (!language) {
+		const { code, phrase } = dataLanguages.find(item => item.code === '-');
+
 		return {
-			label: dictionary.pl['language.notApplicable'],
-			value: constants.dataLanguages.none,
+			label: dictionary.pl[`language.${phrase}`],
+			value: code,
 		};
 	}
 
-	let label;
-
-	switch (language) {
-	case 'de':
-		label = dictionary.pl['language.german'];
-		break;
-	case 'en':
-		label = dictionary.pl['language.english'];
-		break;
-	case 'es':
-		label = dictionary.pl['language.spanish'];
-		break;
-	case 'pl':
-		label = dictionary.pl['language.polish'];
-		break;
-	case 'ua':
-		label = dictionary.pl['language.ukrainian'];
-		break;
-	default:
-		break;
-	}
+	const { code, phrase } = dataLanguages.find(item => item.code === language);
 
 	return {
-		label,
-		value: language,
+		label: dictionary.pl[`language.${phrase}`],
+		value: code,
 	};
 };

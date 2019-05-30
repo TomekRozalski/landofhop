@@ -1,5 +1,6 @@
 import { get } from 'lodash';
 
+import { LangValue as LangValueNormalizer } from 'dashboard/utils/normalizers/toRequest';
 import { constants } from 'utils';
 
 const normalizeData = ({
@@ -10,14 +11,7 @@ const normalizeData = ({
 }) => {
 	const data = {
 		badge,
-		name: name.map(({ lang, value }) => {
-			const output = { value };
-			if (get(lang, 'value') !== constants.dataLanguages.none) {
-				output.language = get(lang, 'value');
-			}
-
-			return output;
-		}),
+		name: name.map(LangValueNormalizer),
 	};
 
 	if (consortium !== null) {

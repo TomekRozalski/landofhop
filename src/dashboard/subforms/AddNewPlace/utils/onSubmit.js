@@ -1,6 +1,7 @@
 import { get } from 'lodash';
 
 import { constants } from 'utils';
+import { LangValue as LangValueNormalizer } from 'dashboard/utils/normalizers/toRequest';
 
 const normalizeData = ({
 	city,
@@ -10,15 +11,7 @@ const normalizeData = ({
 	longitude,
 }) => {
 	const data = {
-		city: city.map(({ lang, value }) => {
-			const output = { value };
-
-			if (get(lang, 'value') !== constants.dataLanguages.none) {
-				output.language = get(lang, 'value');
-			}
-
-			return output;
-		}),
+		city: city.map(LangValueNormalizer),
 		country: get(country, 'value'),
 		institution: get(institution, 'value'),
 	};

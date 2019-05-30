@@ -56,12 +56,38 @@ export default {
 		},
 	},
 	dataLanguages: {
-		de: 'de',
-		en: 'en',
-		es: 'es',
-		none: '-',
-		pl: 'pl',
-		ua: 'ua',
+		de: {
+			code: 'de',
+			phrase: 'German',
+		},
+		en: {
+			code: 'en',
+			phrase: 'English',
+		},
+		es: {
+			code: 'es',
+			phrase: 'Spanish',
+		},
+		fr: {
+			code: 'fr',
+			phrase: 'French',
+		},
+		nl: {
+			code: 'nl',
+			phrase: 'Dutch',
+		},
+		pl: {
+			code: 'pl',
+			phrase: 'Polish',
+		},
+		ua: {
+			code: 'ua',
+			phrase: 'Ukrainian',
+		},
+		none: {
+			code: '-',
+			phrase: 'notApplicable',
+		},
 	},
 	extract: {
 		relates: {

@@ -35,10 +35,6 @@ const updateBeverage = ({
 		editorialData,
 	);
 
-	console.log('editorialData', editorialData);
-	console.log('shortId', shortId);
-	console.log('accumulator', accumulator);
-
 	const brand = get(savedForms, [label, 'brand', 'badge'], '');
 	const badge = get(savedForms, [label, 'badge'], '');
 
