@@ -7,9 +7,9 @@ import { ConditionalLabel, InputWrapper, LabelWrapper } from 'dashboard/elements
 import {
 	Input,
 	Label,
-	ListOfOptions,
+	ListOfCheckboxes,
 	Option,
-} from 'dashboard/elements/ListOfOptions';
+} from 'dashboard/elements/ListOfCheckboxes';
 import { fragmentTypes } from './utils';
 
 const Fermentation = ({ fieldName, formName }) => (
@@ -43,7 +43,7 @@ const Fermentation = ({ fieldName, formName }) => (
 					};
 
 					return (
-						<ListOfOptions disabled={field.value === null}>
+						<ListOfCheckboxes disabled={field.value === null}>
 							<Option>
 								<Input
 									checked={value.includes(bottom)}
@@ -74,7 +74,7 @@ const Fermentation = ({ fieldName, formName }) => (
 									<FormattedMessage id="fermentationType.spontaneous" />
 								</Label>
 							</Option>
-						</ListOfOptions>
+						</ListOfCheckboxes>
 					);
 				}}
 			/>

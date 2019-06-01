@@ -1,75 +1,80 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { FastField } from 'formik';
+import { FastField, FieldArray } from 'formik';
 
-import { constants } from 'utils';
-import { ConditionalLabel, InputWrapper, LabelWrapper } from 'dashboard/elements';
+
+import { Label } from 'elements';
+// import { emptySelect } from 'dashboard/utils';
 import {
-	Input,
-	Label,
-	ListOfOptions,
-	Option,
-} from 'dashboard/elements/ListOfOptions';
+	AddElement,
+	InputWrapper,
+	LabelWrapper,
+	LineSeparator,
+	RemoveElement,
+	RevealButton,
+} from 'dashboard/elements';
+
 import { fragmentTypes } from './utils';
+import Options from './aged/Options';
+
+const emptySelect = {
+	type: 'sdf',
+};
 
 const Aged = ({ fieldName, formName }) => (
-	<>
-		<LabelWrapper>
-			<FastField
-				component={ConditionalLabel}
-				formName={formName}
-				name={fieldName}
-				reset={[]}
-			>
-				<FormattedMessage id={`dashboard.${fieldName}`} />
-			</FastField>
-		</LabelWrapper>
-		<InputWrapper place="wide">
-			<FastField
-				name={fieldName}
-				render={({ field, form }) => {
-					const value = field.value === null ? [] : field.value;
-					const { barrel, wood } = constants.agedTypes;
+	<FieldArray
+		name={fieldName}
+		render={({ form, push, remove }) => {
+			console.log('form', form);
 
-					const onOptionChange = ({ target }, type) => {
-						if (target.checked) {
-							form.setFieldValue(field.name, [...value, type]);
-						} else {
-							form.setFieldValue(
-								field.name,
-								value.filter(item => item !== type),
-							);
-						}
-					};
+			const values = form.values[fieldName];
+			if (values && values.length > 0) {
+				return values.map((_, index) => {
+					const loopLength = values.length;
+					const lastInput = loopLength === index + 1;
 
 					return (
-						<ListOfOptions disabled={field.value === null}>
-							<Option>
-								<Input
-									checked={value.includes(barrel)}
-									id="aged-barrel"
-									onChange={e => onOptionChange(e, barrel)}
-								/>
-								<Label htmlFor="aged-barrel">
-									<FormattedMessage id="agedType.barrel" />
+						<React.Fragment key={index}>
+							<LabelWrapper>
+								<Label htmlFor={`${formName}-${fieldName}${index}-value`}>
+									<FormattedMessage id={`dashboard.${fieldName}`} />
 								</Label>
-							</Option>
-							<Option>
-								<Input
-									checked={value.includes(wood)}
-									id="aged-wood"
-									onChange={e => onOptionChange(e, wood)}
+							</LabelWrapper>
+							<InputWrapper place="wide">
+								<FastField
+									component={Options}
+									id={`${formName}-${fieldName}${index}-type`}
+									name={`${fieldName}.${index}.type`}
 								/>
-								<Label htmlFor="aged-wood">
-									<FormattedMessage id="agedType.wood" />
-								</Label>
-							</Option>
-						</ListOfOptions>
+							</InputWrapper>
+							{
+								lastInput && (
+									<InputWrapper place="right">
+										<RemoveElement onClick={() => remove(index)} />
+										<AddElement onClick={() => push(emptySelect)} />
+									</InputWrapper>
+								)
+							}
+							{ values.length !== index + 1 && <LineSeparator />}
+						</React.Fragment>
 					);
-				}}
-			/>
-		</InputWrapper>
-	</>
+				});
+			}
+
+			return (
+				<>
+					<LabelWrapper>
+						<Label>
+							<FormattedMessage id={`dashboard.${fieldName}`} />
+						</Label>
+					</LabelWrapper>
+					<InputWrapper place="wide">
+						<RevealButton onClick={() => push(emptySelect)} />
+					</InputWrapper>
+				</>
+			);
+		}}
+	/>
 );
 
 Aged.propTypes = fragmentTypes;

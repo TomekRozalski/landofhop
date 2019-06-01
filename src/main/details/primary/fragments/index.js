@@ -1,3 +1,4 @@
+import Aged from './Aged';
 import Alcohol from './Alcohol';
 import City from './City';
 import Country from './Country';
@@ -9,6 +10,7 @@ import Pasteurization from './Pasteurization';
 import Style from './Style';
 
 export {
+	Aged,
 	Alcohol,
 	City,
 	Country,

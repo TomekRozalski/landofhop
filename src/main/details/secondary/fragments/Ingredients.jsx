@@ -23,7 +23,9 @@ const Ingredients = () => {
 
 	const formattedValue = values
 		.filter(({ value }) => (
-			value && value.description.find(description => description.language === language)
+			value
+			&& value.description
+			&& value.description.find(description => description.language === language)
 		))
 		.reduce((acc, { type, value }) => {
 			const formattedItem = {

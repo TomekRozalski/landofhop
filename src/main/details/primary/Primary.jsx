@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
+	Aged,
 	Alcohol,
 	City,
 	Country,
@@ -27,6 +28,8 @@ const Primary = () => (
 		<Alcohol />
 		<Filtration />
 		<Pasteurization />
+		{/* <Refermentation /> */}
+		<Aged />
 		<DryHopped />
 	</DefinitionList>
 );

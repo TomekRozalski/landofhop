@@ -30,7 +30,7 @@ export const Label = styled.label`
 	cursor: pointer;
 `;
 
-export const ListOfOptions = styled.ul`
+export const ListOfCheckboxes = styled.ul`
 	display: flex;
 	width: 100%;
 	height: ${gutters.inputHeight}rem;

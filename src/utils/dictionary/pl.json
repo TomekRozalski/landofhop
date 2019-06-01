@@ -1,6 +1,6 @@
 {
-	"agedType.barrel": "W beczce",
-	"agedType.wood": "Z drewnem",
+	"agedType.barrel": "w beczce",
+	"agedType.wood": "z drewnem",
 	"alcoholRelate.abv": "Abv",
 	"alcoholRelate.capacity": "obj.",
 	"appError.close": "Zamknij okno",
@@ -113,6 +113,7 @@
 	"dataOrigin.editorial": "Ta informacja pochodzi od redakcji Land of Hop",
 
 	"details.added": "dodano",
+	"details.aged": "leżakowane",
 	"details.admin.updateBeverage": "Popraw informacje",
 	"details.alcohol": "alkohol",
 	"details.barcode": "kod kreskowy",
