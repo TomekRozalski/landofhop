@@ -22,7 +22,6 @@ import {
 	Place,
 	Power,
 	Price,
-	Refermentation,
 	Series,
 	SmokedMalt,
 	Style,
@@ -56,7 +55,6 @@ const Fieldset = ({ showSubform }) => {
 			<Alcohol {...commonProps} fieldName={fields.alcohol} />
 			<Filtration {...commonProps} fieldName={fields.filtration} />
 			<Pasteurization {...commonProps} fieldName={fields.pasteurization} />
-			<Refermentation {...commonProps} fieldName={fields.refermentation} />
 			<Aged {...commonProps} fieldName={fields.aged} />
 			<DryHopped {...commonProps} fieldName={fields.dryHopped} />
 			<ExpirationDate {...commonProps} fieldName={fields.expirationDate} />

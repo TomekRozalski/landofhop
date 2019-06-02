@@ -29,7 +29,6 @@ const Label = ({
 	alcohol,
 	filtration,
 	pasteurization,
-	refermentation,
 	aged,
 	dryHopped,
 	expirationDate,
@@ -109,7 +108,6 @@ const Label = ({
 				}),
 				...(isBoolean(filtration) && { filtration }),
 				...(isBoolean(pasteurization) && { pasteurization }),
-				...(isBoolean(refermentation) && { refermentation }),
 				...(!isNull(aged) && {
 					aged: {
 						type: aged,

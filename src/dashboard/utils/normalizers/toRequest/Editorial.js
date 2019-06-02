@@ -15,7 +15,6 @@ const Editorial = ({
 	alcoholScope,
 	filtration,
 	pasteurization,
-	refermentation,
 	aged,
 	dryHopped,
 	// -----------
@@ -50,7 +49,6 @@ const Editorial = ({
 				...(!isNull(alcoholScope) && { alcoholScope: alcoholScope.value }),
 				...(!isNull(filtration) && { filtration }),
 				...(!isNull(pasteurization) && { pasteurization }),
-				...(!isNull(refermentation) && { refermentation }),
 				...(!isNull(aged) && {
 					aged: {
 						type: aged,

@@ -23,7 +23,6 @@ const Producer = ({
 	alcohol,
 	filtration,
 	pasteurization,
-	refermentation,
 	aged,
 	dryHopped,
 	expirationDate,
@@ -91,7 +90,6 @@ const Producer = ({
 				}),
 				...(!isNull(filtration) && { filtration }),
 				...(!isNull(pasteurization) && { pasteurization }),
-				...(!isNull(refermentation) && { refermentation }),
 				...(!isNull(aged) && {
 					aged: {
 						type: aged,

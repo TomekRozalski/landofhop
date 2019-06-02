@@ -8,7 +8,6 @@ export default {
 	alcoholScope: 'alcoholScope',
 	filtration: 'filtration',
 	pasteurization: 'pasteurization',
-	refermentation: 'refermentation',
 	aged: 'aged',
 	dryHopped: 'dryHopped',
 	// -----------

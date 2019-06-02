@@ -34,7 +34,6 @@ import Pasteurization from './Pasteurization';
 import Place from './Place';
 import Power from './Power';
 import Price from './Price';
-import Refermentation from './Refermentation';
 import Series from './Series';
 import SmokedMalt from './SmokedMalt';
 import Style from './Style';
@@ -82,7 +81,6 @@ export {
 	Place,
 	Power,
 	Price,
-	Refermentation,
 	Series,
 	SmokedMalt,
 	Style,

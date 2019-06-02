@@ -16,7 +16,6 @@ export default {
 	alcohol: 'alcohol',
 	filtration: 'filtration',
 	pasteurization: 'pasteurization',
-	refermentation: 'refermentation',
 	aged: 'aged',
 	dryHopped: 'dryHopped',
 	expirationDate: 'expirationDate',

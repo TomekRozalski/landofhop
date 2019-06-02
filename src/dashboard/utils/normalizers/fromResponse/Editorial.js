@@ -24,7 +24,6 @@ const Editorial = (beverage) => {
 	const alcoholScope = get(beverage, 'editorial.brewing.alcohol.scope');
 	const filtration = get(beverage, 'editorial.brewing.filtration');
 	const pasteurization = get(beverage, 'editorial.brewing.pasteurization');
-	const refermentation = get(beverage, 'editorial.brewing.refermentation');
 	const aged = get(beverage, 'editorial.brewing.aged');
 	const dryHopped = get(beverage, 'editorial.brewing.dryHopped');
 	// impressions
@@ -72,7 +71,6 @@ const Editorial = (beverage) => {
 		}),
 		...(isBoolean(filtration) && { filtration }),
 		...(isBoolean(pasteurization) && { pasteurization }),
-		...(isBoolean(refermentation) && { refermentation }),
 		...(aged && { aged: aged.type }),
 		...(dryHopped && {
 			dryHopped: dryHopped === true ? [] : dryHopped.map(({ id, name, type }) => ({

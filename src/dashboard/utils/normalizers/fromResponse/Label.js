@@ -49,7 +49,6 @@ const Label = ({
 	const alcohol = get(brewing, 'alcohol');
 	const filtration = get(brewing, 'filtration');
 	const pasteurization = get(brewing, 'pasteurization');
-	const refermentation = get(brewing, 'refermentation');
 	const aged = get(brewing, 'aged');
 	const dryHopped = get(brewing, 'dryHopped');
 	const expirationDate = get(brewing, 'expirationDate');
@@ -134,7 +133,6 @@ const Label = ({
 		}),
 		...(isBoolean(filtration) && { filtration }),
 		...(isBoolean(pasteurization) && { pasteurization }),
-		...(isBoolean(refermentation) && { refermentation }),
 		...(aged && { aged: aged.type }),
 		...(dryHopped && {
 			dryHopped: dryHopped === true ? [] : dryHopped.map(({ id, name, type }) => ({

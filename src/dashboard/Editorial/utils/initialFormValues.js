@@ -10,7 +10,6 @@ export default {
 	[fields.alcoholScope]: null,
 	[fields.filtration]: null,
 	[fields.pasteurization]: null,
-	[fields.refermentation]: null,
 	[fields.aged]: null,
 	[fields.dryHopped]: null,
 	// -----------

@@ -19,7 +19,6 @@ import {
 	Pasteurization,
 	Place,
 	Price,
-	Refermentation,
 	Style,
 	Updated,
 } from 'dashboard/fragments';
@@ -46,7 +45,6 @@ const Fieldset = ({ showSubform }) => {
 			<AlcoholScope {...commonProps} fieldName={fields.alcoholScope} />
 			<Filtration {...commonProps} fieldName={fields.filtration} />
 			<Pasteurization {...commonProps} fieldName={fields.pasteurization} />
-			<Refermentation {...commonProps} fieldName={fields.refermentation} />
 			<Aged {...commonProps} fieldName={fields.aged} />
 			<DryHopped {...commonProps} fieldName={fields.dryHopped} />
 			{/* -------------------------------- */}
