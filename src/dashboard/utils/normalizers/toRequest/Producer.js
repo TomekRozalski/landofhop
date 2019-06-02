@@ -1,4 +1,5 @@
 import {
+	get,
 	isArray,
 	isEmpty,
 	isNumber,
@@ -90,10 +91,29 @@ const Producer = ({
 				}),
 				...(!isNull(filtration) && { filtration }),
 				...(!isNull(pasteurization) && { pasteurization }),
-				...(!isNull(aged) && {
-					aged: {
-						type: aged,
-					},
+				...(aged.length && {
+					aged: aged.map(({
+						previousContent,
+						time,
+						type,
+						wood,
+					}) => ({
+						...(previousContent && { previousContent: previousContent.map(item => item.value) }),
+						...(
+							time
+							&& isNumber(get(time, 'value'))
+							&& get(time, 'value') > 0
+							&& get(time, 'unit.value')
+							&& {
+								time: {
+									unit: get(time, 'unit.value'),
+									value: get(time, 'value'),
+								},
+							}
+						),
+						...(type && { type }),
+						...(wood && { wood }),
+					})),
 				}),
 				...(isArray(dryHopped) && { dryHopped: dryHopped.map(hop => hop.value) }),
 				...(!isNull(expirationDate) && {

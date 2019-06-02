@@ -61,8 +61,6 @@ const Style = () => {
 			return [...acc, curr];
 		}, []);
 
-	console.log('formattedStyles', formattedStyles);
-
 	return formattedStyles.length ? (
 		<>
 			<DT><FormattedMessage id="details.style" /></DT>

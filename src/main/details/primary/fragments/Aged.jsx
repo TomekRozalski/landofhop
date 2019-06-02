@@ -49,9 +49,19 @@ const Aged = () => {
 				return item;
 			}
 
-			const types = item.value.type.map(type => (
+			console.log('item', item);
+
+			const types = item.value.map(({
+				previousContent,
+				time,
+				type,
+				wood,
+			}) => (
 				<TypesWrapper>
-					<FormattedMessage id={`agedType.${type}`} />
+					{ type && <FormattedMessage id={`aged.type.${type}`} />}
+					{ wood && <FormattedMessage id={`aged.wood.${wood}`} /> }
+					{ time && <span>{`${time.value} ${time.unit}`}</span> }
+					{ previousContent && <span>{previousContent.join(', ')}</span> }
 				</TypesWrapper>
 			));
 

@@ -115,10 +115,6 @@ export default Yup.object().shape({
 			}),
 		})
 		.nullable(true),
-	[fields.aged]: Yup
-		.array()
-		.min(1, 'danger')
-		.nullable(true),
 	[fields.expirationDate]: Yup
 		.object()
 		.shape({

@@ -58,10 +58,6 @@ export default Yup.object().shape({
 			value: Yup.string().required('danger'),
 		})
 		.nullable(true),
-	[fields.aged]: Yup
-		.array()
-		.min(1, 'danger')
-		.nullable(true),
 	// -----------
 	[fields.color]: Yup
 		.string()

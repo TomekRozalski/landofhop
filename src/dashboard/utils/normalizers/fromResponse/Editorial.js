@@ -4,6 +4,8 @@ import { get, isBoolean, isNumber } from 'lodash';
 import { constants } from 'utils';
 import { getNameByLanguage } from 'utils/helpers';
 import {
+	agedPreviousContentList,
+	agedTimeUnitsList,
 	alcoholScopesList,
 	clarityList,
 	convertDateToString,
@@ -71,7 +73,28 @@ const Editorial = (beverage) => {
 		}),
 		...(isBoolean(filtration) && { filtration }),
 		...(isBoolean(pasteurization) && { pasteurization }),
-		...(aged && { aged: aged.type }),
+		...(aged && {
+			aged: aged.map(({
+				previousContent,
+				time,
+				type,
+				wood,
+			}) => ({
+				...(previousContent && {
+					previousContent: previousContent
+						.map(contentValue => agedPreviousContentList()
+							.find(item => item.value === contentValue)),
+				}),
+				...(time && {
+					time: {
+						unit: agedTimeUnitsList().find(item => item.value === time.unit),
+						value: time.value,
+					},
+				}),
+				...(type && { type }),
+				...(wood && { wood }),
+			})),
+		}),
 		...(dryHopped && {
 			dryHopped: dryHopped === true ? [] : dryHopped.map(({ id, name, type }) => ({
 				type,

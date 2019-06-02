@@ -1,4 +1,10 @@
-import { isArray, isEmpty, isNull } from 'lodash';
+import {
+	get,
+	isArray,
+	isEmpty,
+	isNull,
+	isNumber,
+} from 'lodash';
 
 import { constants } from 'utils';
 import { convertStringToDate } from 'dashboard/utils';
@@ -49,10 +55,29 @@ const Editorial = ({
 				...(!isNull(alcoholScope) && { alcoholScope: alcoholScope.value }),
 				...(!isNull(filtration) && { filtration }),
 				...(!isNull(pasteurization) && { pasteurization }),
-				...(!isNull(aged) && {
-					aged: {
-						type: aged,
-					},
+				...(aged.length && {
+					aged: aged.map(({
+						previousContent,
+						time,
+						type,
+						wood,
+					}) => ({
+						...(previousContent && { previousContent: previousContent.map(item => item.value) }),
+						...(
+							time
+							&& isNumber(get(time, 'value'))
+							&& get(time, 'value') > 0
+							&& get(time, 'unit.value')
+							&& {
+								time: {
+									unit: get(time, 'unit.value'),
+									value: get(time, 'value'),
+								},
+							}
+						),
+						...(type && { type }),
+						...(wood && { wood }),
+					})),
 				}),
 				...(isArray(dryHopped) && { dryHopped: dryHopped.map(hop => hop.value) }),
 			},

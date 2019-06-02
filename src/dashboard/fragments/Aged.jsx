@@ -18,7 +18,11 @@ import {
 import { fragmentTypes } from './utils';
 import { Type, Wood } from './aged/';
 
-const emptySelect = {};
+const emptySelect = {
+	time: {
+		value: 0,
+	},
+};
 
 const Aged = ({ fieldName, formName }) => (
 	<FieldArray
