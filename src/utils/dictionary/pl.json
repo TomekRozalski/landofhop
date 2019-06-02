@@ -1,6 +1,9 @@
 {
-	"agedType.barrel": "w beczce",
-	"agedType.wood": "z drewnem",
+	"aged.type.barrel": "w beczce",
+	"aged.type.wood": "z drewnem",
+	"aged.wood.oak": "dąb",
+	"aged.wood.beech": "buk",
+
 	"alcoholRelate.abv": "Abv",
 	"alcoholRelate.capacity": "obj.",
 	"appError.close": "Zamknij okno",

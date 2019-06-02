@@ -1,4 +1,5 @@
-
+import agedTimeUnitsList from './selectLists/aged/timeUnits';
+import agedPreviousContentList from './selectLists/aged/previousContent';
 import alcoholRelatesList from './selectLists/alcohol/relates';
 import alcoholScopesList from './selectLists/alcohol/scopes';
 import alcoholUnitsList from './selectLists/alcohol/units';
@@ -23,6 +24,8 @@ import languagesList from './selectLists/languages';
 import temperatureUnitsList from './selectLists/temperature/units';
 
 export {
+	agedTimeUnitsList,
+	agedPreviousContentList,
 	alcoholRelatesList,
 	alcoholScopesList,
 	alcoholUnitsList,

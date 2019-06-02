@@ -1,7 +1,13 @@
 export default {
-	agedTypes: {
-		barrel: 'barrel',
-		wood: 'wood',
+	aged: {
+		type: {
+			barrel: 'barrel',
+			wood: 'wood',
+		},
+		wood: {
+			beech: 'beech',
+			oak: 'oak',
+		},
 	},
 	alcohol: {
 		relates: {

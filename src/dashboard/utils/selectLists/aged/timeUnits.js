@@ -1,4 +1,4 @@
-const expirationDateUnits = () => ([
+const timeUnits = () => ([
 	{
 		label: 'dzień',
 		value: 'day',
@@ -13,4 +13,4 @@ const expirationDateUnits = () => ([
 	},
 ]);
 
-export default expirationDateUnits;
+export default timeUnits;

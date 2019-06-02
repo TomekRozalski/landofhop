@@ -10,45 +10,44 @@ import {
 	Option,
 } from 'dashboard/elements/optionsList';
 
-const Options = ({ field, form }) => {
-	const { barrel, wood } = constants.agedTypes;
-	const value = !field.value ? barrel : field.value;
+const Type = ({ field, form }) => {
+	const { barrel, wood } = constants.aged.type;
 
 	const onOptionChange = useCallback(({ target }) => {
 		form.setFieldValue(field.name, target.dataset.type);
 	}, []);
 
 	return (
-		<ListOfOptions disabled={field.value === null}>
+		<ListOfOptions>
 			<Option>
 				<Input
-					checked={value === barrel}
+					checked={field.value === barrel}
 					data-type={barrel}
 					id={`${field.name}-${barrel}`}
 					onChange={onOptionChange}
 					type="radio"
 				/>
 				<Label htmlFor={`${field.name}-${barrel}`}>
-					<FormattedMessage id="agedType.barrel" />
+					<FormattedMessage id="aged.type.barrel" />
 				</Label>
 			</Option>
 			<Option>
 				<Input
-					checked={value === wood}
+					checked={field.value === wood}
 					data-type={wood}
 					id={`${field.name}-${wood}`}
 					onChange={onOptionChange}
 					type="radio"
 				/>
 				<Label htmlFor={`${field.name}-${wood}`}>
-					<FormattedMessage id="agedType.wood" />
+					<FormattedMessage id="aged.type.wood" />
 				</Label>
 			</Option>
 		</ListOfOptions>
 	);
 };
 
-Options.propTypes = {
+Type.propTypes = {
 	field: shape({
 		name: string.isRequired,
 		value: string,
@@ -58,4 +57,4 @@ Options.propTypes = {
 	}).isRequired,
 };
 
-export default Options;
+export default Type;

@@ -3,9 +3,8 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { FastField, FieldArray } from 'formik';
 
-import { constants } from 'utils';
-import { Label } from 'elements';
-// import { emptySelect } from 'dashboard/utils';
+import { Input, Label } from 'elements';
+import { agedTimeUnitsList, agedPreviousContentList } from 'dashboard/utils';
 import {
 	AddElement,
 	InputWrapper,
@@ -13,16 +12,15 @@ import {
 	LineSeparator,
 	RemoveElement,
 	RevealButton,
+	StyledSelect,
 } from 'dashboard/elements';
 
 import { fragmentTypes } from './utils';
-import Options from './aged/Options';
+import { Type, Wood } from './aged/';
 
-const emptySelect = {
-	type: constants.agedTypes.barrel,
-};
+const emptySelect = {};
 
-const Aged = ({ fieldName }) => (
+const Aged = ({ fieldName, formName }) => (
 	<FieldArray
 		name={fieldName}
 		render={({ form, push, remove }) => {
@@ -41,9 +39,43 @@ const Aged = ({ fieldName }) => (
 							</LabelWrapper>
 							<InputWrapper place="wide">
 								<FastField
-									component={Options}
+									component={Type}
 									name={`${fieldName}.${index}.type`}
 								/>
+							</InputWrapper>
+							<InputWrapper place="wide">
+								<FastField
+									component={Wood}
+									name={`${fieldName}.${index}.wood`}
+								/>
+							</InputWrapper>
+							<InputWrapper place="left">
+								<FastField
+									component={Input}
+									name={`${fieldName}.${index}.time.value`}
+									type="number"
+								/>
+							</InputWrapper>
+							<InputWrapper place="middle">
+								<FastField
+									component={StyledSelect}
+									formName={formName}
+									name={`${fieldName}.${index}.time.unit`}
+								>
+									{ agedTimeUnitsList() }
+								</FastField>
+							</InputWrapper>
+							<InputWrapper place="wide">
+								<FastField
+									component={StyledSelect}
+									formName={formName}
+									// isError={isError}
+									// isLoading={isLoading}
+									multi
+									name={`${fieldName}.${index}.previousContent`}
+								>
+									{ agedPreviousContentList() }
+								</FastField>
 							</InputWrapper>
 							{
 								lastInput && (
