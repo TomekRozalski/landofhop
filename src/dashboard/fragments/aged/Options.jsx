@@ -1,108 +1,61 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useCallback } from 'react';
+import { func, shape, string } from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import { constants } from 'utils';
-import { colors, gutters } from 'utils/theme';
-
-const Option = styled.li`
-	flex-grow: 1;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-width: 1px;
-	border-style: solid;
-
-	& + & {
-		border-left-width: 0;
-	}
-`;
-
-const Input = styled.input.attrs({
-	type: 'checkbox',
-})`
-	display: none;
-`;
-
-const Label = styled.label`
-	flex-grow: 1;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: ${gutters.inputHeight}rem;
-	cursor: pointer;
-`;
-
-const ListOfCheckboxes = styled.ul`
-	display: flex;
-	width: 100%;
-	height: ${gutters.inputHeight}rem;
-	${({ disabled }) => {
-		if (disabled) {
-			return (`
-				background-color: ${colors.gray[600]};
-				pointer-events: none;
-			`);
-		}
-
-		return `background-color: ${colors.gray[500]};`;
-	}}
-
-	${Option} {
-		border-color: ${({ disabled }) => (disabled ? colors.gray[400] : colors.gray[300])};
-	}
-
-	${Label} {
-		color: ${({ disabled }) => (disabled ? colors.gray[300] : colors.gray[200])};
-	}
-
-	${Input}:checked + ${Label} {
-		background-color: ${({ disabled }) => (disabled ? colors.gray[400] : colors.success.strong)};
-		color: ${colors.gray[700]}
-	}
-`;
+import {
+	Input,
+	Label,
+	ListOfOptions,
+	Option,
+} from 'dashboard/elements/optionsList';
 
 const Options = ({ field, form }) => {
-	const value = !field.value ? [] : field.value;
 	const { barrel, wood } = constants.agedTypes;
+	const value = !field.value ? barrel : field.value;
 
-	const onOptionChange = ({ target }, type) => {
-		if (target.checked) {
-			form.setFieldValue(field.name, [...value, type]);
-		} else {
-			form.setFieldValue(
-				field.name,
-				value.filter(item => item !== type),
-			);
-		}
-	};
-
-	console.log('value', field, value);
+	const onOptionChange = useCallback(({ target }) => {
+		form.setFieldValue(field.name, target.dataset.type);
+	}, []);
 
 	return (
-		<ListOfCheckboxes disabled={field.value === null}>
+		<ListOfOptions disabled={field.value === null}>
 			<Option>
 				<Input
-					checked={value.includes(barrel)}
-					id="aged-barrel"
-					onChange={e => onOptionChange(e, barrel)}
+					checked={value === barrel}
+					data-type={barrel}
+					id={`${field.name}-${barrel}`}
+					onChange={onOptionChange}
+					type="radio"
 				/>
-				<Label htmlFor="aged-barrel">
+				<Label htmlFor={`${field.name}-${barrel}`}>
 					<FormattedMessage id="agedType.barrel" />
 				</Label>
 			</Option>
 			<Option>
 				<Input
-					checked={value.includes(wood)}
-					id="aged-wood"
-					onChange={e => onOptionChange(e, wood)}
+					checked={value === wood}
+					data-type={wood}
+					id={`${field.name}-${wood}`}
+					onChange={onOptionChange}
+					type="radio"
 				/>
-				<Label htmlFor="aged-wood">
+				<Label htmlFor={`${field.name}-${wood}`}>
 					<FormattedMessage id="agedType.wood" />
 				</Label>
 			</Option>
-		</ListOfCheckboxes>
+		</ListOfOptions>
 	);
+};
+
+Options.propTypes = {
+	field: shape({
+		name: string.isRequired,
+		value: string,
+	}).isRequired,
+	form: shape({
+		setFieldValue: func.isRequired,
+	}).isRequired,
 };
 
 export default Options;

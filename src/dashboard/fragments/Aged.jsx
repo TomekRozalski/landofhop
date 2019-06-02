@@ -1,8 +1,9 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { FastField, FieldArray } from 'formik';
 
-
+import { constants } from 'utils';
 import { Label } from 'elements';
 // import { emptySelect } from 'dashboard/utils';
 import {
@@ -18,17 +19,15 @@ import { fragmentTypes } from './utils';
 import Options from './aged/Options';
 
 const emptySelect = {
-	type: 'sdf',
+	type: constants.agedTypes.barrel,
 };
 
-const Aged = ({ fieldName, formName }) => (
+const Aged = ({ fieldName }) => (
 	<FieldArray
 		name={fieldName}
 		render={({ form, push, remove }) => {
-			console.log('form', form);
-
 			const values = form.values[fieldName];
-			if (values && values.length > 0) {
+			if (values && values.length) {
 				return values.map((_, index) => {
 					const loopLength = values.length;
 					const lastInput = loopLength === index + 1;
@@ -36,14 +35,13 @@ const Aged = ({ fieldName, formName }) => (
 					return (
 						<React.Fragment key={index}>
 							<LabelWrapper>
-								<Label htmlFor={`${formName}-${fieldName}${index}-value`}>
+								<Label>
 									<FormattedMessage id={`dashboard.${fieldName}`} />
 								</Label>
 							</LabelWrapper>
 							<InputWrapper place="wide">
 								<FastField
 									component={Options}
-									id={`${formName}-${fieldName}${index}-type`}
 									name={`${fieldName}.${index}.type`}
 								/>
 							</InputWrapper>

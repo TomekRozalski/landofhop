@@ -28,7 +28,6 @@ const Primary = () => (
 		<Alcohol />
 		<Filtration />
 		<Pasteurization />
-		{/* <Refermentation /> */}
 		<Aged />
 		<DryHopped />
 	</DefinitionList>

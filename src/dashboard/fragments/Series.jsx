@@ -1,4 +1,4 @@
-/* eslint react/no-array-index-key: 0 */
+/* eslint-disable react/no-array-index-key */
 import React, { useContext } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { FastField, FieldArray } from 'formik';

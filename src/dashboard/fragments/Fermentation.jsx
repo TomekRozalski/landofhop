@@ -7,9 +7,9 @@ import { ConditionalLabel, InputWrapper, LabelWrapper } from 'dashboard/elements
 import {
 	Input,
 	Label,
-	ListOfCheckboxes,
+	ListOfOptions,
 	Option,
-} from 'dashboard/elements/ListOfCheckboxes';
+} from 'dashboard/elements/optionsList';
 import { fragmentTypes } from './utils';
 
 const Fermentation = ({ fieldName, formName }) => (
@@ -43,12 +43,13 @@ const Fermentation = ({ fieldName, formName }) => (
 					};
 
 					return (
-						<ListOfCheckboxes disabled={field.value === null}>
+						<ListOfOptions disabled={field.value === null}>
 							<Option>
 								<Input
 									checked={value.includes(bottom)}
 									id="fermentation-bottom"
 									onChange={e => onOptionChange(e, bottom)}
+									type="checkbox"
 								/>
 								<Label htmlFor="fermentation-bottom">
 									<FormattedMessage id="fermentationType.bottom" />
@@ -59,6 +60,7 @@ const Fermentation = ({ fieldName, formName }) => (
 									checked={value.includes(top)}
 									id="fermentation-top"
 									onChange={e => onOptionChange(e, top)}
+									type="checkbox"
 								/>
 								<Label htmlFor="fermentation-top">
 									<FormattedMessage id="fermentationType.top" />
@@ -69,12 +71,13 @@ const Fermentation = ({ fieldName, formName }) => (
 									checked={value.includes(spontaneous)}
 									id="fermentation-spontaneous"
 									onChange={e => onOptionChange(e, spontaneous)}
+									type="checkbox"
 								/>
 								<Label htmlFor="fermentation-spontaneous">
 									<FormattedMessage id="fermentationType.spontaneous" />
 								</Label>
 							</Option>
-						</ListOfCheckboxes>
+						</ListOfOptions>
 					);
 				}}
 			/>
