@@ -62,6 +62,10 @@ export default {
 		},
 	},
 	dataLanguages: {
+		da: {
+			code: 'da',
+			phrase: 'Danish',
+		},
 		de: {
 			code: 'de',
 			phrase: 'German',
