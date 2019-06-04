@@ -27,20 +27,23 @@ const Wrapper = styled.div`
 	margin: 3rem auto;
 `;
 
-const Details = ({
-	getBeverageDetails,
-	isError,
-	isLoading,
-	savedBeverage,
-	match: {
-		params,
-	},
-}) => {
+const Details = (props) => {
+	const {
+		getBeverageDetails,
+		isError,
+		isLoading,
+		savedBeverage,
+		match: {
+			params,
+		},
+	} = props;
+
 	const { setAppError } = useContext(AppErrorContext);
 	const { beverage, setBeverage } = useContext(BeverageDetailsContext);
 
 	if (isError) {
 		setAppError('appError.fetchFailed.beverageDetails');
+		return null;
 	}
 
 	useEffect(() => {
@@ -51,11 +54,13 @@ const Details = ({
 		}
 
 		return (() => { setBeverage(null); });
-	}, [savedBeverage]);
+	}, [params]);
 
 	if (!beverage || isLoading) {
 		return <Spinner center />;
 	}
+
+	console.log('render Details', props);
 
 	return (
 		<Wrapper>

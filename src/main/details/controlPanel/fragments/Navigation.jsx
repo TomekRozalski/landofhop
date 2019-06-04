@@ -60,7 +60,7 @@ const Navigation = ({
 				setNextLink(`/details/${shortId}/${brandBadge}/${badge}`);
 			}
 		}
-	}, [isError, isLoading, list]);
+	}, [isError, isLoading, list, beverage]);
 
 	useEffect(() => {
 		if (list.length < 5) {

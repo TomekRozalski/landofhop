@@ -57,7 +57,7 @@ const Aged = () => {
 				type,
 				wood,
 			}) => (
-				<TypesWrapper>
+				<TypesWrapper key={type}>
 					{ type && <FormattedMessage id={`aged.type.${type}`} />}
 					{ wood && <FormattedMessage id={`aged.wood.${wood}`} /> }
 					{ time && <span>{`${time.value} ${time.unit}`}</span> }

@@ -29,23 +29,25 @@ const Gallery = () => {
 		shortId,
 	} = beverage;
 
-	const imagesPath = `/img/${brand}/${badge}/${shortId}/container/${pixelRatio}`;
-
-	const imagesAmount = get(beverage, 'editorial.images', 0);
-
-	let pixiApp;
 	const myCanvas = useRef();
 
-	const {
-		Application,
-		loader,
-		Sprite,
-		Text,
-	} = Pixi;
-
-	const { resources } = loader;
-
 	useEffect(() => {
+		let pixiApp;
+
+		const {
+			Application,
+			loader,
+			Sprite,
+			Text,
+		} = Pixi;
+
+		loader.destroy();
+
+		const { resources } = loader;
+
+		const imagesAmount = get(beverage, 'editorial.images', 0);
+		const imagesPath = `/img/${brand}/${badge}/${shortId}/container/${pixelRatio}`;
+
 		if (imagesAmount) {
 			pixiApp = new Application({
 				width: 220,
@@ -167,7 +169,7 @@ const Gallery = () => {
 		return () => {
 			loader.reset();
 		};
-	}, []);
+	}, [beverage]);
 
 	return <Wrapper ref={myCanvas} />;
 };

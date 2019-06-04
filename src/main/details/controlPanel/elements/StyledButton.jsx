@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { colors } from 'utils/theme';
 
 
-const Wrapper = styled(Link)`
+const Wrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -16,6 +16,8 @@ const Wrapper = styled(Link)`
 	border: 4px solid ${colors.success.strong};
 	cursor: pointer;
 `;
+
+const StyledLink = styled(Wrapper)``;
 
 const Arrow = styled.div`
     width: 100%;
@@ -43,15 +45,25 @@ const Arrow = styled.div`
 `;
 
 const StyledButton = ({ children, to, type }) => (
-	<Wrapper to={to}>
-		<Arrow type={type}>{ children }</Arrow>
-	</Wrapper>
+	to ? (
+		<StyledLink as={Link} to={to}>
+			<Arrow type={type}>{ children }</Arrow>
+		</StyledLink>
+	) : (
+		<Wrapper>
+			<Arrow type={type}>{ children }</Arrow>
+		</Wrapper>
+	)
 );
 
 StyledButton.propTypes = {
 	children: PropTypes.node.isRequired,
-	to: PropTypes.string.isRequired,
+	to: PropTypes.string,
 	type: PropTypes.oneOf(['previous', 'next']).isRequired,
+};
+
+StyledButton.defaultProps = {
+	to: null,
 };
 
 export default StyledButton;
