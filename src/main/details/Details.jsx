@@ -60,8 +60,6 @@ const Details = (props) => {
 		return <Spinner center />;
 	}
 
-	console.log('render Details', props);
-
 	return (
 		<Wrapper>
 			<Gallery />

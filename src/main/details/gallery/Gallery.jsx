@@ -41,7 +41,7 @@ const Gallery = () => {
 			Text,
 		} = Pixi;
 
-		loader.destroy();
+		myCanvas.current.innerHTML = '';
 
 		const { resources } = loader;
 

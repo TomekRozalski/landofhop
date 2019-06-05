@@ -22,7 +22,7 @@ const StyledLink = styled(Wrapper)``;
 const Arrow = styled.div`
     width: 100%;
     height: 100%;
-	background: ${colors.success.strong};
+	background: ${({ disabled }) => (disabled ? colors.gray[600] : colors.success.strong)};
 
 	clip-path: polygon(${({ type }) => {
 		if (type === 'previous') {
@@ -51,7 +51,7 @@ const StyledButton = ({ children, to, type }) => (
 		</StyledLink>
 	) : (
 		<Wrapper>
-			<Arrow type={type}>{ children }</Arrow>
+			<Arrow type={type} disabled>{ children }</Arrow>
 		</Wrapper>
 	)
 );
