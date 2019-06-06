@@ -1,79 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import styled from 'styled-components';
+import { useSpring, animated } from 'react-spring';
 
 import { NavigationContext } from 'config';
 import { grid } from 'utils';
-import {
-	colors,
-	gutters,
-	indexes,
-	mq,
-} from 'utils/theme';
+import { colors, gutters, indexes } from 'utils/theme';
 import { LanguageMenu, Logo, NavigationSwitcher } from './fragments';
 
-const Wrapper = styled.header`
+const Wrapper = styled(animated.header)`
 	display: block;
 	width: 100%;
 	background-color: ${colors.gray[100]};
 	position: fixed;
-	transition: top .2s;
 	left: 0;
 	z-index: ${indexes.header};
-	top: 0;
-
-	${({ isLoginbar, isNavbar }) => {
-		const { loginbarHeight, navbarHeight } = gutters;
-
-		if (isNavbar && !isLoginbar) {
-			return `
-				top: ${navbarHeight.sm}px;
-			`;
-		}
-
-		if (isNavbar && isLoginbar) {
-			return `
-				top: ${navbarHeight.sm + loginbarHeight.sm}px;
-			`;
-		}
-
-		return 'top: 0;';
-	}}
-
-	${({ isLoginbar, isNavbar }) => {
-		const { loginbarHeight, navbarHeight } = gutters;
-
-		if (isNavbar && !isLoginbar) {
-			return mq.md`
-				top: ${navbarHeight.md}px;
-			`;
-		}
-
-		if (isNavbar && isLoginbar) {
-			return mq.md`
-				top: ${navbarHeight.md + loginbarHeight.md}px;
-			`;
-		}
-
-		return 'top: 0;';
-	}}
-
-	${({ isLoginbar, isNavbar }) => {
-		const { loginbarHeight, navbarHeight } = gutters;
-
-		if (isNavbar && !isLoginbar) {
-			return mq.lg`
-				top: ${navbarHeight.lg}px;
-			`;
-		}
-
-		if (isNavbar && isLoginbar) {
-			return mq.lg`
-				top: ${navbarHeight.lg + loginbarHeight.lg}px;
-			`;
-		}
-
-		return 'top: 0;';
-	}}
 `;
 
 const HeaderContainer = styled.div`
@@ -87,8 +27,25 @@ const HeaderContainer = styled.div`
 const Header = () => {
 	const { loginbar, navbar } = useContext(NavigationContext);
 
+	const calcTop = useCallback(() => {
+		const { loginbarHeight, navbarHeight } = gutters;
+
+		if (navbar) {
+			return loginbar
+				? `${navbarHeight.sm + loginbarHeight.sm}px`
+				: `${navbarHeight.sm}px`;
+		}
+
+		return '0';
+	});
+
+	const props = useSpring({
+		from: { top: '0px' },
+		top: calcTop(),
+	});
+
 	return (
-		<Wrapper isNavbar={navbar} isLoginbar={loginbar}>
+		<Wrapper style={props}>
 			<HeaderContainer>
 				<Logo />
 				<LanguageMenu />

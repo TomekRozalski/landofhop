@@ -54,7 +54,7 @@ const Details = (props) => {
 		}
 
 		return (() => { setBeverage(null); });
-	}, [params]);
+	}, [beverage, params]);
 
 	if (!beverage || isLoading) {
 		return <Spinner center />;
