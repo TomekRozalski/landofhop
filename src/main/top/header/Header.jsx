@@ -32,20 +32,20 @@ const Header = () => {
 
 		if (navbar) {
 			return loginbar
-				? `${navbarHeight.sm + loginbarHeight.sm}px`
-				: `${navbarHeight.sm}px`;
+				? `${navbarHeight.lg + loginbarHeight.lg}px`
+				: `${navbarHeight.lg}px`;
 		}
 
 		return '0';
 	});
 
-	const props = useSpring({
+	const move = useSpring({
 		from: { top: '0px' },
 		top: calcTop(),
 	});
 
 	return (
-		<Wrapper style={props}>
+		<Wrapper style={move}>
 			<HeaderContainer>
 				<Logo />
 				<LanguageMenu />

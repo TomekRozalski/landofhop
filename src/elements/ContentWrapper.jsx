@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import PropTypes from 'prop-types';
+import { useSpring } from 'react-spring';
 
 import { NavigationContext } from 'config';
+import { gutters } from 'utils/theme';
 import Main from './Main';
 import Scroll from './Scroll';
 
-// eslint-disable-next-line import/no-mutable-exports
 let scrollContentTop;
 
 const ContentWrapper = ({ children }) => {
@@ -20,8 +21,37 @@ const ContentWrapper = ({ children }) => {
 
 	scrollContentTop = scrollTop;
 
+	const calcMarginTop = useCallback(() => {
+		const { headerHeight, loginbarHeight, navbarHeight } = gutters;
+
+		if (navbar) {
+			return loginbar
+				? `${headerHeight.lg + navbarHeight.lg + loginbarHeight.lg}px`
+				: `${headerHeight.lg + navbarHeight.lg}px`;
+		}
+
+		return `${headerHeight.lg}px`;
+	});
+
+	const calcHeight = useCallback(() => {
+		const { headerHeight, loginbarHeight, navbarHeight } = gutters;
+
+		if (navbar) {
+			return loginbar
+				? `${window.innerHeight - headerHeight.lg - navbarHeight.lg - loginbarHeight.lg}px`
+				: `${window.innerHeight - headerHeight.lg - navbarHeight.lg}px`;
+		}
+
+		return `${window.innerHeight - headerHeight.lg}px`;
+	});
+
+	const move = useSpring({
+		height: calcHeight(),
+		marginTop: calcMarginTop(),
+	});
+
 	return (
-		<Main isNavbar={navbar} isLoginbar={loginbar}>
+		<Main style={move}>
 			<Scroll ref={scrollBlock}>
 				{children}
 			</Scroll>
