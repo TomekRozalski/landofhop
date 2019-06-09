@@ -1,110 +1,46 @@
-/* eslint-disable no-shadow */
 import React, { useContext } from 'react';
-import styled from 'styled-components';
-import {
-	get,
-	isArray,
-	isBoolean,
-	isUndefined,
-} from 'lodash';
 import { FormattedMessage } from 'react-intl';
 
 import { BeverageDetailsContext, LanguageContext } from 'config';
-import { constants } from 'utils';
 import { getNameByLanguage } from 'utils/helpers';
 import { DT, DD, Highlight } from 'elements';
-
-const HopList = styled.ul`
-	display: inline;
-
-	::before {
-		content: ' (';
-	}
-
-	::after {
-		content: ')';
-	}
-
-	li {
-		display: inline;
-	}
-`;
+import { addItemSeparator, addSectionSeparator, getDryHoppedValues } from 'main/details/utils';
+import { SmallList } from '../elements';
 
 const DryHopped = () => {
 	const { beverage } = useContext(BeverageDetailsContext);
-	const { language } = useContext(LanguageContext);
+	const { language: siteLanguage } = useContext(LanguageContext);
 
-	const labelValue = get(beverage, 'label.brewing.dryHopped');
-	const producerValue = get(beverage, 'producer.brewing.dryHopped');
-	const editorialValue = get(beverage, 'editorial.brewing.dryHopped');
+	const formattedValues = getDryHoppedValues(beverage)
+		.map(({ type, value }) => {
+			if (value.length) {
+				const typeArray = value
+					.map(item => getNameByLanguage({ values: item.name, language: siteLanguage }))
+					.map(({ language, value: singleHop }) => (
+						<li
+							key={singleHop}
+							lang={language === siteLanguage ? null : language}
+						>
+							{singleHop}
+						</li>
+					))
+					.reduce(addItemSeparator, []);
 
-	const { separators, type } = constants.details;
-
-	const values = [
-		{ type: type.label, value: labelValue },
-		{ type: type.producer, value: producerValue },
-		{ type: type.editorial, value: editorialValue },
-	];
-
-	const formattedValues = values
-		.reduce((acc, curr) => {
-			if (!acc.length && !isUndefined(curr.value)) {
-				return [curr];
+				return (
+					<Highlight key={type} type={type}>
+						<FormattedMessage id="details.yes" />
+						<SmallList>{ typeArray }</SmallList>
+					</Highlight>
+				);
 			}
 
 			return (
-				!isUndefined(curr.value)
-					? [...acc, separators.section, curr]
-					: acc
+				<Highlight key={type} type={type}>
+					<FormattedMessage id={`details.${value ? 'yes' : 'no'}`} />
+				</Highlight>
 			);
-		}, [])
-		.map((item) => {
-			if (item === separators.section) {
-				return item;
-			}
-
-			if (isBoolean(item.value)) {
-				return (
-					<Highlight key={item.type} type={item.type}>
-						<FormattedMessage id={`details.${item.value ? 'yes' : 'no'}`} />
-					</Highlight>
-				);
-			}
-
-			if (isArray(item.value)) {
-				const typeArray = item.value
-					.reduce((acc, curr) => {
-						const formattedName = getNameByLanguage({ values: curr.name, language });
-
-						return (
-							acc.length
-								? [...acc, separators.item, formattedName]
-								: [formattedName]
-						);
-					}, [])
-					.map(item => (
-						item === separators.item
-							? item
-							: (
-								<li
-									key={item.value}
-									lang={item.language === language ? null : item.language}
-								>
-									{item.value}
-								</li>
-							)
-					));
-
-				return (
-					<Highlight key={item.type} type={item.type}>
-						<FormattedMessage id="details.yes" />
-						<HopList>{ typeArray }</HopList>
-					</Highlight>
-				);
-			}
-
-			return null;
-		});
+		})
+		.reduce(addSectionSeparator, []);
 
 	return formattedValues.length ? (
 		<>

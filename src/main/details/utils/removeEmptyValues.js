@@ -7,6 +7,8 @@ const removeEmptyValues = ({ type, values }) => (
 			return isArray(value);
 		case 'boolean':
 			return isBoolean(value);
+		case 'array || boolean':
+			return isArray(value) || isBoolean(value);
 		case 'object':
 			return isObject(value);
 		default:
