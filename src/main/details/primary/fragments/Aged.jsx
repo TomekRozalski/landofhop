@@ -49,16 +49,14 @@ const Aged = () => {
 				return item;
 			}
 
-			console.log('item', item);
-
 			const types = item.value.map(({
 				previousContent,
 				time,
-				type,
+				type: theType,
 				wood,
-			}) => (
-				<TypesWrapper key={type}>
-					{ type && <FormattedMessage id={`aged.type.${type}`} />}
+			}, i) => (
+				<TypesWrapper key={`${item.type}-${i}`}>
+					{ theType && <FormattedMessage id={`aged.type.${theType}`} />}
 					{ wood && <FormattedMessage id={`aged.wood.${wood}`} /> }
 					{ time && <span>{`${time.value} ${time.unit}`}</span> }
 					{ previousContent && <span>{previousContent.join(', ')}</span> }
