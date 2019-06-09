@@ -1,70 +1,45 @@
-/* eslint-disable no-shadow */
 import React, { useContext } from 'react';
-import { get } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 
 import { BeverageDetailsContext, LanguageContext } from 'config';
-import { constants } from 'utils';
 import { DT, DD, Highlight } from 'elements';
+import {
+	addItemSeparator,
+	addSectionSeparator,
+	getStyleValues,
+	isSeparator,
+} from 'main/details/utils';
 
 const Style = () => {
 	const { beverage } = useContext(BeverageDetailsContext);
-	const { language } = useContext(LanguageContext);
+	const { language: siteLanguage } = useContext(LanguageContext);
 
-	const labelStyles = get(beverage, 'label.brewing.style', []);
-	const producerStyles = get(beverage, 'producer.brewing.style', []);
-	const editorialStyles = get(beverage, 'editorial.brewing.style', []);
-
-	const { separators, type } = constants.details;
-
-	const styles = [
-		{ type: type.label, value: labelStyles },
-		{ type: type.producer, value: producerStyles },
-		{ type: type.editorial, value: editorialStyles },
-	];
-
-	const formattedStyles = styles
-		.reduce((acc, curr) => {
-			if (!acc.length && curr.value.length) {
-				return [curr];
+	const formattedValues = getStyleValues(beverage)
+		.reduce(addSectionSeparator, [])
+		.reduce((sectionsAccumulator, currentSection) => {
+			if (isSeparator(currentSection)) {
+				return [...sectionsAccumulator, currentSection];
 			}
 
-			return (
-				curr.value.length
-					? [...acc, separators.section, curr]
-					: acc
-			);
-		}, [])
-		.reduce((acc, curr) => {
-			if (curr !== separators.section) {
-				const typeArray = curr.value
-					.reduce((acc, curr) => (
-						acc.length
-							? [...acc, separators.item, curr]
-							: [curr]
-					), [])
-					.map(item => (
-						item === separators.item ? item : (
-							<Highlight
-								key={`${curr.type} ${item.value}`}
-								lang={item.language === language ? null : item.language}
-								type={curr.type}
-							>
-								{ item.value }
-							</Highlight>
-						)
-					));
+			const typeArray = currentSection.value
+				.map(({ language, value }) => (
+					<Highlight
+						key={`${currentSection.type} ${value}`}
+						lang={language === siteLanguage ? null : language}
+						type={currentSection.type}
+					>
+						{ value }
+					</Highlight>
+				))
+				.reduce(addItemSeparator, []);
 
-				return [...acc, ...typeArray];
-			}
-
-			return [...acc, curr];
+			return [...sectionsAccumulator, ...typeArray];
 		}, []);
 
-	return formattedStyles.length ? (
+	return formattedValues.length ? (
 		<>
 			<DT><FormattedMessage id="details.style" /></DT>
-			<DD>{ formattedStyles }</DD>
+			<DD>{ formattedValues }</DD>
 		</>
 	) : null;
 };
