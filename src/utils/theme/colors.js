@@ -4,7 +4,7 @@ export default {
 		light: '#dec1c1',
 	},
 	gray: {
-		100: '#333',
+		100: '#222',
 		200: '#aaa',
 		300: '#ccc',
 		400: '#ddd',

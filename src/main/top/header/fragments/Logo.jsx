@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import { mq } from 'utils/theme';
-import { Logomark } from 'elements/icons';
 
 const LogoWrapper = styled.div`
 	order: 2;
@@ -19,38 +18,25 @@ const LogoWrapper = styled.div`
 
 const StyledLink = styled(Link)`
 	display: inline-block;
-	width: 70px;
-	height: 70px;
-	border-radius: 50%;
+	width: 3rem;
+	height: 100%;
 	overflow: hidden;
 	line-height: 0;
 	transform: rotate(0);
 	transition: transform .2s;
-
-	&:hover { transform: rotate(15deg); }
-
-	${mq.md`
-		width: 100px;
-		height: 100px;
-	`}
 `;
 
 const Title = styled.h1`
-	padding: 1px;
-
-	svg {
-		display: block;
-		width: 100%;
-		height: 100%;
-	}
+	display: block;
+	width: 10rem;
+	height: 100%;
+	background: white;
 `;
 
 const Logo = () => (
 	<LogoWrapper>
 		<StyledLink to="/">
-			<Title>
-				<Logomark />
-			</Title>
+			<Title>Land of Hop</Title>
 		</StyledLink>
 	</LogoWrapper>
 );
