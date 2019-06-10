@@ -135,6 +135,7 @@
 	"details.expirationDate": "expiration time",
 	"details.expirationDate.unit.day": "{ value, plural, one {# day} other {# days}}",
 	"details.expirationDate.unit.month": "{ value, plural, one {# month} other {# months}}",
+	"details.expirationDate.unit.year": "{ value, plural, one {# year} other {# years}}",
 	"details.extract": "extract",
 	"details.fermentation": "fermentation",
 	"details.filtration": "filtration",

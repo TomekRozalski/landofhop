@@ -135,6 +135,7 @@
 	"details.expirationDate": "okres przydatności do spożycia",
 	"details.expirationDate.unit.day": "{ value, plural, one {# dzień} other {# dni}}",
 	"details.expirationDate.unit.month": "{ value, plural, one {# miesiąc} few {# miesiące} other {# miesięcy}}",
+	"details.expirationDate.unit.year": "{ value, plural, one {# rok} few {# lata} other {# lat}}",
 	"details.extract": "ekstrakt",
 	"details.fermentation": "fermentacja",
 	"details.filtration": "filtracja",
