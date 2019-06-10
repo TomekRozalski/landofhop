@@ -18,7 +18,6 @@ import {
 	saveFormValues as saveFormValuesAction,
 } from 'store/actions';
 import { Spinner } from 'elements';
-import { scrollContentTop } from 'elements/ContentWrapper';
 import { MainHeader, ProgressList } from 'dashboard/elements';
 import Subforms from 'dashboard/subforms';
 
@@ -67,7 +66,7 @@ const BeverageFormWrapper = ({
 	};
 
 	const showSubform = (subformToSet) => {
-		scrollContentTop();
+		// scrollContentTop();
 		setSubform(subformToSet);
 	};
 

@@ -8,7 +8,6 @@ import Input from './Input';
 import Label from './Label';
 import Main from './Main';
 import Overlay from './Overlay';
-import Scroll from './Scroll';
 import Spinner from './Spinner';
 import Textarea from './Textarea';
 
@@ -23,7 +22,6 @@ export {
 	Label,
 	Main,
 	Overlay,
-	Scroll,
 	Spinner,
 	Textarea,
 };

@@ -1,5 +1,4 @@
 import { constants } from 'dashboard/utils';
-import { scrollContentTop } from 'elements/ContentWrapper';
 
 const onSubmit = ({
 	moveOn,
@@ -11,7 +10,7 @@ const onSubmit = ({
 	});
 
 	moveOn();
-	scrollContentTop();
+	// scrollContentTop();
 };
 
 export default onSubmit;

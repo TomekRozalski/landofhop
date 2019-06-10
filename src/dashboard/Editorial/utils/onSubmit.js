@@ -1,5 +1,4 @@
 import { constants } from 'dashboard/utils';
-import { scrollContentTop } from 'elements/ContentWrapper';
 
 const onSubmit = ({
 	finalSubmit,
@@ -12,13 +11,13 @@ const onSubmit = ({
 	});
 
 	if (values.submitDirection === 'forward') {
-		finalSubmit({ setSubmitting, values })
-			.then(scrollContentTop);
+		finalSubmit({ setSubmitting, values });
+		// .then(scrollContentTop);
 	}
 
 	if (values.submitDirection === 'backward') {
 		moveBack();
-		scrollContentTop();
+		// scrollContentTop();
 	}
 };
 

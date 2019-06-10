@@ -90,10 +90,10 @@ const Routes = () => {
 	return (
 		<Router>
 			<>
-				<Navbar />
-				{ transition
+				{/* <Navbar /> */}
+				{/* { transition
 					.map(({ item, key, props }) => item && <Loginbar key={key} style={props} />)
-				}
+				} */}
 				<Header />
 				<ContentWrapper>
 					<Suspense fallback={<Spinner center />}>

@@ -5,6 +5,7 @@ import GlobalStyle from './GlobalStyle';
 import gutters from './gutters';
 import indexes from './indexes';
 import mq from './mq';
+import sizes from './sizes';
 
 export {
 	breakpoints,
@@ -14,4 +15,5 @@ export {
 	gutters,
 	indexes,
 	mq,
+	sizes,
 };
