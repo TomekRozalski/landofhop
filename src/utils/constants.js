@@ -62,6 +62,18 @@ export default {
 		},
 	},
 	dataLanguages: {
+		pl: {
+			code: 'pl',
+			phrase: 'Polish',
+		},
+		en: {
+			code: 'en',
+			phrase: 'English',
+		},
+		cs: {
+			code: 'cs',
+			phrase: 'Czech',
+		},
 		da: {
 			code: 'da',
 			phrase: 'Danish',
@@ -69,10 +81,6 @@ export default {
 		de: {
 			code: 'de',
 			phrase: 'German',
-		},
-		en: {
-			code: 'en',
-			phrase: 'English',
 		},
 		es: {
 			code: 'es',
@@ -85,10 +93,6 @@ export default {
 		nl: {
 			code: 'nl',
 			phrase: 'Dutch',
-		},
-		pl: {
-			code: 'pl',
-			phrase: 'Polish',
 		},
 		ua: {
 			code: 'ua',

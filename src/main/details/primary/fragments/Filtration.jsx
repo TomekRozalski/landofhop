@@ -3,12 +3,12 @@ import { FormattedMessage } from 'react-intl';
 
 import { BeverageDetailsContext } from 'config';
 import { DT, DD, Highlight } from 'elements';
-import { addSectionSeparator, getPasteurizationValues } from 'main/details/utils';
+import { addSectionSeparator, getFiltrationValues } from 'main/details/utils';
 
 const Filtration = () => {
 	const { beverage } = useContext(BeverageDetailsContext);
 
-	const formattedValues = getPasteurizationValues(beverage)
+	const formattedValues = getFiltrationValues(beverage)
 		.map(({ type, value }) => (
 			<Highlight key={type} type={type}>
 				<FormattedMessage id={`details.${value ? 'yes' : 'no'}`} />
