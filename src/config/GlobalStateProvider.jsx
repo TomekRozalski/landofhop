@@ -9,30 +9,39 @@ import {
 	DetailsControlPanel,
 	Device,
 	Dictionary,
+	Header,
 	Language,
 	Navigation,
 	Routes,
 } from './index';
 
+const ProviderComposer = ({ contexts, children }) => (
+	contexts.reduceRight(
+		(kids, parent) => React.cloneElement(parent, {
+			children: kids,
+		}),
+		children,
+	)
+);
+
 const GlobalStateProvider = () => (
 	<Provider store={store}>
-		<Device>
-			<Language>
-				<AppError>
-					<Navigation>
-						<Authentication>
-							<Dictionary>
-								<BeverageDetails>
-									<DetailsControlPanel>
-										<Routes />
-									</DetailsControlPanel>
-								</BeverageDetails>
-							</Dictionary>
-						</Authentication>
-					</Navigation>
-				</AppError>
-			</Language>
-		</Device>
+		<ProviderComposer
+			contexts={[
+				<Device />,
+				<Language />,
+				<AppError />,
+				<Navigation />,
+				<Header />,
+				<Authentication />,
+				<Dictionary />,
+				<BeverageDetails />,
+				<DetailsControlPanel />,
+			]}
+		>
+			<Routes />
+		</ProviderComposer>
+
 	</Provider>
 );
 

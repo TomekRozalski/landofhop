@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
 
-import { NavigationContext } from 'config';
+import { HeaderContext } from 'config';
 import { grid } from 'utils';
 import { colors, indexes, sizes } from 'utils/theme';
 import { LanguageMenu, Logo, NavigationSwitcher } from './fragments';
@@ -10,7 +10,8 @@ import { LanguageMenu, Logo, NavigationSwitcher } from './fragments';
 const Wrapper = styled(animated.header)`
 	display: block;
 	width: 100%;
-	height: ${sizes.header.height.tall.lg}px;
+	height: ${sizes.header.height.tall.lg};
+	overflow: hidden;
 	background-color: ${colors.gray[100]};
 	position: fixed;
 	left: 0;
@@ -18,14 +19,12 @@ const Wrapper = styled(animated.header)`
 `;
 
 const HeaderContainer = styled.div`
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
+	height: 100%;
 	${grid}
 `;
 
 const Header = () => {
-	const { isHeaderTall } = useContext(NavigationContext);
+	const { isHeaderTall } = useContext(HeaderContext);
 
 	const move = useSpring({
 		height: isHeaderTall
