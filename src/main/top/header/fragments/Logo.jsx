@@ -17,15 +17,14 @@ const LogoWrapper = styled.div`
 	`}
 `;
 
-const StyledLink = styled(animated.a)`
+const StyledLink = styled(Link)`
 	display: block;
-	width: 5rem;
 	height: 100%;
 `;
 
-const Title = styled.h1`
+const Title = styled(animated.h1)`
 	display: block;
-	width: 100%;
+	width: 5rem;
 	height: 100%;
 	overflow: hidden;
 
@@ -40,14 +39,14 @@ const Title = styled.h1`
 
 const Logo = () => {
 	const [isHover, setHover] = useState(false);
-	const abd = useSpring({
+	const enlarge = useSpring({
 		width: isHover ? '7rem' : '5rem',
 	});
 
 	return (
 		<LogoWrapper>
-			<StyledLink style={abd} as={Link} to="/" onMouseEnter={() => { setHover(true); }} onMouseLeave={() => { setHover(false); }}>
-				<Title>Land of Hop</Title>
+			<StyledLink to="/">
+				<Title style={enlarge} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>Land of Hop</Title>
 			</StyledLink>
 		</LogoWrapper>
 	);
