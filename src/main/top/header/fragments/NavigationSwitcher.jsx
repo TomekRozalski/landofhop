@@ -24,15 +24,15 @@ const Button = styled.div.attrs({
 })`
 	display: inline-block;
 	width: 49px;
-	height: 80px;
-	padding: 20px;
+	/* height: 80px; */
+	padding: 10px;
 	overflow: hidden;
 	cursor: pointer;
 	
 	svg {
 		display: block;
 		width: 9px;
-		height: 40px;
+		height: 20px;
 		opacity: 1;
 		transition: opacity .2s;
 	}

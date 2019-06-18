@@ -27,6 +27,7 @@ const Title = styled(animated.h1)`
 	width: 5rem;
 	height: 100%;
 	overflow: hidden;
+	position: relative;
 
 	&::before {
 		display: block;
@@ -34,6 +35,9 @@ const Title = styled(animated.h1)`
 		height: 100%;
 		content: '';
 		background: white;
+		position: absolute;
+		top: 0;
+		left: 0;
 	}
 `;
 
