@@ -21,6 +21,9 @@ const StyledLink = styled(Link)`
 		if (size === 'can-l') {
 			return 363;
 		}
+		if (size === 'can-sm') {
+			return 248;
+		}
 
 		return 'auto';
 	}}px;
@@ -95,6 +98,9 @@ const Tile = ({
 
 	const smallImageLoaded = () => {
 		switch (smallImage.height) {
+		case 50:
+			setSize('can-sm');
+			break;
 		case 73:
 			setSize('can-l');
 			break;
