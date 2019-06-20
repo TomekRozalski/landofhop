@@ -30,6 +30,7 @@ import Institution from './Institution';
 import Latitude from './Latitude';
 import Longitude from './Longitude';
 import Name from './Name';
+import Notes from './Notes';
 import Pasteurization from './Pasteurization';
 import Place from './Place';
 import Power from './Power';
@@ -77,6 +78,7 @@ export {
 	Latitude,
 	Longitude,
 	Name,
+	Notes,
 	Pasteurization,
 	Place,
 	Power,

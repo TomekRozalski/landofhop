@@ -21,4 +21,5 @@ export default {
 	[fields.cap]: false,
 	[fields.added]: null,
 	[fields.updated]: null,
+	[fields.notes]: null,
 };

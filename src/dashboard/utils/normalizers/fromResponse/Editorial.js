@@ -37,6 +37,7 @@ const Editorial = (beverage) => {
 	const cap = get(beverage, 'editorial.cap');
 	const added = get(beverage, 'added');
 	const updated = get(beverage, 'updated');
+	const notes = get(beverage, 'editorial.notes');
 	const id = get(beverage, 'id');
 	const shortId = get(beverage, 'shortId');
 
@@ -117,6 +118,7 @@ const Editorial = (beverage) => {
 		...(isBoolean(cap) && { cap }),
 		...(added && { added: convertDateToString(added) }),
 		...(updated && { updated: convertDateToString(updated) }),
+		...(notes && { notes }),
 		...(id && { id }),
 		...(shortId && { shortId }),
 	};

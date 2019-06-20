@@ -16,6 +16,7 @@ import {
 	Fermentation,
 	Filtration,
 	Images,
+	Notes,
 	Pasteurization,
 	Place,
 	Price,
@@ -58,6 +59,7 @@ const Fieldset = ({ showSubform }) => {
 			<Cap {...commonProps} fieldName={fields.cap} />
 			<Added {...commonProps} fieldName={fields.added} />
 			<Updated {...commonProps} fieldName={fields.updated} />
+			<Notes {...commonProps} fieldName={fields.notes} />
 		</>
 	);
 };

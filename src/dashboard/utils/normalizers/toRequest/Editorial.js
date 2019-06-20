@@ -32,6 +32,7 @@ const Editorial = ({
 	cap,
 	added,
 	updated,
+	notes,
 	id,
 	shortId,
 }) => {
@@ -94,6 +95,7 @@ const Editorial = ({
 			}),
 			...(!isNull(images) && { images }),
 			cap,
+			...(!isNull(notes) && { notes }),
 		},
 		...(!isNull(added) && { added: convertStringToDate(added) }),
 		...(!isNull(updated) && { updated: convertStringToDate(updated) }),

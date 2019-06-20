@@ -156,4 +156,8 @@ export default Yup.object().shape({
 			return formattedDate.isAfter('2017-06-20')
 				&& formattedDate.isBefore(tomorrow);
 		}),
+	[fields.notes]: Yup
+		.string()
+		.min(3, 'danger')
+		.nullable(true),
 });
