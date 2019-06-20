@@ -1,12 +1,18 @@
 import React, { useContext } from 'react';
 import { shape, string } from 'prop-types';
 import styled from 'styled-components';
-import { isDate } from 'lodash';
+import { get, isDate } from 'lodash';
 
 import { AuthenticationContext, BeverageDetailsContext } from 'config';
 import { RemoveButton, UpdateButton } from './fragments';
 
 const Wrapper = styled.div`
+	grid-column: 3 / 5;
+	display: flex;
+	padding-top: 1rem;
+`;
+
+const Notes = styled.div`
 	grid-column: 3 / 5;
 	display: flex;
 	padding-top: 1rem;
@@ -18,10 +24,15 @@ const Admin = ({ params }) => {
 	const { badge, brand, shortId } = params;
 
 	return (token && isDate(tokenExpiration)) ? (
-		<Wrapper>
-			<UpdateButton to={`/update-beverage/${shortId}/${brand}/${badge}`} />
-			<RemoveButton id={beverage.id} />
-		</Wrapper>
+		<>
+			<Wrapper>
+				<UpdateButton to={`/update-beverage/${shortId}/${brand}/${badge}`} />
+				<RemoveButton id={beverage.id} />
+			</Wrapper>
+			<Notes>
+				{ get(beverage, 'editorial.notes') }
+			</Notes>
+		</>
 	) : null;
 };
 
