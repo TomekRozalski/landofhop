@@ -1,59 +1,41 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { animated, useSpring } from 'react-spring';
 import { Link } from 'react-router-dom';
 
-import { mq } from 'utils/theme';
-
-const LogoWrapper = styled.div`
-	order: 2;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	${mq.md`
-		grid-column: 2 / 5;
-		grid-row: 1;
-	`}
-`;
+import { timingFunctions } from 'utils/theme';
 
 const StyledLink = styled(Link)`
-	display: block;
-	height: 100%;
+	grid-area: logo;
+	display: flex;
+	justify-content: center;
+
+	&:hover > * {
+		width: 7rem;
+	}
 `;
 
-const Title = styled(animated.h1)`
-	display: block;
+const Title = styled.h1`
 	width: 5rem;
+	transition: width ${timingFunctions.spring};
 	height: 100%;
 	overflow: hidden;
 	position: relative;
 
 	&::before {
-		display: block;
-		width: 100%;
-		height: 100%;
 		content: '';
 		background: white;
 		position: absolute;
 		top: 0;
+		right: 0;
+		bottom: 0;
 		left: 0;
 	}
 `;
 
-const Logo = () => {
-	const [isHover, setHover] = useState(false);
-	const enlarge = useSpring({
-		width: isHover ? '7rem' : '5rem',
-	});
-
-	return (
-		<LogoWrapper>
-			<StyledLink to="/">
-				<Title style={enlarge} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>Land of Hop</Title>
-			</StyledLink>
-		</LogoWrapper>
-	);
-};
+const Logo = () => (
+	<StyledLink to="/">
+		<Title>Land of Hop</Title>
+	</StyledLink>
+);
 
 export default Logo;

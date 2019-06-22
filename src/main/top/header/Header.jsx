@@ -11,10 +11,9 @@ import {
 } from 'utils/theme';
 import { LanguageMenu, Logo, NavigationSwitcher } from './fragments';
 
-const Wrapper = styled(animated.header)`
+const Wrapper = styled.header`
 	display: block;
 	width: 100%;
-	height: ${sizes.header.height.tall.lg};
 	overflow: hidden;
 	background-color: ${colors.gray[100]};
 	position: fixed;
@@ -22,23 +21,23 @@ const Wrapper = styled(animated.header)`
 	z-index: ${indexes.header};
 `;
 
-const HeaderContainer = styled.div`
-	height: 100%;
+const HeaderContainer = styled(animated.div)`
 	${grids.headerGrid}
+	grid-template-rows: ${sizes.header.height.tall.lg};
 `;
 
 const Header = () => {
 	const { isHeaderTall } = useContext(HeaderContext);
 
 	const move = useSpring({
-		height: isHeaderTall
+		'grid-template-rows': isHeaderTall
 			? sizes.header.height.tall.lg
 			: sizes.header.height.short.lg,
 	});
 
 	return (
-		<Wrapper style={move}>
-			<HeaderContainer>
+		<Wrapper>
+			<HeaderContainer style={move}>
 				<Logo />
 				<LanguageMenu />
 				<NavigationSwitcher />

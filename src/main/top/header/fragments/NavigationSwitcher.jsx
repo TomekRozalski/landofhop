@@ -8,23 +8,17 @@ import { mq } from 'utils/theme';
 import { More } from 'elements/icons';
 
 const Wrapper = styled.div`
-	order: 3;
+	grid-area: more;
+
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-
-	${mq.md`
-		grid-column: 5 / 6;
-		grid-row: 1;
-	`}
 `;
 
 const Button = styled.div.attrs({
 	role: 'button',
 })`
 	display: inline-block;
-	width: 49px;
-	/* height: 80px; */
 	padding: 10px;
 	overflow: hidden;
 	cursor: pointer;

@@ -7,6 +7,7 @@ import gutters from './gutters';
 import indexes from './indexes';
 import mq from './mq';
 import sizes from './sizes';
+import timingFunctions from './timing-functions';
 
 export {
 	breakpoints,
@@ -18,4 +19,5 @@ export {
 	indexes,
 	mq,
 	sizes,
+	timingFunctions,
 };

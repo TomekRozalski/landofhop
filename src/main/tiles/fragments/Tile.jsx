@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { DeviceContext, LanguageContext } from 'config';
 import { getNameByLanguage } from 'utils/helpers';
+import { timingFunctions } from 'utils/theme';
 import { beverageBasics } from '../utils';
 import { NoImage } from './index';
 
@@ -30,7 +31,7 @@ const StyledLink = styled(Link)`
 	`)}
 	transition: filter .1s linear, opacity .2s linear;
 	transform: scale(1);
-	transition: transform .2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+	transition: transform ${timingFunctions.spring};
 	position: relative;
 
 	${({ blur }) => (blur ? `

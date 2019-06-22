@@ -7,14 +7,10 @@ import { mq } from 'utils/theme';
 import LanguageLink from './LanguageLink';
 
 const LangWrapper = styled.div`
-	order: 1;
+	grid-area: search;
+
 	display: flex;
 	align-items: center;
-
-	${mq.md`
-		grid-column: 1 / 2;
-		grid-row: 1;
-	`}
 `;
 
 const LangTitle = styled.h2`
