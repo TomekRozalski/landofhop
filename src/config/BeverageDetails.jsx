@@ -14,7 +14,11 @@ const BeverageDetails = ({ children }) => {
 };
 
 BeverageDetails.propTypes = {
-	children: PropTypes.node.isRequired,
+	children: PropTypes.node,
+};
+
+BeverageDetails.defaultProps = {
+	children: null,
 };
 
 export default BeverageDetails;

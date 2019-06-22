@@ -20,7 +20,11 @@ const Dictionary = ({ children }) => {
 };
 
 Dictionary.propTypes = {
-	children: PropTypes.node.isRequired,
+	children: PropTypes.node,
+};
+
+Dictionary.defaultProps = {
+	children: null,
 };
 
 export default Dictionary;

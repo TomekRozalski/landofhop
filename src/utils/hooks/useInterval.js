@@ -1,4 +1,3 @@
-/* eslint consistent-return: 0 */
 import { useEffect, useRef } from 'react';
 
 export default function useInterval(callback, delay) {

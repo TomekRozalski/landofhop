@@ -5,14 +5,16 @@ import { debounce } from 'lodash';
 export const HeaderContext = React.createContext({});
 
 const Header = ({ children }) => {
+	const [lastTopScroll, setLastTopScroll] = useState(0);
+	const [currentTopScroll, setCurrentTopScroll] = useState(0);
+	const [scrollDirection, setScrollDirection] = useState('bottom');
 	const [isHeaderTall, setHeaderHeight] = useState(true);
 
-	const checkScroll = () => {
-		const distanceY = window.pageYOffset || document.documentElement.scrollTop;
-		setHeaderHeight(distanceY < 200);
-	};
+	const getScrollTop = () => window.pageYOffset || document.documentElement.scrollTop;
 
-	const onScroll = debounce(checkScroll, 400, { leading: true, maxWait: 1000 });
+	const onScroll = debounce(() => {
+		setCurrentTopScroll(window.pageYOffset || document.documentElement.scrollTop);
+	}, 400, { leading: true, maxWait: 1000 });
 
 	useEffect(() => {
 		window.addEventListener('scroll', onScroll);
@@ -22,15 +24,28 @@ const Header = ({ children }) => {
 		};
 	}, []);
 
+	useEffect(() => {
+		setScrollDirection(currentTopScroll > lastTopScroll ? 'bottom' : 'top');
+		setLastTopScroll(getScrollTop());
+	}, [currentTopScroll]);
+
+	useEffect(() => {
+		setHeaderHeight(getScrollTop() < 200 || scrollDirection === 'top');
+	}, [currentTopScroll, scrollDirection]);
+
 	return (
-		<HeaderContext.Provider value={{ isHeaderTall, setHeaderHeight }}>
+		<HeaderContext.Provider value={{ isHeaderTall }}>
 			{ children }
 		</HeaderContext.Provider>
 	);
 };
 
 Header.propTypes = {
-	children: PropTypes.node.isRequired,
+	children: PropTypes.node,
+};
+
+Header.defaultProps = {
+	children: null,
 };
 
 export default Header;

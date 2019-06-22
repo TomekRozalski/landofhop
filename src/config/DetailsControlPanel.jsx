@@ -45,7 +45,11 @@ const DetailsControlPanel = ({ children }) => {
 };
 
 DetailsControlPanel.propTypes = {
-	children: PropTypes.node.isRequired,
+	children: PropTypes.node,
+};
+
+DetailsControlPanel.defaultProps = {
+	children: null,
 };
 
 export default DetailsControlPanel;

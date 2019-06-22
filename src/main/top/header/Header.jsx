@@ -3,8 +3,12 @@ import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
 
 import { HeaderContext } from 'config';
-import { grid } from 'utils';
-import { colors, indexes, sizes } from 'utils/theme';
+import {
+	colors,
+	grids,
+	indexes,
+	sizes,
+} from 'utils/theme';
 import { LanguageMenu, Logo, NavigationSwitcher } from './fragments';
 
 const Wrapper = styled(animated.header)`
@@ -20,7 +24,7 @@ const Wrapper = styled(animated.header)`
 
 const HeaderContainer = styled.div`
 	height: 100%;
-	${grid}
+	${grids.headerGrid}
 `;
 
 const Header = () => {

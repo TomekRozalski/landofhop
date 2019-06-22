@@ -5,7 +5,7 @@ import { injectIntl } from 'react-intl';
 
 import { NavigationContext } from 'config';
 import { mq } from 'utils/theme';
-import { KebabMenu } from 'elements/icons';
+import { More } from 'elements/icons';
 
 const Wrapper = styled.div`
 	order: 3;
@@ -31,8 +31,8 @@ const Button = styled.div.attrs({
 	
 	svg {
 		display: block;
-		width: 9px;
-		height: 20px;
+		width: 40px;
+		height: 8px;
 		opacity: 1;
 		transition: opacity .2s;
 	}
@@ -48,7 +48,7 @@ const NavigationSwitcher = ({ intl }) => {
 	return (
 		<Wrapper>
 			<Button onClick={toggleNavbar}>
-				<KebabMenu
+				<More
 					title={
 						intl.formatMessage({
 							id: `header.${navbar ? 'close' : 'open'}Navbar`,

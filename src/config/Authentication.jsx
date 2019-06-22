@@ -139,7 +139,11 @@ const Authentication = ({ children }) => {
 };
 
 Authentication.propTypes = {
-	children: PropTypes.node.isRequired,
+	children: PropTypes.node,
+};
+
+Authentication.defaultProps = {
+	children: null,
 };
 
 export default Authentication;

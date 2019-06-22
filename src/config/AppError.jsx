@@ -20,7 +20,11 @@ const AppError = ({ children }) => {
 };
 
 AppError.propTypes = {
-	children: PropTypes.node.isRequired,
+	children: PropTypes.node,
+};
+
+AppError.defaultProps = {
+	children: null,
 };
 
 export default AppError;

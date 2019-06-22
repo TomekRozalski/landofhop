@@ -22,7 +22,11 @@ const Device = ({ children }) => {
 };
 
 Device.propTypes = {
-	children: PropTypes.node.isRequired,
+	children: PropTypes.node,
+};
+
+Device.defaultProps = {
+	children: null,
 };
 
 export default Device;

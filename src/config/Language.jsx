@@ -33,7 +33,11 @@ const Language = ({ children }) => {
 };
 
 Language.propTypes = {
-	children: PropTypes.node.isRequired,
+	children: PropTypes.node,
+};
+
+Language.defaultProps = {
+	children: null,
 };
 
 export default Language;

@@ -24,7 +24,11 @@ const Navigation = ({ children }) => {
 };
 
 Navigation.propTypes = {
-	children: PropTypes.node.isRequired,
+	children: PropTypes.node,
+};
+
+Navigation.defaultProps = {
+	children: null,
 };
 
 export default Navigation;
