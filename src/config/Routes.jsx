@@ -90,7 +90,7 @@ const Routes = () => {
 	return (
 		<Router>
 			<>
-				{/* <Navbar /> */}
+				<Navbar />
 				{/* { transition
 					.map(({ item, key, props }) => item && <Loginbar key={key} style={props} />)
 				} */}

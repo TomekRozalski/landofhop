@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { colors } from 'utils/theme';
 
 const Loupe = ({ color }) => {
-	const actualColor = color || colors.gray[200];
+	const actualColor = color || colors.gray[700];
 
 	return (
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">

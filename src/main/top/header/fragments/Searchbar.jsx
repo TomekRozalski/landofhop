@@ -4,10 +4,10 @@ import { FormattedMessage } from 'react-intl';
 
 import { NavigationContext } from 'config';
 import { colors, sizes } from 'utils/theme';
-import { More } from 'elements/icons';
+import { Loupe } from 'elements/icons';
 
 const Button = styled.button`
-	grid-area: more;
+	grid-area: search;
 	display: flex;
     justify-content: center;
 	padding: ${sizes.container.padding.lg};
@@ -20,8 +20,8 @@ const Button = styled.button`
 
 	svg {
 		display: block;
-		width: 40px;
-		height: 8px;
+		width: 30px;
+		height: 30px;
 		opacity: 1;
 		transition: opacity .2s;
 	}
@@ -31,16 +31,17 @@ const Button = styled.button`
 	}
 `;
 
-const NavigationSwitcher = () => {
-	const { navbar, toggleNavbar } = useContext(NavigationContext);
+const Searchbar = () => {
+	const { searchbar, setSearchbar } = useContext(NavigationContext);
 
 	return (
-		<Button onClick={toggleNavbar}>
-			<FormattedMessage id={`header.${navbar ? 'close' : 'open'}Navbar`}>
+		<Button onClick={setSearchbar}>
+			<Loupe title="yhm" />
+			{/* <FormattedMessage id={`header.${navbar ? 'close' : 'open'}Navbar`}>
 				{title => <More title={title} />}
-			</FormattedMessage>
+			</FormattedMessage> */}
 		</Button>
 	);
 };
 
-export default NavigationSwitcher;
+export default Searchbar;

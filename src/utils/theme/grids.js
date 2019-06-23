@@ -4,11 +4,10 @@ import sizes from './sizes';
 
 const headerGrid = css`
 	display: grid;
-	grid-template-columns: auto 1fr auto;
+	grid-template-columns: minmax(120px, auto) 1fr minmax(120px, auto);
 	grid-template-areas: 'search logo more';
 	width: ${sizes.container.width.lg};
 	margin: 0 auto;
-	padding: ${sizes.container.padding.lg};
 
 	/*
 		@ToDo: in tiles

@@ -9,7 +9,7 @@ import {
 	indexes,
 	sizes,
 } from 'utils/theme';
-import { LanguageMenu, Logo, NavigationSwitcher } from './fragments';
+import { Logo, NavigationSwitcher, Searchbar } from './fragments';
 
 const Wrapper = styled.header`
 	display: block;
@@ -39,7 +39,7 @@ const Header = () => {
 		<Wrapper>
 			<HeaderContainer style={move}>
 				<Logo />
-				<LanguageMenu />
+				<Searchbar />
 				<NavigationSwitcher />
 			</HeaderContainer>
 		</Wrapper>

@@ -1,11 +1,9 @@
-import LanguageLink from './LanguageLink';
-import LanguageMenu from './LanguageMenu';
 import Logo from './Logo';
 import NavigationSwitcher from './NavigationSwitcher';
+import Searchbar from './Searchbar';
 
 export {
-	LanguageLink,
-	LanguageMenu,
 	Logo,
 	NavigationSwitcher,
+	Searchbar,
 };
