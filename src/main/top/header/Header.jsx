@@ -9,7 +9,7 @@ import {
 	indexes,
 	sizes,
 } from 'utils/theme';
-import { Logo, NavigationSwitcher, Searchbar } from './fragments';
+import { Logo, NavigationSwitcher, SearchbarSwitcher } from './fragments';
 
 const Wrapper = styled.header`
 	display: block;
@@ -27,7 +27,7 @@ const HeaderContainer = styled(animated.div)`
 `;
 
 const Header = () => {
-	const { isHeaderTall } = useContext(HeaderContext);
+	const { isHeaderTall, setHeaderHeight } = useContext(HeaderContext);
 
 	const move = useSpring({
 		'grid-template-rows': isHeaderTall
@@ -36,10 +36,10 @@ const Header = () => {
 	});
 
 	return (
-		<Wrapper>
+		<Wrapper onMouseOver={() => setHeaderHeight(true)} onFocus={() => setHeaderHeight(true)}>
 			<HeaderContainer style={move}>
 				<Logo />
-				<Searchbar />
+				<SearchbarSwitcher />
 				<NavigationSwitcher />
 			</HeaderContainer>
 		</Wrapper>

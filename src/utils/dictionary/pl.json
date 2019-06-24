@@ -169,8 +169,10 @@
 	"fermentationType.spontaneous": "spontaniczna",
 	"fermentationType.top": "górna",
 	"header.closeNavbar": "Zamknij menu",
+	"header.closeSearchbar": "Zakończ wyszukiwanie",
 	"header.languageMenuTitle": "Zmień język",
 	"header.openNavbar": "Otwórz menu",
+	"header.openSearchbar": "Rozpocznij wyszukiwanie",
 
 	"language.Czech": "czeski",
 	"language.Danish": "duński",

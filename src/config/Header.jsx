@@ -34,7 +34,7 @@ const Header = ({ children }) => {
 	}, [currentTopScroll, scrollDirection]);
 
 	return (
-		<HeaderContext.Provider value={{ isHeaderTall }}>
+		<HeaderContext.Provider value={{ isHeaderTall, setHeaderHeight }}>
 			{ children }
 		</HeaderContext.Provider>
 	);

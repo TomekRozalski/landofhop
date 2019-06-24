@@ -1,9 +1,9 @@
 import Logo from './Logo';
 import NavigationSwitcher from './NavigationSwitcher';
-import Searchbar from './Searchbar';
+import SearchbarSwitcher from './SearchbarSwitcher';
 
 export {
 	Logo,
 	NavigationSwitcher,
-	Searchbar,
+	SearchbarSwitcher,
 };

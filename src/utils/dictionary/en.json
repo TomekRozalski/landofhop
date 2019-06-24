@@ -168,8 +168,10 @@
 	"fermentationType.spontaneous": "spontaneous",
 	"fermentationType.top": "top",
 	"header.closeNavbar": "Close navbar",
+	"header.closeSearchbar": "Close searchbar",
 	"header.languageMenuTitle": "Change language",
 	"header.openNavbar": "Open navbar",
+	"header.openSearchbar": "Open searchbar",
 
 	"language.Czech": "Czech",
 	"language.Danish": "Danish",
