@@ -5,7 +5,6 @@ import LogIn from './LogIn';
 import LogOut from './LogOut';
 import Menu from './Menu';
 import MenuWrapper from './MenuWrapper';
-import Search from './Search';
 import StyledLink from './StyledLink';
 
 export {
@@ -16,6 +15,5 @@ export {
 	LogOut,
 	Menu,
 	MenuWrapper,
-	Search,
 	StyledLink,
 };

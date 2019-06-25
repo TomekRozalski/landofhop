@@ -18,17 +18,12 @@ const Wrapper = styled.div`
 	z-index: ${indexes.navbar};
 `;
 
-const NavbarContainer = styled.div`
-	margin-top: 20rem;
-	background: white;
-`;
 
 const Navbar = () => (
 	<Wrapper>
-		{/* <NavbarContainer>
-			<Search />
-			<Menu />
-		</NavbarContainer> */}
+		{/* <LanguageMenu /> */}
+		<Menu />
+		{/* <Login /> */}
 	</Wrapper>
 );
 

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
 export default styled.ul`
-	display: flex;
+	margin: 5rem 0;
 `;
