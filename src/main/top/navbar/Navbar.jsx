@@ -1,27 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { grid } from 'utils';
-import { colors, gutters, indexes } from 'utils/theme';
-import { Menu, Search } from './fragments';
+import { colors, indexes } from 'utils/theme';
+import { LanguageMenu, Menu } from './fragments';
 
-const Wrapper = styled.div`
+const Wrapper = styled.nav`
 	display: block;
 	width: 50%;
 	height: 100vh;
-
+	padding-top: 20rem;
 	position: fixed;
 	top: 0;
 	right: 0;
 	background: ${colors.gray[100]};
-
 	z-index: ${indexes.navbar};
 `;
 
-
 const Navbar = () => (
 	<Wrapper>
-		{/* <LanguageMenu /> */}
+		<LanguageMenu />
 		<Menu />
 		{/* <Login /> */}
 	</Wrapper>
