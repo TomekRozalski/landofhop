@@ -16,9 +16,7 @@ const Wrapper = styled.div`
 	display: block;
 	width: 100%;
 	background-color: ${colors.gray[600]};
-	position: fixed;
-	top: ${gutters.navbarHeight.lg}px;
-	left: 0;
+	
 	z-index: ${indexes.loginbar};
 `;
 

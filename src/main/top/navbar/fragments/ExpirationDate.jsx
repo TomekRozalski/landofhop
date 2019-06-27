@@ -6,18 +6,18 @@ import { isBoolean, isDate } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 
 import { LanguageContext, AuthenticationContext } from 'config';
-import { colors, gutters } from 'utils/theme';
+import { colors, fonts } from 'utils/theme';
 
-const ExpirationItem = styled.li`
+const ExpirationItem = styled.div`
 	display: flex;
-	align-items: center;
-	height: ${gutters.inputHeight}rem;
+	margin: 1rem 3.5rem;
 	padding: 0 2rem;
+	font: 400 1.5rem / 3rem ${fonts.primary};
 	color: ${colors.gray[700]};
 	background-color: ${({ expired }) => (
 		expired
-			? colors.danger.light
-			: colors.success.light
+			? colors.danger.strong
+			: colors.success.strong
 	)};
 `;
 

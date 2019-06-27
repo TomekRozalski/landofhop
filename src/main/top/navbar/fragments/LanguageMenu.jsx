@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import { LanguageContext } from 'config';
+import { constants } from 'utils';
 import { colors, fonts } from 'utils/theme';
 
-const List = styled.div`
+const List = styled.ul`
 	display: flex;
 	margin: 5rem 3.5rem;
 `;
@@ -17,38 +20,56 @@ const ListItem = styled.li`
 	color: ${colors.gray[700]};
 
 	& + &::before {
-		margin-right: 2rem;
+		margin: 0.25rem 2rem 0 0;
 		content: '/';
-		
 	}
 `;
 
-const StyledLink = styled.button`
+const StyledButton = styled.div.attrs({
+	role: 'button',
+})`
 	display: block;
+	border: .3rem solid ${colors.gray[100]};
+	padding: 0 1rem .25rem 1rem;
 	background-color: ${colors.gray[100]};
-	transition: background-color .2s, color .2s;
+	transition: all .2s;
+	text-transform: uppercase;
 	color: ${colors.gray[700]};
 	cursor: pointer;
 
+	${({ active }) => (active && `border-color: ${colors.gray[700]};`)}
+
 	&:hover {
+		border-color: ${colors.gray[700]};
 		background-color: ${colors.gray[700]};
 		color: ${colors.gray[100]};
 	}
 `;
 
-const LanguageMenu = () => {
-	console.log('LanguageMenu');
+const LanguageItem = ({ item }) => {
+	const { changeLanguage, language } = useContext(LanguageContext);
 
 	return (
-		<List>
-			<ListItem>
-				<StyledLink>PL</StyledLink>
-			</ListItem>
-			<ListItem>
-				<StyledLink>EN</StyledLink>
-			</ListItem>
-		</List>
+		<ListItem>
+			<StyledButton
+				active={item === language}
+				onClick={() => changeLanguage(item)}
+			>
+				{ item }
+			</StyledButton>
+		</ListItem>
+	);
+};
 
+LanguageItem.propTypes = {
+	item: PropTypes.string.isRequired,
+};
+
+const LanguageMenu = () => {
+	const siteLanguages = Object.keys(constants.siteLanguages);
+
+	return (
+		<List>{ siteLanguages.map(item => <LanguageItem key={item} item={item} />) }</List>
 	);
 };
 

@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 
 import { AuthenticationContext } from 'config';
-import { Unlocked } from 'elements/icons';
+import { Unlocked } from '../icons';
 
 const LogOut = () => {
 	const { logOut } = useContext(AuthenticationContext);

@@ -5,8 +5,8 @@ import { FormattedMessage } from 'react-intl';
 
 import { colors, fonts } from 'utils/theme';
 
-const List = styled.div`
-	margin: 5rem 2.5rem;
+const List = styled.ul`
+	margin: 5rem 1.5rem;
 `;
 
 const ListItem = styled.li`
