@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
+import { isDate } from 'lodash';
 
+import { AuthenticationContext } from 'config';
 import { colors, fonts } from 'utils/theme';
 
 const List = styled.ul`
@@ -29,20 +31,33 @@ const StyledLink = styled(Link)`
 	}
 `;
 
-const Menu = () => (
-	<List>
-		<ListItem>
-			<StyledLink to="contact">
-				<FormattedMessage id="navbar.aboutName" />
-			</StyledLink>
-		</ListItem>
-		<ListItem>
-			<StyledLink to="contact">Statystyki</StyledLink>
-		</ListItem>
-		<ListItem>
-			<StyledLink to="contact">Wyszukiwanie zaawansowane</StyledLink>
-		</ListItem>
-	</List>
-);
+const Menu = () => {
+	const { token, tokenExpiration } = useContext(AuthenticationContext);
+
+	return (
+		<List>
+			<ListItem>
+				<StyledLink to="contact">
+					<FormattedMessage id="navbar.aboutName" />
+				</StyledLink>
+			</ListItem>
+			<ListItem>
+				<StyledLink to="contact">Statystyki</StyledLink>
+			</ListItem>
+			<ListItem>
+				<StyledLink to="contact">Wyszukiwanie zaawansowane</StyledLink>
+			</ListItem>
+			{
+				token && isDate(tokenExpiration) && (
+					<ListItem>
+						<StyledLink to="/add-new-beverage">
+							<FormattedMessage id="navbar.addNewBeverage" />
+						</StyledLink>
+					</ListItem>
+				)
+			}
+		</List>
+	);
+};
 
 export default Menu;
