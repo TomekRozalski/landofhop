@@ -25,7 +25,14 @@ const Header = ({ children }) => {
 	}, []);
 
 	useEffect(() => {
-		setScrollDirection(currentTopScroll > lastTopScroll ? 'bottom' : 'top');
+		const windowHeight = window.innerHeight;
+		const windowScroll = window.scrollY;
+		const contentHeight = document.body.offsetHeight;
+
+		if (contentHeight > windowHeight + windowScroll + 80) {
+			setScrollDirection(currentTopScroll > lastTopScroll ? 'bottom' : 'top');
+		}
+
 		setLastTopScroll(getScrollTop());
 	}, [currentTopScroll]);
 
