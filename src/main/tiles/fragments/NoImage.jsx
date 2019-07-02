@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { BrokenBottle } from 'elements/icons';
@@ -19,18 +18,10 @@ const Wrapper = styled.em`
 	}
 `;
 
-const NoImage = ({ image }) => (
-	image
-		? null
-		: (
-			<Wrapper>
-				<BrokenBottle />
-			</Wrapper>
-		)
+const NoImage = () => (
+	<Wrapper>
+		<BrokenBottle />
+	</Wrapper>
 );
-
-NoImage.propTypes = {
-	image: PropTypes.bool.isRequired,
-};
 
 export default NoImage;
