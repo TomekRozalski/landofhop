@@ -1,4 +1,9 @@
-import { arrayOf, shape, string } from 'prop-types';
+import {
+	arrayOf,
+	number,
+	shape,
+	string,
+} from 'prop-types';
 
 const beverageBasics = {
 	added: string.isRequired,
@@ -11,6 +16,11 @@ const beverageBasics = {
 				value: string.isRequired,
 			}),
 		).isRequired,
+	}).isRequired,
+	container: shape({
+		unit: string.isRequired,
+		type: string.isRequired,
+		value: number.isRequired,
 	}).isRequired,
 	id: string.isRequired,
 	name: arrayOf((

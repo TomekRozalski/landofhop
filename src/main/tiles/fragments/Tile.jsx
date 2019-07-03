@@ -6,12 +6,14 @@ import { LanguageContext } from 'config';
 import { getNameByLanguage } from 'utils/helpers';
 import { colors, timingFunctions } from 'utils/theme';
 import { Bottle, BrokenBottle } from 'elements/icons';
-import { beverageBasics } from '../utils';
+import { beverageBasics, setContainerHeight } from '../utils';
 
 const StyledLink = styled(Link)`
 	display: flex;
 	justify-content: center;
+	align-items: flex-end;
 	width: 100%;
+	height: ${({ height }) => (height || 300)}px;
 	transform: scale(1);
 	transition: transform ${timingFunctions.spring};
 	position: relative;
@@ -21,16 +23,7 @@ const StyledLink = styled(Link)`
 		z-index: 100;
 	}
 
-	svg.broken-bottle-icon {
-		height: 30rem;
-		margin: 5rem 0;
-
-		path {
-			fill: ${colors.gray[500]};
-		}
-	}
-
-	svg.bottle-icon {
+	svg {
 		height: 30rem;
 		margin: 5rem 0;
 
@@ -46,6 +39,7 @@ const Tile = ({
 		badge: brandBadge,
 		name: brandName,
 	},
+	container,
 	name,
 	shortId,
 }) => {
@@ -58,7 +52,7 @@ const Tile = ({
 
 	return (
 		<li>
-			<StyledLink to={`details/${shortId}/${brandBadge}/${badge}`}>
+			<StyledLink height={setContainerHeight(container)} to={`details/${shortId}/${brandBadge}/${badge}`}>
 				{ failure ? <BrokenBottle /> : (
 					<img
 						alt={`${formattedName}, ${formattedBrand}`}
