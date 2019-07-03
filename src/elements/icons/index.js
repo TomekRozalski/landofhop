@@ -1,3 +1,4 @@
+import Bottle from './Bottle';
 import BrokenBottle from './BrokenBottle';
 import Checkmark from './Checkmark';
 import Danger from './Danger';
@@ -6,6 +7,7 @@ import More from './More';
 import Warning from './Warning';
 
 export {
+	Bottle,
 	BrokenBottle,
 	Checkmark,
 	Danger,

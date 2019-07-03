@@ -1,16 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import { LanguageContext } from 'config';
 import { getNameByLanguage } from 'utils/helpers';
-import { timingFunctions } from 'utils/theme';
+import { colors, timingFunctions } from 'utils/theme';
+import { Bottle, BrokenBottle } from 'elements/icons';
 import { beverageBasics } from '../utils';
 
 const StyledLink = styled(Link)`
-	display: block;
+	display: flex;
+	justify-content: center;
 	width: 100%;
-
 	transform: scale(1);
 	transition: transform ${timingFunctions.spring};
 	position: relative;
@@ -18,6 +19,24 @@ const StyledLink = styled(Link)`
 	&:hover {
 		transform: scale(0.9);
 		z-index: 100;
+	}
+
+	svg.broken-bottle-icon {
+		height: 30rem;
+		margin: 5rem 0;
+
+		path {
+			fill: ${colors.gray[500]};
+		}
+	}
+
+	svg.bottle-icon {
+		height: 30rem;
+		margin: 5rem 0;
+
+		path {
+			fill: ${colors.gray[500]};
+		}
 	}
 `;
 
@@ -30,6 +49,9 @@ const Tile = ({
 	name,
 	shortId,
 }) => {
+	const [failure, setFailure] = useState(false);
+	const [loaded, setLoaded] = useState(false);
+
 	const { language } = useContext(LanguageContext);
 	const { value: formattedName } = getNameByLanguage({ values: name, language });
 	const { value: formattedBrand } = getNameByLanguage({ values: brandName, language });
@@ -37,14 +59,19 @@ const Tile = ({
 	return (
 		<li>
 			<StyledLink to={`details/${shortId}/${brandBadge}/${badge}`}>
-				<img
-					srcSet={`
-						/img/${brandBadge}/${badge}/${shortId}/cover/x1.jpg,
-						/img/${brandBadge}/${badge}/${shortId}/cover/x2.jpg 2x,
-					`}
-					src={`/img/${brandBadge}/${badge}/${shortId}/cover/x1.jpg`}
-					alt={`${formattedName}, ${formattedBrand}`}
-				/>
+				{ failure ? <BrokenBottle /> : (
+					<img
+						alt={`${formattedName}, ${formattedBrand}`}
+						onError={() => setFailure(true)}
+						onLoad={() => setLoaded(true)}
+						srcSet={`
+								/img/${brandBadge}/${badge}/${shortId}/cover/x1.jpg,
+								/img/${brandBadge}/${badge}/${shortId}/cover/x2.jpg 2x,
+							`}
+						src={`/img/${brandBadge}/${badge}/${shortId}/cover/x1.jpg`}
+					/>
+				)}
+				{ !loaded && !failure && <Bottle /> }
 			</StyledLink>
 		</li>
 	);
