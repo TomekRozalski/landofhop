@@ -7,10 +7,11 @@ import {
 	Switch,
 } from 'react-router-dom';
 import NProgress from 'nprogress';
+import styled from 'styled-components';
 import { isDate } from 'lodash';
 
 import { Header, Navbar } from 'main/top';
-import { GlobalStyle } from 'utils/theme';
+import { colors, GlobalStyle } from 'utils/theme';
 import { ContentWrapper, ErrorMessage, Spinner } from 'elements';
 import { AuthenticationContext } from './index';
 
@@ -69,9 +70,13 @@ PrivateRoute.propTypes = {
 	component: PropTypes.node.isRequired,
 };
 
+const Wrapper = styled.div`
+	border: 3rem solid ${colors.gray[100]};
+`;
+
 const Routes = () => (
 	<Router>
-		<>
+		<Wrapper>
 			<Header />
 			<Navbar />
 			<ContentWrapper>
@@ -88,7 +93,7 @@ const Routes = () => (
 			</ContentWrapper>
 			<ErrorMessage />
 			<GlobalStyle />
-		</>
+		</Wrapper>
 	</Router>
 );
 

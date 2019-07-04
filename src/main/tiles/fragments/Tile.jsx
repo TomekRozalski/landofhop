@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import { LanguageContext } from 'config';
@@ -7,6 +7,15 @@ import { getNameByLanguage } from 'utils/helpers';
 import { colors, timingFunctions } from 'utils/theme';
 import { Bottle, BrokenBottle } from 'elements/icons';
 import { beverageBasics, setContainerHeight } from '../utils';
+
+const bounce = () => keyframes`
+	0% {
+		top: -10px;
+	}
+	100% {
+		top: 10px;
+	}
+`;
 
 const StyledLink = styled(Link)`
 	display: flex;
@@ -30,6 +39,11 @@ const StyledLink = styled(Link)`
 		path {
 			fill: ${colors.gray[500]};
 		}
+	}
+
+	.bottle-icon {
+		position: relative;
+		animation: ${bounce} .5s ease-in-out 0s infinite alternate;
 	}
 `;
 

@@ -17,6 +17,7 @@ const Wrapper = styled.header`
 	overflow: hidden;
 	background-color: ${colors.gray[100]};
 	position: fixed;
+	top: 0;
 	left: 0;
 	z-index: ${indexes.header};
 `;
