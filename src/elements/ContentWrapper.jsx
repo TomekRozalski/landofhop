@@ -1,26 +1,22 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { useSpring } from 'react-spring';
+import styled from 'styled-components';
 
-import { HeaderContext } from 'config';
-import { sizes } from 'utils/theme';
-import Main from './Main';
+import { colors, indexes, sizes } from 'utils/theme';
 
-const ContentWrapper = ({ children }) => {
-	const { isHeaderTall } = useContext(HeaderContext);
+const Main = styled.main`
+	min-height: 100vh;
+	border: 3rem solid ${colors.gray[100]};
+	border-top: 0;
+	padding: ${sizes.header.height.tall.lg} 0 8rem 0;
+	background-color: ${colors.gray[700]};
+	position: relative;
+	z-index: ${indexes.main};
+`;
 
-	const move = useSpring({
-		paddingTop: isHeaderTall
-			? sizes.header.height.tall.lg
-			: sizes.header.height.short.lg,
-	});
-
-	return (
-		<Main style={move}>
-			{children}
-		</Main>
-	);
-};
+const ContentWrapper = ({ children }) => (
+	<Main>{children}</Main>
+);
 
 ContentWrapper.propTypes = {
 	children: PropTypes.node.isRequired,

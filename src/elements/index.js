@@ -6,7 +6,6 @@ import FieldStatusIndicator from './FieldStatusIndicator';
 import Highlight from './Highlight';
 import Input from './Input';
 import Label from './Label';
-import Main from './Main';
 import Overlay from './Overlay';
 import Spinner from './Spinner';
 import Textarea from './Textarea';
@@ -20,7 +19,6 @@ export {
 	Highlight,
 	Input,
 	Label,
-	Main,
 	Overlay,
 	Spinner,
 	Textarea,

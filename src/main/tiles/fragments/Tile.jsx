@@ -1,4 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, {
+	useContext,
+	useEffect,
+	useRef,
+	useState,
+} from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -57,17 +62,40 @@ const Tile = ({
 	name,
 	shortId,
 }) => {
+	const element = useRef();
 	const [failure, setFailure] = useState(false);
 	const [loaded, setLoaded] = useState(false);
+	const [onScreen, setOnScreen] = useState(false);
 
 	const { language } = useContext(LanguageContext);
 	const { value: formattedName } = getNameByLanguage({ values: name, language });
 	const { value: formattedBrand } = getNameByLanguage({ values: brandName, language });
 
+	useEffect(() => {
+		const imgOptions = {
+			threshold: 0,
+			rootMargin: '0px 0px 500px 0px',
+		};
+
+		const observer = new IntersectionObserver((entries, elementObserver) => {
+			entries.forEach((entry) => {
+				if (!entry.isIntersecting) {
+					return;
+				}
+
+				setOnScreen(true);
+				elementObserver.unobserve(entry.target);
+			});
+		}, imgOptions);
+
+		observer.observe(element.current);
+	}, []);
+
 	return (
-		<li>
+		<li ref={element}>
 			<StyledLink height={setContainerHeight(container)} to={`details/${shortId}/${brandBadge}/${badge}`}>
-				{ failure ? <BrokenBottle /> : (
+				{ failure && <BrokenBottle /> }
+				{ onScreen && !failure && (
 					<img
 						alt={`${formattedName}, ${formattedBrand}`}
 						onError={() => setFailure(true)}
