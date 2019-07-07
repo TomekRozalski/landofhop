@@ -74,21 +74,23 @@ const Tile = ({
 	useEffect(() => {
 		const imgOptions = {
 			threshold: 0,
-			rootMargin: '0px 0px 500px 0px',
+			rootMargin: '500px 0px',
 		};
 
-		const observer = new IntersectionObserver((entries, elementObserver) => {
-			entries.forEach((entry) => {
-				if (!entry.isIntersecting) {
-					return;
-				}
+		const observer = new IntersectionObserver(([entry], elementObserver) => {
+			if (!entry.isIntersecting) {
+				return;
+			}
 
-				setOnScreen(true);
-				elementObserver.unobserve(entry.target);
-			});
+			setOnScreen(true);
+			elementObserver.unobserve(entry.target);
 		}, imgOptions);
 
 		observer.observe(element.current);
+
+		return () => {
+			observer.unobserve(element.current);
+		};
 	}, []);
 
 	return (
