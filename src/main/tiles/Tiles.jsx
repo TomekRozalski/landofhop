@@ -9,6 +9,7 @@ import {
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { Helmet } from 'react-helmet';
+import { debounce } from 'lodash';
 
 import { AppErrorContext } from 'config';
 import { getBeveragesList as getBeveragesListAction } from 'store/actions';
@@ -30,6 +31,10 @@ const Tiles = ({
 }) => {
 	const { setAppError } = useContext(AppErrorContext);
 
+	const onScroll = debounce(() => {
+		sessionStorage.setItem('tilesPosition', window.pageYOffset || document.documentElement.scrollTop);
+	}, 400, { leading: true, maxWait: 1000 });
+
 	const withTitle = children => (
 		<>
 			{ children }
@@ -44,6 +49,20 @@ const Tiles = ({
 			getBeveragesList();
 		}
 	}, []);
+
+	useEffect(() => {
+		const tilesPosition = sessionStorage.getItem('tilesPosition');
+
+		if (tilesPosition) {
+			window.scroll(0, tilesPosition);
+		}
+
+		window.addEventListener('scroll', onScroll);
+
+		return () => {
+			window.removeEventListener('scroll', onScroll);
+		};
+	}, [list]);
 
 	if (isLoading) {
 		return withTitle(<Spinner center />);
