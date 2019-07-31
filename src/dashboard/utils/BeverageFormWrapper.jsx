@@ -44,13 +44,23 @@ const BeverageFormWrapper = ({
 	const [subform, setSubform] = useState(null);
 	const [title, setTitle] = useState('');
 
+	const preventClose = (e) => {
+		e.preventDefault();
+		e.returnValue = '';
+	};
+
 	useEffect(() => {
 		if (!areCountriesLoaded) { getCountriesList(); }
 		if (!areIngredientsLoaded) { getIngredientsList(); }
 		if (!areInstitutionsLoaded) { getInstitutionsList(); }
 		if (!arePlacesLoaded) { getPlacesList(); }
 
-		return clearBeverageDashboard;
+		window.addEventListener('beforeunload', preventClose);
+
+		return () => {
+			clearBeverageDashboard();
+			window.removeEventListener('beforeunload', preventClose);
+		};
 	}, []);
 
 	const moveBack = () => {
