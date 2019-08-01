@@ -37,15 +37,15 @@ const Menu = () => {
 	return (
 		<List>
 			<ListItem>
-				<StyledLink to="contact">
+				<StyledLink to="/contact">
 					<FormattedMessage id="navbar.aboutName" />
 				</StyledLink>
 			</ListItem>
 			<ListItem>
-				<StyledLink to="contact">Statystyki</StyledLink>
+				<StyledLink to="/stats">Statystyki</StyledLink>
 			</ListItem>
 			<ListItem>
-				<StyledLink to="contact">Wyszukiwanie zaawansowane</StyledLink>
+				<StyledLink to="/">Wyszukiwanie zaawansowane</StyledLink>
 			</ListItem>
 			{
 				token && isDate(tokenExpiration) && (

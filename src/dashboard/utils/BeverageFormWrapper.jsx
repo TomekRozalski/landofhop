@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { withRouter } from 'react-router-dom';
+import { Prompt, withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { Helmet } from 'react-helmet';
 import { get } from 'lodash';
@@ -118,6 +118,9 @@ const BeverageFormWrapper = ({
 					token,
 				})
 			}
+			<FormattedMessage id="appWarning.areYouSureYouWantToLeave">
+				{message => <Prompt when message={message} />}
+			</FormattedMessage>
 			<FormattedMessage id={title}>
 				{value => <Helmet><title>{value}</title></Helmet>}
 			</FormattedMessage>

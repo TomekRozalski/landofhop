@@ -15,6 +15,7 @@
 	"appError.reloadTheAppIfNecessary": "Reload the app if necessary",
 	"appError.title": "An error has occurred",
 	"app.fullTitle": "Land of Hop, reactive beer catalog",
+	"appWarning.areYouSureYouWantToLeave": "You have unsaved changes, are you sure you want to leave?",
 
 	"clarity.crystalline": "crystalline",
 	"clarity.clear": "clear",
