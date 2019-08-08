@@ -16,14 +16,18 @@ const removeBeverage = ({ id, token }) => (
 				},
 				body: JSON.stringify({ id }),
 			})
-				.then(() => {
-					dispatch({
-						type: actionsName.REMOVE_BEVERAGE_FULFILLED,
-						payload: {
-							removed: id,
-						},
-					});
-					resolve();
+				.then(({ status }) => {
+					if (status === 200) {
+						dispatch({
+							type: actionsName.REMOVE_BEVERAGE_FULFILLED,
+							payload: {
+								removed: id,
+							},
+						});
+						resolve();
+					} else {
+						throw new Error('Something went wrong');
+					}
 				})
 				.catch(() => {
 					dispatch({

@@ -13,12 +13,14 @@ const saveBeverage = ({
 	push,
 	savedForms,
 	setAppError,
+	setReadyToUnmount,
 	token,
 }) => ({
 	setSubmitting,
 	values,
 }) => {
 	setSubmitting(true);
+	setReadyToUnmount(true);
 
 	const { label, producer } = dashboardConstants.forms.beverage;
 

@@ -43,6 +43,7 @@ const BeverageFormWrapper = ({
 	const [step, setStep] = useState(1);
 	const [subform, setSubform] = useState(null);
 	const [title, setTitle] = useState('');
+	const [readyToUnmount, setReadyToUnmount] = useState(false);
 
 	const preventClose = (e) => {
 		e.preventDefault();
@@ -111,6 +112,7 @@ const BeverageFormWrapper = ({
 					savedForms,
 					saveFormValues,
 					setAppError,
+					setReadyToUnmount,
 					setTitle,
 					showSubform,
 					step,
@@ -118,9 +120,13 @@ const BeverageFormWrapper = ({
 					token,
 				})
 			}
-			<FormattedMessage id="appWarning.areYouSureYouWantToLeave">
-				{message => <Prompt when message={message} />}
-			</FormattedMessage>
+			{
+				!readyToUnmount && (
+					<FormattedMessage id="appWarning.areYouSureYouWantToLeave">
+						{message => <Prompt when message={message} />}
+					</FormattedMessage>
+				)
+			}
 			<FormattedMessage id={title}>
 				{value => <Helmet><title>{value}</title></Helmet>}
 			</FormattedMessage>

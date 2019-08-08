@@ -16,6 +16,7 @@ const AddNewBeverage = () => (
 			savedForms,
 			saveFormValues,
 			setAppError,
+			setReadyToUnmount,
 			setTitle,
 			showSubform,
 			step,
@@ -31,6 +32,7 @@ const AddNewBeverage = () => (
 				push,
 				savedForms,
 				setAppError,
+				setReadyToUnmount,
 				token,
 			});
 
