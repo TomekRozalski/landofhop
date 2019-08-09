@@ -35,6 +35,10 @@ const saveBeverage = ({
 		editorialData,
 	);
 
+	if (accumulator.brandBadge) {
+		delete accumulator.brandBadge;
+	}
+
 	return fetch(constants.servers.main + constants.api_endpoints.beverage_save, {
 		method: 'POST',
 		headers: {
@@ -44,10 +48,15 @@ const saveBeverage = ({
 		body: JSON.stringify(accumulator),
 	})
 		.then(res => res.json())
-		.then(getBeveragesList)
-		.then(() => setSubmitting(false))
-		.then(() => {
-			push('/');
+		.then((res) => {
+			getBeveragesList();
+			setSubmitting(false);
+
+			if (res.shortId) {
+				push(`${constants.routes.updateBeverageImages}/${res.shortId}/${labelData.brandBadge}/${labelData.badge}`);
+			} else {
+				throw new Error('shortId is missing!');
+			}
 		})
 		.catch((err) => {
 			setAppError(err);

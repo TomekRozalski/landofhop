@@ -6,6 +6,7 @@ import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 
 import { AuthenticationContext } from 'config';
+import { constants } from 'utils';
 import { removeBeverage as removeBeverageAction } from 'store/actions';
 import { Button } from 'elements';
 
@@ -25,7 +26,7 @@ const RemoveButton = ({ history, id, removeBeverage }) => {
 
 	const confirm = () => {
 		if (token) {
-			history.push('/');
+			history.push(constants.routes.main);
 			removeBeverage({ id, token });
 		} else {
 			console.log('brak tokena');

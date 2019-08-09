@@ -120,6 +120,14 @@ export default {
 		spontaneous: 'spontaneous',
 	},
 	none: '-',
+	routes: {
+		main: '/',
+		details: '/details',
+		contact: '/contact',
+		addNewBeverage: '/add-new-beverage',
+		updateBeverage: '/update-beverage',
+		updateBeverageImages: '/update-beverage-images',
+	},
 	server_responses: {
 		authentication_secceeded: 'Authentication succeeded',
 		beverage_not_found: 'Beverage not found',

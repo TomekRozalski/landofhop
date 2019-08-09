@@ -10,6 +10,7 @@ import NProgress from 'nprogress';
 import { isDate } from 'lodash';
 
 import { Header, Navbar } from 'main/top';
+import { constants } from 'utils';
 import { GlobalStyle } from 'utils/theme';
 import { ContentWrapper, ErrorMessage, Spinner } from 'elements';
 import { AuthenticationContext } from './index';
@@ -22,6 +23,11 @@ export const AddNewBeverage = lazy(() => {
 export const UpdateBeverage = lazy(() => {
 	NProgress.start();
 	return import('../dashboard/UpdateBeverage').finally(NProgress.done);
+});
+
+export const UpdateBeverageImages = lazy(() => {
+	NProgress.start();
+	return import('../dashboard/UpdateBeverageImages').finally(NProgress.done);
 });
 
 export const Contact = lazy(() => {
@@ -77,11 +83,12 @@ const Routes = () => (
 			<ContentWrapper>
 				<Suspense fallback={<Spinner center />}>
 					<Switch>
-						<Route path="/" exact component={Tiles} />
-						<Route path="/details/:shortId/:brand/:badge" exact component={Details} />
-						<Route path="/contact" exact component={Contact} />
-						<PrivateRoute path="/add-new-beverage" exact component={AddNewBeverage} />
-						<PrivateRoute path="/update-beverage/:shortId/:brand/:badge" exact component={UpdateBeverage} />
+						<Route path={constants.routes.main} exact component={Tiles} />
+						<Route path={`${constants.routes.details}/:shortId/:brand/:badge`} exact component={Details} />
+						<Route path={constants.routes.contact} exact component={Contact} />
+						<PrivateRoute path={constants.routes.addNewBeverage} exact component={AddNewBeverage} />
+						<PrivateRoute path={`${constants.routes.updateBeverage}/:shortId/:brand/:badge`} exact component={UpdateBeverage} />
+						<PrivateRoute path={`${constants.routes.updateBeverageImages}/:shortId/:brand/:badge`} exact component={UpdateBeverageImages} />
 						<Route component={NotFound} />
 					</Switch>
 				</Suspense>

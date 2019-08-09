@@ -188,6 +188,7 @@ const Label = ({
 				})),
 			}),
 		},
+		brandBadge: brand.badge,
 		...(id && { id }),
 	};
 
