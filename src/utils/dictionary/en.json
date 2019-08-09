@@ -110,7 +110,10 @@
 	"dashboard.taleLanguage": "Tale language",
 	"dashboard.temperature": "Recommended serving temperature",
 	"dashboard.type": "Type",
+	"dashboard.updateBeverageImages.gallery.description": "Photographs which goes to 360° gallery on the product details page",
+	"dashboard.updateBeverageImages.gallery.title": "Images to gallery",
 	"dashboard.updateBeverage.title": "Update beverage",
+	"dashboard.updateBeverageImages.title": "Update beverage images",
 	"dashboard.updated": "Updated",
 	"dashboard.website": "Website",
 

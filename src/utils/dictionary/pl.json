@@ -110,7 +110,10 @@
 	"dashboard.taleLanguage": "Język opisu",
 	"dashboard.temperature": "Zalecana temperatura serwowania",
 	"dashboard.type": "Typ",
+	"dashboard.updateBeverageImages.gallery.description": "Fotografie, które znajdą się w galerii 360° na stronie detali produktu",
+	"dashboard.updateBeverageImages.gallery.title": "Zdjęcia do galerii",
 	"dashboard.updateBeverage.title": "Popraw piwo",
+	"dashboard.updateBeverageImages.title": "Popraw grafiki dla napoju",
 	"dashboard.updated": "Ostatnio poprawiono",
 	"dashboard.website": "Strona internetowa",
 

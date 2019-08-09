@@ -33,8 +33,6 @@ const Editorial = (beverage) => {
 	const clarity = get(beverage, 'editorial.impressions.clarity');
 	// other
 	const price = get(beverage, 'editorial.price');
-	const images = get(beverage, 'editorial.images');
-	const cap = get(beverage, 'editorial.cap');
 	const added = get(beverage, 'added');
 	const updated = get(beverage, 'updated');
 	const notes = get(beverage, 'editorial.notes');
@@ -114,8 +112,6 @@ const Editorial = (beverage) => {
 				value,
 			})),
 		}),
-		...(isNumber(images) && { images }),
-		...(isBoolean(cap) && { cap }),
 		...(added && { added: convertDateToString(added) }),
 		...(updated && { updated: convertDateToString(updated) }),
 		...(notes && { notes }),

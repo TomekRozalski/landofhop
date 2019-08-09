@@ -6,7 +6,6 @@ import Badge from './Badge';
 import Barcode from './Barcode';
 import Bitterness from './Bitterness';
 import Brand from './Brand';
-import Cap from './Cap';
 import City from './City';
 import Clarity from './Clarity';
 import Code from './Code';
@@ -23,7 +22,6 @@ import Fermentation from './Fermentation';
 import Filtration from './Filtration';
 import Fullness from './Fullness';
 import Hoppyness from './Hoppyness';
-import Images from './Images';
 import Ingredients from './Ingredients';
 import IngredientsList from './IngredientsList';
 import Institution from './Institution';
@@ -54,7 +52,6 @@ export {
 	Barcode,
 	Bitterness,
 	Brand,
-	Cap,
 	City,
 	Clarity,
 	Code,
@@ -71,7 +68,6 @@ export {
 	Filtration,
 	Fullness,
 	Hoppyness,
-	Images,
 	Ingredients,
 	IngredientsList,
 	Institution,

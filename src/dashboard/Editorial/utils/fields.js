@@ -15,8 +15,6 @@ export default {
 	clarity: 'clarity',
 	// -----------
 	price: 'price',
-	images: 'images',
-	cap: 'cap',
 	added: 'added',
 	updated: 'updated',
 	notes: 'notes',

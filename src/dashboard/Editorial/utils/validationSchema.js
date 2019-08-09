@@ -103,11 +103,6 @@ export default Yup.object().shape({
 					.required('danger'),
 			}),
 		),
-	[fields.images]: Yup
-		.number()
-		.min(1, 'danger')
-		.max(50, 'danger')
-		.nullable(true),
 	[fields.added]: Yup
 		.mixed()
 		.test('isCorrectDate', 'danger', (value) => {

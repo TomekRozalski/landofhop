@@ -7,7 +7,6 @@ import {
 	Added,
 	Aged,
 	AlcoholScope,
-	Cap,
 	Clarity,
 	Color,
 	Contract,
@@ -15,7 +14,6 @@ import {
 	DryHopped,
 	Fermentation,
 	Filtration,
-	Images,
 	Notes,
 	Pasteurization,
 	Place,
@@ -55,8 +53,6 @@ const Fieldset = ({ showSubform }) => {
 			{/* -------------------------------- */}
 			<SubSection title="dashboard.otherInfo" />
 			<Price {...commonProps} fieldName={fields.price} />
-			<Images {...commonProps} fieldName={fields.images} />
-			<Cap {...commonProps} fieldName={fields.cap} />
 			<Added {...commonProps} fieldName={fields.added} />
 			<Updated {...commonProps} fieldName={fields.updated} />
 			<Notes {...commonProps} fieldName={fields.notes} />
