@@ -1,10 +1,11 @@
-import React, { useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { shape, string } from 'prop-types';
 import styled from 'styled-components';
 import { useDropzone } from 'react-dropzone';
 
 import { colors, fonts } from 'utils/theme';
-import { FormSection, MainHeader, Wrapper } from 'dashboard/elements';
+import { FormSection, MainHeader } from 'dashboard/elements';
+import { ErrorBox } from 'dashboard/elements/dropzone';
 import { DragAndDrop } from 'elements/icons';
 
 const DragableArea = styled.section`
@@ -45,13 +46,29 @@ const DragableArea = styled.section`
 	}
 `;
 
+
 const UpdateBeverageImages = ({ match }) => {
-	const onDrop = useCallback((acceptedFiles) => {
-		// Do something with the files
-		console.log('acceptedFiles', acceptedFiles);
-		console.log('-->', acceptedFiles[0].name);
-	}, []);
-	const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+	const [errors, setErrors] = useState([]);
+	const [files, setFiles] = useState([]);
+
+	const { getRootProps, getInputProps, isDragActive } = useDropzone({
+		accept: ['image/jpg', 'image/jpeg'],
+		minSize: 10 * 1024,
+		maxSize: 100 * 1024,
+		onDrop: (acceptedFiles, rejectedFiles) => {
+			if (rejectedFiles.length) {
+				setErrors(rejectedFiles.map(({ name, size, type }) => ({
+					name, size, type,
+				})));
+			}
+
+			setFiles(acceptedFiles.map(file => ({ ...file, preview: URL.createObjectURL(file) })));
+		},
+	});
+
+	useEffect(() => () => {
+		files.forEach(file => URL.revokeObjectURL(file.preview));
+	}, [files]);
 
 	return (
 		<>
@@ -60,10 +77,21 @@ const UpdateBeverageImages = ({ match }) => {
 				title="dashboard.updateBeverageImages.gallery.title"
 				description="dashboard.updateBeverageImages.gallery.description"
 			>
-				<DragableArea {...getRootProps()} isDragActive={isDragActive}>
+				<DragableArea
+					{...getRootProps()}
+					isDragActive={isDragActive}
+				>
 					<input {...getInputProps()} />
 					<DragAndDrop />
+					{
+						files.map(file => (
+							<div key={file.path}>
+								<img alt={file.path} src={file.preview} />
+							</div>
+						))
+					}
 				</DragableArea>
+				{ errors.length > 0 && <ErrorBox errors={errors} /> }
 			</FormSection>
 		</>
 	);
