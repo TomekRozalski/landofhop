@@ -18,6 +18,13 @@ const UpdateBeverageImages = ({ match }) => {
 		minSize: 10 * 1024,
 		maxSize: 100 * 1024,
 		onDrop: (acceptedFiles, rejectedFiles) => {
+			const img = new Image();
+			img.src = URL.createObjectURL(acceptedFiles[0]);
+
+			img.onload = function (e) {
+				console.log('img', e, this, this.width);
+			};
+
 			if (rejectedFiles.length) {
 				setErrors(rejectedFiles.map(({ name, size, type }) => ({
 					name, size, type,
@@ -42,7 +49,8 @@ const UpdateBeverageImages = ({ match }) => {
 			formData.append('image', image);
 		});
 
-		const endpoint = `${constants.servers.main}${constants.api_endpoints.images_beverage_gallery_save}`;
+		const { badge, brand, shortId } = match.params;
+		const endpoint = `${constants.servers.main}${constants.api_endpoints.images_beverage_gallery_save}${shortId}/${brand}/${badge}`;
 
 		fetch(endpoint, {
 			method: 'POST',
