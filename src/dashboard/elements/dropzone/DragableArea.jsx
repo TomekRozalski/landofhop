@@ -4,6 +4,7 @@ import { colors } from 'utils/theme';
 
 const DragableArea = styled.section`
 	grid-column: 1 / -1;
+	margin-bottom: 1rem;
 	min-height: 30rem;
 	border: .5rem solid ${colors.gray[600]};
 	transition: border .2s;

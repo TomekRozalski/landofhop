@@ -28,6 +28,7 @@ export default {
 		beverage_update: 'beverages/',
 		country_save: 'countries/',
 		countries_list: 'countries/list/',
+		images_beverage_gallery_save: 'images/beverage/gallery/',
 		ingredient_save: 'ingredients/',
 		ingredients_list: 'ingredients/list/',
 		institution_save: 'institutions/',

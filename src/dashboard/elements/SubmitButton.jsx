@@ -1,16 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import {
+	bool,
+	func,
+	number,
+	string,
+} from 'prop-types';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
 
 import { Button } from 'elements';
 
 const Wrapper = styled.div`
-	grid-column: 4 / 5;
+	grid-column: ${({ column }) => `${column} / ${column + 1}`};
 `;
 
-const SubmitButton = ({ text, ...props }) => (
-	<Wrapper>
+const SubmitButton = ({ column, text, ...props }) => (
+	<Wrapper column={column}>
 		<Button {...props} wide submit>
 			<FormattedMessage id={text || 'dashboard.addNew'} />
 		</Button>
@@ -18,14 +23,16 @@ const SubmitButton = ({ text, ...props }) => (
 );
 
 SubmitButton.propTypes = {
-	disabled: PropTypes.bool,
-	isSubmitting: PropTypes.bool,
-	onClick: PropTypes.func,
-	text: PropTypes.string,
-	type: PropTypes.string,
+	column: number,
+	disabled: bool,
+	isSubmitting: bool,
+	onClick: func,
+	text: string,
+	type: string,
 };
 
 SubmitButton.defaultProps = {
+	column: 4,
 	disabled: false,
 	isSubmitting: false,
 	onClick: () => null,
