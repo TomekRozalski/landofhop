@@ -26,6 +26,7 @@ export default {
 		beverage_remove: 'beverages/',
 		beverage_save: 'beverages/',
 		beverage_update: 'beverages/',
+		beverage_update_gallery: 'beverages/gallery/',
 		country_save: 'countries/',
 		countries_list: 'countries/list/',
 		images_beverage_gallery_save: 'images/beverage/gallery/',

@@ -28,6 +28,8 @@ const Editorial = ({
 	clarity,
 	// -----------
 	price,
+	images,
+	cap,
 	added,
 	updated,
 	notes,
@@ -91,6 +93,8 @@ const Editorial = ({
 					value,
 				})),
 			}),
+			...(isNumber(images) && { images }),
+			...(cap === true && { cap: true }),
 			...(!isNull(notes) && { notes }),
 		},
 		...(!isNull(added) && { added: convertStringToDate(added) }),

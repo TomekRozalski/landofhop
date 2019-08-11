@@ -1,19 +1,44 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { shape, string } from 'prop-types';
+import {
+	bool,
+	func,
+	shape,
+	string,
+} from 'prop-types';
+import { connect } from 'react-redux';
 import { useDropzone } from 'react-dropzone';
 
-import { constants } from 'utils';
-import { AuthenticationContext } from 'config';
+import { AppErrorContext, AuthenticationContext } from 'config';
+import {
+	getBeverageDetails as getBeverageDetailsAction,
+	updateGalleryCount as updateGalleryCountAction,
+} from 'store/actions';
+import { beverageDetails } from 'main/details/utils';
+import { Spinner } from 'elements';
+import saveImagesBeverageGallery from 'dashboard/utils/api/saveImagesBeverageGallery';
 import { FormSection, MainHeader, SubmitButton } from 'dashboard/elements';
 import { DragableArea, ErrorBox, ThumbnailList } from 'dashboard/elements/dropzone';
 import { DragAndDrop } from 'elements/icons';
 
-const UpdateBeverageImages = ({ match }) => {
+const UpdateBeverageImages = ({
+	getBeverageDetails,
+	isError,
+	isLoading,
+	match: { params },
+	savedBeverage,
+	updateGalleryCount,
+}) => {
 	const [errors, setErrors] = useState([]);
 	const [filesToPreview, setFilesToPreview] = useState([]);
 	const [filesToRequest, setFilesToRequest] = useState([]);
 
 	const { token } = useContext(AuthenticationContext);
+	const { setAppError } = useContext(AppErrorContext);
+
+	if (isError) {
+		setAppError('appError.fetchFailed.beverageDetails');
+		return null;
+	}
 
 	const { getRootProps, getInputProps, isDragActive } = useDropzone({
 		accept: ['image/jpg', 'image/jpeg'],
@@ -37,31 +62,24 @@ const UpdateBeverageImages = ({ match }) => {
 		filesToPreview.forEach(file => URL.revokeObjectURL(file.preview));
 	}, [filesToPreview]);
 
+	useEffect(() => {
+		if (!savedBeverage) {
+			getBeverageDetails(params);
+		}
+	}, [savedBeverage]);
+
 	const saveImage = (e) => {
 		e.preventDefault();
 
-		const formData = new FormData();
-		filesToRequest.forEach((image) => {
-			formData.append('image', image);
-		});
-
-		const { badge, brand, shortId } = match.params;
-		const endpoint = `${constants.servers.main}${constants.api_endpoints.images_beverage_gallery_save}${shortId}/${brand}/${badge}`;
-
-		fetch(endpoint, {
-			method: 'POST',
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-			body: formData,
-		})
-			.then((res) => {
-				console.log('res', res);
-			})
-			.catch((err) => {
-				console.log('err', err);
+		saveImagesBeverageGallery({ filesToRequest, params, token })
+			.then((files) => {
+				updateGalleryCount({ files, id: savedBeverage.id, token });
 			});
 	};
+
+	if (!savedBeverage || isLoading) {
+		return <Spinner center />;
+	}
 
 	return (
 		<>
@@ -91,6 +109,9 @@ const UpdateBeverageImages = ({ match }) => {
 };
 
 UpdateBeverageImages.propTypes = {
+	getBeverageDetails: func.isRequired,
+	isError: bool.isRequired,
+	isLoading: bool.isRequired,
 	match: shape({
 		params: shape({
 			badge: string.isRequired,
@@ -98,6 +119,27 @@ UpdateBeverageImages.propTypes = {
 			shortId: string.isRequired,
 		}),
 	}).isRequired,
+	savedBeverage: beverageDetails,
+	updateGalleryCount: func.isRequired,
 };
 
-export default UpdateBeverageImages;
+UpdateBeverageImages.defaultProps = {
+	savedBeverage: null,
+};
+
+const mapStateToProps = ({ beverages }, { match: { params } }) => ({
+	isError: beverages.details.isError,
+	isLoading: beverages.details.isLoading,
+	savedBeverage: beverages.details.list.find(beverage => (
+		beverage.badge === params.badge
+		&& beverage.label.general.brand.badge === params.brand
+		&& beverage.shortId === params.shortId
+	)),
+});
+
+const mapDispatchToProps = {
+	getBeverageDetails: getBeverageDetailsAction,
+	updateGalleryCount: updateGalleryCountAction,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateBeverageImages);

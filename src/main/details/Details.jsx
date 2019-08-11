@@ -27,17 +27,15 @@ const Wrapper = styled.div`
 	margin: 3rem auto;
 `;
 
-const Details = (props) => {
-	const {
-		getBeverageDetails,
-		isError,
-		isLoading,
-		savedBeverage,
-		match: {
-			params,
-		},
-	} = props;
-
+const Details = ({
+	getBeverageDetails,
+	isError,
+	isLoading,
+	savedBeverage,
+	match: {
+		params,
+	},
+}) => {
 	const { setAppError } = useContext(AppErrorContext);
 	const { beverage, setBeverage } = useContext(BeverageDetailsContext);
 

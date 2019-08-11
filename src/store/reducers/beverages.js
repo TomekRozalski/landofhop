@@ -56,6 +56,7 @@ export default (state = initialState, action) => (
 			// get beverage details
 
 		case actionsName.GET_BEVERAGE_DETAILS_PENDING:
+		case actionsName.UPDATE_BEVERAGE_GALLERY_IMAGES_PENDING:
 			draft.details.isLoading = true;
 			return;
 
@@ -66,12 +67,31 @@ export default (state = initialState, action) => (
 			return;
 
 		case actionsName.GET_BEVERAGE_DETAILS_REJECTED:
+		case actionsName.UPDATE_BEVERAGE_GALLERY_IMAGES_REJECTED:
 			draft.details.isError = true;
 			draft.details.isLoading = false;
 			return;
 
 			// -------------------------------
-			// remove beverage
+			// update beverage details gallery count
+
+		case actionsName.UPDATE_BEVERAGE_GALLERY_IMAGES_FULFILLED: {
+			const dataToUpdate = state.details.list.find(({ id }) => id === action.payload.id);
+			const beverageToUpdate = {
+				...dataToUpdate,
+				editorial: {
+					...dataToUpdate.editorial,
+					images: action.payload.files,
+				},
+			};
+			draft.details.list = unionBy([beverageToUpdate], state.details.list, 'id');
+			draft.details.isError = false;
+			draft.details.isLoading = false;
+			return;
+		}
+
+		// -------------------------------
+		// remove beverage
 
 		case actionsName.REMOVE_BEVERAGE_PENDING:
 			draft.basics.isLoading = true;

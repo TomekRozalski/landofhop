@@ -59,7 +59,7 @@ const updateBeverage = ({
 		})
 		.then(() => setSubmitting(false))
 		.then(() => {
-			push(`${constants.routes.details}/${shortId}/${brand}/${badge}`);
+			push(`${constants.routes.updateBeverageImages}/${shortId}/${brand}/${badge}`);
 		})
 		.catch((err) => {
 			setAppError(err);
