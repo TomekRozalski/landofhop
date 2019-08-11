@@ -41,8 +41,14 @@ const DragableArea = styled.section`
 		outline: none;
 		border-color: ${colors.gray[400]};
 
-		svg .dark {
-			fill: ${colors.gray[400]};
+		svg {
+			.dark {
+				fill: ${colors.gray[400]};
+			}
+
+			.movable {
+				transform: translate(224px, -104px);
+			}
 		}
 	}
 
@@ -60,7 +66,6 @@ const DragableArea = styled.section`
 		}
 
 		.movable {
-			transform: translate(${({ isDragActive }) => (isDragActive ? '224px, -104px' : '0, 0')});
 			transition: transform .2s;
 		}
 	}

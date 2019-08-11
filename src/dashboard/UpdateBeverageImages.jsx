@@ -1,51 +1,47 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { shape, string } from 'prop-types';
 import { useDropzone } from 'react-dropzone';
 
 import { constants } from 'utils';
+import { AuthenticationContext } from 'config';
 import { FormSection, MainHeader, SubmitButton } from 'dashboard/elements';
 import { DragableArea, ErrorBox, ThumbnailList } from 'dashboard/elements/dropzone';
 import { DragAndDrop } from 'elements/icons';
 
 const UpdateBeverageImages = ({ match }) => {
 	const [errors, setErrors] = useState([]);
-	const [files, setFiles] = useState([]);
+	const [filesToPreview, setFilesToPreview] = useState([]);
+	const [filesToRequest, setFilesToRequest] = useState([]);
 
-	const [fullFiles, setFullFiles] = useState([]);
+	const { token } = useContext(AuthenticationContext);
 
 	const { getRootProps, getInputProps, isDragActive } = useDropzone({
 		accept: ['image/jpg', 'image/jpeg'],
-		minSize: 10 * 1024,
-		maxSize: 100 * 1024,
+		minSize: 100 * 1024,
+		maxSize: 500 * 1024,
 		onDrop: (acceptedFiles, rejectedFiles) => {
-			const img = new Image();
-			img.src = URL.createObjectURL(acceptedFiles[0]);
-
-			img.onload = function (e) {
-				console.log('img', e, this, this.width);
-			};
-
 			if (rejectedFiles.length) {
 				setErrors(rejectedFiles.map(({ name, size, type }) => ({
 					name, size, type,
 				})));
 			}
 
-			setFullFiles(acceptedFiles);
-
-			setFiles(acceptedFiles.map(file => ({ ...file, preview: URL.createObjectURL(file) })));
+			setFilesToRequest(acceptedFiles);
+			setFilesToPreview(
+				acceptedFiles.map(file => ({ ...file, preview: URL.createObjectURL(file) })),
+			);
 		},
 	});
 
 	useEffect(() => () => {
-		files.forEach(file => URL.revokeObjectURL(file.preview));
-	}, [files]);
+		filesToPreview.forEach(file => URL.revokeObjectURL(file.preview));
+	}, [filesToPreview]);
 
 	const saveImage = (e) => {
 		e.preventDefault();
 
 		const formData = new FormData();
-		fullFiles.forEach((image) => {
+		filesToRequest.forEach((image) => {
 			formData.append('image', image);
 		});
 
@@ -54,10 +50,9 @@ const UpdateBeverageImages = ({ match }) => {
 
 		fetch(endpoint, {
 			method: 'POST',
-			// headers: {
-			// 'Content-Type': 'multipart/formdata',
-			// Authorization: `Bearer ${token}`,
-			// },
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
 			body: formData,
 		})
 			.then((res) => {
@@ -81,12 +76,12 @@ const UpdateBeverageImages = ({ match }) => {
 				>
 					<input {...getInputProps()} />
 					<DragAndDrop />
-					{ files.length > 0 && <ThumbnailList files={files} /> }
+					{ filesToPreview.length > 0 && <ThumbnailList files={filesToPreview} /> }
 				</DragableArea>
 				{ errors.length > 0 && <ErrorBox errors={errors} /> }
 				<SubmitButton
 					column={5}
-					disabled={!files.length}
+					disabled={!filesToRequest.length}
 					isSubmitting={false}
 					onClick={saveImage}
 				/>

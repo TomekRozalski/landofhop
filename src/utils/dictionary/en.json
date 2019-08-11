@@ -114,7 +114,7 @@
 	"dashboard.updateBeverageImages.gallery.description": "Photographs which goes to 360° gallery on the product details page",
 	"dashboard.updateBeverageImages.gallery.title": "Images to gallery",
 	"dashboard.updateBeverageImages.title": "Update beverage images",
-	"dashboard.updateBeverageImages.wrongFileUploaded.instruction": "Uploaded files need to be in .jpg or .jpge format and have weight from 10 to 100 KB",
+	"dashboard.updateBeverageImages.wrongFileUploaded.instruction": "Uploaded files need to be in .jpg or .jpge format and have weight from 100 to 500 KB. It is preferred that it should have 880px width",
 	"dashboard.updateBeverageImages.wrongFileUploaded.title": "An error occurred",
 	"dashboard.updateBeverageImages.wrongFileUploaded.rejectedFiles": "Rejected { value, plural, one {# file} other {# files}}:",
 	"dashboard.updateBeverageImages.wrongFileUploaded.rejectedFileInfo": "{name} with size {size} KB and type defined as {type}",

@@ -114,7 +114,7 @@
 	"dashboard.updateBeverageImages.gallery.description": "Fotografie, które znajdą się w galerii 360° na stronie detali produktu",
 	"dashboard.updateBeverageImages.gallery.title": "Zdjęcia do galerii",
 	"dashboard.updateBeverageImages.title": "Popraw grafiki dla napoju",
-	"dashboard.updateBeverageImages.wrongFileUploaded.instruction": "Ładowane pliki muszą być w formacie .jpg lub .jpge oraz mieć między 10 a 100 KB",
+	"dashboard.updateBeverageImages.wrongFileUploaded.instruction": "Ładowane pliki muszą być w formacie .jpg lub .jpge oraz mieć między 100 a 500 KB. Wskazane jest, by miał 880 pikseli szerokości",
 	"dashboard.updateBeverageImages.wrongFileUploaded.title": "Wystąpił błąd",
 	"dashboard.updateBeverageImages.wrongFileUploaded.rejectedFiles": "Odrzucono { value, plural, one {# plik} other {# pliki}}:",
 	"dashboard.updateBeverageImages.wrongFileUploaded.rejectedFileInfo": "{name} o rozmiarze {size} KB i typie zdefiniowanym jako {type}",
