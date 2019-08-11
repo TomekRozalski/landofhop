@@ -136,6 +136,9 @@ export default {
 	},
 	servers: {
 		main: 'http://localhost:3100/',
+		images: {
+			beverages: 'http://localhost:3100/public/images/beverages',
+		},
 	},
 	siteLanguages: {
 		pl: 'pl',

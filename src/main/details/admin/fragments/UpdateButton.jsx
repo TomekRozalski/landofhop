@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import { string } from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
@@ -25,14 +25,15 @@ const StyledLink = styled(Link)`
 	}
 `;
 
-const UpdateButton = ({ to }) => (
+const UpdateButton = ({ text, to }) => (
 	<StyledLink to={to}>
-		<FormattedMessage id="details.admin.updateBeverage" />
+		<FormattedMessage id={text} />
 	</StyledLink>
 );
 
 UpdateButton.propTypes = {
-	to: PropTypes.string.isRequired,
+	text: string.isRequired,
+	to: string.isRequired,
 };
 
 export default UpdateButton;

@@ -4,6 +4,7 @@ import { get } from 'lodash';
 import * as Pixi from 'pixi.js';
 
 import { BeverageDetailsContext, DeviceContext } from 'config';
+import { constants } from 'utils';
 import { fonts } from 'utils/theme';
 
 const Wrapper = styled.div`
@@ -14,7 +15,7 @@ const Wrapper = styled.div`
 `;
 
 const Gallery = () => {
-	const { pixelRatio } = useContext(DeviceContext);
+	const { pixelRatio, webpSupport } = useContext(DeviceContext);
 	const { beverage } = useContext(BeverageDetailsContext);
 
 	const {
@@ -46,7 +47,7 @@ const Gallery = () => {
 		const { resources } = loader;
 
 		const imagesAmount = get(beverage, 'editorial.images', 0);
-		const imagesPath = `/img/${brand}/${badge}/${shortId}/container/${pixelRatio}`;
+		const imagesPath = `${constants.servers.images.beverages}/${brand}/${badge}/${shortId}/container/${pixelRatio}/${webpSupport ? 'webp' : 'jpg'}`;
 
 		if (imagesAmount) {
 			pixiApp = new Application({
@@ -92,7 +93,7 @@ const Gallery = () => {
 
 				for (let i = 1; i <= imagesAmount; i += 1) {
 					const order = i.toString().padStart(2, '0');
-					const container = new Sprite(resources[`${imagesPath}/${order}.jpg`].texture);
+					const container = new Sprite(resources[`${imagesPath}/${order}${webpSupport ? '.webp' : '.jpg'}`].texture);
 					containers.push(container);
 
 					container.scale.set(0.5);
@@ -156,7 +157,7 @@ const Gallery = () => {
 			const images = new Array(imagesAmount).fill('').map((item, i) => {
 				const order = (i + 1).toString().padStart(2, '0');
 
-				return `${imagesPath}/${order}.jpg`;
+				return `${imagesPath}/${order}${webpSupport ? '.webp' : '.jpg'}`;
 			});
 
 			loader

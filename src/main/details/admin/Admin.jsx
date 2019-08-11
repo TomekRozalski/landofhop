@@ -3,11 +3,12 @@ import { shape, string } from 'prop-types';
 import styled from 'styled-components';
 import { get, isDate } from 'lodash';
 
+import { constants } from 'utils';
 import { AuthenticationContext, BeverageDetailsContext } from 'config';
 import { RemoveButton, UpdateButton } from './fragments';
 
 const Wrapper = styled.div`
-	grid-column: 3 / 5;
+	grid-column: 3 / 6;
 	display: flex;
 	padding-top: 1rem;
 `;
@@ -26,7 +27,14 @@ const Admin = ({ params }) => {
 	return (token && isDate(tokenExpiration)) ? (
 		<>
 			<Wrapper>
-				<UpdateButton to={`/update-beverage/${shortId}/${brand}/${badge}`} />
+				<UpdateButton
+					to={`${constants.routes.updateBeverage}/${shortId}/${brand}/${badge}`}
+					text="details.admin.updateBeverage"
+				/>
+				<UpdateButton
+					to={`${constants.routes.updateBeverageImages}/${shortId}/${brand}/${badge}`}
+					text="details.admin.updateBeverageImages"
+				/>
 				<RemoveButton id={beverage.id} />
 			</Wrapper>
 			<Notes>
