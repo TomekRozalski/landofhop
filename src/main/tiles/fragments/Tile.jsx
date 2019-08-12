@@ -52,6 +52,10 @@ const StyledLink = styled(Link)`
 	}
 `;
 
+const Image = styled.img`
+	display: ${({ isLoaded }) => (isLoaded ? 'block' : 'none')}
+`;
+
 const Tile = ({
 	badge,
 	brand: {
@@ -98,10 +102,11 @@ const Tile = ({
 			<StyledLink height={setContainerHeight(container)} to={`details/${shortId}/${brandBadge}/${badge}`}>
 				{ failure && <BrokenBottle /> }
 				{ onScreen && !failure && (
-					<img
+					<Image
 						alt={`${formattedName}, ${formattedBrand}`}
 						onError={() => setFailure(true)}
 						onLoad={() => setLoaded(true)}
+						isLoaded={loaded}
 						srcSet={`
 								/img/${brandBadge}/${badge}/${shortId}/cover/x1.jpg,
 								/img/${brandBadge}/${badge}/${shortId}/cover/x2.jpg 2x,
