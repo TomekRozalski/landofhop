@@ -32,9 +32,9 @@
     "yup": "^0.27.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "REACT_APP_SERVER=http://localhost:3100/ react-scripts start",
+    "build": "REACT_APP_SERVER=https://land-of-hop-server.herokuapp.com/ react-scripts build",
+    "test": "REACT_APP_SERVER=http://localhost:3100/ react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

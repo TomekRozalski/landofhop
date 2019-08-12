@@ -135,9 +135,9 @@ export default {
 		beverage_not_found: 'Beverage not found',
 	},
 	servers: {
-		main: 'http://localhost:3100/',
+		main: process.env.REACT_APP_SERVER,
 		images: {
-			beverages: 'http://localhost:3100/public/images/beverages',
+			beverages: `${process.env.REACT_APP_SERVER}public/images/beverages`,
 		},
 	},
 	siteLanguages: {
