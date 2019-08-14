@@ -6,28 +6,15 @@ import React, {
 } from 'react';
 import { func, shape, string } from 'prop-types';
 import { useDropzone } from 'react-dropzone';
-import styled from 'styled-components';
 import get from 'lodash/get';
 
 import { AuthenticationContext } from 'config';
 import { constants } from 'utils';
 import { beverageDetails } from 'main/details/utils';
-// import { ResetButton, SubmitButton } from 'dashboard/elements';
-import { DragAndDrop } from 'elements/icons';
-import {
-	DragableArea,
-	ErrorBox,
-	ResetButton,
-	SubmitButton,
-	ThumbnailList,
-} from '../elements';
-import saveImagesBeverageGallery from '../utils/api/saveImagesBeverageGallery';
-
-const SavedImagesWrapper = styled.div`
-	grid-column: 1 / -1;
-	margin: 2rem 0 1rem 0;
-	padding: .5rem;
-`;
+import { removeBeverageGallery, saveImagesBeverageGallery } from '../utils/api';
+import { ErrorBox, RemoveButton, SubmitButton } from '../elements/common';
+import { DragableArea, SavedImagesWrapper, ThumbnailList } from '../elements/gallery';
+import { DragAndDrop } from '../elements/icons';
 
 const Gallery = ({ params, savedBeverage, updateGalleryCount }) => {
 	const [errors, setErrors] = useState([]);
@@ -77,6 +64,16 @@ const Gallery = ({ params, savedBeverage, updateGalleryCount }) => {
 		filesToPreview.forEach(file => URL.revokeObjectURL(file.preview));
 	}, [filesToPreview]);
 
+
+	const onRemove = (e) => {
+		e.preventDefault();
+
+		removeBeverageGallery({ files: savedImages(), params, token })
+			.then(() => {
+				updateGalleryCount({ id: savedBeverage.id, token });
+			});
+	};
+
 	const saveImage = (e) => {
 		e.preventDefault();
 
@@ -107,10 +104,10 @@ const Gallery = ({ params, savedBeverage, updateGalleryCount }) => {
 					</>
 				)
 			}
-			<ResetButton
+			<RemoveButton
 				disabled={!savedImages()}
 				isSubmitting={false}
-				onClick={() => {}}
+				onClick={onRemove}
 			/>
 			<SubmitButton
 				disabled={!filesToRequest.length}

@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { colors } from 'utils/theme';
-
 const DragAndDrop = () => (
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 623.6 527.2">
 		<g>

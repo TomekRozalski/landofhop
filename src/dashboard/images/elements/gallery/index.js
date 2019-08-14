@@ -1,15 +1,11 @@
 import DragableArea from './DragableArea';
-import ErrorBox from './ErrorBox';
-import ResetButton from './ResetButton';
-import SubmitButton from './SubmitButton';
+import SavedImagesWrapper from './SavedImagesWrapper';
 import Thumbnail from './Thumbnail';
 import ThumbnailList from './ThumbnailList';
 
 export {
 	DragableArea,
-	ErrorBox,
-	ResetButton,
-	SubmitButton,
+	SavedImagesWrapper,
 	Thumbnail,
 	ThumbnailList,
 };

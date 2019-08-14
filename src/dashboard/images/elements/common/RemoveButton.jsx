@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 	grid-column: 4 / 5;
 `;
 
-const ResetButton = props => (
+const RemoveButton = props => (
 	<Wrapper>
 		<Button {...props} wide resign>
 			<FormattedMessage id="dashboard.remove" />
@@ -17,15 +17,15 @@ const ResetButton = props => (
 	</Wrapper>
 );
 
-ResetButton.propTypes = {
+RemoveButton.propTypes = {
 	disabled: PropTypes.bool,
 	isSubmitting: PropTypes.bool,
 	onClick: PropTypes.func.isRequired,
 };
 
-ResetButton.defaultProps = {
+RemoveButton.defaultProps = {
 	disabled: false,
 	isSubmitting: false,
 };
 
-export default ResetButton;
+export default RemoveButton;

@@ -47,9 +47,13 @@ const updateGalleryCount = ({
 );
 
 updateGalleryCount.propTypes = {
-	files: number.isRequired,
+	files: number,
 	id: string.isRequired,
 	token: string.isRequired,
+};
+
+updateGalleryCount.defaultProps = {
+	files: 0,
 };
 
 export default updateGalleryCount;
