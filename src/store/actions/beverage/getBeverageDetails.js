@@ -14,7 +14,7 @@ const getBeverageDetails = ({
 				type: actionsName.GET_BEVERAGE_DETAILS_PENDING,
 			});
 
-			const endpoint = `${constants.servers.main}${constants.api_endpoints.beverage_details}${shortId}/${brand}/${badge}`;
+			const endpoint = `${constants.servers.data}${constants.api_endpoints.beverage_details}${shortId}/${brand}/${badge}`;
 
 			fetch(endpoint)
 				.then((res) => {

@@ -9,7 +9,7 @@ const getIngredientsList = () => (
 
 		try {
 			const res = await fetch(
-				constants.servers.main
+				constants.servers.data
 				+ constants.api_endpoints.ingredients_list,
 			);
 			const ingredients = await res.json();

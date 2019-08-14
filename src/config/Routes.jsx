@@ -17,17 +17,17 @@ import { AuthenticationContext } from './index';
 
 export const AddNewBeverage = lazy(() => {
 	NProgress.start();
-	return import('../dashboard/AddNewBeverage').finally(NProgress.done);
+	return import('../dashboard/beverage/AddNew').finally(NProgress.done);
 });
 
 export const UpdateBeverage = lazy(() => {
 	NProgress.start();
-	return import('../dashboard/UpdateBeverage').finally(NProgress.done);
+	return import('../dashboard/beverage/Update').finally(NProgress.done);
 });
 
 export const UpdateBeverageImages = lazy(() => {
 	NProgress.start();
-	return import('../dashboard/UpdateBeverageImages').finally(NProgress.done);
+	return import('../dashboard/images/Beverage').finally(NProgress.done);
 });
 
 export const Contact = lazy(() => {

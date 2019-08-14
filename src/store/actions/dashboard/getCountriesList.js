@@ -9,7 +9,7 @@ const getCountriesList = () => (
 
 		try {
 			const res = await fetch(
-				constants.servers.main
+				constants.servers.data
 				+ constants.api_endpoints.countries_list
 				+ constants.siteLanguages.pl,
 			);

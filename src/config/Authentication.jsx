@@ -27,7 +27,7 @@ const Authentication = ({ children }) => {
 	};
 
 	const authenticateToken = (value) => {
-		fetch(constants.servers.main + constants.api_endpoints.authenticate_token, {
+		fetch(constants.servers.data + constants.api_endpoints.authenticate_token, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const Authentication = ({ children }) => {
 
 	const logIn = formValues => (
 		new Promise((resolve, reject) => {
-			fetch(constants.servers.main + constants.api_endpoints.login, {
+			fetch(constants.servers.data + constants.api_endpoints.login, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json; charset=utf-8',

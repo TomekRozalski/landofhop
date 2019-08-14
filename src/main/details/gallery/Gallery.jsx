@@ -47,7 +47,7 @@ const Gallery = () => {
 		const { resources } = loader;
 
 		const imagesAmount = get(beverage, 'editorial.images', 0);
-		const imagesPath = `${constants.servers.images.beverages}/${brand}/${badge}/${shortId}/container/${pixelRatio}/${webpSupport ? 'webp' : 'jpg'}`;
+		const imagesPath = `${constants.servers.images}/${brand}/${badge}/${shortId}/container/${pixelRatio}/${webpSupport ? 'webp' : 'jpg'}`;
 
 		if (imagesAmount) {
 			pixiApp = new Application({

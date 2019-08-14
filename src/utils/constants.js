@@ -135,10 +135,8 @@ export default {
 		beverage_not_found: 'Beverage not found',
 	},
 	servers: {
-		main: process.env.REACT_APP_SERVER,
-		images: {
-			beverages: `${process.env.REACT_APP_SERVER}public/images/beverages`,
-		},
+		data: process.env.REACT_APP_SERVER_DATA,
+		images: process.env.REACT_APP_SERVER_IMAGES,
 	},
 	siteLanguages: {
 		pl: 'pl',

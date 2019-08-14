@@ -14,7 +14,7 @@ const updateGalleryCount = ({
 				type: actionsName.UPDATE_BEVERAGE_GALLERY_IMAGES_PENDING,
 			});
 
-			fetch(`${constants.servers.main}${constants.api_endpoints.beverage_update_gallery}`, {
+			fetch(`${constants.servers.data}${constants.api_endpoints.beverage_update_gallery}`, {
 				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json',

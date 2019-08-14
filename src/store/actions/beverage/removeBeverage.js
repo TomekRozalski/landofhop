@@ -8,7 +8,7 @@ const removeBeverage = ({ id, token }) => (
 				type: actionsName.REMOVE_BEVERAGE_PENDING,
 			});
 
-			fetch(constants.servers.main + constants.api_endpoints.beverage_remove, {
+			fetch(constants.servers.data + constants.api_endpoints.beverage_remove, {
 				method: 'DELETE',
 				headers: {
 					'Content-Type': 'application/json',

@@ -8,7 +8,7 @@ const getBeveragesList = () => (
 		});
 
 		try {
-			const res = await fetch(constants.servers.main + constants.api_endpoints.beverage_list);
+			const res = await fetch(constants.servers.data + constants.api_endpoints.beverage_list);
 			const basics = await res.json();
 
 			dispatch({

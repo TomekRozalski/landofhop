@@ -9,7 +9,7 @@ const getPlacesList = () => (
 
 		try {
 			const res = await fetch(
-				constants.servers.main
+				constants.servers.data
 				+ constants.api_endpoints.places_list,
 			);
 			const places = await res.json();
