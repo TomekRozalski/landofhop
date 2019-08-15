@@ -10,6 +10,7 @@
 	"appError.close": "Zamknij okno",
 	"appError.fetchFailed.beverageDetails": "Nie udało się pobrać szczegółów pozycji",
 	"appError.fetchFailed.beverageList": "Nie udało się pobrać listy pozycji",
+	"appError.fetchFailed.imageGallery": "Nie udało się uaktualnić zdjęć w galerii",
 	"appError.goBackToMainPage": "Wróć do strony głównej",
 	"appError.invalidToken": "Znaleziono nieprawidłowy token w localStorage!",
 	"appError.reloadTheAppIfNecessary": "Przeładuj okno jeśli zajdzie taka potrzeba",

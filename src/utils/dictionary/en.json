@@ -10,6 +10,7 @@
 	"appError.close": "Close the window",
 	"appError.fetchFailed.beverageDetails": "Beverage details fetch failed",
 	"appError.fetchFailed.beverageList": "Beverage list fetch failed",
+	"appError.fetchFailed.imageGallery": "Gallery image fetch failed",
 	"appError.goBackToMainPage": "Go back to the main page",
 	"appError.invalidToken": "Ivalid token found in localStorage!",
 	"appError.reloadTheAppIfNecessary": "Reload the app if necessary",

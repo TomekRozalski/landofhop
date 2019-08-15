@@ -1,8 +1,4 @@
-import React, {
-	useContext,
-	useEffect,
-	useState,
-} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
 	bool,
 	func,
@@ -13,14 +9,14 @@ import { connect } from 'react-redux';
 import { useDropzone } from 'react-dropzone';
 import get from 'lodash/get';
 
-import { AuthenticationContext } from 'config';
+import { AppErrorContext, AuthenticationContext } from 'config';
 import { constants } from 'utils';
 import {
 	updateGalleryCount as updateGalleryCountAction,
 	removeBeverageGallery as removeBeverageGalleryAction,
+	saveImagesBeverageGallery as saveImagesBeverageGalleryAction,
 } from 'store/actions';
 import { beverageDetails } from 'main/details/utils';
-import { saveImagesBeverageGallery } from '../utils/api';
 import { ErrorBox, RemoveButton, SubmitButton } from '../elements/common';
 import { DragableArea, SavedImagesWrapper, ThumbnailList } from '../elements/gallery';
 import { DragAndDrop } from '../elements/icons';
@@ -31,6 +27,7 @@ const Gallery = ({
 	params,
 	removeBeverageGallery,
 	savedBeverage,
+	saveImagesBeverageGallery,
 	updateGalleryCount,
 }) => {
 	const [errors, setErrors] = useState([]);
@@ -39,6 +36,32 @@ const Gallery = ({
 	const [savedImages, setSavedImages] = useState(false);
 
 	const { token } = useContext(AuthenticationContext);
+	const { setAppError } = useContext(AppErrorContext);
+
+	if (isError) {
+		setAppError('appError.fetchFailed.imageGallery');
+		return null;
+	}
+
+	const { getRootProps, getInputProps, isDragActive } = useDropzone({
+		accept: ['image/jpg', 'image/jpeg'],
+		minSize: 100 * 1024,
+		maxSize: 500 * 1024,
+		onDrop: (acceptedFiles, rejectedFiles) => {
+			if (rejectedFiles.length) {
+				setErrors(rejectedFiles.map(({ name, size, type }) => ({
+					name, size, type,
+				})));
+			} else {
+				setErrors([]);
+			}
+
+			setFilesToRequest(acceptedFiles);
+			setFilesToPreview(
+				acceptedFiles.map(file => ({ ...file, preview: URL.createObjectURL(file) })),
+			);
+		},
+	});
 
 	useEffect(() => {
 		const images = get(savedBeverage, 'editorial.images');
@@ -60,24 +83,6 @@ const Gallery = ({
 			);
 		}
 	}, [savedBeverage]);
-
-	const { getRootProps, getInputProps, isDragActive } = useDropzone({
-		accept: ['image/jpg', 'image/jpeg'],
-		minSize: 100 * 1024,
-		maxSize: 500 * 1024,
-		onDrop: (acceptedFiles, rejectedFiles) => {
-			if (rejectedFiles.length) {
-				setErrors(rejectedFiles.map(({ name, size, type }) => ({
-					name, size, type,
-				})));
-			}
-
-			setFilesToRequest(acceptedFiles);
-			setFilesToPreview(
-				acceptedFiles.map(file => ({ ...file, preview: URL.createObjectURL(file) })),
-			);
-		},
-	});
 
 	useEffect(() => () => {
 		filesToPreview.forEach(file => URL.revokeObjectURL(file.preview));
@@ -147,6 +152,7 @@ Gallery.propTypes = {
 	}).isRequired,
 	removeBeverageGallery: func.isRequired,
 	savedBeverage: beverageDetails.isRequired,
+	saveImagesBeverageGallery: func.isRequired,
 	updateGalleryCount: func.isRequired,
 };
 
@@ -157,6 +163,7 @@ const mapStateToProps = ({ dashboard }) => ({
 
 const mapDispatchToProps = {
 	removeBeverageGallery: removeBeverageGalleryAction,
+	saveImagesBeverageGallery: saveImagesBeverageGalleryAction,
 	updateGalleryCount: updateGalleryCountAction,
 };
 

@@ -29,7 +29,10 @@ export default {
 		beverage_update_gallery: 'beverages/gallery/',
 		country_save: 'countries/',
 		countries_list: 'countries/list/',
-		images_beverage_gallery_save: 'images/beverage/gallery/',
+		images_beverage_gallery_save: {
+			method: 'POST',
+			path: 'images/beverage/gallery/',
+		},
 		ingredient_save: 'ingredients/',
 		ingredients_list: 'ingredients/list/',
 		institution_save: 'institutions/',
