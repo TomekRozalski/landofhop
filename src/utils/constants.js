@@ -37,6 +37,10 @@ export default {
 		login: 'login/',
 		place_save: 'places/',
 		places_list: 'places/list/',
+		remove_gallery_images: {
+			method: 'DELETE',
+			path: 'images/beverage/gallery',
+		},
 	},
 	clarity: {
 		clear: 'clear',

@@ -1,45 +1,64 @@
 import React, {
-	useCallback,
 	useContext,
 	useEffect,
 	useState,
 } from 'react';
-import { func, shape, string } from 'prop-types';
+import {
+	bool,
+	func,
+	shape,
+	string,
+} from 'prop-types';
+import { connect } from 'react-redux';
 import { useDropzone } from 'react-dropzone';
 import get from 'lodash/get';
 
 import { AuthenticationContext } from 'config';
 import { constants } from 'utils';
+import {
+	updateGalleryCount as updateGalleryCountAction,
+	removeBeverageGallery as removeBeverageGalleryAction,
+} from 'store/actions';
 import { beverageDetails } from 'main/details/utils';
-import { removeBeverageGallery, saveImagesBeverageGallery } from '../utils/api';
+import { saveImagesBeverageGallery } from '../utils/api';
 import { ErrorBox, RemoveButton, SubmitButton } from '../elements/common';
 import { DragableArea, SavedImagesWrapper, ThumbnailList } from '../elements/gallery';
 import { DragAndDrop } from '../elements/icons';
 
-const Gallery = ({ params, savedBeverage, updateGalleryCount }) => {
+const Gallery = ({
+	isError,
+	isLoading,
+	params,
+	removeBeverageGallery,
+	savedBeverage,
+	updateGalleryCount,
+}) => {
 	const [errors, setErrors] = useState([]);
 	const [filesToPreview, setFilesToPreview] = useState([]);
 	const [filesToRequest, setFilesToRequest] = useState([]);
+	const [savedImages, setSavedImages] = useState(false);
 
 	const { token } = useContext(AuthenticationContext);
 
-	const savedImages = useCallback(() => {
+	useEffect(() => {
 		const images = get(savedBeverage, 'editorial.images');
 
 		if (!images) {
-			return false;
+			setSavedImages(false);
+		} else {
+			setSavedImages(
+				new Array(images).fill('').map((value, i) => {
+					const validIndex = i + 1;
+					const imageName = validIndex < 10 ? `0${validIndex}.jpg` : `${validIndex}.jpg`;
+					const { badge, brand, shortId } = params;
+
+					return {
+						path: imageName,
+						preview: `${constants.servers.images}${brand}/${badge}/${shortId}/container/jpg/2x/${imageName}`,
+					};
+				}),
+			);
 		}
-
-		return new Array(images).fill('').map((value, i) => {
-			const validIndex = i + 1;
-			const imageName = validIndex < 10 ? `0${validIndex}.jpg` : `${validIndex}.jpg`;
-			const { badge, brand, shortId } = params;
-
-			return {
-				path: imageName,
-				preview: `${constants.servers.images}${brand}/${badge}/${shortId}/container/jpg/2x/${imageName}`,
-			};
-		});
 	}, [savedBeverage]);
 
 	const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -65,16 +84,16 @@ const Gallery = ({ params, savedBeverage, updateGalleryCount }) => {
 	}, [filesToPreview]);
 
 
-	const onRemove = (e) => {
+	const onRemoveImages = (e) => {
 		e.preventDefault();
 
-		removeBeverageGallery({ files: savedImages(), params, token })
+		removeBeverageGallery({ files: savedImages.length, params, token })
 			.then(() => {
 				updateGalleryCount({ id: savedBeverage.id, token });
 			});
 	};
 
-	const saveImage = (e) => {
+	const onSaveImages = (e) => {
 		e.preventDefault();
 
 		saveImagesBeverageGallery({ filesToRequest, params, token })
@@ -85,10 +104,10 @@ const Gallery = ({ params, savedBeverage, updateGalleryCount }) => {
 
 	return (
 		<>
-			{ savedImages()
+			{ savedImages
 				? (
 					<SavedImagesWrapper>
-						<ThumbnailList files={savedImages()} />
+						<ThumbnailList files={savedImages} />
 					</SavedImagesWrapper>
 				) : (
 					<>
@@ -105,31 +124,40 @@ const Gallery = ({ params, savedBeverage, updateGalleryCount }) => {
 				)
 			}
 			<RemoveButton
-				disabled={!savedImages()}
-				isSubmitting={false}
-				onClick={onRemove}
+				disabled={!savedImages}
+				isSubmitting={savedImages && isLoading}
+				onClick={onRemoveImages}
 			/>
 			<SubmitButton
 				disabled={!filesToRequest.length}
-				isSubmitting={false}
-				onClick={saveImage}
+				isSubmitting={!savedImages && isLoading}
+				onClick={onSaveImages}
 			/>
 		</>
 	);
 };
 
 Gallery.propTypes = {
+	isError: bool.isRequired,
+	isLoading: bool.isRequired,
 	params: shape({
 		badge: string.isRequired,
 		brand: string.isRequired,
 		shortId: string.isRequired,
 	}).isRequired,
-	savedBeverage: beverageDetails,
+	removeBeverageGallery: func.isRequired,
+	savedBeverage: beverageDetails.isRequired,
 	updateGalleryCount: func.isRequired,
 };
 
-Gallery.defaultProps = {
-	savedBeverage: null,
+const mapStateToProps = ({ dashboard }) => ({
+	isError: dashboard.images.gallery.isError,
+	isLoading: dashboard.images.gallery.isLoading,
+});
+
+const mapDispatchToProps = {
+	removeBeverageGallery: removeBeverageGalleryAction,
+	updateGalleryCount: updateGalleryCountAction,
 };
 
-export default Gallery;
+export default connect(mapStateToProps, mapDispatchToProps)(Gallery);

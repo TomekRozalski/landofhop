@@ -25,4 +25,7 @@ export default {
 	GET_PLACES_LIST_FULFILLED: '[Dashboard] Get Places (fulfilled)',
 	GET_PLACES_LIST_REJECTED: '[Dashboard] Get Places (rejected)',
 	SAVE_FORM_VALUES: '[Dashboard] Save Form Values',
+	REMOVE_BEVERAGE_GALLERY_PENDING: '[Dashboard] Remove Beverage Gallery (pending)',
+	REMOVE_BEVERAGE_GALLERY_FULFILLED: '[Dashboard] Remove Beverage Gallery (fulfilled)',
+	REMOVE_BEVERAGE_GALLERY_REJECTED: '[Dashboard] Remove Beverage Gallery (rejected)',
 };

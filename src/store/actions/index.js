@@ -9,6 +9,7 @@ import getCountriesList from './dashboard/getCountriesList';
 import getIngredientsList from './dashboard/getIngredientsList';
 import getInstitutionsList from './dashboard/getInstitutionsList';
 import getPlacesList from './dashboard/getPlacesList';
+import removeBeverageGallery from './dashboard/removeBeverageGallery';
 import saveFormValues from './dashboard/saveFormValues';
 
 export {
@@ -23,5 +24,6 @@ export {
 	getIngredientsList,
 	getInstitutionsList,
 	getPlacesList,
+	removeBeverageGallery,
 	saveFormValues,
 };

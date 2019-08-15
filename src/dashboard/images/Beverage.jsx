@@ -9,10 +9,7 @@ import { connect } from 'react-redux';
 
 import { AppErrorContext } from 'config';
 import { Spinner } from 'elements';
-import {
-	getBeverageDetails as getBeverageDetailsAction,
-	updateGalleryCount as updateGalleryCountAction,
-} from 'store/actions';
+import { getBeverageDetails as getBeverageDetailsAction } from 'store/actions';
 import { beverageDetails } from 'main/details/utils';
 import { MainHeader, SubSection, Wrapper } from 'dashboard/common/elements';
 import { Gallery } from './fragments';
@@ -23,7 +20,6 @@ const UpdateBeverageImages = ({
 	isLoading,
 	match: { params },
 	savedBeverage,
-	updateGalleryCount,
 }) => {
 	const { setAppError } = useContext(AppErrorContext);
 
@@ -47,11 +43,7 @@ const UpdateBeverageImages = ({
 			<MainHeader title="dashboard.updateBeverageImages.title" />
 			<Wrapper>
 				<SubSection title="dashboard.updateBeverageImages.gallery" />
-				<Gallery
-					params={params}
-					savedBeverage={savedBeverage}
-					updateGalleryCount={updateGalleryCount}
-				/>
+				<Gallery params={params} savedBeverage={savedBeverage} />
 				<SubSection title="dashboard.updateBeverageImages.cover" />
 				<div>Okładka</div>
 				<SubSection title="dashboard.updateBeverageImages.cap" />
@@ -73,7 +65,6 @@ UpdateBeverageImages.propTypes = {
 		}),
 	}).isRequired,
 	savedBeverage: beverageDetails,
-	updateGalleryCount: func.isRequired,
 };
 
 UpdateBeverageImages.defaultProps = {
@@ -92,7 +83,6 @@ const mapStateToProps = ({ beverages }, { match: { params } }) => ({
 
 const mapDispatchToProps = {
 	getBeverageDetails: getBeverageDetailsAction,
-	updateGalleryCount: updateGalleryCountAction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UpdateBeverageImages);
