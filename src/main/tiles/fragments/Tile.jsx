@@ -1,13 +1,15 @@
 import React, {
 	useContext,
 	useEffect,
+	useMemo,
 	useRef,
 	useState,
 } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { LanguageContext } from 'config';
+import { DeviceContext, LanguageContext } from 'config';
+import { constants } from 'utils';
 import { getNameByLanguage } from 'utils/helpers';
 import { colors, timingFunctions } from 'utils/theme';
 import { Bottle, BrokenBottle } from 'elements/icons';
@@ -53,7 +55,7 @@ const StyledLink = styled(Link)`
 `;
 
 const Image = styled.img`
-	display: ${({ isLoaded }) => (isLoaded ? 'block' : 'none')}
+	display: ${({ isLoaded }) => (isLoaded ? 'block' : 'none')};
 `;
 
 const Tile = ({
@@ -72,6 +74,8 @@ const Tile = ({
 	const [onScreen, setOnScreen] = useState(false);
 
 	const { language } = useContext(LanguageContext);
+	const { webpSupport } = useContext(DeviceContext);
+
 	const { value: formattedName } = getNameByLanguage({ values: name, language });
 	const { value: formattedBrand } = getNameByLanguage({ values: brandName, language });
 
@@ -97,6 +101,8 @@ const Tile = ({
 		};
 	}, []);
 
+	const coverPath = useMemo(() => `${constants.servers.images}${brandBadge}/${badge}/${shortId}/cover/${webpSupport ? 'webp' : 'jpg'}`, []);
+
 	return (
 		<li ref={element}>
 			<StyledLink height={setContainerHeight(container)} to={`details/${shortId}/${brandBadge}/${badge}`}>
@@ -108,10 +114,11 @@ const Tile = ({
 						onLoad={() => setLoaded(true)}
 						isLoaded={loaded}
 						srcSet={`
-								/img/${brandBadge}/${badge}/${shortId}/cover/x1.jpg,
-								/img/${brandBadge}/${badge}/${shortId}/cover/x2.jpg 2x,
+								${coverPath}/1x.${webpSupport ? 'webp' : 'jpg'},
+								${coverPath}/2x.${webpSupport ? 'webp' : 'jpg'} 2x,
+								${coverPath}/4x.${webpSupport ? 'webp' : 'jpg'} 4x,
 							`}
-						src={`/img/${brandBadge}/${badge}/${shortId}/cover/x1.jpg`}
+						src={`${coverPath}/1x.${webpSupport ? 'webp' : 'jpg'}`}
 					/>
 				)}
 				{ !loaded && !failure && <Bottle /> }

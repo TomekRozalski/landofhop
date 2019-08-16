@@ -47,7 +47,7 @@ const Gallery = () => {
 		const { resources } = loader;
 
 		const imagesAmount = get(beverage, 'editorial.images', 0);
-		const imagesPath = `${constants.servers.images}/${brand}/${badge}/${shortId}/container/${pixelRatio}/${webpSupport ? 'webp' : 'jpg'}`;
+		const imagesPath = `${constants.servers.images}${brand}/${badge}/${shortId}/container/${webpSupport ? 'webp' : 'jpg'}/${pixelRatio}`;
 
 		if (imagesAmount) {
 			pixiApp = new Application({
@@ -93,7 +93,7 @@ const Gallery = () => {
 
 				for (let i = 1; i <= imagesAmount; i += 1) {
 					const order = i.toString().padStart(2, '0');
-					const container = new Sprite(resources[`${imagesPath}/${order}${webpSupport ? '.webp' : '.jpg'}`].texture);
+					const container = new Sprite(resources[`${imagesPath}/${order}.${webpSupport ? 'webp' : 'jpg'}`].texture);
 					containers.push(container);
 
 					container.scale.set(0.5);
@@ -157,7 +157,7 @@ const Gallery = () => {
 			const images = new Array(imagesAmount).fill('').map((item, i) => {
 				const order = (i + 1).toString().padStart(2, '0');
 
-				return `${imagesPath}/${order}${webpSupport ? '.webp' : '.jpg'}`;
+				return `${imagesPath}/${order}.${webpSupport ? 'webp' : 'jpg'}`;
 			});
 
 			loader
