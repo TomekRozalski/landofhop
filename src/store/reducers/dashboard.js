@@ -36,6 +36,10 @@ export const initialState = {
 		},
 	},
 	images: {
+		cover: {
+			isLoading: false,
+			isError: false,
+		},
 		gallery: {
 			isLoading: false,
 			isError: false,
@@ -148,6 +152,19 @@ export default (state = initialState, action) => (
 		case actionsName.UPDATE_BEVERAGE_GALLERY_IMAGES_REJECTED:
 			draft.images.gallery.isLoading = false;
 			draft.images.gallery.isError = true;
+			return;
+
+		case actionsName.SAVE_BEVERAGE_COVER_PENDING:
+			draft.images.cover.isLoading = true;
+			return;
+
+		case actionsName.SAVE_BEVERAGE_COVER_FULFILLED:
+			draft.images.cover.isLoading = false;
+			return;
+
+		case actionsName.SAVE_BEVERAGE_COVER_REJECTED:
+			draft.images.cover.isLoading = false;
+			draft.images.cover.isError = true;
 			return;
 		}
 	})

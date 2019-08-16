@@ -33,6 +33,10 @@ export default {
 			method: 'POST',
 			path: 'images/beverage/gallery/',
 		},
+		images_beverage_cover_save: {
+			method: 'POST',
+			path: 'images/beverage/cover/',
+		},
 		ingredient_save: 'ingredients/',
 		ingredients_list: 'ingredients/list/',
 		institution_save: 'institutions/',

@@ -31,4 +31,7 @@ export default {
 	REMOVE_BEVERAGE_GALLERY_PENDING: '[Dashboard] Remove Beverage Gallery (pending)',
 	REMOVE_BEVERAGE_GALLERY_FULFILLED: '[Dashboard] Remove Beverage Gallery (fulfilled)',
 	REMOVE_BEVERAGE_GALLERY_REJECTED: '[Dashboard] Remove Beverage Gallery (rejected)',
+	SAVE_BEVERAGE_COVER_PENDING: '[Dashboard] Save Beverage Cover (pending)',
+	SAVE_BEVERAGE_COVER_FULFILLED: '[Dashboard] Save Beverage Cover (fulfilled)',
+	SAVE_BEVERAGE_COVER_REJECTED: '[Dashboard] Save Beverage Cover (rejected)',
 };

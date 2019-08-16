@@ -12,6 +12,7 @@ import getPlacesList from './dashboard/getPlacesList';
 import removeBeverageGallery from './dashboard/removeBeverageGallery';
 import saveFormValues from './dashboard/saveFormValues';
 import saveImagesBeverageGallery from './dashboard/saveImagesBeverageGallery';
+import saveBeverageCover from './dashboard/saveBeverageCover';
 
 export {
 	// Beverage
@@ -28,4 +29,5 @@ export {
 	removeBeverageGallery,
 	saveFormValues,
 	saveImagesBeverageGallery,
+	saveBeverageCover,
 };
