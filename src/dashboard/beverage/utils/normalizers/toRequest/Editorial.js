@@ -80,7 +80,11 @@ const Editorial = ({
 						...(wood && { wood }),
 					})),
 				}),
-				...(isArray(dryHopped) && { dryHopped: dryHopped.map(hop => hop.value) }),
+				...(isArray(dryHopped) && {
+					dryHopped: dryHopped.length
+						? dryHopped.map(hop => hop.value)
+						: true,
+				}),
 			},
 			impressions: {
 				...(!isNull(color) && { color }),
