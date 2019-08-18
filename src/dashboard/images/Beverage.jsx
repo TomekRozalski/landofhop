@@ -12,7 +12,7 @@ import { Spinner } from 'elements';
 import { getBeverageDetails as getBeverageDetailsAction } from 'store/actions';
 import { beverageDetails } from 'main/details/utils';
 import { MainHeader, SubSection, Wrapper } from 'dashboard/common/elements';
-import { Cover, Gallery } from './fragments';
+import { Cap, Cover, Gallery } from './fragments';
 
 const UpdateBeverageImages = ({
 	getBeverageDetails,
@@ -44,10 +44,16 @@ const UpdateBeverageImages = ({
 			<Wrapper>
 				<SubSection title="dashboard.updateBeverageImages.gallery" />
 				<Gallery params={params} savedBeverage={savedBeverage} />
-				<SubSection title="dashboard.updateBeverageImages.cover" />
+				<SubSection
+					position="cover"
+					title="dashboard.updateBeverageImages.cover"
+				/>
 				<Cover params={params} />
-				<SubSection title="dashboard.updateBeverageImages.cap" />
-				<div>Kapsel</div>
+				<SubSection
+					position="cap"
+					title="dashboard.updateBeverageImages.cap"
+				/>
+				<Cap params={params} savedBeverage={savedBeverage} />
 			</Wrapper>
 		</>
 	);

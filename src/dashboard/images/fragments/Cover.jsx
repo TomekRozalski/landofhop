@@ -71,8 +71,12 @@ const Cover = ({
 				isDragActive={isDragActive}
 			>
 				<input {...getInputProps()} />
-				<DragAndDrop />
-				<CurrentCover params={params} />
+				{ !fileToPreview && (
+					<>
+						<DragAndDrop />
+						<CurrentCover params={params} />
+					</>
+				) }
 				{ fileToPreview && <Preview file={fileToPreview} /> }
 			</DragableArea>
 			{ errors.length > 0 && <ErrorBox errors={errors} /> }
@@ -80,6 +84,7 @@ const Cover = ({
 				disabled={!fileToRequest}
 				isSubmitting={isLoading}
 				onClick={onSaveImages}
+				position={1}
 			/>
 		</>
 	);

@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import { colors } from 'utils/theme';
 
 const DragableArea = styled.section`
-	grid-column: 5 / 6;
+	grid-column: 1 / 2;
 	margin: 2rem 0 1rem 0;
 	width: 220px;
 	height: 500px;
 	padding: .5rem;
-	background-color: ${colors.gray[600]};
+	background-color: ${colors.gray[100]};
 	transition: background-color .2s;
 	cursor: pointer;
 	position: relative;

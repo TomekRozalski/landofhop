@@ -56,6 +56,7 @@ const StyledLink = styled(Link)`
 
 const Image = styled.img`
 	display: ${({ isLoaded }) => (isLoaded ? 'block' : 'none')};
+	pointer-events: none;
 `;
 
 const Tile = ({

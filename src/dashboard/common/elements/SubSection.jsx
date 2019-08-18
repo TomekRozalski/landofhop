@@ -1,15 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { string } from 'prop-types';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
 
 import { colors, fonts } from 'utils/theme';
 
 const Wrapper = styled.h3`
-	grid-column: 1 / -1;
 	margin-top: 2rem;
 	font: 400 1.6rem / 1 ${fonts.primary};
-
 	position: relative;
 
 	&::after {
@@ -25,17 +23,47 @@ const Wrapper = styled.h3`
 
 	span {
 		background: ${colors.gray[700]};
-		margin-left: 4rem;
 		padding: 0 2rem;
 	}
+
+	${({ position }) => {
+		if (position === 'cover') {
+			return `
+				grid-column: 1 / 2;
+				grid-row-start: 4;
+				text-align: center;
+			`;
+		}
+
+		if (position === 'cap') {
+			return `
+				grid-column: 2 / 3;
+				grid-row-start: 4;
+				text-align: center;
+			`;
+		}
+
+		return `
+			grid-column: 1 / -1;
+
+			span {
+				margin-left: 4rem;
+			}
+		`;
+	}};
 `;
 
-const SubSection = ({ title }) => (
-	<Wrapper><FormattedMessage id={title} /></Wrapper>
+const SubSection = ({ position, title }) => (
+	<Wrapper position={position}><FormattedMessage id={title} /></Wrapper>
 );
 
 SubSection.propTypes = {
-	title: PropTypes.string.isRequired,
+	position: string,
+	title: string.isRequired,
+};
+
+SubSection.defaultProps = {
+	position: null,
 };
 
 export default SubSection;
