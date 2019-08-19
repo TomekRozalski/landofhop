@@ -20,6 +20,7 @@ import StyledSelect from './StyledSelect';
 import StyledSlider from './StyledSlider';
 import StyledSwitch from './StyledSwitch';
 import SubmitButton from './SubmitButton';
+import SubSection from './SubSection';
 
 export {
 	AddButton,
@@ -44,4 +45,5 @@ export {
 	StyledSlider,
 	StyledSwitch,
 	SubmitButton,
+	SubSection,
 };

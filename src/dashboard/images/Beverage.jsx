@@ -11,7 +11,8 @@ import { AppErrorContext } from 'config';
 import { Spinner } from 'elements';
 import { getBeverageDetails as getBeverageDetailsAction } from 'store/actions';
 import { beverageDetails } from 'main/details/utils';
-import { MainHeader, SubSection, Wrapper } from 'dashboard/common/elements';
+import { MainHeader, Wrapper } from 'dashboard/common/elements';
+import { SubSection } from './elements/common';
 import { Cap, Cover, Gallery } from './fragments';
 
 const UpdateBeverageImages = ({
@@ -42,8 +43,6 @@ const UpdateBeverageImages = ({
 		<>
 			<MainHeader title="dashboard.updateBeverageImages.title" />
 			<Wrapper>
-				<SubSection title="dashboard.updateBeverageImages.gallery" />
-				<Gallery params={params} savedBeverage={savedBeverage} />
 				<SubSection
 					position="cover"
 					title="dashboard.updateBeverageImages.cover"
@@ -54,6 +53,9 @@ const UpdateBeverageImages = ({
 					title="dashboard.updateBeverageImages.cap"
 				/>
 				<Cap params={params} savedBeverage={savedBeverage} />
+				<SubSection title="dashboard.updateBeverageImages.gallery" />
+				<Gallery params={params} savedBeverage={savedBeverage} />
+
 			</Wrapper>
 		</>
 	);

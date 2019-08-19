@@ -1,9 +1,8 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
-import { SubSection } from 'dashboard/common/elements';
 import { constants } from '../utils';
-import { AddButton } from '../elements';
+import { AddButton, SubSection } from '../elements';
 import {
 	Added,
 	Aged,
