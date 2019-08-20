@@ -6,6 +6,8 @@ import { colors } from 'utils/theme';
 import { DragAndDrop } from '../icons';
 
 const Area = styled.section`
+	display: flex;
+	align-items: flex-end;
 	margin: 2rem 0;
 	width: 100%;
 	min-height: 500px;

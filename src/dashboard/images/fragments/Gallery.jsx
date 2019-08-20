@@ -89,7 +89,6 @@ const Gallery = ({
 		filesToPreview.forEach(file => URL.revokeObjectURL(file.preview));
 	}, [filesToPreview]);
 
-
 	const onRemoveImages = (e) => {
 		e.preventDefault();
 

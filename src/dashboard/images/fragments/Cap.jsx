@@ -8,9 +8,12 @@ import {
 import { connect } from 'react-redux';
 import { useDropzone } from 'react-dropzone';
 import { FormattedMessage } from 'react-intl';
+import get from 'lodash/get';
 
 import { AppErrorContext, AuthenticationContext } from 'config';
 import { Button } from 'elements';
+import { constants } from 'utils';
+import { beverageDetails } from 'main/details/utils';
 import { DragableArea, SubSection } from '../elements/common';
 import { Preview, Wrapper } from '../elements/cap';
 
@@ -19,10 +22,12 @@ const Cap = ({
 	isLoading,
 	params,
 	saveBeverageCover,
+	savedBeverage,
 	setErrors,
 }) => {
 	const [fileToPreview, setFileToPreview] = useState(null);
 	const [fileToRequest, setFileToRequest] = useState(null);
+	const [savedImage, setSavedImage] = useState(false);
 
 	const { token } = useContext(AuthenticationContext);
 	const { setAppError } = useContext(AppErrorContext);
@@ -50,6 +55,21 @@ const Cap = ({
 			}
 		},
 	});
+
+	useEffect(() => {
+		const images = get(savedBeverage, 'editorial.cap');
+
+		if (!images) {
+			setSavedImage(false);
+		} else {
+			const { badge, brand, shortId } = params;
+
+			setSavedImage({
+				path: '2x.jpg',
+				preview: `${constants.servers.images}${brand}/${badge}/${shortId}/cap/jpg/2x.jpg`,
+			});
+		}
+	}, [savedBeverage]);
 
 	useEffect(() => () => {
 		if (fileToPreview) {
@@ -97,6 +117,7 @@ Cap.propTypes = {
 		shortId: string.isRequired,
 	}).isRequired,
 	saveBeverageCover: func.isRequired,
+	savedBeverage: beverageDetails.isRequired,
 	setErrors: func.isRequired,
 };
 
