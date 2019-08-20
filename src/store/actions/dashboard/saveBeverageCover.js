@@ -12,12 +12,8 @@ const saveBeverageCover = ({
 				type: actionsName.SAVE_BEVERAGE_COVER_PENDING,
 			});
 
-			console.log('fileToRequest', fileToRequest);
-
 			const formData = new FormData();
 			formData.append('image', fileToRequest);
-
-			console.log('formData', formData);
 
 			const server = constants.servers.data;
 			const { method, path } = constants.api_endpoints.images_beverage_cover_save;
@@ -40,8 +36,7 @@ const saveBeverageCover = ({
 						throw new Error('Something went wrong');
 					}
 				})
-				.catch((err) => {
-					console.log('err', err);
+				.catch(() => {
 					dispatch({
 						type: actionsName.SAVE_BEVERAGE_COVER_REJECTED,
 					});

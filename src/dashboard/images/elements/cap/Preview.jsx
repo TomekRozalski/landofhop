@@ -9,7 +9,7 @@ const Img = styled.img`
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index: 1;
+	z-index: 3;
 `;
 
 const Preview = ({ file }) => (

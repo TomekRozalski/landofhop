@@ -1,11 +1,11 @@
-import DragableArea from './DragableArea';
 import SavedImagesWrapper from './SavedImagesWrapper';
 import Thumbnail from './Thumbnail';
 import ThumbnailList from './ThumbnailList';
+import Wrapper from './Wrapper';
 
 export {
-	DragableArea,
 	SavedImagesWrapper,
 	Thumbnail,
 	ThumbnailList,
+	Wrapper,
 };

@@ -8,18 +8,19 @@ import {
 import { connect } from 'react-redux';
 import { useDropzone } from 'react-dropzone';
 import get from 'lodash/get';
+import { FormattedMessage } from 'react-intl';
 
 import { AppErrorContext, AuthenticationContext } from 'config';
 import { constants } from 'utils';
+import { Button } from 'elements';
 import {
 	updateGalleryCount as updateGalleryCountAction,
 	removeBeverageGallery as removeBeverageGalleryAction,
 	saveImagesBeverageGallery as saveImagesBeverageGalleryAction,
 } from 'store/actions';
 import { beverageDetails } from 'main/details/utils';
-import { ErrorBox, RemoveButton, SubmitButton } from '../elements/common';
-import { DragableArea, SavedImagesWrapper, ThumbnailList } from '../elements/gallery';
-import { DragAndDrop } from '../elements/icons';
+import { DragableArea, SubSection } from '../elements/common';
+import { SavedImagesWrapper, ThumbnailList, Wrapper } from '../elements/gallery';
 
 const Gallery = ({
 	isError,
@@ -28,9 +29,9 @@ const Gallery = ({
 	removeBeverageGallery,
 	savedBeverage,
 	saveImagesBeverageGallery,
+	setErrors,
 	updateGalleryCount,
 }) => {
-	const [errors, setErrors] = useState([]);
 	const [filesToPreview, setFilesToPreview] = useState([]);
 	const [filesToRequest, setFilesToRequest] = useState([]);
 	const [savedImages, setSavedImages] = useState(false);
@@ -43,7 +44,7 @@ const Gallery = ({
 		return null;
 	}
 
-	const { getRootProps, getInputProps, isDragActive } = useDropzone({
+	const { getRootProps, getInputProps } = useDropzone({
 		accept: ['image/jpg', 'image/jpeg'],
 		minSize: 100 * 1024,
 		maxSize: 500 * 1024,
@@ -108,37 +109,41 @@ const Gallery = ({
 	};
 
 	return (
-		<>
+		<Wrapper>
+			<SubSection title="dashboard.updateBeverageImages.gallery" />
 			{ savedImages
 				? (
-					<SavedImagesWrapper>
-						<ThumbnailList files={savedImages} />
-					</SavedImagesWrapper>
+					<>
+						<SavedImagesWrapper>
+							<ThumbnailList files={savedImages} />
+						</SavedImagesWrapper>
+						<Button
+							disabled={!savedImages}
+							isSubmitting={savedImages && isLoading}
+							onClick={onRemoveImages}
+							resign
+							wide
+						>
+							<FormattedMessage id="dashboard.remove" />
+						</Button>
+					</>
 				) : (
 					<>
-						<DragableArea
-							{...getRootProps()}
-							isDragActive={isDragActive}
-						>
-							<input {...getInputProps()} />
-							<DragAndDrop />
+						<DragableArea getInputProps={getInputProps} getRootProps={getRootProps}>
 							{ filesToPreview.length > 0 && <ThumbnailList files={filesToPreview} /> }
 						</DragableArea>
-						{ errors.length > 0 && <ErrorBox errors={errors} /> }
+						<Button
+							disabled={!filesToRequest.length}
+							isSubmitting={!savedImages && isLoading}
+							onClick={onSaveImages}
+							wide
+						>
+							<FormattedMessage id="dashboard.addNew" />
+						</Button>
 					</>
 				)
 			}
-			<RemoveButton
-				disabled={!savedImages}
-				isSubmitting={savedImages && isLoading}
-				onClick={onRemoveImages}
-			/>
-			<SubmitButton
-				disabled={!filesToRequest.length}
-				isSubmitting={!savedImages && isLoading}
-				onClick={onSaveImages}
-			/>
-		</>
+		</Wrapper>
 	);
 };
 
@@ -153,6 +158,7 @@ Gallery.propTypes = {
 	removeBeverageGallery: func.isRequired,
 	savedBeverage: beverageDetails.isRequired,
 	saveImagesBeverageGallery: func.isRequired,
+	setErrors: func.isRequired,
 	updateGalleryCount: func.isRequired,
 };
 

@@ -6,9 +6,9 @@ import { FormattedMessage } from 'react-intl';
 import { colors, fonts } from 'utils/theme';
 
 const Wrapper = styled.h3`
-	grid-column: 1 / -1;
-	margin-top: 2rem;
+	margin: 2rem 0;
 	font: 400 1.6rem / 1 ${fonts.primary};
+	text-align: center;
 	position: relative;
 
 	&::after {
@@ -23,7 +23,6 @@ const Wrapper = styled.h3`
 	}
 
 	span {
-		margin-left: 4rem;
 		padding: 0 2rem;
 		background: ${colors.gray[700]};
 	}

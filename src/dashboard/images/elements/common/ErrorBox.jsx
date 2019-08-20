@@ -11,7 +11,6 @@ import { FormattedMessage } from 'react-intl';
 import { colors, fonts } from 'utils/theme';
 
 const Wrapper = styled.div`
-	grid-column: 1 / -1;
 	border: .5rem solid ${colors.warning.strong};
 	padding: 2rem;
 `;

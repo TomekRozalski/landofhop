@@ -1,14 +1,16 @@
+import React from 'react';
+import { func, node } from 'prop-types';
 import styled from 'styled-components';
 
 import { colors } from 'utils/theme';
+import { DragAndDrop } from '../icons';
 
-const DragableArea = styled.section`
-	grid-column: 1 / -1;
-	margin: 2rem 0 1rem 0;
-	min-height: 30rem;
+const Area = styled.section`
+	margin: 2rem 0;
+	width: 100%;
+	min-height: 500px;
 	padding: .5rem;
 	background-color: ${colors.gray[600]};
-	transition: background-color .2s;
 	cursor: pointer;
 	position: relative;
 
@@ -17,7 +19,7 @@ const DragableArea = styled.section`
 		width: 100%;
 		height: 100%;
 		content: '';
-		background-color: rgba(255, 255, 255, .4);
+		background-color: rgba(255, 255, 255, .5);
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -58,5 +60,19 @@ const DragableArea = styled.section`
 		}
 	}
 `;
+
+const DragableArea = ({ children, getInputProps, getRootProps }) => (
+	<Area {...getRootProps()}>
+		<input {...getInputProps()} />
+		<DragAndDrop />
+		{ children }
+	</Area>
+);
+
+DragableArea.propTypes = {
+	children: node.isRequired,
+	getInputProps: func.isRequired,
+	getRootProps: func.isRequired,
+};
 
 export default DragableArea;

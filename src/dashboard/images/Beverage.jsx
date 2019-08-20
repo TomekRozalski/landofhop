@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
 	bool,
 	func,
@@ -12,7 +12,7 @@ import { Spinner } from 'elements';
 import { getBeverageDetails as getBeverageDetailsAction } from 'store/actions';
 import { beverageDetails } from 'main/details/utils';
 import { MainHeader, Wrapper } from 'dashboard/common/elements';
-import { SubSection } from './elements/common';
+import { ErrorBox, MoveToDetails, Other } from './elements/common';
 import { Cap, Cover, Gallery } from './fragments';
 
 const UpdateBeverageImages = ({
@@ -22,6 +22,7 @@ const UpdateBeverageImages = ({
 	match: { params },
 	savedBeverage,
 }) => {
+	const [errors, setErrors] = useState([]);
 	const { setAppError } = useContext(AppErrorContext);
 
 	useEffect(() => {
@@ -40,24 +41,16 @@ const UpdateBeverageImages = ({
 	}
 
 	return (
-		<>
+		<Wrapper>
 			<MainHeader title="dashboard.updateBeverageImages.title" />
-			<Wrapper>
-				<SubSection
-					position="cover"
-					title="dashboard.updateBeverageImages.cover"
-				/>
-				<Cover params={params} />
-				<SubSection
-					position="cap"
-					title="dashboard.updateBeverageImages.cap"
-				/>
-				<Cap params={params} savedBeverage={savedBeverage} />
-				<SubSection title="dashboard.updateBeverageImages.gallery" />
-				<Gallery params={params} savedBeverage={savedBeverage} />
-
-			</Wrapper>
-		</>
+			<Cover params={params} setErrors={setErrors} />
+			<Cap params={params} savedBeverage={savedBeverage} setErrors={setErrors} />
+			<Other>
+				{ errors.length > 0 ? <ErrorBox errors={errors} /> : <div /> }
+				<MoveToDetails params={params} />
+			</Other>
+			<Gallery params={params} savedBeverage={savedBeverage} setErrors={setErrors} />
+		</Wrapper>
 	);
 };
 

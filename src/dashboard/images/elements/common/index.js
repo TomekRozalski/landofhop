@@ -1,11 +1,13 @@
+import DragableArea from './DragableArea';
 import ErrorBox from './ErrorBox';
-import RemoveButton from './RemoveButton';
-import SubmitButton from './SubmitButton';
+import MoveToDetails from './MoveToDetails';
+import Other from './Other';
 import SubSection from './SubSection';
 
 export {
+	DragableArea,
 	ErrorBox,
-	RemoveButton,
-	SubmitButton,
+	MoveToDetails,
+	Other,
 	SubSection,
 };

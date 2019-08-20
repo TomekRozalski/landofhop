@@ -8,6 +8,7 @@ const Wrapper = styled.li`
 	width: calc(10% - 1rem);
 	border: 2px dashed ${colors.gray[400]};
     margin: .5rem;
+	background-color: ${colors.gray[700]};
 
 	img { width: 100%; }
 `;

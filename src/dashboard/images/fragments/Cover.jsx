@@ -7,21 +7,21 @@ import {
 } from 'prop-types';
 import { connect } from 'react-redux';
 import { useDropzone } from 'react-dropzone';
+import { FormattedMessage } from 'react-intl';
 
 import { AppErrorContext, AuthenticationContext } from 'config';
+import { Button } from 'elements';
 import { saveBeverageCover as saveBeverageCoverAction } from 'store/actions';
-import { ErrorBox, SubmitButton } from '../elements/common';
-import { CurrentCover, DragableArea, Preview } from '../elements/cover';
-
-import { DragAndDrop } from '../elements/icons';
+import { DragableArea, SubSection } from '../elements/common';
+import { CurrentCover, Preview, Wrapper } from '../elements/cover';
 
 const Cover = ({
 	isError,
 	isLoading,
 	params,
 	saveBeverageCover,
+	setErrors,
 }) => {
-	const [errors, setErrors] = useState([]);
 	const [fileToPreview, setFileToPreview] = useState(null);
 	const [fileToRequest, setFileToRequest] = useState(null);
 
@@ -33,7 +33,7 @@ const Cover = ({
 		return null;
 	}
 
-	const { getRootProps, getInputProps, isDragActive } = useDropzone({
+	const { getRootProps, getInputProps } = useDropzone({
 		accept: ['image/png'],
 		minSize: 200 * 1024,
 		maxSize: 3000 * 1024,
@@ -61,32 +61,34 @@ const Cover = ({
 	const onSaveImages = (e) => {
 		e.preventDefault();
 
-		saveBeverageCover({ fileToRequest, params, token });
+		saveBeverageCover({ fileToRequest, params, token })
+			.then(() => {
+				setFileToPreview(null);
+				setFileToRequest(null);
+			});
 	};
 
 	return (
-		<>
-			<DragableArea
-				{...getRootProps()}
-				isDragActive={isDragActive}
-			>
-				<input {...getInputProps()} />
-				{ !fileToPreview && (
-					<>
-						<DragAndDrop />
-						<CurrentCover params={params} />
-					</>
-				) }
-				{ fileToPreview && <Preview file={fileToPreview} /> }
+		<Wrapper>
+			<SubSection
+				position="cover"
+				title="dashboard.updateBeverageImages.cover"
+			/>
+			<DragableArea getInputProps={getInputProps} getRootProps={getRootProps}>
+				{ fileToPreview
+					? <Preview file={fileToPreview} />
+					: <CurrentCover params={params} />
+				}
 			</DragableArea>
-			{ errors.length > 0 && <ErrorBox errors={errors} /> }
-			<SubmitButton
+			<Button
 				disabled={!fileToRequest}
 				isSubmitting={isLoading}
 				onClick={onSaveImages}
-				position={1}
-			/>
-		</>
+				wide
+			>
+				<FormattedMessage id="dashboard.addNew" />
+			</Button>
+		</Wrapper>
 	);
 };
 
@@ -99,6 +101,7 @@ Cover.propTypes = {
 		shortId: string.isRequired,
 	}).isRequired,
 	saveBeverageCover: func.isRequired,
+	setErrors: func.isRequired,
 };
 
 const mapStateToProps = ({ dashboard }) => ({
