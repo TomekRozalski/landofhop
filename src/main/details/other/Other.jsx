@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { get } from 'lodash';
 
 import { BeverageDetailsContext } from 'config';
+import { constants } from 'utils';
 import { colors } from 'utils/theme';
 import { Added, Updated } from './fragments';
 
@@ -34,7 +35,7 @@ const Other = () => {
 				<Added />
 				<Updated />
 			</dl>
-			{ cap && <img alt="" src={`/img/${brand}/${badge}/${shortId}/cap/x1.jpg`} /> }
+			{ cap && <img alt="" src={`${constants.servers.images}${brand}/${badge}/${shortId}/cap/jpg/1x.jpg`} /> }
 		</Wrapper>
 	);
 };

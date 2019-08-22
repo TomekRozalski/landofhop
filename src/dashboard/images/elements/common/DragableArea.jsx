@@ -72,9 +72,13 @@ const DragableArea = ({ children, getInputProps, getRootProps }) => (
 );
 
 DragableArea.propTypes = {
-	children: node.isRequired,
+	children: node,
 	getInputProps: func.isRequired,
 	getRootProps: func.isRequired,
+};
+
+DragableArea.defaultProps = {
+	children: null,
 };
 
 export default DragableArea;

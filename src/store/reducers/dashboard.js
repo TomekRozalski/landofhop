@@ -36,6 +36,10 @@ export const initialState = {
 		},
 	},
 	images: {
+		cap: {
+			isLoading: false,
+			isError: false,
+		},
 		cover: {
 			isLoading: false,
 			isError: false,
@@ -165,6 +169,24 @@ export default (state = initialState, action) => (
 		case actionsName.SAVE_BEVERAGE_COVER_REJECTED:
 			draft.images.cover.isLoading = false;
 			draft.images.cover.isError = true;
+			return;
+
+			// Cap
+
+		case actionsName.SAVE_CAP_PENDING:
+		case actionsName.REMOVE_CAP_PENDING:
+			draft.images.cap.isLoading = true;
+			return;
+
+		case actionsName.SAVE_CAP_FULFILLED:
+		case actionsName.REMOVE_CAP_FULFILLED:
+			draft.images.cap.isLoading = false;
+			return;
+
+		case actionsName.SAVE_CAP_REJECTED:
+		case actionsName.REMOVE_CAP_REJECTED:
+			draft.images.cap.isLoading = false;
+			draft.images.cap.isError = true;
 			return;
 		}
 	})

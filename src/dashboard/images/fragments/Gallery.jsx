@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import {
 	bool,
 	func,
+	number,
 	shape,
 	string,
 } from 'prop-types';
@@ -18,7 +19,6 @@ import {
 	removeBeverageGallery as removeBeverageGalleryAction,
 	saveImagesBeverageGallery as saveImagesBeverageGalleryAction,
 } from 'store/actions';
-import { beverageDetails } from 'main/details/utils';
 import { DragableArea, SubSection } from '../elements/common';
 import { SavedImagesWrapper, ThumbnailList, Wrapper } from '../elements/gallery';
 
@@ -27,7 +27,10 @@ const Gallery = ({
 	isLoading,
 	params,
 	removeBeverageGallery,
-	savedBeverage,
+	savedBeverage: {
+		gallery,
+		id,
+	},
 	saveImagesBeverageGallery,
 	setErrors,
 	updateGalleryCount,
@@ -65,13 +68,11 @@ const Gallery = ({
 	});
 
 	useEffect(() => {
-		const images = get(savedBeverage, 'editorial.images');
-
-		if (!images) {
+		if (!gallery) {
 			setSavedImages(false);
 		} else {
 			setSavedImages(
-				new Array(images).fill('').map((value, i) => {
+				new Array(gallery).fill('').map((value, i) => {
 					const validIndex = i + 1;
 					const imageName = validIndex < 10 ? `0${validIndex}.jpg` : `${validIndex}.jpg`;
 					const { badge, brand, shortId } = params;
@@ -83,7 +84,7 @@ const Gallery = ({
 				}),
 			);
 		}
-	}, [savedBeverage]);
+	}, [gallery]);
 
 	useEffect(() => () => {
 		filesToPreview.forEach(file => URL.revokeObjectURL(file.preview));
@@ -94,7 +95,7 @@ const Gallery = ({
 
 		removeBeverageGallery({ files: savedImages.length, params, token })
 			.then(() => {
-				updateGalleryCount({ id: savedBeverage.id, token });
+				updateGalleryCount({ id, token });
 			});
 	};
 
@@ -103,7 +104,7 @@ const Gallery = ({
 
 		saveImagesBeverageGallery({ filesToRequest, params, token })
 			.then((files) => {
-				updateGalleryCount({ files, id: savedBeverage.id, token });
+				updateGalleryCount({ files, id, token });
 			});
 	};
 
@@ -155,7 +156,11 @@ Gallery.propTypes = {
 		shortId: string.isRequired,
 	}).isRequired,
 	removeBeverageGallery: func.isRequired,
-	savedBeverage: beverageDetails.isRequired,
+	savedBeverage: shape({
+		id: string.isRequired,
+		gallery: number,
+		cap: bool,
+	}).isRequired,
 	saveImagesBeverageGallery: func.isRequired,
 	setErrors: func.isRequired,
 	updateGalleryCount: func.isRequired,

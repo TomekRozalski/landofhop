@@ -34,4 +34,12 @@ export default {
 	SAVE_BEVERAGE_COVER_PENDING: '[Dashboard] Save Beverage Cover (pending)',
 	SAVE_BEVERAGE_COVER_FULFILLED: '[Dashboard] Save Beverage Cover (fulfilled)',
 	SAVE_BEVERAGE_COVER_REJECTED: '[Dashboard] Save Beverage Cover (rejected)',
+
+	// CAP
+	SAVE_CAP_PENDING: '[Dashboard] Save Cap (pending)',
+	SAVE_CAP_FULFILLED: '[Dashboard] Save Cap (fulfilled)',
+	SAVE_CAP_REJECTED: '[Dashboard] Save Cap (rejected)',
+	REMOVE_CAP_PENDING: '[Dashboard] Remove Cap (pending)',
+	REMOVE_CAP_FULFILLED: '[Dashboard] Remove Cap (fulfilled)',
+	REMOVE_CAP_REJECTED: '[Dashboard] Remove Cap (rejected)',
 };

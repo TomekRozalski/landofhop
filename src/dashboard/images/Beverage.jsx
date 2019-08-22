@@ -2,15 +2,17 @@ import React, { useContext, useEffect, useState } from 'react';
 import {
 	bool,
 	func,
+	number,
 	shape,
 	string,
 } from 'prop-types';
 import { connect } from 'react-redux';
+import get from 'lodash/get';
+import isNil from 'lodash/isNil';
 
 import { AppErrorContext } from 'config';
 import { Spinner } from 'elements';
 import { getBeverageDetails as getBeverageDetailsAction } from 'store/actions';
-import { beverageDetails } from 'main/details/utils';
 import { MainHeader, Wrapper } from 'dashboard/common/elements';
 import { ErrorBox, MoveToDetails, Other } from './elements/common';
 import { Cap, Cover, Gallery } from './fragments';
@@ -65,22 +67,38 @@ UpdateBeverageImages.propTypes = {
 			shortId: string.isRequired,
 		}),
 	}).isRequired,
-	savedBeverage: beverageDetails,
+	savedBeverage: shape({
+		id: string.isRequired,
+		gallery: number,
+		cap: bool,
+	}),
 };
 
 UpdateBeverageImages.defaultProps = {
 	savedBeverage: null,
 };
 
-const mapStateToProps = ({ beverages }, { match: { params } }) => ({
-	isError: beverages.details.isError,
-	isLoading: beverages.details.isLoading,
-	savedBeverage: beverages.details.list.find(beverage => (
+const mapStateToProps = ({ beverages }, { match: { params } }) => {
+	const beverageToChange = beverages.details.list.find(beverage => (
 		beverage.badge === params.badge
 		&& beverage.label.general.brand.badge === params.brand
 		&& beverage.shortId === params.shortId
-	)),
-});
+	));
+
+	const id = get(beverageToChange, 'id');
+	const gallery = get(beverageToChange, 'editorial.images', 0);
+	const cap = get(beverageToChange, 'editorial.cap', false);
+
+	const savedBeverage = (!isNil(id) && !isNil(gallery) && !isNil(cap))
+		? { id, gallery, cap }
+		: null;
+
+	return {
+		isError: beverages.details.isError,
+		isLoading: beverages.details.isLoading,
+		savedBeverage,
+	};
+};
 
 const mapDispatchToProps = {
 	getBeverageDetails: getBeverageDetailsAction,

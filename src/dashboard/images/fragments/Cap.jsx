@@ -2,27 +2,31 @@ import React, { useContext, useEffect, useState } from 'react';
 import {
 	bool,
 	func,
+	number,
 	shape,
 	string,
 } from 'prop-types';
 import { connect } from 'react-redux';
 import { useDropzone } from 'react-dropzone';
 import { FormattedMessage } from 'react-intl';
-import get from 'lodash/get';
 
 import { AppErrorContext, AuthenticationContext } from 'config';
 import { Button } from 'elements';
 import { constants } from 'utils';
-import { beverageDetails } from 'main/details/utils';
+import { removeCap as removeCapAction, saveCap as saveCapAction } from 'store/actions';
 import { DragableArea, SubSection } from '../elements/common';
-import { Preview, Wrapper } from '../elements/cap';
+import { CurrentCap, Preview, Wrapper } from '../elements/cap';
 
 const Cap = ({
 	isError,
 	isLoading,
 	params,
-	saveBeverageCover,
-	savedBeverage,
+	removeCap,
+	saveCap,
+	savedBeverage: {
+		cap,
+		id,
+	},
 	setErrors,
 }) => {
 	const [fileToPreview, setFileToPreview] = useState(null);
@@ -57,9 +61,7 @@ const Cap = ({
 	});
 
 	useEffect(() => {
-		const images = get(savedBeverage, 'editorial.cap');
-
-		if (!images) {
+		if (!cap) {
 			setSavedImage(false);
 		} else {
 			const { badge, brand, shortId } = params;
@@ -69,7 +71,7 @@ const Cap = ({
 				preview: `${constants.servers.images}${brand}/${badge}/${shortId}/cap/jpg/2x.jpg`,
 			});
 		}
-	}, [savedBeverage]);
+	}, [cap]);
 
 	useEffect(() => () => {
 		if (fileToPreview) {
@@ -80,11 +82,22 @@ const Cap = ({
 	const onSaveImages = (e) => {
 		e.preventDefault();
 
-		saveBeverageCover({ fileToRequest, params, token })
+		saveCap({
+			fileToRequest,
+			id,
+			params,
+			token,
+		})
 			.then(() => {
 				setFileToPreview(null);
 				setFileToRequest(null);
 			});
+	};
+
+	const onRemoveImage = (e) => {
+		e.preventDefault();
+
+		removeCap({ id, params, token });
 	};
 
 	return (
@@ -93,17 +106,35 @@ const Cap = ({
 				position="cap"
 				title="dashboard.updateBeverageImages.cap"
 			/>
-			<DragableArea getRootProps={getRootProps} getInputProps={getInputProps}>
-				{ fileToPreview && <Preview file={fileToPreview} /> }
-			</DragableArea>
-			<Button
-				disabled={!fileToRequest}
-				isSubmitting={isLoading}
-				onClick={onSaveImages}
-				wide
-			>
-				<FormattedMessage id="dashboard.addNew" />
-			</Button>
+			{ savedImage
+				? (
+					<>
+						<CurrentCap params={params} />
+						<Button
+							isSubmitting={isLoading}
+							onClick={onRemoveImage}
+							resign
+							wide
+						>
+							<FormattedMessage id="dashboard.remove" />
+						</Button>
+					</>
+				) : (
+					<>
+						<DragableArea getRootProps={getRootProps} getInputProps={getInputProps}>
+							{ fileToPreview && <Preview file={fileToPreview} /> }
+						</DragableArea>
+						<Button
+							disabled={!fileToRequest}
+							isSubmitting={isLoading}
+							onClick={onSaveImages}
+							wide
+						>
+							<FormattedMessage id="dashboard.addNew" />
+						</Button>
+					</>
+				)
+			}
 		</Wrapper>
 	);
 };
@@ -116,18 +147,24 @@ Cap.propTypes = {
 		brand: string.isRequired,
 		shortId: string.isRequired,
 	}).isRequired,
-	saveBeverageCover: func.isRequired,
-	savedBeverage: beverageDetails.isRequired,
+	removeCap: func.isRequired,
+	saveCap: func.isRequired,
+	savedBeverage: shape({
+		id: string.isRequired,
+		gallery: number,
+		cap: bool,
+	}).isRequired,
 	setErrors: func.isRequired,
 };
 
 const mapStateToProps = ({ dashboard }) => ({
-	isError: dashboard.images.cover.isError,
-	isLoading: dashboard.images.cover.isLoading,
+	isError: dashboard.images.cap.isError,
+	isLoading: dashboard.images.cap.isLoading,
 });
 
 const mapDispatchToProps = {
-	// saveBeverageCover: saveBeverageCoverAction,
+	removeCap: removeCapAction,
+	saveCap: saveCapAction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cap);

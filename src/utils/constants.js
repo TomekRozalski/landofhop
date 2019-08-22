@@ -48,6 +48,15 @@ export default {
 			method: 'DELETE',
 			path: 'images/beverage/gallery',
 		},
+		// CAP
+		save_cap: {
+			method: 'POST',
+			path: 'beverages/cap',
+		},
+		remove_cap: {
+			method: 'DELETE',
+			path: 'beverages/cap',
+		},
 	},
 	clarity: {
 		clear: 'clear',

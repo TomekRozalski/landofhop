@@ -113,6 +113,29 @@ export default (state = initialState, action) => (
 			draft.basics.isLoading = false;
 			draft.details.isLoading = false;
 			return;
+
+			// -------------------------------
+			// cap
+
+		case actionsName.SAVE_CAP_FULFILLED: {
+			const dataToUpdate = state.details.list.find(({ id }) => id === action.payload.id);
+			const beverageToUpdate = {
+				...dataToUpdate,
+				editorial: {
+					...dataToUpdate.editorial,
+					cap: true,
+				},
+			};
+			draft.details.list = unionBy([beverageToUpdate], state.details.list, 'id');
+			return;
+		}
+
+		case actionsName.REMOVE_CAP_FULFILLED: {
+			const dataToUpdate = state.details.list.find(({ id }) => id === action.payload.id);
+			delete (dataToUpdate.editorial.cap);
+			draft.details.list = unionBy([dataToUpdate], state.details.list, 'id');
+			return;
+		}
 		}
 	})
 );
