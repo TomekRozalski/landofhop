@@ -150,6 +150,11 @@ Cap.propTypes = {
 	removeCap: func.isRequired,
 	saveCap: func.isRequired,
 	savedBeverage: shape({
+		container: shape({
+			type: string.isRequired,
+			unit: string.isRequired,
+			value: number.isRequired,
+		}).isRequired,
 		id: string.isRequired,
 		gallery: number,
 		cap: bool,

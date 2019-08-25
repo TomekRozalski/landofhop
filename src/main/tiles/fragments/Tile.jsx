@@ -12,7 +12,12 @@ import { DeviceContext, LanguageContext } from 'config';
 import { constants } from 'utils';
 import { getNameByLanguage } from 'utils/helpers';
 import { colors, timingFunctions } from 'utils/theme';
-import { Bottle, BrokenBottle } from 'elements/icons';
+import {
+	Bottle,
+	BrokenBottle,
+	BrokenCan,
+	Can,
+} from 'elements/icons';
 import { beverageBasics, setContainerHeight } from '../utils';
 
 const bounce = () => keyframes`
@@ -48,7 +53,7 @@ const StyledLink = styled(Link)`
 		}
 	}
 
-	.bottle-icon {
+	.container-icon {
 		position: relative;
 		animation: ${bounce} .5s ease-in-out 0s infinite alternate;
 	}
@@ -80,6 +85,26 @@ const Tile = ({
 	const { value: formattedName } = getNameByLanguage({ values: name, language });
 	const { value: formattedBrand } = getNameByLanguage({ values: brandName, language });
 
+	const Container = () => {
+		if (container.type === 'bottle') {
+			return <Bottle />
+		}
+
+		if (container.type === 'can') {
+			return <Can />
+		}
+	}
+
+	const BrokenContainer = () => {
+		if (container.type === 'bottle') {
+			return <BrokenBottle />
+		}
+
+		if (container.type === 'can') {
+			return <BrokenCan />
+		}
+	}
+
 	useEffect(() => {
 		const imgOptions = {
 			threshold: 0,
@@ -107,7 +132,7 @@ const Tile = ({
 	return (
 		<li ref={element}>
 			<StyledLink height={setContainerHeight(container)} to={`details/${shortId}/${brandBadge}/${badge}`}>
-				{ failure && <BrokenBottle /> }
+				{ failure && <BrokenContainer /> }
 				{ onScreen && !failure && (
 					<Image
 						alt={`${formattedName}, ${formattedBrand}`}
@@ -122,7 +147,7 @@ const Tile = ({
 						src={`${coverPath}/1x.${webpSupport ? 'webp' : 'jpg'}`}
 					/>
 				)}
-				{ !loaded && !failure && <Bottle /> }
+				{ !loaded && !failure && <Container /> }
 			</StyledLink>
 		</li>
 	);

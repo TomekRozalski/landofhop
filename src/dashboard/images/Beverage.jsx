@@ -46,7 +46,8 @@ const UpdateBeverageImages = ({
 		<Wrapper>
 			<MainHeader title="dashboard.updateBeverageImages.title" />
 			<Cover params={params} setErrors={setErrors} />
-			<Cap params={params} savedBeverage={savedBeverage} setErrors={setErrors} />
+			{savedBeverage.container.type === 'bottle'
+			&& <Cap params={params} savedBeverage={savedBeverage} setErrors={setErrors} />}
 			<Other>
 				{ errors.length > 0 ? <ErrorBox errors={errors} /> : <div /> }
 				<MoveToDetails params={params} />
@@ -68,6 +69,11 @@ UpdateBeverageImages.propTypes = {
 		}),
 	}).isRequired,
 	savedBeverage: shape({
+		container: shape({
+			type: string.isRequired,
+			unit: string.isRequired,
+			value: number.isRequired,
+		}).isRequired,
 		id: string.isRequired,
 		gallery: number,
 		cap: bool,
@@ -88,9 +94,19 @@ const mapStateToProps = ({ beverages }, { match: { params } }) => {
 	const id = get(beverageToChange, 'id');
 	const gallery = get(beverageToChange, 'editorial.images', 0);
 	const cap = get(beverageToChange, 'editorial.cap', false);
+	const container = {
+		type: get(beverageToChange, 'label.container.type'),
+		unit: get(beverageToChange, 'label.container.unit'),
+		value: get(beverageToChange, 'label.container.value'),
+	};
 
 	const savedBeverage = (!isNil(id) && !isNil(gallery) && !isNil(cap))
-		? { id, gallery, cap }
+		? {
+			container,
+			id,
+			gallery,
+			cap,
+		}
 		: null;
 
 	return {
