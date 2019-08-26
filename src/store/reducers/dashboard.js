@@ -139,24 +139,25 @@ export default (state = initialState, action) => (
 			draft.lists.places.isLoading = false;
 			return;
 
+			// Gallery
+
 		case actionsName.SAVE_BEVERAGE_GALLERY_PENDING:
 		case actionsName.REMOVE_BEVERAGE_GALLERY_PENDING:
-		case actionsName.UPDATE_BEVERAGE_GALLERY_IMAGES_PENDING:
 			draft.images.gallery.isLoading = true;
 			return;
 
 		case actionsName.SAVE_BEVERAGE_GALLERY_FULFILLED:
 		case actionsName.REMOVE_BEVERAGE_GALLERY_FULFILLED:
-		case actionsName.UPDATE_BEVERAGE_GALLERY_IMAGES_FULFILLED:
 			draft.images.gallery.isLoading = false;
 			return;
 
 		case actionsName.SAVE_BEVERAGE_GALLERY_REJECTED:
 		case actionsName.REMOVE_BEVERAGE_GALLERY_REJECTED:
-		case actionsName.UPDATE_BEVERAGE_GALLERY_IMAGES_REJECTED:
 			draft.images.gallery.isLoading = false;
 			draft.images.gallery.isError = true;
 			return;
+
+			// Cover
 
 		case actionsName.SAVE_BEVERAGE_COVER_PENDING:
 			draft.images.cover.isLoading = true;

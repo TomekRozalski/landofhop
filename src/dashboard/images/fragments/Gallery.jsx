@@ -8,14 +8,12 @@ import {
 } from 'prop-types';
 import { connect } from 'react-redux';
 import { useDropzone } from 'react-dropzone';
-import get from 'lodash/get';
 import { FormattedMessage } from 'react-intl';
 
 import { AppErrorContext, AuthenticationContext } from 'config';
 import { constants } from 'utils';
 import { Button } from 'elements';
 import {
-	updateGalleryCount as updateGalleryCountAction,
 	removeBeverageGallery as removeBeverageGalleryAction,
 	saveImagesBeverageGallery as saveImagesBeverageGalleryAction,
 } from 'store/actions';
@@ -33,7 +31,6 @@ const Gallery = ({
 	},
 	saveImagesBeverageGallery,
 	setErrors,
-	updateGalleryCount,
 }) => {
 	const [filesToPreview, setFilesToPreview] = useState([]);
 	const [filesToRequest, setFilesToRequest] = useState([]);
@@ -93,19 +90,23 @@ const Gallery = ({
 	const onRemoveImages = (e) => {
 		e.preventDefault();
 
-		removeBeverageGallery({ files: savedImages.length, params, token })
-			.then(() => {
-				updateGalleryCount({ id, token });
-			});
+		removeBeverageGallery({
+			files: savedImages.length,
+			id,
+			params,
+			token,
+		});
 	};
 
 	const onSaveImages = (e) => {
 		e.preventDefault();
 
-		saveImagesBeverageGallery({ filesToRequest, params, token })
-			.then((files) => {
-				updateGalleryCount({ files, id, token });
-			});
+		saveImagesBeverageGallery({
+			files: filesToRequest,
+			id,
+			params,
+			token,
+		});
 	};
 
 	return (
@@ -168,7 +169,6 @@ Gallery.propTypes = {
 	}).isRequired,
 	saveImagesBeverageGallery: func.isRequired,
 	setErrors: func.isRequired,
-	updateGalleryCount: func.isRequired,
 };
 
 const mapStateToProps = ({ dashboard }) => ({
@@ -179,7 +179,6 @@ const mapStateToProps = ({ dashboard }) => ({
 const mapDispatchToProps = {
 	removeBeverageGallery: removeBeverageGalleryAction,
 	saveImagesBeverageGallery: saveImagesBeverageGalleryAction,
-	updateGalleryCount: updateGalleryCountAction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Gallery);

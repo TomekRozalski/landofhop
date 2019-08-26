@@ -63,7 +63,7 @@ const Cover = ({
 	const onSaveImages = (e) => {
 		e.preventDefault();
 
-		saveBeverageCover({ fileToRequest, params, token })
+		saveBeverageCover({ file: fileToRequest, params, token })
 			.then(() => {
 				setFileToPreview(null);
 				setFileToRequest(null);

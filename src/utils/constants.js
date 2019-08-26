@@ -29,14 +29,6 @@ export default {
 		beverage_update_gallery: 'beverages/gallery/',
 		country_save: 'countries/',
 		countries_list: 'countries/list/',
-		images_beverage_gallery_save: {
-			method: 'POST',
-			path: 'images/beverage/gallery/',
-		},
-		images_beverage_cover_save: {
-			method: 'POST',
-			path: 'images/beverage/cover/',
-		},
 		ingredient_save: 'ingredients/',
 		ingredients_list: 'ingredients/list/',
 		institution_save: 'institutions/',
@@ -44,9 +36,19 @@ export default {
 		login: 'login/',
 		place_save: 'places/',
 		places_list: 'places/list/',
-		remove_gallery_images: {
+		// COVER
+		save_cover: {
+			method: 'POST',
+			path: 'beverages/cover',
+		},
+		// GALLERY
+		save_gallery: {
+			method: 'POST',
+			path: 'beverages/gallery',
+		},
+		remove_gallery: {
 			method: 'DELETE',
-			path: 'images/beverage/gallery',
+			path: 'beverages/gallery',
 		},
 		// CAP
 		save_cap: {

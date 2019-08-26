@@ -2,7 +2,7 @@ import { constants } from 'utils';
 import actionsName from '../../actionsName';
 
 const saveBeverageCover = ({
-	fileToRequest,
+	file,
 	params: { badge, brand, shortId },
 	token,
 }) => (
@@ -13,13 +13,15 @@ const saveBeverageCover = ({
 			});
 
 			const formData = new FormData();
-			formData.append('image', fileToRequest);
+			formData.append('badge', badge);
+			formData.append('brand', brand);
+			formData.append('image', file);
+			formData.append('shortId', shortId);
 
 			const server = constants.servers.data;
-			const { method, path } = constants.api_endpoints.images_beverage_cover_save;
-			const endpoint = `${server}${path}${shortId}/${brand}/${badge}`;
+			const { method, path } = constants.api_endpoints.save_cover;
 
-			fetch(endpoint, {
+			fetch(server + path, {
 				method,
 				headers: {
 					Authorization: `Bearer ${token}`,
