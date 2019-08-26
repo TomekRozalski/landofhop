@@ -7,6 +7,9 @@ import { constants } from 'utils';
 const Img = styled.img`
 	display: block;
 	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
 `;
 
 const CurrentCover = ({ params }) => {

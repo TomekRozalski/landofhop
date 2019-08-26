@@ -8,6 +8,7 @@ const Img = styled.img`
 	display: block;
 	width: 220px;
 	height: 220px;
+	margin: 2rem 0;
 `;
 
 const CurrentCap = ({ params }) => {

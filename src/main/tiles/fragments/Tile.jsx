@@ -9,7 +9,7 @@ import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import { DeviceContext, LanguageContext } from 'config';
-import { constants } from 'utils';
+import { constants, setContainerHeight } from 'utils';
 import { getNameByLanguage } from 'utils/helpers';
 import { colors, timingFunctions } from 'utils/theme';
 import {
@@ -18,7 +18,7 @@ import {
 	BrokenCan,
 	Can,
 } from 'elements/icons';
-import { beverageBasics, setContainerHeight } from '../utils';
+import { beverageBasics } from '../utils';
 
 const bounce = () => keyframes`
 	0% {

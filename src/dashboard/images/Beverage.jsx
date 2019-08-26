@@ -45,7 +45,7 @@ const UpdateBeverageImages = ({
 	return (
 		<Wrapper>
 			<MainHeader title="dashboard.updateBeverageImages.title" />
-			<Cover params={params} setErrors={setErrors} />
+			<Cover params={params} savedBeverage={savedBeverage} setErrors={setErrors} />
 			{savedBeverage.container.type === 'bottle'
 			&& <Cap params={params} savedBeverage={savedBeverage} setErrors={setErrors} />}
 			<Other>

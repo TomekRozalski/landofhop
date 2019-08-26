@@ -6,6 +6,7 @@ import {
 	register as registerServiceWorker,
 	unregister as unregisterServiceWorker,
 } from './serviceWorker';
+import setContainerHeight from './setContainerHeight';
 
 const dictionary = { en, pl };
 
@@ -14,5 +15,6 @@ export {
 	dictionary,
 	grid,
 	registerServiceWorker,
+	setContainerHeight,
 	unregisterServiceWorker,
 };

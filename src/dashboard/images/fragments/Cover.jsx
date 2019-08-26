@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import {
 	bool,
 	func,
+	number,
 	shape,
 	string,
 } from 'prop-types';
@@ -20,6 +21,7 @@ const Cover = ({
 	isLoading,
 	params,
 	saveBeverageCover,
+	savedBeverage,
 	setErrors,
 }) => {
 	const [fileToPreview, setFileToPreview] = useState(null);
@@ -74,7 +76,11 @@ const Cover = ({
 				position="cover"
 				title="dashboard.updateBeverageImages.cover"
 			/>
-			<DragableArea getInputProps={getInputProps} getRootProps={getRootProps}>
+			<DragableArea
+				container={savedBeverage.container}
+				getInputProps={getInputProps}
+				getRootProps={getRootProps}
+			>
 				{ fileToPreview
 					? <Preview file={fileToPreview} />
 					: <CurrentCover params={params} />
@@ -101,6 +107,16 @@ Cover.propTypes = {
 		shortId: string.isRequired,
 	}).isRequired,
 	saveBeverageCover: func.isRequired,
+	savedBeverage: shape({
+		container: shape({
+			type: string.isRequired,
+			unit: string.isRequired,
+			value: number.isRequired,
+		}).isRequired,
+		id: string.isRequired,
+		gallery: number,
+		cap: bool,
+	}).isRequired,
 	setErrors: func.isRequired,
 };
 
