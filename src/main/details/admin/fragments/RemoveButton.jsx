@@ -1,5 +1,10 @@
 import React, { useContext, useState } from 'react';
-import PropTypes from 'prop-types';
+import {
+	func,
+	number,
+	shape,
+	string,
+} from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { compose } from 'redux';
@@ -10,7 +15,13 @@ import { constants } from 'utils';
 import { removeBeverage as removeBeverageAction } from 'store/actions';
 import { Button } from 'elements';
 
-const RemoveButton = ({ history, id, removeBeverage }) => {
+const RemoveButton = ({
+	files,
+	history,
+	id,
+	params,
+	removeBeverage,
+}) => {
 	const { token } = useContext(AuthenticationContext);
 
 	const [thinking, setThinking] = useState(false);
@@ -27,7 +38,12 @@ const RemoveButton = ({ history, id, removeBeverage }) => {
 	const confirm = () => {
 		if (token) {
 			history.push(constants.routes.main);
-			removeBeverage({ id, token });
+			removeBeverage({
+				files,
+				id,
+				params,
+				token,
+			});
 		} else {
 			console.log('brak tokena');
 		}
@@ -49,11 +65,21 @@ const RemoveButton = ({ history, id, removeBeverage }) => {
 };
 
 RemoveButton.propTypes = {
-	history: PropTypes.shape({
-		push: PropTypes.func.isRequired,
+	files: number,
+	history: shape({
+		push: func.isRequired,
 	}).isRequired,
-	id: PropTypes.string.isRequired,
-	removeBeverage: PropTypes.func.isRequired,
+	id: string.isRequired,
+	params: shape({
+		badge: string.isRequired,
+		brand: string.isRequired,
+		shortId: string.isRequired,
+	}).isRequired,
+	removeBeverage: func.isRequired,
+};
+
+RemoveButton.defaultProps = {
+	files: 0,
 };
 
 const mapDispatchToProps = {

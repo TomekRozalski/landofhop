@@ -35,7 +35,7 @@ const Admin = ({ params }) => {
 					to={`${constants.routes.updateBeverageImages}/${shortId}/${brand}/${badge}`}
 					text="details.admin.updateBeverageImages"
 				/>
-				<RemoveButton id={beverage.id} />
+				<RemoveButton files={get(beverage, 'editorial.images')} id={beverage.id} params={params} />
 			</Wrapper>
 			<Notes>
 				{ get(beverage, 'editorial.notes') }

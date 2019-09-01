@@ -1,7 +1,12 @@
 import { constants } from 'utils';
 import actionsName from '../../actionsName';
 
-const removeBeverage = ({ id, token }) => (
+const removeBeverage = ({
+	files,
+	id,
+	params,
+	token,
+}) => (
 	dispatch => (
 		new Promise((resolve, reject) => {
 			dispatch({
@@ -14,7 +19,7 @@ const removeBeverage = ({ id, token }) => (
 					'Content-Type': 'application/json',
 					Authorization: `Bearer ${token}`,
 				},
-				body: JSON.stringify({ id }),
+				body: JSON.stringify({ files, id, params }),
 			})
 				.then(({ status }) => {
 					if (status === 200) {

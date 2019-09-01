@@ -37,7 +37,7 @@ const Cover = ({
 
 	const { getRootProps, getInputProps } = useDropzone({
 		accept: ['image/jpg', 'image/jpeg'],
-		minSize: 200 * 1024,
+		minSize: 150 * 1024,
 		maxSize: 600 * 1024,
 		multiple: false,
 		onDrop: (acceptedFiles, rejectedFiles) => {
