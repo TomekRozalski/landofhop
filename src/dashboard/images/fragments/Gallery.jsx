@@ -89,6 +89,7 @@ const Gallery = ({
 
 	const onRemoveImages = (e) => {
 		e.preventDefault();
+		setFilesToPreview([]);
 
 		removeBeverageGallery({
 			files: savedImages.length,
@@ -112,7 +113,7 @@ const Gallery = ({
 	return (
 		<Wrapper>
 			<SubSection title="dashboard.updateBeverageImages.gallery" />
-			{ savedImages
+			{ savedImages.length
 				? (
 					<>
 						<SavedImagesWrapper>
@@ -130,7 +131,7 @@ const Gallery = ({
 					</>
 				) : (
 					<>
-						<DragableArea getInputProps={getInputProps} getRootProps={getRootProps}>
+						<DragableArea getInputProps={getInputProps} getRootProps={getRootProps} type="gallery">
 							{ filesToPreview.length > 0 && <ThumbnailList files={filesToPreview} /> }
 						</DragableArea>
 						<Button

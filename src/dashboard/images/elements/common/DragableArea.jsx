@@ -18,7 +18,7 @@ const Area = styled.section`
 	margin: 2rem 0;
 	width: 100%;
 	min-height: ${({ height }) => (height || 220)}px;
-	padding: .5rem;
+	${({ type }) => (type === 'gallery' && 'padding: .5rem;')}
 	background-color: ${colors.gray[600]};
 	cursor: pointer;
 	position: relative;
@@ -75,8 +75,9 @@ const DragableArea = ({
 	container,
 	getInputProps,
 	getRootProps,
+	type,
 }) => (
-	<Area {...getRootProps()} height={container && setContainerHeight(container)}>
+	<Area {...getRootProps()} height={container && setContainerHeight(container)} type={type}>
 		<input {...getInputProps()} />
 		<DragAndDrop />
 		{ children }
@@ -92,11 +93,13 @@ DragableArea.propTypes = {
 	}),
 	getInputProps: func.isRequired,
 	getRootProps: func.isRequired,
+	type: string,
 };
 
 DragableArea.defaultProps = {
 	children: null,
 	container: null,
+	type: null,
 };
 
 export default DragableArea;

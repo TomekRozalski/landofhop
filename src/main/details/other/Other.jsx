@@ -35,7 +35,7 @@ const Other = () => {
 				<Added />
 				<Updated />
 			</dl>
-			{ cap && <img alt="" src={`${constants.servers.images}${brand}/${badge}/${shortId}/cap/jpg/1x.jpg`} /> }
+			{ cap && <img alt="" src={`${constants.servers.images}${brand}/${badge}/${shortId}/cap/webp/1x.webp`} /> }
 		</Wrapper>
 	);
 };
