@@ -7,6 +7,7 @@ import { DT, DD } from 'elements';
 
 const Container = () => {
 	const { beverage } = useContext(BeverageDetailsContext);
+
 	const {
 		color,
 		material,

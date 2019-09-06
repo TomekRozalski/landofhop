@@ -5,7 +5,7 @@
 */
 import produce from 'immer';
 import { unionBy } from 'lodash';
-import moment from 'moment';
+import { isBefore } from 'date-fns';
 
 import actionsName from '../actionsName';
 
@@ -23,12 +23,7 @@ export const initialState = {
 };
 
 const sortBeverages = beveragesList => (
-	beveragesList.sort((a, b) => {
-		const timestampA = Number(moment(a.added).format('x'));
-		const timestampB = Number(moment(b.added).format('x'));
-
-		return timestampB - timestampA;
-	})
+	beveragesList.sort((a, b) => (isBefore(new Date(a.added), new Date(b.added)) ? 1 : -1))
 );
 
 export default (state = initialState, action) => (

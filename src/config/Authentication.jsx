@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
+import { differenceInSeconds, fromUnixTime } from 'date-fns';
 import jwt from 'jsonwebtoken';
 
 import { constants } from '../utils';
@@ -54,11 +54,10 @@ const Authentication = ({ children }) => {
 		const decodedToken = jwt.decode(value, { complete: true });
 
 		if (decodedToken) {
-			const expirationDate = moment.unix(decodedToken.payload.exp);
-			const now = moment();
+			const expirationDate = fromUnixTime(decodedToken.payload.exp);
 
-			if (expirationDate.diff(now, 'seconds') > 10) {
-				setTokenExpiration(expirationDate.toDate());
+			if (differenceInSeconds(expirationDate, new Date()) > 10) {
+				setTokenExpiration(expirationDate);
 				return true;
 			}
 
