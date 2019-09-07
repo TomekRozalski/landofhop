@@ -20,6 +20,7 @@ import expirationDateUnitsList from './selectLists/expirationDate/units';
 import extractRelatesList from './selectLists/extract/relates';
 import extractUnitsList from './selectLists/extract/units';
 import ingredientTypesList from './selectLists/ingredient/types';
+import isValidDate from './isValidDate';
 import languagesList from './selectLists/languages';
 import temperatureUnitsList from './selectLists/temperature/units';
 
@@ -46,6 +47,7 @@ export {
 	extractRelatesList,
 	extractUnitsList,
 	ingredientTypesList,
+	isValidDate,
 	languagesList,
 	temperatureUnitsList,
 };

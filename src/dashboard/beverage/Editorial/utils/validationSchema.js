@@ -1,11 +1,8 @@
 import * as Yup from 'yup';
-import { constants } from 'utils';
-import fields from './fields';
-import isValidDate from './isValidDate';
 
-const today = new Date();
-const tomorrow = new Date();
-tomorrow.setDate(today.getDate() + 1);
+import { constants } from 'utils';
+import { isValidDate } from 'dashboard/beverage/utils';
+import fields from './fields';
 
 export default Yup.object().shape({
 	[fields.cooperation]: Yup

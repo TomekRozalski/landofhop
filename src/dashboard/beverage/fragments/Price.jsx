@@ -2,7 +2,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { FastField, FieldArray } from 'formik';
-import moment from 'moment';
+import { format } from 'date-fns';
 
 import { Input, Label } from 'elements';
 import { currenciesList } from '../utils';
@@ -31,7 +31,7 @@ const Price = ({ fieldName, formName }) => (
 				const addNewElement = () => {
 					push({
 						currency: '',
-						date: moment().format('DD.MM.YYYY, HH:mm:ss'),
+						date: format(new Date(), 'dd.MM.yyyy, HH:mm:ss'),
 						value: '',
 					});
 				};

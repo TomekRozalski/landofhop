@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { FastField } from 'formik';
-import moment from 'moment';
+import { format } from 'date-fns';
 
 import { Input } from 'elements';
 import { ConditionalLabel, InputWrapper, LabelWrapper } from '../elements';
@@ -14,7 +14,7 @@ const Added = ({ fieldName, formName }) => (
 				component={ConditionalLabel}
 				formName={formName}
 				name={fieldName}
-				reset={moment().format('DD.MM.YYYY, HH:mm:ss')}
+				reset={format(new Date(), 'dd.MM.yyyy, HH:mm:ss')}
 			>
 				<FormattedMessage id={`dashboard.${fieldName}`} />
 			</FastField>

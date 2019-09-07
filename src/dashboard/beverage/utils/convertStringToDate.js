@@ -1,8 +1,6 @@
-import moment from 'moment';
+import { isValid } from 'date-fns';
 
 const convertStringToDate = (value) => {
-	console.log('value', value);
-
 	const group = value
 		.match(/^(\d\d).(\d\d).(\d\d\d\d), (\d\d):(\d\d):(\d\d)$/, 'g');
 
@@ -11,13 +9,13 @@ const convertStringToDate = (value) => {
 	}
 
 	const [day, month, year, hour, minute, second] = group.slice(1);
-	const formattedDate = moment(`${year}-${month}-${day} ${hour}:${minute}:${second}`);
+	const formattedString = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
 
-	if (formattedDate.format() === 'Invalid date') {
+	if (!isValid(new Date(formattedString))) {
 		return false;
 	}
 
-	return formattedDate.toDate();
+	return new Date(formattedString);
 };
 
 export default convertStringToDate;

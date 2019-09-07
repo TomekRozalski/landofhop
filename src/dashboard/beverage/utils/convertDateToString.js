@@ -1,5 +1,5 @@
-import moment from 'moment';
+import { format } from 'date-fns';
 
-const convertDateToString = date => moment(date).format('DD.MM.YYYY, HH:mm:ss');
+const convertDateToString = date => format(new Date(date), 'dd.MM.yyyy, HH:mm:ss');
 
 export default convertDateToString;
