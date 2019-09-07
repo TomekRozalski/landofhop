@@ -1,6 +1,8 @@
 import moment from 'moment';
 
 const convertStringToDate = (value) => {
+	console.log('value', value);
+
 	const group = value
 		.match(/^(\d\d).(\d\d).(\d\d\d\d), (\d\d):(\d\d):(\d\d)$/, 'g');
 

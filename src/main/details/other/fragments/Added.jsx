@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { FormattedMessage } from 'react-intl';
-import moment from 'moment';
+import { format } from 'date-fns';
 
 import { BeverageDetailsContext } from 'config';
 import { DT, DD, Highlight } from 'elements';
@@ -13,7 +13,10 @@ const Added = () => {
 			<DT><FormattedMessage id="details.added" /></DT>
 			<DD>
 				<Highlight type="editorial">
-					{ moment(beverage.added).format('DD.MM.YYYY') }
+					{format(
+						new Date(beverage.added),
+						'dd.MM.yyyy',
+					)}
 				</Highlight>
 			</DD>
 		</>

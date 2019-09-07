@@ -1,8 +1,7 @@
 import * as Yup from 'yup';
-import moment from 'moment';
-
 import { constants } from 'utils';
 import fields from './fields';
+import isValidDate from './isValidDate';
 
 const today = new Date();
 const tomorrow = new Date();
@@ -80,24 +79,7 @@ export default Yup.object().shape({
 				}),
 				date: Yup
 					.mixed()
-					.test('isCorrectDate', 'danger', (value) => {
-						const group = value
-							.match(/^(\d\d).(\d\d).(\d\d\d\d), (\d\d):(\d\d):(\d\d)$/, 'g');
-
-						if (!group) {
-							return false;
-						}
-
-						const [day, month, year, hour, minute, second] = group.slice(1);
-						const formattedDate = moment(`${year}-${month}-${day} ${hour}:${minute}:${second}`);
-
-						if (formattedDate.format() === 'Invalid date') {
-							return false;
-						}
-
-						return formattedDate.isAfter('2017-06-20')
-							&& formattedDate.isBefore(tomorrow);
-					}),
+					.test('isCorrectDate', 'danger', value => isValidDate(value)),
 				value: Yup.number()
 					.min(0, 'danger')
 					.required('danger'),
@@ -105,52 +87,10 @@ export default Yup.object().shape({
 		),
 	[fields.added]: Yup
 		.mixed()
-		.test('isCorrectDate', 'danger', (value) => {
-			if (value === null) {
-				return true;
-			}
-
-			const group = value
-				.match(/^(\d\d).(\d\d).(\d\d\d\d), (\d\d):(\d\d):(\d\d)$/, 'g');
-
-			if (!group) {
-				return false;
-			}
-
-			const [day, month, year, hour, minute, second] = group.slice(1);
-			const formattedDate = moment(`${year}-${month}-${day} ${hour}:${minute}:${second}`);
-
-			if (formattedDate.format() === 'Invalid date') {
-				return false;
-			}
-
-			return formattedDate.isAfter('2017-06-20')
-				&& formattedDate.isBefore(tomorrow);
-		}),
+		.test('isCorrectDate', 'danger', value => isValidDate(value, { nullable: true })),
 	[fields.updated]: Yup
 		.mixed()
-		.test('isCorrectDate', 'danger', (value) => {
-			if (value === null) {
-				return true;
-			}
-
-			const group = value
-				.match(/^(\d\d).(\d\d).(\d\d\d\d), (\d\d):(\d\d):(\d\d)$/, 'g');
-
-			if (!group) {
-				return false;
-			}
-
-			const [day, month, year, hour, minute, second] = group.slice(1);
-			const formattedDate = moment(`${year}-${month}-${day} ${hour}:${minute}:${second}`);
-
-			if (formattedDate.format() === 'Invalid date') {
-				return false;
-			}
-
-			return formattedDate.isAfter('2017-06-20')
-				&& formattedDate.isBefore(tomorrow);
-		}),
+		.test('isCorrectDate', 'danger', value => isValidDate(value, { nullable: true })),
 	[fields.notes]: Yup
 		.string()
 		.min(3, 'danger')
