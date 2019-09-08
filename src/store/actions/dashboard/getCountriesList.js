@@ -1,4 +1,4 @@
-import { constants } from 'utils';
+import { constants, serverCall } from 'utils';
 import actionsName from '../../actionsName';
 
 const getCountriesList = () => (
@@ -8,11 +8,11 @@ const getCountriesList = () => (
 		});
 
 		try {
-			const res = await fetch(
-				constants.servers.data
+			const res = await serverCall({
+				endpoint: constants.servers.data
 				+ constants.api_endpoints.countries_list
 				+ constants.siteLanguages.pl,
-			);
+			});
 			const countries = await res.json();
 
 			dispatch({

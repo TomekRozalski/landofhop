@@ -1,6 +1,6 @@
 import { get } from 'lodash';
 
-import { constants } from 'utils';
+import { constants, serverCall } from 'utils';
 import { LangValue as LangValueNormalizer } from 'dashboard/beverage/utils/normalizers/toRequest';
 
 const normalizeData = ({
@@ -38,7 +38,8 @@ const onSubmit = ({
 	const data = normalizeData(values);
 	setSubmitting(true);
 
-	fetch(constants.servers.data + constants.api_endpoints.place_save, {
+	serverCall({
+		endpoint: constants.servers.data + constants.api_endpoints.place_save,
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',

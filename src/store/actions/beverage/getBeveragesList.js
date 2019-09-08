@@ -1,6 +1,8 @@
 import constants from 'utils/constants';
 import actionsName from 'store/actionsName';
 
+import { serverCall } from 'utils';
+
 const getBeveragesList = () => (
 	async (dispatch) => {
 		dispatch({
@@ -8,7 +10,9 @@ const getBeveragesList = () => (
 		});
 
 		try {
-			const res = await fetch(constants.servers.data + constants.api_endpoints.beverage_list);
+			const res = await serverCall({
+				endpoint: constants.servers.data + constants.api_endpoints.beverage_list,
+			});
 			const basics = await res.json();
 
 			dispatch({

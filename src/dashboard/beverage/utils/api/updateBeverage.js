@@ -1,6 +1,6 @@
 import { assign, get } from 'lodash';
 
-import { constants } from 'utils';
+import { constants, serverCall } from 'utils';
 import { constants as dashboardConstants } from 'dashboard/beverage/utils';
 import {
 	Label as LabelNormalizer,
@@ -40,7 +40,8 @@ const updateBeverage = ({
 	const brand = get(savedForms, [label, 'brand', 'badge'], '');
 	const badge = get(savedForms, [label, 'badge'], '');
 
-	return fetch(constants.servers.data + constants.api_endpoints.beverage_update, {
+	return serverCall({
+		endpoint: constants.servers.data + constants.api_endpoints.beverage_update,
 		method: 'PUT',
 		headers: {
 			'Content-Type': 'application/json',

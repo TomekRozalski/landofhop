@@ -1,4 +1,4 @@
-import { constants } from 'utils';
+import { constants, serverCall } from 'utils';
 import actionsName from '../../actionsName';
 
 const saveBeverageCover = ({
@@ -21,7 +21,8 @@ const saveBeverageCover = ({
 			const server = constants.servers.data;
 			const { method, path } = constants.api_endpoints.save_cover;
 
-			fetch(server + path, {
+			serverCall({
+				endpoint: server + path,
 				method,
 				headers: {
 					Authorization: `Bearer ${token}`,

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { differenceInSeconds, fromUnixTime } from 'date-fns';
 import jwt from 'jsonwebtoken';
 
-import { constants } from '../utils';
+import { constants, serverCall } from 'utils';
 import { AppErrorContext } from './AppError';
 import { NavigationContext } from './Navigation';
 
@@ -27,7 +27,8 @@ const Authentication = ({ children }) => {
 	};
 
 	const authenticateToken = (value) => {
-		fetch(constants.servers.data + constants.api_endpoints.authenticate_token, {
+		serverCall({
+			endpoint: constants.servers.data + constants.api_endpoints.authenticate_token,
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -75,7 +76,8 @@ const Authentication = ({ children }) => {
 
 	const logIn = formValues => (
 		new Promise((resolve, reject) => {
-			fetch(constants.servers.data + constants.api_endpoints.login, {
+			serverCall({
+				endpoint: constants.servers.data + constants.api_endpoints.login,
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json; charset=utf-8',

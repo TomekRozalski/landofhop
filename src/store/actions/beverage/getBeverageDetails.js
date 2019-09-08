@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { constants } from 'utils';
+import { constants, serverCall } from 'utils';
 import actionsName from '../../actionsName';
 
 const getBeverageDetails = ({
@@ -16,7 +16,7 @@ const getBeverageDetails = ({
 
 			const endpoint = `${constants.servers.data}${constants.api_endpoints.beverage_details}${shortId}/${brand}/${badge}`;
 
-			fetch(endpoint)
+			serverCall({ endpoint })
 				.then((res) => {
 					if (res.status !== 200) {
 						throw new Error();

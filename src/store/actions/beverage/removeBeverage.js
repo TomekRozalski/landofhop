@@ -1,4 +1,4 @@
-import { constants } from 'utils';
+import { constants, serverCall } from 'utils';
 import actionsName from '../../actionsName';
 
 const removeBeverage = ({
@@ -13,7 +13,8 @@ const removeBeverage = ({
 				type: actionsName.REMOVE_BEVERAGE_PENDING,
 			});
 
-			fetch(constants.servers.data + constants.api_endpoints.beverage_remove, {
+			serverCall({
+				endpoint: constants.servers.data + constants.api_endpoints.beverage_remove,
 				method: 'DELETE',
 				headers: {
 					'Content-Type': 'application/json',

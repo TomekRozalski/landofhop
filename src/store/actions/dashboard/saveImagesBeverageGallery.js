@@ -1,4 +1,4 @@
-import { constants } from 'utils';
+import { constants, serverCall } from 'utils';
 import actionsName from '../../actionsName';
 
 const saveImagesBeverageGallery = ({
@@ -25,7 +25,8 @@ const saveImagesBeverageGallery = ({
 		const server = constants.servers.data;
 		const { method, path } = constants.api_endpoints.save_gallery;
 
-		fetch(server + path, {
+		serverCall({
+			endpoint: server + path,
 			method,
 			headers: {
 				Authorization: `Bearer ${token}`,

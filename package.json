@@ -52,5 +52,6 @@
     "eslint-plugin-jsdoc": "^4.4.3",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4"
-  }
+  },
+  "proxy": "http://localhost:3100/"
 }

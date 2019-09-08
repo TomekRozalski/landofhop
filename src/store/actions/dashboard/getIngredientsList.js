@@ -1,4 +1,4 @@
-import { constants } from 'utils';
+import { constants, serverCall } from 'utils';
 import actionsName from '../../actionsName';
 
 const getIngredientsList = () => (
@@ -8,10 +8,10 @@ const getIngredientsList = () => (
 		});
 
 		try {
-			const res = await fetch(
-				constants.servers.data
+			const res = await serverCall({
+				endpoint: constants.servers.data
 				+ constants.api_endpoints.ingredients_list,
-			);
+			});
 			const ingredients = await res.json();
 
 			dispatch({

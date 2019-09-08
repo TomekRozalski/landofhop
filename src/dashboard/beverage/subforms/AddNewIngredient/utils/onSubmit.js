@@ -1,7 +1,7 @@
 import { get } from 'lodash';
 
 import { LangValue as LangValueNormalizer } from 'dashboard/beverage/utils/normalizers/toRequest';
-import { constants } from 'utils';
+import { constants, serverCall } from 'utils';
 
 const normalizeData = ({
 	badge,
@@ -25,7 +25,8 @@ const onSubmit = ({
 	const data = normalizeData(values);
 	setSubmitting(true);
 
-	fetch(constants.servers.data + constants.api_endpoints.ingredient_save, {
+	serverCall({
+		endpoint: constants.servers.data + constants.api_endpoints.ingredient_save,
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',

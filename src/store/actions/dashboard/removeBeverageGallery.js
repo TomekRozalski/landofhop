@@ -1,4 +1,4 @@
-import { constants } from 'utils';
+import { constants, serverCall } from 'utils';
 import actionsName from '../../actionsName';
 
 const removeBeverageGallery = ({
@@ -14,7 +14,8 @@ const removeBeverageGallery = ({
 
 		const { method, path } = constants.api_endpoints.remove_gallery;
 
-		fetch(constants.servers.data + path, {
+		serverCall({
+			endpoint: constants.servers.data + path,
 			method,
 			headers: {
 				'Content-Type': 'application/json',

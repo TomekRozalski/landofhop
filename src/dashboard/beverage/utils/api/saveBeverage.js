@@ -1,6 +1,6 @@
 import { assign } from 'lodash';
 
-import { constants } from 'utils';
+import { constants, serverCall } from 'utils';
 import { constants as dashboardConstants } from 'dashboard/beverage/utils';
 import {
 	Label as LabelNormalizer,
@@ -39,7 +39,8 @@ const saveBeverage = ({
 		delete accumulator.brandBadge;
 	}
 
-	return fetch(constants.servers.data + constants.api_endpoints.beverage_save, {
+	return serverCall({
+		endpoint: constants.servers.data + constants.api_endpoints.beverage_save,
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',

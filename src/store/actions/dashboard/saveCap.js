@@ -1,4 +1,4 @@
-import { constants } from 'utils';
+import { constants, serverCall } from 'utils';
 import actionsName from '../../actionsName';
 
 const saveCap = ({
@@ -20,7 +20,8 @@ const saveCap = ({
 			formData.append('image', fileToRequest);
 			formData.append('shortId', params.shortId);
 
-			fetch(constants.servers.data + constants.api_endpoints.save_cap.path, {
+			serverCall({
+				endpoint: constants.servers.data + constants.api_endpoints.save_cap.path,
 				method: constants.api_endpoints.save_cap.method,
 				headers: {
 					Authorization: `Bearer ${token}`,

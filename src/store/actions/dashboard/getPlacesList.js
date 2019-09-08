@@ -1,4 +1,4 @@
-import { constants } from 'utils';
+import { constants, serverCall } from 'utils';
 import actionsName from '../../actionsName';
 
 const getPlacesList = () => (
@@ -8,10 +8,10 @@ const getPlacesList = () => (
 		});
 
 		try {
-			const res = await fetch(
-				constants.servers.data
+			const res = await serverCall({
+				endpoint: constants.servers.data
 				+ constants.api_endpoints.places_list,
-			);
+			});
 			const places = await res.json();
 
 			dispatch({
