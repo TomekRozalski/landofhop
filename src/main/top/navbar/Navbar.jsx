@@ -2,14 +2,9 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
 
-import { NavigationContext } from 'config';
+import { AuthenticationContext, NavigationContext } from 'config';
 import { colors, indexes } from 'utils/theme';
-import {
-	Authorization,
-	ExpirationDate,
-	LanguageMenu,
-	Menu,
-} from './fragments';
+import { Authorization, LanguageMenu, Menu } from './fragments';
 import Loginbar from './loginbar/Loginbar';
 
 const Wrapper = styled(animated.nav)`
@@ -24,6 +19,7 @@ const Wrapper = styled(animated.nav)`
 `;
 
 const Navbar = () => {
+	const { isLoggedIn } = useContext(AuthenticationContext);
 	const { navbar } = useContext(NavigationContext);
 
 	const position = useSpring({
@@ -35,8 +31,7 @@ const Navbar = () => {
 			<LanguageMenu />
 			<Menu />
 			<Authorization />
-			<ExpirationDate />
-			<Loginbar />
+			{!isLoggedIn && <Loginbar />}
 		</Wrapper>
 	);
 };

@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
-import { isDate } from 'lodash';
 
 import { AuthenticationContext } from 'config';
 import { colors, fonts } from 'utils/theme';
@@ -32,7 +31,7 @@ const StyledLink = styled(Link)`
 `;
 
 const Menu = () => {
-	const { token, tokenExpiration } = useContext(AuthenticationContext);
+	const { isLoggedIn } = useContext(AuthenticationContext);
 
 	return (
 		<List>
@@ -48,7 +47,7 @@ const Menu = () => {
 				<StyledLink to="/">Wyszukiwanie zaawansowane</StyledLink>
 			</ListItem>
 			{
-				token && isDate(tokenExpiration) && (
+				isLoggedIn && (
 					<ListItem>
 						<StyledLink to="/add-new-beverage">
 							<FormattedMessage id="navbar.addNewBeverage" />

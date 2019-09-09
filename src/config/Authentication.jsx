@@ -1,137 +1,71 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { differenceInSeconds, fromUnixTime } from 'date-fns';
-import jwt from 'jsonwebtoken';
+import { useCookies } from 'react-cookie';
 
 import { constants, serverCall } from 'utils';
-import { AppErrorContext } from './AppError';
 import { NavigationContext } from './Navigation';
 
 export const AuthenticationContext = React.createContext({});
 
 const Authentication = ({ children }) => {
-	const { setAppError } = useContext(AppErrorContext);
-	const { navbar, setLoginbar, setNavbar } = useContext(NavigationContext);
+	const { setLoginbar, setNavbar } = useContext(NavigationContext);
+	const [cookies] = useCookies(['session_auth']);
 
-	const [tokenExpiration, setTokenExpiration] = useState(null);
-	const [token, setToken] = useState(null);
+	const [isLoggedIn, setLoggedIn] = useState(false);
 
-	const logOut = () => {
-		if (window.localStorage.getItem('token')) {
-			window.localStorage.removeItem('token');
-		}
-
-		setLoginbar(false);
-		setTokenExpiration(null);
-		setToken(null);
-	};
-
-	const authenticateToken = (value) => {
-		serverCall({
-			endpoint: constants.servers.data + constants.api_endpoints.authenticate_token,
-			method: 'POST',
+	const logIn = async (formValues) => {
+		const response = await serverCall({
+			type: constants.api_endpoints.login,
 			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${value}`,
+				'Content-Type': 'application/json; charset=utf-8',
 			},
-		})
-			.then(res => res.json())
-			.then((data) => {
-				if (data.message === constants.server_responses.authentication_secceeded) {
-					setToken(value);
-					return true;
-				}
+			body: JSON.stringify(formValues),
+		});
 
-				logOut();
-				return false;
-			})
-			.catch((error) => {
-				setAppError(error.message);
-				return false;
-			});
-	};
-
-	const checkTokenExpiration = (value) => {
-		const decodedToken = jwt.decode(value, { complete: true });
-
-		if (decodedToken) {
-			const expirationDate = fromUnixTime(decodedToken.payload.exp);
-
-			if (differenceInSeconds(expirationDate, new Date()) > 10) {
-				setTokenExpiration(expirationDate);
-				return true;
-			}
-
-			setToken(false);
-			setTokenExpiration(false);
-			setNavbar(true);
-			setLoginbar(true);
-			return false;
+		if (response.status === 200) {
+			setLoggedIn(true);
+			setLoginbar(false);
+		} else {
+			setLoggedIn(false);
 		}
-
-		setToken(false);
-		setAppError('appError.invalidToken');
-		return false;
 	};
 
-	const logIn = formValues => (
-		new Promise((resolve, reject) => {
-			serverCall({
-				endpoint: constants.servers.data + constants.api_endpoints.login,
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json; charset=utf-8',
-				},
-				body: JSON.stringify(formValues),
+	const logOut = () => (
+		serverCall({ type: constants.api_endpoints.logout })
+			.then(() => {
+				setLoggedIn(false);
+				setLoginbar(false);
+				setNavbar(false);
 			})
-				.then(res => res.json())
-				.then(({ message, token: tokenFromResponse }) => {
-					if (message === constants.server_responses.authentication_secceeded) {
-						window.localStorage.setItem('token', tokenFromResponse);
-						checkTokenExpiration(tokenFromResponse);
-
-						setToken(tokenFromResponse);
-						setLoginbar(false);
-
-						resolve();
-					} else {
-						reject();
-					}
-				})
-				.catch((error) => {
-					setAppError(error.message);
-					reject();
-				});
-		})
 	);
 
-	useEffect(() => {
-		const storageToken = window.localStorage.getItem('token');
-
-		if (storageToken) {
-			const tokenIsNotExpired = checkTokenExpiration(storageToken);
-
-			if (tokenIsNotExpired) {
-				authenticateToken(storageToken);
-			}
+	const checkCookie = () => {
+		if (cookies.session_auth) {
+			serverCall({
+				type: constants.api_endpoints.auth,
+			})
+				.then(({ status }) => {
+					if (status === 200) {
+						setNavbar(false);
+					}
+					setLoggedIn(status === 200);
+				})
+				.catch(() => {
+					setLoggedIn(false);
+				});
 		} else {
-			setToken(false);
+			setLoggedIn(false);
 		}
-	}, []);
+	};
 
-	useEffect(() => {
-		if (!navbar && token) {
-			checkTokenExpiration(token);
-		}
-	}, [navbar]);
+	useEffect(checkCookie, []);
 
 	return (
 		<AuthenticationContext.Provider
 			value={{
+				isLoggedIn,
 				logIn,
 				logOut,
-				token,
-				tokenExpiration,
 			}}
 		>
 			{ children }

@@ -20,7 +20,10 @@ export default {
 		},
 	},
 	api_endpoints: {
-		authenticate_token: 'auth/',
+		auth: {
+			method: 'POST',
+			path: 'auth/test',
+		},
 		beverage_details: 'beverages/details/',
 		beverage_list: 'beverages/list/',
 		beverage_remove: 'beverages/',
@@ -33,7 +36,14 @@ export default {
 		ingredients_list: 'ingredients/list/',
 		institution_save: 'institutions/',
 		institutions_list: 'institutions/list/',
-		login: 'login/',
+		login: {
+			method: 'POST',
+			path: 'auth/login',
+		},
+		logout: {
+			method: 'POST',
+			path: 'auth/logout',
+		},
 		place_save: 'places/',
 		places_list: 'places/list/',
 		// COVER
@@ -153,7 +163,6 @@ export default {
 		updateBeverageImages: '/update-beverage-images',
 	},
 	server_responses: {
-		authentication_secceeded: 'Authentication succeeded',
 		beverage_not_found: 'Beverage not found',
 	},
 	servers: {

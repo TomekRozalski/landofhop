@@ -7,7 +7,6 @@ import {
 	Switch,
 } from 'react-router-dom';
 import NProgress from 'nprogress';
-import { isDate } from 'lodash';
 
 import { Header, Navbar } from 'main/top';
 import { constants } from 'utils';
@@ -51,22 +50,15 @@ export const Tiles = lazy(async () => {
 });
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-	const { token, tokenExpiration } = useContext(AuthenticationContext);
+	const { isLoggedIn } = useContext(AuthenticationContext);
 
 	return (
 		<Route
 			{...rest}
-			render={(props) => {
-				if (token && isDate(tokenExpiration)) {
-					return <Component {...props} />;
-				}
-
-				if (token === null) {
-					return <Spinner center />;
-				}
-
-				return <Redirect to="/" />;
-			}}
+			render={props => (isLoggedIn
+				? <Component {...props} />
+				: <Redirect to="/" />
+			)}
 		/>
 	);
 };

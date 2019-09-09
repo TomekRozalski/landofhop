@@ -14,6 +14,7 @@
     "pixi.js": "^4.8.7",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-cookie": "^4.0.1",
     "react-dom": "^16.8.6",
     "react-dropzone": "^10.1.7",
     "react-helmet": "^6.0.0-beta",
@@ -52,6 +53,5 @@
     "eslint-plugin-jsdoc": "^4.4.3",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4"
-  },
-  "proxy": "http://localhost:3100/"
+  }
 }
