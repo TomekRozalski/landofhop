@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { useDropzone } from 'react-dropzone';
 import { FormattedMessage } from 'react-intl';
 
-import { AppErrorContext, AuthenticationContext } from 'config';
+import { AppErrorContext } from 'config';
 import { constants } from 'utils';
 import { Button } from 'elements';
 import {
@@ -36,7 +36,6 @@ const Gallery = ({
 	const [filesToRequest, setFilesToRequest] = useState([]);
 	const [savedImages, setSavedImages] = useState(false);
 
-	const { token } = useContext(AuthenticationContext);
 	const { setAppError } = useContext(AppErrorContext);
 
 	if (isError) {
@@ -95,7 +94,6 @@ const Gallery = ({
 			files: savedImages.length,
 			id,
 			params,
-			token,
 		});
 	};
 
@@ -106,7 +104,6 @@ const Gallery = ({
 			files: filesToRequest,
 			id,
 			params,
-			token,
 		});
 	};
 

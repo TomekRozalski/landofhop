@@ -21,53 +21,99 @@ export default {
 	},
 	api_endpoints: {
 		auth: {
+			format: 'JSON',
 			method: 'POST',
 			path: 'auth/test',
 		},
 		beverage_details: 'beverages/details/',
-		beverage_list: 'beverages/list/',
-		beverage_remove: 'beverages/',
-		beverage_save: 'beverages/',
-		beverage_update: 'beverages/',
-		beverage_update_gallery: 'beverages/gallery/',
-		country_save: 'countries/',
-		countries_list: 'countries/list/',
-		ingredient_save: 'ingredients/',
-		ingredients_list: 'ingredients/list/',
-		institution_save: 'institutions/',
-		institutions_list: 'institutions/list/',
+		beverage_list: 'beverages/list',
+		beverage_remove: {
+			format: 'JSON',
+			method: 'DELETE',
+			path: 'beverages/',
+		},
+		beverage_save: {
+			format: 'JSON',
+			method: 'POST',
+			path: 'beverages/',
+		},
+		beverage_update: {
+			format: 'JSON',
+			method: 'PUT',
+			path: 'beverages/',
+		},
+		beverage_update_gallery: 'beverages/gallery',
+		country_save: {
+			format: 'JSON',
+			method: 'POST',
+			path: 'countries',
+		},
+		countries_list: {
+			format: 'JSON',
+			method: 'GET',
+			path: 'countries/list',
+		},
+		ingredient_save: {
+			format: 'JSON',
+			method: 'POST',
+			path: 'ingredients/',
+		},
+		ingredients_list: {
+			format: 'JSON',
+			method: 'GET',
+			path: 'ingredients/list',
+		},
+		institution_save: {
+			format: 'JSON',
+			method: 'POST',
+			path: 'institutions/',
+		},
+		institutions_list: {
+			format: 'JSON',
+			method: 'GET',
+			path: 'institutions/list',
+		},
 		login: {
+			format: 'JSON',
 			method: 'POST',
 			path: 'auth/login',
 		},
 		logout: {
+			format: 'JSON',
 			method: 'POST',
 			path: 'auth/logout',
 		},
-		place_save: 'places/',
-		places_list: 'places/list/',
-		// COVER
-		save_cover: {
+		place_save: {
+			format: 'JSON',
 			method: 'POST',
-			path: 'beverages/cover',
+			path: 'places/',
 		},
-		// GALLERY
-		save_gallery: {
-			method: 'POST',
-			path: 'beverages/gallery',
+		places_list: {
+			format: 'JSON',
+			method: 'GET',
+			path: 'places/list',
 		},
-		remove_gallery: {
-			method: 'DELETE',
-			path: 'beverages/gallery',
-		},
-		// CAP
 		save_cap: {
 			method: 'POST',
 			path: 'beverages/cap',
 		},
+		save_cover: {
+			method: 'POST',
+			path: 'beverages/cover',
+		},
+		save_gallery: {
+			method: 'POST',
+			path: 'beverages/gallery',
+		},
 		remove_cap: {
+			format: 'JSON',
 			method: 'DELETE',
 			path: 'beverages/cap',
+		},
+		remove_gallery: {
+			format: 'JSON',
+			method: 'DELETE',
+			path: 'beverages/gallery',
 		},
 	},
 	clarity: {

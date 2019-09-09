@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { connect } from 'react-redux';
 
-import { AppErrorContext, AuthenticationContext } from 'config';
+import { AppErrorContext } from 'config';
 import { getPlacesList as getPlacesListAction } from 'store/actions';
 import { SecondaryForm } from '../../elements';
 import { initialFormValues, onSubmit, validationSchema } from './utils';
 import FormBody from './FormBody';
 
 const AddNewPlace = ({ hide, getPlacesList, showSubform }) => {
-	const { token } = useContext(AuthenticationContext);
 	const { setAppError } = useContext(AppErrorContext);
 
 	return (
@@ -21,7 +20,6 @@ const AddNewPlace = ({ hide, getPlacesList, showSubform }) => {
 					getPlacesList,
 					hide,
 					setAppError,
-					token,
 				})}
 				validationSchema={validationSchema}
 				render={FormBody({ hide, showSubform })}

@@ -69,7 +69,6 @@ const UpdateBeverage = ({
 				showSubform,
 				step,
 				title,
-				token,
 			}) => {
 				if (!title) {
 					setTitle('dashboard.updateBeverage.title');
@@ -82,7 +81,6 @@ const UpdateBeverage = ({
 					savedForms,
 					setAppError,
 					setReadyToUnmount,
-					token,
 				});
 
 				const commonProps = {

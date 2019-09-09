@@ -1,12 +1,7 @@
 import { constants, serverCall } from 'utils';
 import actionsName from '../../actionsName';
 
-const removeBeverage = ({
-	files,
-	id,
-	params,
-	token,
-}) => (
+const removeBeverage = ({ files, id, params }) => (
 	dispatch => (
 		new Promise((resolve, reject) => {
 			dispatch({
@@ -14,12 +9,7 @@ const removeBeverage = ({
 			});
 
 			serverCall({
-				endpoint: constants.servers.data + constants.api_endpoints.beverage_remove,
-				method: 'DELETE',
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: `Bearer ${token}`,
-				},
+				type: constants.api_endpoints.beverage_remove,
 				body: JSON.stringify({ files, id, params }),
 			})
 				.then(({ status }) => {

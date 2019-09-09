@@ -12,7 +12,6 @@
 	"appError.fetchFailed.beverageList": "Beverage list fetch failed",
 	"appError.fetchFailed.imageGallery": "Gallery image fetch failed",
 	"appError.goBackToMainPage": "Go back to the main page",
-	"appError.invalidToken": "Ivalid token found in localStorage!",
 	"appError.reloadTheAppIfNecessary": "Reload the app if necessary",
 	"appError.title": "An error has occurred",
 	"app.fullTitle": "Land of Hop, reactive beer catalog",
@@ -120,7 +119,7 @@
 	"dashboard.updateBeverageImages.cover": "Cover",
 	"dashboard.updateBeverageImages.gallery": "Gallery",
 	"dashboard.updateBeverageImages.title": "Update beverage images",
-	"dashboard.updateBeverageImages.wrongFileUploaded.instruction": "Uploaded files need to be in .jpg or .jpge format and have weight from 50 to 800 KB for the cover image, from 50 to 500 KB for the cap image and from 100 to 500 KB for an image to gallery. It is preferred that it should have 880px width",
+	"dashboard.updateBeverageImages.wrongFileUploaded.instruction": "Uploaded files need to be in .jpg or .jpge format and have weight from 50 to 800 KB for the cover image, from 30 to 500 KB for the cap image and from 100 to 500 KB for an image to gallery. It is preferred that it should have 880px width",
 	"dashboard.updateBeverageImages.wrongFileUploaded.title": "An error occurred",
 	"dashboard.updateBeverageImages.wrongFileUploaded.rejectedFiles": "Rejected { value, plural, one {# file} other {# files}}:",
 	"dashboard.updateBeverageImages.wrongFileUploaded.rejectedFileInfo": "{name} with size {size} KB and type defined as {type}",
@@ -204,11 +203,9 @@
 	"loginbar.submit": "submit",
 	"navbar.aboutName": "About",
 	"navbar.addNewBeverage": "Add beverage",
-	"navbar.expiredAccessToken": "Expired access token",
 	"navbar.login": "Log in",
 	"navbar.logout": "Log out",
 	"navbar.searchLabel": "Search",
-	"navbar.tokenExpires": "Token expires in {timeToExpired}",
 	"notFound.countDown": "Redirecting to the home page in { seconds, plural, one {# second} other {# seconds}}",
 	"notFound.title": "404 Not Found"
 }

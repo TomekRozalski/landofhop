@@ -15,7 +15,6 @@ const updateBeverage = ({
 	savedForms,
 	setAppError,
 	setReadyToUnmount,
-	token,
 }) => ({
 	setSubmitting,
 	values,
@@ -41,12 +40,7 @@ const updateBeverage = ({
 	const badge = get(savedForms, [label, 'badge'], '');
 
 	return serverCall({
-		endpoint: constants.servers.data + constants.api_endpoints.beverage_update,
-		method: 'PUT',
-		headers: {
-			'Content-Type': 'application/json',
-			Authorization: `Bearer ${token}`,
-		},
+		type: constants.api_endpoints.beverage_update,
 		body: JSON.stringify(accumulator),
 	})
 		.then(res => res.json())

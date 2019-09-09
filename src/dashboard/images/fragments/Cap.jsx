@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { useDropzone } from 'react-dropzone';
 import { FormattedMessage } from 'react-intl';
 
-import { AppErrorContext, AuthenticationContext } from 'config';
+import { AppErrorContext } from 'config';
 import { Button } from 'elements';
 import { constants } from 'utils';
 import { removeCap as removeCapAction, saveCap as saveCapAction } from 'store/actions';
@@ -33,7 +33,6 @@ const Cap = ({
 	const [fileToRequest, setFileToRequest] = useState(null);
 	const [savedImage, setSavedImage] = useState(false);
 
-	const { token } = useContext(AuthenticationContext);
 	const { setAppError } = useContext(AppErrorContext);
 
 	if (isError) {
@@ -43,7 +42,7 @@ const Cap = ({
 
 	const { getRootProps, getInputProps } = useDropzone({
 		accept: ['image/jpg', 'image/jpeg'],
-		minSize: 50 * 1024,
+		minSize: 30 * 1024,
 		maxSize: 500 * 1024,
 		multiple: false,
 		onDrop: (acceptedFiles, rejectedFiles) => {
@@ -86,7 +85,6 @@ const Cap = ({
 			fileToRequest,
 			id,
 			params,
-			token,
 		})
 			.then(() => {
 				setFileToPreview(null);
@@ -97,7 +95,7 @@ const Cap = ({
 	const onRemoveImage = (e) => {
 		e.preventDefault();
 
-		removeCap({ id, params, token });
+		removeCap({ id, params });
 	};
 
 	return (

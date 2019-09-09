@@ -12,7 +12,6 @@
 	"appError.fetchFailed.beverageList": "Nie udało się pobrać listy pozycji",
 	"appError.fetchFailed.imageGallery": "Nie udało się uaktualnić zdjęć w galerii",
 	"appError.goBackToMainPage": "Wróć do strony głównej",
-	"appError.invalidToken": "Znaleziono nieprawidłowy token w localStorage!",
 	"appError.reloadTheAppIfNecessary": "Przeładuj okno jeśli zajdzie taka potrzeba",
 	"appError.title": "Wystąpił błąd",
 	"app.fullTitle": "Land of Hop, reaktywny katalog piw",
@@ -120,7 +119,7 @@
 	"dashboard.updateBeverageImages.cover": "Zdjęcie główne",
 	"dashboard.updateBeverageImages.gallery": "Galeria",
 	"dashboard.updateBeverageImages.title": "Popraw grafiki dla napoju",
-	"dashboard.updateBeverageImages.wrongFileUploaded.instruction": "Ładowane pliki muszą być w formacie .jpg lub .jpge oraz mieć między 50 a 800 KB w przypadku zdjęcia głównego, 50 a 500 KB w przypadku zdjęcia kapsla i między 100 a 500 KB w przypadku zdjęcia do galerii. Wskazane jest, by miał 880 pikseli szerokości",
+	"dashboard.updateBeverageImages.wrongFileUploaded.instruction": "Ładowane pliki muszą być w formacie .jpg lub .jpge oraz mieć między 50 a 800 KB w przypadku zdjęcia głównego, 30 a 500 KB w przypadku zdjęcia kapsla i między 100 a 500 KB w przypadku zdjęcia do galerii. Wskazane jest, by miał 880 pikseli szerokości",
 	"dashboard.updateBeverageImages.wrongFileUploaded.title": "Wystąpił błąd",
 	"dashboard.updateBeverageImages.wrongFileUploaded.rejectedFiles": "Odrzucono { value, plural, one {# plik} few {# pliki} other {# plików}}:",
 	"dashboard.updateBeverageImages.wrongFileUploaded.rejectedFileInfo": "{name} o rozmiarze {size} KB i typie zdefiniowanym jako {type}",
@@ -205,11 +204,9 @@
 	"loginbar.submit": "wyślij",
 	"navbar.aboutName": "O stronie",
 	"navbar.addNewBeverage": "Dodaj piwo",
-	"navbar.expiredAccessToken": "Token dostępowy jest przedawniony",
 	"navbar.login": "Zaloguj",
 	"navbar.logout": "Wyloguj",
 	"navbar.searchLabel": "Szukaj",
-	"navbar.tokenExpires": "Token wygasa za {timeToExpired}",
 	"notFound.countDown": "Przekierowanie do strony głównej za { seconds, plural, one {# sekundę} other {# sekundy}}",
 	"notFound.title": "404 Nie znaleziono"
 }

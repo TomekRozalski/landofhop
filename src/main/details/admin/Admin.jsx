@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { shape, string } from 'prop-types';
 import styled from 'styled-components';
-import { get, isDate } from 'lodash';
+import { get } from 'lodash';
 
 import { constants } from 'utils';
 import { AuthenticationContext, BeverageDetailsContext } from 'config';
@@ -21,10 +21,10 @@ const Notes = styled.div`
 
 const Admin = ({ params }) => {
 	const { beverage } = useContext(BeverageDetailsContext);
-	const { token, tokenExpiration } = useContext(AuthenticationContext);
+	const { isLoggedIn } = useContext(AuthenticationContext);
 	const { badge, brand, shortId } = params;
 
-	return (token && isDate(tokenExpiration)) ? (
+	return (isLoggedIn) ? (
 		<>
 			<Wrapper>
 				<UpdateButton

@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { useDropzone } from 'react-dropzone';
 import { FormattedMessage } from 'react-intl';
 
-import { AppErrorContext, AuthenticationContext } from 'config';
+import { AppErrorContext } from 'config';
 import { Button } from 'elements';
 import { saveBeverageCover as saveBeverageCoverAction } from 'store/actions';
 import { DragableArea, SubSection } from '../elements/common';
@@ -27,7 +27,6 @@ const Cover = ({
 	const [fileToPreview, setFileToPreview] = useState(null);
 	const [fileToRequest, setFileToRequest] = useState(null);
 
-	const { token } = useContext(AuthenticationContext);
 	const { setAppError } = useContext(AppErrorContext);
 
 	if (isError) {
@@ -63,7 +62,7 @@ const Cover = ({
 	const onSaveImages = (e) => {
 		e.preventDefault();
 
-		saveBeverageCover({ file: fileToRequest, params, token })
+		saveBeverageCover({ file: fileToRequest, params })
 			.then(() => {
 				setFileToPreview(null);
 				setFileToRequest(null);

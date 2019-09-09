@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
-import { isDate } from 'lodash';
 
 import { AuthenticationContext } from 'config';
 
@@ -16,7 +15,7 @@ import {
 } from './index';
 
 const Menu = () => {
-	const { token, tokenExpiration } = useContext(AuthenticationContext);
+	const { isLoggedIn } = useContext(AuthenticationContext);
 
 	return (
 		<MenuWrapper>
@@ -34,7 +33,7 @@ const Menu = () => {
 				</ListItem>
 			</List>
 
-			{ token && isDate(tokenExpiration) ? <LogOut /> : <LogIn /> }
+			{ isLoggedIn ? <LogOut /> : <LogIn /> }
 			<ExpirationDate />
 		</MenuWrapper>
 	);

@@ -21,7 +21,6 @@ const AddNewBeverage = () => (
 			showSubform,
 			step,
 			title,
-			token,
 		}) => {
 			if (!title) {
 				setTitle('dashboard.addNewBeverage.title');
@@ -33,7 +32,6 @@ const AddNewBeverage = () => (
 				savedForms,
 				setAppError,
 				setReadyToUnmount,
-				token,
 			});
 
 			const commonProps = {

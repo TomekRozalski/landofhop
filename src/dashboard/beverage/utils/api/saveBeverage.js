@@ -14,7 +14,6 @@ const saveBeverage = ({
 	savedForms,
 	setAppError,
 	setReadyToUnmount,
-	token,
 }) => ({
 	setSubmitting,
 	values,
@@ -40,12 +39,7 @@ const saveBeverage = ({
 	}
 
 	return serverCall({
-		endpoint: constants.servers.data + constants.api_endpoints.beverage_save,
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-			Authorization: `Bearer ${token}`,
-		},
+		type: constants.api_endpoints.beverage_save,
 		body: JSON.stringify(accumulator),
 	})
 		.then(res => res.json())

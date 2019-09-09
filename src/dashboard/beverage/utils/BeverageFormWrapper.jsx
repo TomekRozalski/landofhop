@@ -7,7 +7,7 @@ import { FormattedMessage } from 'react-intl';
 import { Helmet } from 'react-helmet';
 import { get } from 'lodash';
 
-import { AppErrorContext, AuthenticationContext } from 'config';
+import { AppErrorContext } from 'config';
 import {
 	clearBeverageDashboard as clearBeverageDashboardAction,
 	getBeveragesList as getBeveragesListAction,
@@ -39,7 +39,6 @@ const BeverageFormWrapper = ({
 	saveFormValues,
 }) => {
 	const { setAppError } = useContext(AppErrorContext);
-	const { token } = useContext(AuthenticationContext);
 
 	const [step, setStep] = useState(1);
 	const [subform, setSubform] = useState(null);
@@ -118,7 +117,6 @@ const BeverageFormWrapper = ({
 					showSubform,
 					step,
 					title,
-					token,
 				})
 			}
 			{

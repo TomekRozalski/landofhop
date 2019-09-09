@@ -9,7 +9,7 @@ const getInstitutionsList = () => (
 
 		try {
 			const res = await serverCall({
-				endpoint: constants.servers.data + constants.api_endpoints.institutions_list,
+				type: constants.api_endpoints.institutions_list,
 			});
 			const institutions = await res.json();
 

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import {
 	func,
 	number,
@@ -10,7 +10,6 @@ import { FormattedMessage } from 'react-intl';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 
-import { AuthenticationContext } from 'config';
 import { constants } from 'utils';
 import { removeBeverage as removeBeverageAction } from 'store/actions';
 import { Button } from 'elements';
@@ -22,8 +21,6 @@ const RemoveButton = ({
 	params,
 	removeBeverage,
 }) => {
-	const { token } = useContext(AuthenticationContext);
-
 	const [thinking, setThinking] = useState(false);
 	const [ready, setReady] = useState(false);
 
@@ -36,17 +33,12 @@ const RemoveButton = ({
 	};
 
 	const confirm = () => {
-		if (token) {
-			history.push(constants.routes.main);
-			removeBeverage({
-				files,
-				id,
-				params,
-				token,
-			});
-		} else {
-			console.log('brak tokena');
-		}
+		history.push(constants.routes.main);
+		removeBeverage({
+			files,
+			id,
+			params,
+		});
 	};
 
 	return (

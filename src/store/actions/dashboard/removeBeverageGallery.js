@@ -5,22 +5,14 @@ const removeBeverageGallery = ({
 	files,
 	id,
 	params: { badge, brand, shortId },
-	token,
 }) => (
 	(dispatch) => {
 		dispatch({
 			type: actionsName.REMOVE_BEVERAGE_GALLERY_PENDING,
 		});
 
-		const { method, path } = constants.api_endpoints.remove_gallery;
-
 		serverCall({
-			endpoint: constants.servers.data + path,
-			method,
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${token}`,
-			},
+			type: constants.api_endpoints.remove_gallery,
 			body: JSON.stringify({
 				badge,
 				brand,

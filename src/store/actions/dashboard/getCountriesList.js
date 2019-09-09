@@ -9,9 +9,7 @@ const getCountriesList = () => (
 
 		try {
 			const res = await serverCall({
-				endpoint: constants.servers.data
-				+ constants.api_endpoints.countries_list
-				+ constants.siteLanguages.pl,
+				type: constants.api_endpoints.countries_list,
 			});
 			const countries = await res.json();
 

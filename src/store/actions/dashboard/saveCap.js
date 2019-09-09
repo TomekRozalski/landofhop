@@ -5,7 +5,6 @@ const saveCap = ({
 	fileToRequest,
 	id,
 	params,
-	token,
 }) => (
 	dispatch => (
 		new Promise((resolve, reject) => {
@@ -21,11 +20,7 @@ const saveCap = ({
 			formData.append('shortId', params.shortId);
 
 			serverCall({
-				endpoint: constants.servers.data + constants.api_endpoints.save_cap.path,
-				method: constants.api_endpoints.save_cap.method,
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
+				type: constants.api_endpoints.save_cap,
 				body: formData,
 			})
 				.then(({ status }) => {

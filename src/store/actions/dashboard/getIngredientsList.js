@@ -9,8 +9,7 @@ const getIngredientsList = () => (
 
 		try {
 			const res = await serverCall({
-				endpoint: constants.servers.data
-				+ constants.api_endpoints.ingredients_list,
+				type: constants.api_endpoints.ingredients_list,
 			});
 			const ingredients = await res.json();
 

@@ -4,7 +4,6 @@ import actionsName from '../../actionsName';
 const saveBeverageCover = ({
 	file,
 	params: { badge, brand, shortId },
-	token,
 }) => (
 	dispatch => (
 		new Promise((resolve, reject) => {
@@ -18,15 +17,8 @@ const saveBeverageCover = ({
 			formData.append('image', file);
 			formData.append('shortId', shortId);
 
-			const server = constants.servers.data;
-			const { method, path } = constants.api_endpoints.save_cover;
-
 			serverCall({
-				endpoint: server + path,
-				method,
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
+				type: constants.api_endpoints.save_cover,
 				body: formData,
 			})
 				.then(({ status }) => {

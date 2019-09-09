@@ -5,7 +5,6 @@ const saveImagesBeverageGallery = ({
 	files,
 	id,
 	params: { badge, brand, shortId },
-	token,
 }) => (
 	(dispatch) => {
 		dispatch({
@@ -22,15 +21,8 @@ const saveImagesBeverageGallery = ({
 		});
 		formData.append('shortId', shortId);
 
-		const server = constants.servers.data;
-		const { method, path } = constants.api_endpoints.save_gallery;
-
 		serverCall({
-			endpoint: server + path,
-			method,
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
+			type: constants.api_endpoints.save_gallery,
 			body: formData,
 		})
 			.then(({ status }) => {
