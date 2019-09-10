@@ -71,6 +71,7 @@ const MarkType = styled.div`
 
 const StyledSelect = ({
 	children,
+	disabled,
 	field: {
 		name: fieldName,
 		value,
@@ -113,7 +114,7 @@ const StyledSelect = ({
 					Input: input,
 					Option: option,
 				}}
-				isDisabled={value === null}
+				isDisabled={value === null || disabled}
 				isMulti={multi}
 				isClearable={false}
 				onChange={setValue}
@@ -301,6 +302,7 @@ StyledSelect.propTypes = {
 			value: string.isRequired,
 		}),
 	).isRequired,
+	disabled: bool,
 	field: shape({
 		name: string.isRequired,
 		value: any,
@@ -321,6 +323,7 @@ StyledSelect.propTypes = {
 };
 
 StyledSelect.defaultProps = {
+	disabled: false,
 	isError: false,
 	isLoading: false,
 	inverse: false,

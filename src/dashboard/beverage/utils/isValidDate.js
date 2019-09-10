@@ -1,6 +1,6 @@
 import { isAfter, isValid, differenceInDays } from 'date-fns';
 
-const isValidDate = (value, options) => {
+const isValidDate = (value, options = {}) => {
 	if (options.nullable && value === null) {
 		return true;
 	}

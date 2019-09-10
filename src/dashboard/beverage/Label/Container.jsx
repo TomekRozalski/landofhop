@@ -23,7 +23,7 @@ const Container = ({
 		isInitialValid={update ? true : !!values}
 		onSubmit={onSubmit({ moveOn, saveFormValues })}
 		validationSchema={validationSchema}
-		render={FormBody({ showSubform })}
+		render={FormBody({ showSubform, update: !!update })}
 	/>
 );
 

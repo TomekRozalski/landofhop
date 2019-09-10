@@ -10,6 +10,7 @@ import { InputWrapper, LabelWrapper, StyledSelect } from '../elements';
 import { fragmentTypes } from './utils';
 
 const Brand = ({
+	disabled,
 	fieldName,
 	formName,
 	institutions,
@@ -25,6 +26,7 @@ const Brand = ({
 		<InputWrapper place="wide">
 			<Field
 				component={StyledSelect}
+				disabled={disabled}
 				formName={formName}
 				isError={isError}
 				isLoading={isLoading}

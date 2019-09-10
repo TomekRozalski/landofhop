@@ -4,12 +4,12 @@ import React from 'react';
 import { FormSection, ResetButton, SubmitButton } from '../elements';
 import Fieldset from './Fieldset';
 
-const FormBody = ({ showSubform }) => ({ isSubmitting, isValid }) => (
+const FormBody = ({ showSubform, update }) => ({ isSubmitting, isValid }) => (
 	<FormSection
 		title="dashboard.labelInfo.title"
 		description="dashboard.labelInfo.description"
 	>
-		<Fieldset showSubform={showSubform} />
+		<Fieldset showSubform={showSubform} update={update} />
 		{/* -------------------------------- */}
 		<ResetButton type="reset" />
 		<SubmitButton

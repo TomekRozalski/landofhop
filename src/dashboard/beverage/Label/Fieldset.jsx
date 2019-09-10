@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import PropTypes from 'prop-types';
+import { bool, func } from 'prop-types';
 
 import { constants } from '../utils';
 import { AddButton, SubSection } from '../elements';
@@ -36,7 +36,7 @@ import {
 } from '../fragments';
 import { fields } from './utils';
 
-const Fieldset = ({ showSubform }) => {
+const Fieldset = ({ showSubform, update }) => {
 	const commonProps = {
 		formName: constants.forms.beverage.label,
 		showSubform,
@@ -44,12 +44,12 @@ const Fieldset = ({ showSubform }) => {
 
 	return (
 		<>
-			<Badge {...commonProps} fieldName={fields.badge} />
+			<Badge {...commonProps} fieldName={fields.badge} disabled={update} />
 			{/* -------------------------------- */}
 			<SubSection title="dashboard.brandInfo" />
 			<Name {...commonProps} fieldName={fields.name} />
 			<Series {...commonProps} fieldName={fields.series} />
-			<Brand {...commonProps} fieldName={fields.brand} />
+			<Brand {...commonProps} fieldName={fields.brand} disabled={update} />
 			<AddButton onClick={() => { showSubform(constants.forms.institution); }} />
 			<Cooperation {...commonProps} fieldName={fields.cooperation} />
 			<Contract {...commonProps} fieldName={fields.contract} />
@@ -91,7 +91,8 @@ const Fieldset = ({ showSubform }) => {
 };
 
 Fieldset.propTypes = {
-	showSubform: PropTypes.func.isRequired,
+	showSubform: func.isRequired,
+	update: bool.isRequired,
 };
 
 export default memo(Fieldset);
