@@ -1,10 +1,4 @@
-import React, {
-	useContext,
-	useEffect,
-	useMemo,
-	useRef,
-	useState,
-} from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -65,75 +59,77 @@ const Image = styled.img`
 `;
 
 const Tile = ({
-	badge,
-	brand: {
-		badge: brandBadge,
-		name: brandName,
-	},
-	container,
-	name,
-	shortId,
+	columnIndex,
+	data,
+	rowIndex,
+	style,
 }) => {
-	const element = useRef();
+	const index = rowIndex * 5 + columnIndex;
+
+	if (!data[index]) {
+		return null;
+	}
+
 	const [failure, setFailure] = useState(false);
 	const [loaded, setLoaded] = useState(false);
-	const [onScreen, setOnScreen] = useState(false);
 
 	const { language } = useContext(LanguageContext);
 	const { webpSupport } = useContext(DeviceContext);
+
+	const {
+		badge,
+		brand: {
+			badge: brandBadge,
+			name: brandName,
+		},
+		container,
+		name,
+		shortId,
+	} = data[index];
 
 	const { value: formattedName } = getNameByLanguage({ values: name, language });
 	const { value: formattedBrand } = getNameByLanguage({ values: brandName, language });
 
 	const Container = () => {
 		if (container.type === 'bottle') {
-			return <Bottle />
+			return <Bottle />;
 		}
 
 		if (container.type === 'can') {
-			return <Can />
+			return <Can />;
 		}
-	}
+
+		return null;
+	};
 
 	const BrokenContainer = () => {
 		if (container.type === 'bottle') {
-			return <BrokenBottle />
+			return <BrokenBottle />;
 		}
 
 		if (container.type === 'can') {
-			return <BrokenCan />
+			return <BrokenCan />;
 		}
-	}
 
-	useEffect(() => {
-		const imgOptions = {
-			threshold: 0,
-			rootMargin: '500px 0px',
-		};
-
-		const observer = new IntersectionObserver(([entry], elementObserver) => {
-			if (!entry.isIntersecting) {
-				return;
-			}
-
-			setOnScreen(true);
-			elementObserver.unobserve(entry.target);
-		}, imgOptions);
-
-		observer.observe(element.current);
-
-		return () => {
-			observer.unobserve(element.current);
-		};
-	}, []);
+		return null;
+	};
 
 	const coverPath = useMemo(() => `${constants.servers.images}${brandBadge}/${badge}/${shortId}/cover/${webpSupport ? 'webp' : 'jpg'}`, []);
 
 	return (
-		<li ref={element}>
+		<li
+			style={{
+				...style,
+				display: 'flex',
+				alignItems: 'flex-end',
+				paddingBottom: '10px',
+				// left: style.left + (columnIndex ? (10 * columnIndex) : 0),
+				// top: style.top + (rowIndex ? (10 * rowIndex) : 0),
+			}}
+		>
 			<StyledLink height={setContainerHeight(container)} to={`details/${shortId}/${brandBadge}/${badge}`}>
 				{ failure && <BrokenContainer /> }
-				{ onScreen && !failure && (
+				{ !failure && (
 					<Image
 						alt={`${formattedName}, ${formattedBrand}`}
 						onError={() => setFailure(true)}

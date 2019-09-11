@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { forwardRef, useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import {
 	arrayOf,
@@ -10,10 +10,12 @@ import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { Helmet } from 'react-helmet';
 import { debounce } from 'lodash';
+import { VariableSizeGrid } from 'react-window';
+import AutoSizer from 'react-virtualized-auto-sizer';
 
 import { AppErrorContext } from 'config';
 import { getBeveragesList as getBeveragesListAction } from 'store/actions';
-import { grid } from 'utils';
+import { grid, setContainerHeight } from 'utils';
 import { Spinner } from 'elements';
 import { beverageBasics } from './utils';
 import { Tile } from './fragments';
@@ -73,8 +75,51 @@ const Tiles = ({
 		return null;
 	}
 
+
+	const innerElementType = forwardRef(({ style, ...rest }, ref) => (
+		<ul
+			ref={ref}
+			style={{
+				...style,
+				width: 220 * 5 + 40,
+				margin: '0px auto',
+				position: 'relative',
+				padding: '20px 0 60px 0',
+			}}
+			{...rest}
+		/>
+	));
+
 	return withTitle(
-		<List>{ list.map(props => <Tile key={props.id} {...props} />) }</List>,
+		<AutoSizer>
+			{({ height, width }) => (
+				<VariableSizeGrid
+					columnCount={5}
+					columnWidth={() => 220}
+					innerElementType={innerElementType}
+					height={height}
+					rowCount={Math.ceil(list.length / 5) + 1}
+					rowHeight={(i) => {
+						const index = i + 1;
+
+						if (index === Math.ceil(list.length / 5) + 1) {
+							return 80;
+						}
+
+						const listOfContainerSizes = list
+							.slice((index * 5) - 5, index * 5)
+							.map(({ container }) => setContainerHeight(container));
+
+
+						return (Math.max(...listOfContainerSizes) + 10);
+					}}
+					width={width - 60}
+					itemData={list}
+				>
+					{ Tile }
+				</VariableSizeGrid>
+			)}
+		</AutoSizer>,
 	);
 };
 
