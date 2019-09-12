@@ -1,5 +1,4 @@
 import React, { forwardRef, useContext, useEffect } from 'react';
-import styled from 'styled-components';
 import {
 	arrayOf,
 	bool,
@@ -15,15 +14,10 @@ import AutoSizer from 'react-virtualized-auto-sizer';
 
 import { AppErrorContext } from 'config';
 import { getBeveragesList as getBeveragesListAction } from 'store/actions';
-import { grid, setContainerHeight } from 'utils';
+import { setContainerHeight } from 'utils';
 import { Spinner } from 'elements';
 import { beverageBasics } from './utils';
-import { Tile } from './fragments';
-
-const List = styled.ul`
-	${grid}
-	align-items: end;
-`;
+import Tile from './Tile';
 
 const Tiles = ({
 	getBeveragesList,
