@@ -46,7 +46,7 @@ export const NotFound = lazy(() => {
 
 export const Tiles = lazy(async () => {
 	NProgress.start();
-	return import('../main/tiles/Tiles').finally(NProgress.done);
+	return import('../screens/Tiles/Tiles').finally(NProgress.done);
 });
 
 const PrivateRoute = ({ component: Component, ...rest }) => {

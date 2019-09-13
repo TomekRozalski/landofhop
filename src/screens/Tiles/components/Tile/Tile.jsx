@@ -1,11 +1,12 @@
 import React, { useContext, useMemo, useState } from 'react';
+import { arrayOf, number, shape } from 'prop-types';
 
 import { DeviceContext, LanguageContext } from 'config';
 import { constants, setContainerHeight } from 'utils';
 import { getNameByLanguage } from 'utils/helpers';
+import { beverageBasics } from 'utils/types';
 import { BrokenContainer, Container } from './fragments';
 import { Image, Item, StyledLink } from './elements';
-import { beverageBasics } from './utils';
 
 const Tile = ({
 	columnIndex,
@@ -65,6 +66,11 @@ const Tile = ({
 	);
 };
 
-Tile.propTypes = beverageBasics;
+Tile.propTypes = {
+	columnIndex: number.isRequired,
+	data: arrayOf(shape(beverageBasics)).isRequired,
+	rowIndex: number.isRequired,
+	style: shape({}).isRequired,
+};
 
 export default Tile;

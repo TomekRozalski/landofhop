@@ -170,6 +170,10 @@ export default {
 			code: 'fr',
 			phrase: 'French',
 		},
+		la: {
+			code: 'la',
+			phrase: 'Latin',
+		},
 		nl: {
 			code: 'nl',
 			phrase: 'Dutch',

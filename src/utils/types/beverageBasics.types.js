@@ -5,7 +5,7 @@ import {
 	string,
 } from 'prop-types';
 
-const beverageBasics = {
+export default {
 	added: string.isRequired,
 	badge: string.isRequired,
 	brand: shape({
@@ -31,5 +31,3 @@ const beverageBasics = {
 	)).isRequired,
 	shortId: string.isRequired,
 };
-
-export default beverageBasics;

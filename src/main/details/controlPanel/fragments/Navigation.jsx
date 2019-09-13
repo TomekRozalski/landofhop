@@ -9,9 +9,9 @@ import {
 import { connect } from 'react-redux';
 
 import { getBeveragesList as getBeveragesListAction } from 'store/actions';
+import { beverageBasics } from 'utils/types';
 import { BeverageDetailsContext } from 'config';
 import { StyledButton } from '../elements';
-import { beverageBasics } from '../../../tiles/utils';
 
 const Wrapper = styled.div`
 	display: flex;

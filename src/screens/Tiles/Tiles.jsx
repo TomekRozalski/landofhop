@@ -15,9 +15,9 @@ import AutoSizer from 'react-virtualized-auto-sizer';
 import { AppErrorContext } from 'config';
 import { getBeveragesList as getBeveragesListAction } from 'store/actions';
 import { setContainerHeight } from 'utils';
+import { beverageBasics } from 'utils/types';
 import { Spinner } from 'elements';
-import { beverageBasics } from './utils';
-import Tile from './Tile';
+import { ListOfItems, Tile } from './components';
 
 const Tiles = ({
 	getBeveragesList,
@@ -69,20 +69,7 @@ const Tiles = ({
 		return null;
 	}
 
-
-	const innerElementType = forwardRef(({ style, ...rest }, ref) => (
-		<ul
-			ref={ref}
-			style={{
-				...style,
-				width: 220 * 5 + 40,
-				margin: '0px auto',
-				position: 'relative',
-				padding: '20px 0 60px 0',
-			}}
-			{...rest}
-		/>
-	));
+	const innerElementType = forwardRef((props, ref) => <ListOfItems props={props} ref={ref} />);
 
 	return withTitle(
 		<AutoSizer>
