@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Prompt, withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
-import { Helmet } from 'react-helmet';
 import { get } from 'lodash';
 
 import { AppErrorContext } from 'config';
@@ -42,7 +41,7 @@ const BeverageFormWrapper = ({
 
 	const [step, setStep] = useState(1);
 	const [subform, setSubform] = useState(null);
-	const [title, setTitle] = useState('');
+	const [header, setHeader] = useState('');
 	const [readyToUnmount, setReadyToUnmount] = useState(false);
 
 	const preventClose = (e) => {
@@ -101,22 +100,22 @@ const BeverageFormWrapper = ({
 				showSubform={showSubform}
 				subform={subform}
 			/>
-			<MainHeader title={title} />
+			<MainHeader name={header} />
 			<ProgressList step={step} moveTo={moveTo} />
 			{
 				children({
 					getBeveragesList,
+					header,
 					moveBack,
 					moveOn,
 					push,
 					savedForms,
 					saveFormValues,
 					setAppError,
+					setHeader,
 					setReadyToUnmount,
-					setTitle,
 					showSubform,
 					step,
-					title,
 				})
 			}
 			{
@@ -126,9 +125,6 @@ const BeverageFormWrapper = ({
 					</FormattedMessage>
 				)
 			}
-			<FormattedMessage id={title}>
-				{value => <Helmet><title>{value}</title></Helmet>}
-			</FormattedMessage>
 		</>
 	);
 };

@@ -31,7 +31,7 @@ const Header = () => {
 	const { isHeaderTall, setHeaderHeight } = useContext(HeaderContext);
 
 	const move = useSpring({
-		'grid-template-rows': isHeaderTall
+		gridTemplateRows: isHeaderTall
 			? sizes.header.height.tall.lg
 			: sizes.header.height.short.lg,
 	});

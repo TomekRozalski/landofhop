@@ -1,4 +1,4 @@
-import React, { forwardRef, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
 	arrayOf,
 	bool,
@@ -6,18 +6,13 @@ import {
 	shape,
 } from 'prop-types';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
-import { Helmet } from 'react-helmet';
-import { debounce } from 'lodash';
-import { VariableSizeGrid } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 
 import { AppErrorContext } from 'config';
 import { getBeveragesList as getBeveragesListAction } from 'store/actions';
-import { setContainerHeight } from 'utils';
 import { beverageBasics } from 'utils/types';
-import { Spinner } from 'elements';
-import { ListOfItems, Tile } from './components';
+import { Spinner, WithTitle } from 'elements';
+import { GridOfItems } from './components';
 
 const Tiles = ({
 	getBeveragesList,
@@ -27,80 +22,28 @@ const Tiles = ({
 }) => {
 	const { setAppError } = useContext(AppErrorContext);
 
-	const onScroll = debounce(() => {
-		sessionStorage.setItem('tilesPosition', window.pageYOffset || document.documentElement.scrollTop);
-	}, 400, { leading: true, maxWait: 1000 });
-
-	const withTitle = children => (
-		<>
-			{ children }
-			<FormattedMessage id="app.fullTitle">
-				{title => <Helmet><title>{title}</title></Helmet>}
-			</FormattedMessage>
-		</>
-	);
-
 	useEffect(() => {
 		if (list.length < 5) {
 			getBeveragesList();
 		}
 	}, []);
 
-	useEffect(() => {
-		const tilesPosition = sessionStorage.getItem('tilesPosition');
-
-		if (tilesPosition) {
-			window.scroll(0, tilesPosition);
-		}
-
-		window.addEventListener('scroll', onScroll);
-
-		return () => {
-			window.removeEventListener('scroll', onScroll);
-		};
-	}, [list]);
-
-	if (isLoading) {
-		return withTitle(<Spinner center />);
-	}
-
 	if (isError) {
 		setAppError('appError.fetchFailed.beverageList');
 		return null;
 	}
 
-	const innerElementType = forwardRef((props, ref) => <ListOfItems props={props} ref={ref} />);
-
-	return withTitle(
-		<AutoSizer>
-			{({ height, width }) => (
-				<VariableSizeGrid
-					columnCount={5}
-					columnWidth={() => 220}
-					innerElementType={innerElementType}
-					height={height}
-					rowCount={Math.ceil(list.length / 5) + 1}
-					rowHeight={(i) => {
-						const index = i + 1;
-
-						if (index === Math.ceil(list.length / 5) + 1) {
-							return 80;
-						}
-
-						const listOfContainerSizes = list
-							.slice((index * 5) - 5, index * 5)
-							.map(({ container }) => setContainerHeight(container));
-
-
-						return (Math.max(...listOfContainerSizes) + 10);
-					}}
-					width={width - 60}
-					itemData={list}
-				>
-					{ Tile }
-				</VariableSizeGrid>
-			)}
-		</AutoSizer>,
+	return (
+		<WithTitle title="app.fullTitle">
+			{ isLoading
+				? <Spinner center />
+				: (
+					<AutoSizer>
+						{dimension => <GridOfItems dimension={dimension} list={list} />}
+					</AutoSizer>
+				)
+			}
+		</WithTitle>
 	);
 };
 

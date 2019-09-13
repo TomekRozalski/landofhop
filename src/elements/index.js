@@ -9,6 +9,7 @@ import Label from './Label';
 import Overlay from './Overlay';
 import Spinner from './Spinner';
 import Textarea from './Textarea';
+import WithTitle from './WithTitle';
 
 export {
 	Button,
@@ -22,4 +23,5 @@ export {
 	Overlay,
 	Spinner,
 	Textarea,
+	WithTitle,
 };

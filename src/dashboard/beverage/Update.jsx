@@ -8,7 +8,7 @@ import {
 import { connect } from 'react-redux';
 
 import { getBeverageDetails as getBeverageDetailsAction } from 'store/actions';
-import { Spinner } from 'elements';
+import { Spinner, WithTitle } from 'elements';
 import { BeverageFormWrapper } from './utils';
 import Label from './Label';
 import Producer from './Producer';
@@ -50,57 +50,57 @@ const UpdateBeverage = ({
 		}
 	}, [beverage]);
 
-	if (isLoading || isBeverageProcessing) {
-		return <Spinner center />;
-	}
-
 	return (
-		<BeverageFormWrapper>
-			{({
-				getBeveragesList,
-				moveBack,
-				moveOn,
-				push,
-				savedForms,
-				saveFormValues,
-				setAppError,
-				setReadyToUnmount,
-				setTitle,
-				showSubform,
-				step,
-				title,
-			}) => {
-				if (!title) {
-					setTitle('dashboard.updateBeverage.title');
-				}
+		<WithTitle title="dashboard.updateBeverage.title">
+			{ isLoading || isBeverageProcessing ? <Spinner center /> : (
+				<BeverageFormWrapper>
+					{({
+						getBeveragesList,
+						header,
+						moveBack,
+						moveOn,
+						push,
+						savedForms,
+						saveFormValues,
+						setAppError,
+						setHeader,
+						setReadyToUnmount,
+						showSubform,
+						step,
+					}) => {
+						if (!header) {
+							setHeader('dashboard.updateBeverage.title');
+						}
 
-				const finalSubmit = updateBeverage({
-					getBeverageDetails,
-					getBeveragesList,
-					push,
-					savedForms,
-					setAppError,
-					setReadyToUnmount,
-				});
+						const finalSubmit = updateBeverage({
+							getBeverageDetails,
+							getBeveragesList,
+							push,
+							savedForms,
+							setAppError,
+							setReadyToUnmount,
+						});
 
-				const commonProps = {
-					moveBack,
-					moveOn,
-					savedForms,
-					saveFormValues,
-					showSubform,
-					update,
-				};
+						const commonProps = {
+							moveBack,
+							moveOn,
+							savedForms,
+							saveFormValues,
+							showSubform,
+							update,
+						};
 
-				return (
-					<>
-						{ step === 1 && <Label {...commonProps} /> }
-						{ step === 2 && <Producer {...commonProps} /> }
-						{ step === 3 && <Editorial {...commonProps} finalSubmit={finalSubmit} /> }
-					</>
-				);
-			}}
-		</BeverageFormWrapper>
+						return (
+							<>
+								{ step === 1 && <Label {...commonProps} /> }
+								{ step === 2 && <Producer {...commonProps} /> }
+								{ step === 3 && <Editorial {...commonProps} finalSubmit={finalSubmit} /> }
+							</>
+						);
+					}}
+				</BeverageFormWrapper>
+			)}
+		</WithTitle>
 	);
 };
 

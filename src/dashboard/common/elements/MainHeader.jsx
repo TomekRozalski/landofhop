@@ -12,14 +12,14 @@ const Wrapper = styled.h1`
 	text-align: center;
 `;
 
-const MainHeader = ({ title }) => (
+const MainHeader = ({ name }) => (
 	<Wrapper>
-		<FormattedMessage id={title} />
+		<FormattedMessage id={name} />
 	</Wrapper>
 );
 
 MainHeader.propTypes = {
-	title: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
 };
 
 export default MainHeader;
