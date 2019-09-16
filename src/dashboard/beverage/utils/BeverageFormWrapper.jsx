@@ -100,7 +100,7 @@ const BeverageFormWrapper = ({
 				showSubform={showSubform}
 				subform={subform}
 			/>
-			<MainHeader name={header} />
+			<MainHeader title={header} />
 			<ProgressList step={step} moveTo={moveTo} />
 			{
 				children({
