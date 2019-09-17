@@ -1,9 +1,11 @@
-import GridOfItems from './GridOfItems';
-import ListOfItems from './ListOfItems';
+import List from './List';
+import Row from './Row';
 import Tile from './Tile';
+import TilesWrapper from './TilesWrapper';
 
 export {
-	GridOfItems,
-	ListOfItems,
+	List,
+	Row,
 	Tile,
+	TilesWrapper,
 };
