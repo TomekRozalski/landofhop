@@ -1,28 +1,32 @@
 import React, { forwardRef, useEffect, useRef } from 'react';
 import { arrayOf, number, shape } from 'prop-types';
-import { VariableSizeList } from 'react-window';
+import { VariableSizeGrid } from 'react-window';
 import styled from 'styled-components';
 import debounce from 'lodash/debounce';
 
 import { setContainerHeight } from 'utils';
 import { beverageBasics } from 'utils/types';
-import { List, Row } from './index';
+import { ListOfItems, Tile } from './index';
 
 const HiddenButton = styled.button`
 	display: none;
 `;
 
-const TilesWrapper = ({ dimension, list }) => {
+const GridOfItems = ({ dimension, list }) => {
 	const button = useRef();
 	const gridRef = useRef();
 
-	// const onScroll = debounce(() => {
-	// 	// sessionStorage.setItem('tilesPosition', window.pageYOffset || document.documentElement.scrollTop);
-	// 	console.log('gridRef', gridRef);
-	// }, 400, { leading: true, maxWait: 1000 });
+	const onScroll = debounce(() => {
+		// sessionStorage.setItem('tilesPosition', window.pageYOffset || document.documentElement.scrollTop);
+		console.log('gridRef', gridRef);
+	}, 400, { leading: true, maxWait: 1000 });
 
 	const scrollToRow100Column50Auto = () => {
-		gridRef.current.scrollToItem(5, 'start');
+		gridRef.current.scrollToItem({
+			align: 'start',
+			columnIndex: 0,
+			rowIndex: 5,
+		});
 	};
 
 	useEffect(() => {
@@ -43,14 +47,14 @@ const TilesWrapper = ({ dimension, list }) => {
 		// 	console.log('sdf', o.scrollTop);
 		// };
 
-		// window.addEventListener('scroll', onScroll);
+		window.addEventListener('scroll', onScroll);
 
-		// return () => {
-		// 	window.removeEventListener('scroll', onScroll);
-		// };
+		return () => {
+			window.removeEventListener('scroll', onScroll);
+		};
 	}, [list]);
 
-	const innerElementType = forwardRef((props, ref) => <List props={props} ref={ref} />);
+	const innerElementType = forwardRef((props, ref) => <ListOfItems props={props} ref={ref} />);
 
 	return (
 		<>
@@ -58,12 +62,14 @@ const TilesWrapper = ({ dimension, list }) => {
 				ref={button}
 				onClick={scrollToRow100Column50Auto}
 			/>
-			<VariableSizeList
-				height={dimension.height}
+			<VariableSizeGrid
+				columnCount={5}
+				columnWidth={() => 220}
 				innerElementType={innerElementType}
-				itemCount={Math.ceil(list.length / 5) + 1}
-				itemData={list}
-				itemSize={(i) => {
+				height={dimension.height}
+				ref={gridRef}
+				rowCount={Math.ceil(list.length / 5) + 1}
+				rowHeight={(i) => {
 					const index = i + 1;
 
 					if (index === Math.ceil(list.length / 5) + 1) {
@@ -78,15 +84,15 @@ const TilesWrapper = ({ dimension, list }) => {
 					return (Math.max(...listOfContainerSizes) + 10);
 				}}
 				width={dimension.width - 60}
-				ref={gridRef}
+				itemData={list}
 			>
-				{ Row }
-			</VariableSizeList>
+				{ Tile }
+			</VariableSizeGrid>
 		</>
 	);
 };
 
-TilesWrapper.propTypes = {
+GridOfItems.propTypes = {
 	dimension: shape({
 		height: number.isRequired,
 		width: number.isRequired,
@@ -96,4 +102,4 @@ TilesWrapper.propTypes = {
 	).isRequired,
 };
 
-export default TilesWrapper;
+export default GridOfItems;

@@ -12,7 +12,7 @@ import { AppErrorContext } from 'config';
 import { getBeveragesList as getBeveragesListAction } from 'store/actions';
 import { beverageBasics } from 'utils/types';
 import { Spinner, WithTitle } from 'elements';
-import { TilesWrapper } from './components';
+import { GridOfItems } from './components';
 
 const Tiles = ({
 	getBeveragesList,
@@ -39,7 +39,7 @@ const Tiles = ({
 				? <Spinner center />
 				: (
 					<AutoSizer>
-						{dimension => <TilesWrapper dimension={dimension} list={list} />}
+						{dimension => <GridOfItems dimension={dimension} list={list} />}
 					</AutoSizer>
 				)
 			}

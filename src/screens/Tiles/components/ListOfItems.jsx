@@ -2,27 +2,27 @@ import React from 'react';
 import { object, shape } from 'prop-types';
 import styled from 'styled-components';
 
-const Wrapper = styled.ul`
-	${({ forwardedStyle }) => forwardedStyle}
-	width: ${220 * 5 + 60}px;
+const List = styled.ul`
+	${({ style }) => style}
+	width: ${220 * 5 + 40}px;
 	margin: 0px auto;
 	position: relative;
 	padding: 20px 0 60px 0;
 `;
 
-const List = ({ props: { style, ...rest }, ref }) => (
-	<Wrapper ref={ref} forwardedStyle={style} {...rest} />
+const ListOfItems = ({ props: { style, ...rest }, ref }) => (
+	<List ref={ref} style={style} {...rest} />
 );
 
-List.propTypes = {
+ListOfItems.propTypes = {
 	props: shape({
 		style: object.isRequired,
 	}).isRequired,
 	ref: shape({}),
 };
 
-List.defaultProps = {
+ListOfItems.defaultProps = {
 	ref: null,
 };
 
-export default List;
+export default ListOfItems;
