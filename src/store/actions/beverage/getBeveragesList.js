@@ -4,27 +4,35 @@ import actionsName from 'store/actionsName';
 import { serverCall } from 'utils';
 
 const getBeveragesList = () => (
-	async (dispatch) => {
-		dispatch({
-			type: actionsName.GET_BEVERAGES_LIST_PENDING,
-		});
-
-		try {
-			const res = await serverCall({
-				endpoint: constants.servers.data + constants.api_endpoints.beverage_list,
-			});
-			const basics = await res.json();
-
+	async dispatch => (
+		new Promise((resolve, reject) => {
 			dispatch({
-				type: actionsName.GET_BEVERAGES_LIST_FULFILLED,
-				payload: { basics },
+				type: actionsName.GET_BEVERAGES_LIST_PENDING,
 			});
-		} catch {
-			dispatch({
-				type: actionsName.GET_BEVERAGES_LIST_REJECTED,
-			});
-		}
-	}
+
+			serverCall({ endpoint: constants.servers.data + constants.api_endpoints.beverage_list })
+				.then((res) => {
+					if (res.status !== 200) {
+						throw new Error();
+					}
+					return res;
+				})
+				.then(res => res.json())
+				.then((basics) => {
+					dispatch({
+						type: actionsName.GET_BEVERAGES_LIST_FULFILLED,
+						payload: { basics },
+					});
+					resolve(basics);
+				})
+				.catch(() => {
+					dispatch({
+						type: actionsName.GET_BEVERAGES_LIST_REJECTED,
+					});
+					reject();
+				});
+		})
+	)
 );
 
 export default getBeveragesList;

@@ -1,9 +1,14 @@
-import React, { forwardRef, useEffect, useRef } from 'react';
+import React, {
+	forwardRef,
+	useContext,
+	useEffect,
+	useRef,
+} from 'react';
 import { arrayOf, number, shape } from 'prop-types';
 import { VariableSizeGrid } from 'react-window';
 import styled from 'styled-components';
-import debounce from 'lodash/debounce';
 
+import { NavigationContext } from 'config';
 import { setContainerHeight } from 'utils';
 import { beverageBasics } from 'utils/types';
 import { ListOfItems, Tile } from './index';
@@ -16,42 +21,17 @@ const GridOfItems = ({ dimension, list }) => {
 	const button = useRef();
 	const gridRef = useRef();
 
-	const onScroll = debounce(() => {
-		// sessionStorage.setItem('tilesPosition', window.pageYOffset || document.documentElement.scrollTop);
-		console.log('gridRef', gridRef);
-	}, 400, { leading: true, maxWait: 1000 });
+	const { scrollPosition, setScrollPosition } = useContext(NavigationContext);
 
-	const scrollToRow100Column50Auto = () => {
+	const scrollToRow = () => {
 		gridRef.current.scrollToItem({
 			align: 'start',
-			columnIndex: 0,
-			rowIndex: 5,
+			rowIndex: scrollPosition,
 		});
 	};
 
 	useEffect(() => {
-		// const tilesPosition = sessionStorage.getItem('tilesPosition');
-
-		// if (tilesPosition) {
-		// 	window.scroll(0, tilesPosition);
-		// }
-		// console.log('gridRef', gridRef.current);
-		// setTimeout(scrollToRow100Column50Auto, 3000);
-
 		button.current.click();
-
-		console.log('gridRef', gridRef);
-
-		// gridRef.current._onScroll = (o) => {
-		// 	console.log('0', o);
-		// 	console.log('sdf', o.scrollTop);
-		// };
-
-		window.addEventListener('scroll', onScroll);
-
-		return () => {
-			window.removeEventListener('scroll', onScroll);
-		};
 	}, [list]);
 
 	const innerElementType = forwardRef((props, ref) => <ListOfItems props={props} ref={ref} />);
@@ -60,7 +40,7 @@ const GridOfItems = ({ dimension, list }) => {
 		<>
 			<HiddenButton
 				ref={button}
-				onClick={scrollToRow100Column50Auto}
+				onClick={scrollToRow}
 			/>
 			<VariableSizeGrid
 				columnCount={5}
@@ -84,7 +64,7 @@ const GridOfItems = ({ dimension, list }) => {
 					return (Math.max(...listOfContainerSizes) + 10);
 				}}
 				width={dimension.width - 60}
-				itemData={list}
+				itemData={{ list, setScrollPosition }}
 			>
 				{ Tile }
 			</VariableSizeGrid>

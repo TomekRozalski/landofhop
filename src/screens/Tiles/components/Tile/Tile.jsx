@@ -1,5 +1,10 @@
 import React, { useContext, useMemo, useState } from 'react';
-import { arrayOf, number, shape } from 'prop-types';
+import {
+	arrayOf,
+	func,
+	number,
+	shape,
+} from 'prop-types';
 
 import { DeviceContext, LanguageContext } from 'config';
 import { constants, setContainerHeight } from 'utils';
@@ -10,13 +15,16 @@ import { Image, Item, StyledLink } from './elements';
 
 const Tile = ({
 	columnIndex,
-	data,
+	data: {
+		list,
+		setScrollPosition,
+	},
 	rowIndex,
 	style,
 }) => {
 	const index = rowIndex * 5 + columnIndex;
 
-	if (!data[index]) {
+	if (!list[index]) {
 		return null;
 	}
 
@@ -25,6 +33,7 @@ const Tile = ({
 
 	const { language } = useContext(LanguageContext);
 	const { webpSupport } = useContext(DeviceContext);
+
 
 	const {
 		badge,
@@ -35,7 +44,7 @@ const Tile = ({
 		container,
 		name,
 		shortId,
-	} = data[index];
+	} = list[index];
 
 	const { value: formattedName } = getNameByLanguage({ values: name, language });
 	const { value: formattedBrand } = getNameByLanguage({ values: brandName, language });
@@ -44,7 +53,11 @@ const Tile = ({
 
 	return (
 		<Item style={style}>
-			<StyledLink height={setContainerHeight(container)} to={`details/${shortId}/${brandBadge}/${badge}`}>
+			<StyledLink
+				height={setContainerHeight(container)}
+				onClick={() => setScrollPosition(rowIndex)}
+				to={`details/${shortId}/${brandBadge}/${badge}`}
+			>
 				{ failure && <BrokenContainer type={container.type} /> }
 				{ !failure && (
 					<Image
@@ -68,7 +81,10 @@ const Tile = ({
 
 Tile.propTypes = {
 	columnIndex: number.isRequired,
-	data: arrayOf(shape(beverageBasics)).isRequired,
+	data: shape({
+		list: arrayOf(shape(beverageBasics)).isRequired,
+		setScrollPosition: func.isRequired,
+	}).isRequired,
 	rowIndex: number.isRequired,
 	style: shape({}).isRequired,
 };

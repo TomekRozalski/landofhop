@@ -44,7 +44,13 @@ const saveBeverage = ({
 	})
 		.then(res => res.json())
 		.then((res) => {
-			getBeveragesList();
+			getBeveragesList()
+				.then((data) => {
+					const indexOfNewBeverage = data.findIndex(({ id }) => res.id === id);
+
+					console.log('getBeveragesList', indexOfNewBeverage);
+				});
+
 			setSubmitting(false);
 
 			if (res.shortId) {
