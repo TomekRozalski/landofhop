@@ -15,6 +15,7 @@ const updateBeverage = ({
 	savedForms,
 	setAppError,
 	setReadyToUnmount,
+	setScrollPosition,
 }) => ({
 	setSubmitting,
 	values,
@@ -51,6 +52,8 @@ const updateBeverage = ({
 				brand,
 				shortId,
 			});
+
+			setScrollPosition(accumulator.id);
 		})
 		.then(() => setSubmitting(false))
 		.then(() => {

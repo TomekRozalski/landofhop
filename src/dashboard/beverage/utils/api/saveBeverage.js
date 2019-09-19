@@ -14,6 +14,7 @@ const saveBeverage = ({
 	savedForms,
 	setAppError,
 	setReadyToUnmount,
+	setScrollPosition,
 }) => ({
 	setSubmitting,
 	values,
@@ -44,12 +45,9 @@ const saveBeverage = ({
 	})
 		.then(res => res.json())
 		.then((res) => {
-			getBeveragesList()
-				.then((data) => {
-					const indexOfNewBeverage = data.findIndex(({ id }) => res.id === id);
-
-					console.log('getBeveragesList', indexOfNewBeverage);
-				});
+			getBeveragesList();
+			// eslint-disable-next-line no-underscore-dangle
+			setScrollPosition(res._id);
 
 			setSubmitting(false);
 

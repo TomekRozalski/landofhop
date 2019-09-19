@@ -6,7 +6,6 @@ export const NavigationContext = React.createContext({});
 const Navigation = ({ children }) => {
 	const [loginbar, setLoginbar] = useState(false);
 	const [navbar, setNavbar] = useState(false);
-	const [scrollPosition, setScrollPosition] = useState(0);
 	const [searchbar, setSearchbar] = useState(false);
 
 	return (
@@ -14,9 +13,7 @@ const Navigation = ({ children }) => {
 			value={{
 				loginbar,
 				navbar,
-				scrollPosition,
 				searchbar,
-				setScrollPosition,
 				setLoginbar,
 				setNavbar,
 				setSearchbar,

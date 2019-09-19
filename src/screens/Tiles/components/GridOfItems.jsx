@@ -8,7 +8,7 @@ import { arrayOf, number, shape } from 'prop-types';
 import { VariableSizeGrid } from 'react-window';
 import styled from 'styled-components';
 
-import { NavigationContext } from 'config';
+import { ScrollPositionContext } from 'config';
 import { setContainerHeight } from 'utils';
 import { beverageBasics } from 'utils/types';
 import { ListOfItems, Tile } from './index';
@@ -21,17 +21,22 @@ const GridOfItems = ({ dimension, list }) => {
 	const button = useRef();
 	const gridRef = useRef();
 
-	const { scrollPosition, setScrollPosition } = useContext(NavigationContext);
+	const { scrollPosition } = useContext(ScrollPositionContext);
 
 	const scrollToRow = () => {
+		const indexOfNewBeverage = list.findIndex(({ id }) => id === scrollPosition);
+		const rowIndex = Math.floor(indexOfNewBeverage / 5);
+
 		gridRef.current.scrollToItem({
 			align: 'start',
-			rowIndex: scrollPosition,
+			rowIndex,
 		});
 	};
 
 	useEffect(() => {
-		button.current.click();
+		if (scrollPosition) {
+			button.current.click();
+		}
 	}, [list]);
 
 	const innerElementType = forwardRef((props, ref) => <ListOfItems props={props} ref={ref} />);
@@ -64,7 +69,7 @@ const GridOfItems = ({ dimension, list }) => {
 					return (Math.max(...listOfContainerSizes) + 10);
 				}}
 				width={dimension.width - 60}
-				itemData={{ list, setScrollPosition }}
+				itemData={list}
 			>
 				{ Tile }
 			</VariableSizeGrid>

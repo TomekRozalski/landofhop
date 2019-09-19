@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import { AppErrorContext, BeverageDetailsContext } from 'config';
+import { AppErrorContext, BeverageDetailsContext, ScrollPositionContext } from 'config';
 import { getBeverageDetails as getBeverageDetailsAction } from 'store/actions';
 import { grid } from 'utils';
 import { Spinner } from 'elements';
@@ -38,6 +38,7 @@ const Details = ({
 }) => {
 	const { setAppError } = useContext(AppErrorContext);
 	const { beverage, setBeverage } = useContext(BeverageDetailsContext);
+	const { setScrollPosition } = useContext(ScrollPositionContext);
 
 	if (isError) {
 		setAppError('appError.fetchFailed.beverageDetails');
@@ -53,6 +54,12 @@ const Details = ({
 
 		return (() => { setBeverage(null); });
 	}, [beverage, params, savedBeverage]);
+
+	useEffect(() => {
+		if (savedBeverage) {
+			setScrollPosition(savedBeverage.id);
+		}
+	}, [savedBeverage]);
 
 	if (!beverage || isLoading) {
 		return <Spinner center />;

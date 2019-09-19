@@ -9,6 +9,7 @@ import Header, { HeaderContext } from './Header';
 import Language, { LanguageContext } from './Language';
 import Navigation, { NavigationContext } from './Navigation';
 import Routes from './Routes';
+import ScrollPosition, { ScrollPositionContext } from './ScrollPosition';
 
 export {
 	AppError,
@@ -30,4 +31,6 @@ export {
 	Navigation,
 	NavigationContext,
 	Routes,
+	ScrollPosition,
+	ScrollPositionContext,
 };

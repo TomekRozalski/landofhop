@@ -6,7 +6,7 @@ import { Prompt, withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
 
-import { AppErrorContext } from 'config';
+import { AppErrorContext, ScrollPositionContext } from 'config';
 import {
 	clearBeverageDashboard as clearBeverageDashboardAction,
 	getBeveragesList as getBeveragesListAction,
@@ -38,6 +38,7 @@ const BeverageFormWrapper = ({
 	saveFormValues,
 }) => {
 	const { setAppError } = useContext(AppErrorContext);
+	const { setScrollPosition } = useContext(ScrollPositionContext);
 
 	const [step, setStep] = useState(1);
 	const [subform, setSubform] = useState(null);
@@ -114,6 +115,7 @@ const BeverageFormWrapper = ({
 					setAppError,
 					setHeader,
 					setReadyToUnmount,
+					setScrollPosition,
 					showSubform,
 					step,
 				})

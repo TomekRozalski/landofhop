@@ -13,6 +13,7 @@ import {
 	Language,
 	Navigation,
 	Routes,
+	ScrollPosition,
 } from './index';
 
 const ProviderComposer = ({ contexts, children }) => (
@@ -32,6 +33,7 @@ const GlobalStateProvider = () => (
 				<Language />,
 				<AppError />,
 				<Navigation />,
+				<ScrollPosition />,
 				<Header />,
 				<Authentication />,
 				<Dictionary />,

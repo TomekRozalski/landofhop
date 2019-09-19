@@ -65,6 +65,7 @@ const UpdateBeverage = ({
 						setAppError,
 						setHeader,
 						setReadyToUnmount,
+						setScrollPosition,
 						showSubform,
 						step,
 					}) => {
@@ -79,6 +80,7 @@ const UpdateBeverage = ({
 							savedForms,
 							setAppError,
 							setReadyToUnmount,
+							setScrollPosition,
 						});
 
 						const commonProps = {

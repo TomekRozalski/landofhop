@@ -21,6 +21,7 @@ const AddNewBeverage = () => (
 				setAppError,
 				setHeader,
 				setReadyToUnmount,
+				setScrollPosition,
 				showSubform,
 				step,
 			}) => {
@@ -34,6 +35,7 @@ const AddNewBeverage = () => (
 					savedForms,
 					setAppError,
 					setReadyToUnmount,
+					setScrollPosition,
 				});
 
 				const commonProps = {
