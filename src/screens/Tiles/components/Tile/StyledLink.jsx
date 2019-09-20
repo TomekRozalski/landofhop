@@ -1,7 +1,8 @@
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { colors, timingFunctions } from 'utils/theme';
+import { colors } from 'utils/theme';
+import Image from './Image';
 
 const bounce = () => keyframes`
 	0% {
@@ -18,11 +19,9 @@ export default styled(Link)`
 	align-items: flex-end;
 	width: 100%;
 	height: ${({ height }) => (height || 300)}px;
-	transform: scale(1);
-	transition: transform ${timingFunctions.spring};
 	position: relative;
 
-	&:hover {
+	&:hover ${Image} {
 		transform: scale(0.9);
 		z-index: 100;
 	}

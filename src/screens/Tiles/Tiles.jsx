@@ -12,7 +12,7 @@ import { AppErrorContext } from 'config';
 import { getBeveragesList as getBeveragesListAction } from 'store/actions';
 import { beverageBasics } from 'utils/types';
 import { Spinner, WithTitle } from 'elements';
-import { GridOfItems } from './components';
+import ListWrapper from './components/ListWrapper';
 
 const Tiles = ({
 	getBeveragesList,
@@ -23,7 +23,7 @@ const Tiles = ({
 	const { setAppError } = useContext(AppErrorContext);
 
 	useEffect(() => {
-		if (list.length < 5) {
+		if (!list.length) {
 			getBeveragesList();
 		}
 	}, []);
@@ -39,7 +39,7 @@ const Tiles = ({
 				? <Spinner center />
 				: (
 					<AutoSizer>
-						{dimension => <GridOfItems dimension={dimension} list={list} />}
+						{dimension => <ListWrapper dimension={dimension} list={list} />}
 					</AutoSizer>
 				)
 			}

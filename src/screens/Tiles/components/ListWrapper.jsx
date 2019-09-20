@@ -11,13 +11,13 @@ import styled from 'styled-components';
 import { ScrollPositionContext } from 'config';
 import { setContainerHeight } from 'utils';
 import { beverageBasics } from 'utils/types';
-import { ListOfItems, Tile } from './index';
+import { List, Tile } from './index';
 
 const HiddenButton = styled.button`
 	display: none;
 `;
 
-const GridOfItems = ({ dimension, list }) => {
+const ListWrapper = ({ dimension, list }) => {
 	const button = useRef();
 	const gridRef = useRef();
 
@@ -39,7 +39,7 @@ const GridOfItems = ({ dimension, list }) => {
 		}
 	}, [list]);
 
-	const innerElementType = forwardRef((props, ref) => <ListOfItems props={props} ref={ref} />);
+	const innerElementType = forwardRef((props, ref) => <List props={props} ref={ref} />);
 
 	return (
 		<>
@@ -65,7 +65,6 @@ const GridOfItems = ({ dimension, list }) => {
 						.slice((index * 5) - 5, index * 5)
 						.map(({ container }) => setContainerHeight(container));
 
-
 					return (Math.max(...listOfContainerSizes) + 10);
 				}}
 				width={dimension.width - 60}
@@ -77,7 +76,7 @@ const GridOfItems = ({ dimension, list }) => {
 	);
 };
 
-GridOfItems.propTypes = {
+ListWrapper.propTypes = {
 	dimension: shape({
 		height: number.isRequired,
 		width: number.isRequired,
@@ -87,4 +86,4 @@ GridOfItems.propTypes = {
 	).isRequired,
 };
 
-export default GridOfItems;
+export default ListWrapper;

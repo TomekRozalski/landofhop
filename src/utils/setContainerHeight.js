@@ -3,7 +3,18 @@ import { number, string } from 'prop-types';
 const setContainerHeight = ({ unit, type, value }) => {
 	if (unit === 'ml') {
 		if (type === 'bottle') {
-			return value > 400 ? 500 : 446;
+			switch (value) {
+			case 750:
+				return 592;
+			case 500:
+			case 450:
+				return 500;
+			case 375:
+			case 330:
+				return 446;
+			default:
+				return 0;
+			}
 		}
 
 		if (type === 'can') {
