@@ -11,6 +11,7 @@ import styled from 'styled-components';
 import { ScrollPositionContext } from 'config';
 import { setContainerHeight } from 'utils';
 import { beverageBasics } from 'utils/types';
+import { sizes } from 'utils/theme';
 import { List, Tile } from './index';
 
 const HiddenButton = styled.button`
@@ -49,7 +50,7 @@ const ListWrapper = ({ dimension, list }) => {
 			/>
 			<VariableSizeGrid
 				columnCount={5}
-				columnWidth={() => 220}
+				columnWidth={() => sizes.tiles.column.width.lg}
 				innerElementType={innerElementType}
 				height={dimension.height}
 				ref={gridRef}
@@ -58,16 +59,16 @@ const ListWrapper = ({ dimension, list }) => {
 					const index = i + 1;
 
 					if (index === Math.ceil(list.length / 5) + 1) {
-						return 80;
+						return sizes.tiles.padding.bottom.lg;
 					}
 
 					const listOfContainerSizes = list
 						.slice((index * 5) - 5, index * 5)
 						.map(({ container }) => setContainerHeight(container));
 
-					return (Math.max(...listOfContainerSizes) + 10);
+					return (Math.max(...listOfContainerSizes) + sizes.tiles.padding.top.lg);
 				}}
-				width={dimension.width - 60}
+				width={dimension.width - (sizes.container.border.width.lg * 2)}
 				itemData={list}
 			>
 				{ Tile }
