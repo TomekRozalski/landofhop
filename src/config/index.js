@@ -5,7 +5,6 @@ import DetailsControlPanel, { DetailsControlPanelContext } from './DetailsContro
 import Device, { DeviceContext } from './Device';
 import Dictionary from './Dictionary';
 import GlobalStateProvider from './GlobalStateProvider';
-import Header, { HeaderContext } from './Header';
 import Language, { LanguageContext } from './Language';
 import Navigation, { NavigationContext } from './Navigation';
 import Routes from './Routes';
@@ -24,8 +23,6 @@ export {
 	DeviceContext,
 	Dictionary,
 	GlobalStateProvider,
-	Header,
-	HeaderContext,
 	Language,
 	LanguageContext,
 	Navigation,

@@ -10,7 +10,7 @@ const Button = styled.button`
 	grid-area: more;
 	display: flex;
     justify-content: center;
-	padding: ${sizes.container.padding.lg};
+	padding: ${sizes.container.padding}px;
 	background: ${colors.gray[100]};
 	cursor: pointer;
 

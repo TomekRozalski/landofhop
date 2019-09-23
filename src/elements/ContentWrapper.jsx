@@ -6,9 +6,9 @@ import { colors, indexes, sizes } from 'utils/theme';
 
 const Main = styled.main`
 	min-height: 100vh;
-	border: 3rem solid ${colors.gray[100]};
+	border: ${sizes.container.border.width}px solid ${colors.gray[100]};
 	border-top: 0;
-	padding: ${sizes.header.height.tall.lg} 0 ${sizes.container.border.width}px 0;
+	padding: ${sizes.header.height}px 0 ${sizes.container.border.width}px 0;
 	background-color: ${colors.gray[700]};
 	position: relative;
 	z-index: ${indexes.main};

@@ -9,7 +9,7 @@ const StyledLink = styled(Link)`
 	display: flex;
 	justify-content: center;
 
-	&:hover > * {
+	&:hover > h1 {
 		width: 7rem;
 	}
 `;
