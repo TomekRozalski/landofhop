@@ -50,7 +50,7 @@ const ListWrapper = ({ dimension, list }) => {
 			/>
 			<VariableSizeGrid
 				columnCount={5}
-				columnWidth={() => sizes.tiles.column.width.lg}
+				columnWidth={() => sizes.tiles.column.width}
 				innerElementType={innerElementType}
 				height={dimension.height}
 				ref={gridRef}
@@ -59,16 +59,16 @@ const ListWrapper = ({ dimension, list }) => {
 					const index = i + 1;
 
 					if (index === Math.ceil(list.length / 5) + 1) {
-						return sizes.tiles.padding.bottom.lg;
+						return sizes.tiles.padding.bottom;
 					}
 
 					const listOfContainerSizes = list
 						.slice((index * 5) - 5, index * 5)
 						.map(({ container }) => setContainerHeight(container));
 
-					return (Math.max(...listOfContainerSizes) + sizes.tiles.padding.top.lg);
+					return (Math.max(...listOfContainerSizes) + sizes.tiles.padding.top);
 				}}
-				width={dimension.width - (sizes.container.border.width.lg * 2)}
+				width={dimension.width - (sizes.container.border.width * 2)}
 				itemData={list}
 			>
 				{ Tile }

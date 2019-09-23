@@ -2,10 +2,9 @@ import React, { useContext, useMemo, useState } from 'react';
 import { arrayOf, number, shape } from 'prop-types';
 
 import { DeviceContext, LanguageContext } from 'config';
-import { setContainerHeight } from 'utils';
+import { constants, setContainerHeight } from 'utils';
 import { getNameByLanguage } from 'utils/helpers';
 import { beverageBasics } from 'utils/types';
-import { getCoverPath } from '../../utils';
 import {
 	BrokenContainer,
 	Container,
@@ -46,7 +45,7 @@ const Tile = ({
 	const { value: formattedName } = getNameByLanguage({ values: name, language });
 	const { value: formattedBrand } = getNameByLanguage({ values: brandName, language });
 
-	const coverPath = useMemo(() => getCoverPath({ badge, brandBadge, shortId }));
+	const coverPath = useMemo(() => `${constants.servers.images}${brandBadge}/${badge}/${shortId}/cover/${webpSupport ? 'webp' : 'jpg'}`);
 
 	return (
 		<Item style={style}>

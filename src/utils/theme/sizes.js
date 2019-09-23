@@ -1,11 +1,7 @@
 export default {
 	container: {
 		border: {
-			width: {
-				sm: 30,
-				md: 30,
-				lg: 30,
-			},
+			width: 30,
 		},
 		padding: {
 			sm: '0 30px',
@@ -27,24 +23,19 @@ export default {
 	},
 	tiles: {
 		column: {
-			width: {
-				sm: 220,
-				md: 220,
-				lg: 220,
-			},
+			padding: 10,
+			width: 220,
 		},
 		row: {
-			padding: {
-				sm: 10,
-				md: 10,
-				lg: 10,
-			},
+			padding: 10,
 		},
 		padding: {
-			bottom: {
-				sm: 80,
-				md: 80,
-				lg: 80,
+			bottom: 80,
+			top: 10,
+		},
+		tile: {
+			padding: {
+				bottom: 10,
 			},
 		},
 	},

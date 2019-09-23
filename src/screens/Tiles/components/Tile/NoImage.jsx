@@ -11,7 +11,7 @@ const Wrapper = styled.em`
 	align-items: center;
 
 	svg {
-		width: 120px;
+		width: 12rem;
 		margin-top: 8rem;
 
 		> * { fill: ${colors.gray[500]}; }
