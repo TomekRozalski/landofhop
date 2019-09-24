@@ -52,7 +52,7 @@ const ListWrapper = ({ dimension, list }) => {
 				columnCount={5}
 				columnWidth={() => sizes.tiles.column.width}
 				innerElementType={innerElementType}
-				height={dimension.height}
+				height={dimension.height + sizes.container.border.width}
 				ref={gridRef}
 				rowCount={Math.ceil(list.length / 5) + 1}
 				rowHeight={(i) => {

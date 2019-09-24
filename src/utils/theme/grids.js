@@ -4,7 +4,7 @@ import sizes from './sizes';
 
 const headerGrid = css`
 	display: grid;
-	grid-template-columns: ${`minmax(${sizes.header.height}px, auto) 1fr minmax(${sizes.header.height}px, auto)`};
+	grid-template-columns: ${`minmax(${sizes.topbar.height}px, auto) 1fr minmax(${sizes.topbar.height}px, auto)`};
 	grid-template-areas: 'search logo more';
 	width: ${sizes.container.width}px;
 	margin: 0 auto;

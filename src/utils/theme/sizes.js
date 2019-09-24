@@ -13,6 +13,9 @@ export default {
 			lg: '10px',
 		},
 	},
+	navbar: {
+		height: 40,
+	},
 	tiles: {
 		column: {
 			padding: 10,
@@ -31,7 +34,7 @@ export default {
 			},
 		},
 	},
-	header: {
+	topbar: {
 		height: 120,
 	},
 };

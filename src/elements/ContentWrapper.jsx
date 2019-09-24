@@ -1,22 +1,35 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { colors, indexes, sizes } from 'utils/theme';
+import { NavigationContext } from 'config';
+import {
+	colors,
+	indexes,
+	sizes,
+	timingFunctions,
+} from 'utils/theme';
 
 const Main = styled.main`
-	min-height: 100vh;
+	height: 100vh;
+	overflow: hidden;
 	border: ${sizes.container.border.width}px solid ${colors.gray[100]};
 	border-top: 0;
-	padding: ${sizes.header.height}px 0 ${sizes.container.border.width}px 0;
+	padding-top: ${({ withNavbar }) => (withNavbar ? (sizes.topbar.height + sizes.navbar.height) : sizes.topbar.height)}px;
+	padding-bottom: ${sizes.container.border.width}px;
+	transition: padding-top ${timingFunctions.spring};
 	background-color: ${colors.gray[700]};
 	position: relative;
 	z-index: ${indexes.main};
 `;
 
-const ContentWrapper = ({ children }) => (
-	<Main>{children}</Main>
-);
+const ContentWrapper = ({ children }) => {
+	const { navbar } = useContext(NavigationContext);
+
+	return (
+		<Main withNavbar={navbar}>{children}</Main>
+	);
+};
 
 ContentWrapper.propTypes = {
 	children: PropTypes.node.isRequired,
