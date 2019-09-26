@@ -6,6 +6,7 @@ export default {
 	navbar: 14,
 	header: 15,
 	loading: 30,
+	mainBorder: 40,
 	overlay: 50,
 	popup: 51,
 };

@@ -68,6 +68,7 @@ const ListWrapper = ({ dimension, list }) => {
 
 					return (Math.max(...listOfContainerSizes) + sizes.tiles.padding.top);
 				}}
+				style={{ marginLeft: sizes.container.border.width }}
 				width={dimension.width - (sizes.container.border.width * 2)}
 				itemData={list}
 			>

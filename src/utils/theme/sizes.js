@@ -14,7 +14,7 @@ export default {
 		},
 	},
 	navbar: {
-		height: 40,
+		height: 70,
 	},
 	tiles: {
 		column: {
