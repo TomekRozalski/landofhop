@@ -14,9 +14,10 @@ const getBeverageDetails = ({
 				type: actionsName.GET_BEVERAGE_DETAILS_PENDING,
 			});
 
-			const endpoint = `${constants.servers.data}${constants.api_endpoints.beverage_details}${shortId}/${brand}/${badge}`;
-
-			serverCall({ endpoint })
+			serverCall({
+				type: constants.api_endpoints.beverage_details,
+				params: `/${shortId}/${brand}/${badge}`,
+			})
 				.then((res) => {
 					if (res.status !== 200) {
 						throw new Error();

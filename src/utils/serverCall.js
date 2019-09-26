@@ -1,27 +1,24 @@
 import constants from './constants';
 
-const serverCall = ({ endpoint, type, ...rest }) => {
-	if (type) {
-		const { format, method, path } = type;
-		let formData;
-
-		if (format === 'JSON') {
-			formData = 'application/json';
-		}
-
-		return (
-			fetch(constants.servers.data + path, {
-				credentials: 'include',
-				...(formData && { headers: { 'Content-Type': formData } }),
-				method,
-				...rest,
-			})
-		);
-	}
+const serverCall = ({
+	params,
+	type: {
+		images,
+		method,
+		path,
+		withParams,
+	},
+	...rest
+}) => {
+	const callTo = withParams
+		? constants.servers.data + path + params
+		: constants.servers.data + path;
 
 	return (
-		fetch(endpoint, {
+		fetch(callTo, {
 			credentials: 'include',
+			...(!images && { headers: { 'Content-Type': 'application/json' } }),
+			method,
 			...rest,
 		})
 	);

@@ -10,7 +10,7 @@ const getBeveragesList = () => (
 				type: actionsName.GET_BEVERAGES_LIST_PENDING,
 			});
 
-			serverCall({ endpoint: constants.servers.data + constants.api_endpoints.beverage_list })
+			serverCall({ type: constants.api_endpoints.beverage_list })
 				.then((res) => {
 					if (res.status !== 200) {
 						throw new Error();

@@ -34,9 +34,9 @@
     "yup": "^0.27.0"
   },
   "scripts": {
-    "start": "REACT_APP_SERVER_DATA=http://localhost:3100/ REACT_APP_SERVER_IMAGES=https://land-of-hop-images.s3.eu-central-1.amazonaws.com/ react-scripts start",
-    "build": "REACT_APP_SERVER_DATA=https://land-of-hop-server.herokuapp.com/ REACT_APP_SERVER_IMAGES=https://land-of-hop-images.s3.eu-central-1.amazonaws.com/ react-scripts build",
-    "test": "REACT_APP_SERVER_DATA=http://localhost:3100/ REACT_APP_SERVER_IMAGES=https://land-of-hop-images.s3.eu-central-1.amazonaws.com/ react-scripts test",
+    "start": "REACT_APP_SERVER_DATA=http://localhost:3100/api/v1/ REACT_APP_SERVER_IMAGES=https://land-of-hop-images.s3.eu-central-1.amazonaws.com/ react-scripts start",
+    "build": "REACT_APP_SERVER_DATA=https://land-of-hop-server.herokuapp.com/api/v1/ REACT_APP_SERVER_IMAGES=https://land-of-hop-images.s3.eu-central-1.amazonaws.com/ react-scripts build",
+    "test": "REACT_APP_SERVER_DATA=http://localhost:3100/api/v1/ REACT_APP_SERVER_IMAGES=https://land-of-hop-images.s3.eu-central-1.amazonaws.com/ react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
