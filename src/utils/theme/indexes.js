@@ -4,9 +4,9 @@ export default {
 	langLink: 6,
 	main: 13,
 	navbar: 14,
-	header: 15,
+	mainBorder: 15,
+	header: 16,
 	loading: 30,
-	mainBorder: 40,
 	overlay: 50,
 	popup: 51,
 };

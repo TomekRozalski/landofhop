@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import { NavigationContext } from 'config';
 import { timingFunctions } from 'utils/theme';
 
 const StyledLink = styled(Link)`
@@ -33,10 +34,14 @@ const Title = styled.h1`
 	}
 `;
 
-const Logo = () => (
-	<StyledLink to="/">
-		<Title>Land of Hop</Title>
-	</StyledLink>
-);
+const Logo = () => {
+	const { setNavbar } = useContext(NavigationContext);
+
+	return (
+		<StyledLink onClick={() => setNavbar(false)} to="/">
+			<Title>Land of Hop</Title>
+		</StyledLink>
+	);
+};
 
 export default Logo;

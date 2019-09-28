@@ -13,8 +13,11 @@ export default {
 			lg: '10px',
 		},
 	},
+	loginbar: {
+		height: 40,
+	},
 	navbar: {
-		height: 70,
+		height: 80,
 	},
 	tiles: {
 		column: {

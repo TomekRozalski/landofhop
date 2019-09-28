@@ -21,7 +21,17 @@ const Wrapper = styled.header`
 	top: 0;
 	left: 0;
 	z-index: ${indexes.header};
-	transform: translateY(${({ withNavbar }) => (withNavbar ? sizes.navbar.height : 0)}px);
+	transform: translateY(${({ withLoginbar, withNavbar }) => {
+		if (withNavbar && !withLoginbar) {
+			return sizes.navbar.height;
+		}
+
+		if (withNavbar && withLoginbar) {
+			return sizes.navbar.height + sizes.loginbar.height;
+		}
+
+		return 0;
+	}}px);
 	transition: transform ${timingFunctions.default};
 `;
 
@@ -31,10 +41,10 @@ const HeaderContainer = styled.div`
 `;
 
 const TopBar = () => {
-	const { navbar } = useContext(NavigationContext);
+	const { loginbar, navbar } = useContext(NavigationContext);
 
 	return (
-		<Wrapper withNavbar={navbar}>
+		<Wrapper withLoginbar={loginbar} withNavbar={navbar}>
 			<HeaderContainer>
 				<Logo />
 				<SearchbarSwitcher />

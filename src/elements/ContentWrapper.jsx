@@ -10,7 +10,6 @@ const Main = styled.main`
 	margin-top: ${sizes.topbar.height}px;
 	overflow-y: scroll;
 	background-color: ${colors.gray[700]};
-	position: relative;
 	z-index: ${indexes.main};
 
 	&::before {

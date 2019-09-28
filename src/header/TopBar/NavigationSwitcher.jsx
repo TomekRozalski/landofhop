@@ -33,10 +33,10 @@ const Button = styled.button`
 `;
 
 const NavigationSwitcher = () => {
-	const { navbar, toggleNavbar } = useContext(NavigationContext);
+	const { navbar, setLoginbar, toggleNavbar } = useContext(NavigationContext);
 
 	return (
-		<Button onClick={toggleNavbar}>
+		<Button onClick={() => { toggleNavbar(); setLoginbar(false); }}>
 			<FormattedMessage id={`header.${navbar ? 'close' : 'open'}Navbar`}>
 				{title => <More title={title} />}
 			</FormattedMessage>
