@@ -5,6 +5,7 @@ const saveCap = ({
 	fileToRequest,
 	id,
 	params,
+	token,
 }) => (
 	dispatch => (
 		new Promise((resolve, reject) => {
@@ -22,6 +23,7 @@ const saveCap = ({
 			serverCall({
 				type: constants.api_endpoints.save_cap,
 				body: formData,
+				token,
 			})
 				.then(({ status }) => {
 					if (status === 200) {

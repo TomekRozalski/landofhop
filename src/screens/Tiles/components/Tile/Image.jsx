@@ -6,6 +6,6 @@ export default styled.img`
 	display: ${({ isLoaded }) => (isLoaded ? 'block' : 'none')};
 	height: 100%;
 	transform: scale(1);
-	transition: transform ${timingFunctions.spring};
+	transition: transform ${timingFunctions.default};
 	pointer-events: none;
 `;

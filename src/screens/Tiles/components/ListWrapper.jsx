@@ -52,7 +52,7 @@ const ListWrapper = ({ dimension, list }) => {
 				columnCount={5}
 				columnWidth={() => sizes.tiles.column.width}
 				innerElementType={innerElementType}
-				height={dimension.height + sizes.container.border.width}
+				height={dimension.height}
 				ref={gridRef}
 				rowCount={Math.ceil(list.length / 5) + 1}
 				rowHeight={(i) => {
@@ -68,8 +68,7 @@ const ListWrapper = ({ dimension, list }) => {
 
 					return (Math.max(...listOfContainerSizes) + sizes.tiles.padding.top);
 				}}
-				style={{ marginLeft: sizes.container.border.width }}
-				width={dimension.width - (sizes.container.border.width * 2)}
+				width={dimension.width}
 				itemData={list}
 			>
 				{ Tile }

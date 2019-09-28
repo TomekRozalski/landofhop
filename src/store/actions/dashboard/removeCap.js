@@ -1,7 +1,7 @@
 import { constants, serverCall } from 'utils';
 import actionsName from '../../actionsName';
 
-const removeCap = ({ id, params }) => (
+const removeCap = ({ id, params, token }) => (
 	async (dispatch) => {
 		dispatch({
 			type: actionsName.REMOVE_CAP_PENDING,
@@ -11,6 +11,7 @@ const removeCap = ({ id, params }) => (
 			const res = await serverCall({
 				type: constants.api_endpoints.remove_cap,
 				body: JSON.stringify({ id, params }),
+				token,
 			});
 
 			if (res.status === 200) {

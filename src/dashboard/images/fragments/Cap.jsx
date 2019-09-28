@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { useDropzone } from 'react-dropzone';
 import { FormattedMessage } from 'react-intl';
 
-import { AppErrorContext } from 'config';
+import { AppErrorContext, AuthenticationContext } from 'config';
 import { Button } from 'elements';
 import { constants } from 'utils';
 import { removeCap as removeCapAction, saveCap as saveCapAction } from 'store/actions';
@@ -33,6 +33,7 @@ const Cap = ({
 	const [fileToRequest, setFileToRequest] = useState(null);
 	const [savedImage, setSavedImage] = useState(false);
 
+	const { token } = useContext(AuthenticationContext);
 	const { setAppError } = useContext(AppErrorContext);
 
 	if (isError) {
@@ -78,13 +79,14 @@ const Cap = ({
 		}
 	}, [fileToPreview]);
 
-	const onSaveImages = (e) => {
+	const onSaveImage = (e) => {
 		e.preventDefault();
 
 		saveCap({
 			fileToRequest,
 			id,
 			params,
+			token,
 		})
 			.then(() => {
 				setFileToPreview(null);
@@ -95,7 +97,7 @@ const Cap = ({
 	const onRemoveImage = (e) => {
 		e.preventDefault();
 
-		removeCap({ id, params });
+		removeCap({ id, params, token });
 	};
 
 	return (
@@ -125,7 +127,7 @@ const Cap = ({
 						<Button
 							disabled={!fileToRequest}
 							isSubmitting={isLoading}
-							onClick={onSaveImages}
+							onClick={onSaveImage}
 							wide
 						>
 							<FormattedMessage id="dashboard.addNew" />

@@ -14,6 +14,7 @@ const Wrapper = styled.div`
 const Button = styled.button`
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	width: 100%;
 	padding: ${sizes.container.padding}px;
 	background: ${colors.gray[100]};

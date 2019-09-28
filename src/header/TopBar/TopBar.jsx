@@ -18,10 +18,11 @@ const Wrapper = styled.header`
 	overflow: hidden;
 	background-color: ${colors.gray[100]};
 	position: fixed;
-	top: ${({ withNavbar }) => (withNavbar ? sizes.navbar.height : 0)}px;
-	transition: top ${timingFunctions.spring};
+	top: 0;
 	left: 0;
 	z-index: ${indexes.header};
+	transform: translateY(${({ withNavbar }) => (withNavbar ? sizes.navbar.height : 0)}px);
+	transition: transform ${timingFunctions.default};
 `;
 
 const HeaderContainer = styled.div`
@@ -29,7 +30,7 @@ const HeaderContainer = styled.div`
 	grid-template-rows: ${sizes.topbar.height}px;
 `;
 
-const Header = () => {
+const TopBar = () => {
 	const { navbar } = useContext(NavigationContext);
 
 	return (
@@ -43,4 +44,4 @@ const Header = () => {
 	);
 };
 
-export default Header;
+export default TopBar;

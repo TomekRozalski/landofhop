@@ -10,16 +10,17 @@ const StyledLink = styled(Link)`
 	justify-content: center;
 
 	&:hover > h1 {
-		width: 7rem;
+		transform: scaleX(1.2);
 	}
 `;
 
 const Title = styled.h1`
 	width: 5rem;
-	transition: width ${timingFunctions.spring};
 	height: 100%;
 	overflow: hidden;
 	position: relative;
+	transform: scaleX(1);
+	transition: transform ${timingFunctions.default};
 
 	&::before {
 		content: '';

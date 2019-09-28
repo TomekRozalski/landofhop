@@ -1,3 +1,3 @@
 export default {
-	spring: '.2s cubic-bezier(0.64, 0.57, 0.67, 1.53)',
+	default: '.2s cubic-bezier(.42,0,1,1)',
 };

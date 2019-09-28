@@ -8,8 +8,7 @@ import {
 } from 'react-router-dom';
 import NProgress from 'nprogress';
 
-import { TopBar } from 'navigation';
-import { Navbar } from 'main/top';
+import Header from 'header';
 import { constants } from 'utils';
 import { GlobalStyle } from 'utils/theme';
 import { ContentWrapper, ErrorMessage, Spinner } from 'elements';
@@ -71,8 +70,7 @@ PrivateRoute.propTypes = {
 const Routes = () => (
 	<Router>
 		<>
-			<TopBar />
-			<Navbar />
+			<Header />
 			<ContentWrapper>
 				<Suspense fallback={<Spinner center />}>
 					<Switch>

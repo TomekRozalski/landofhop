@@ -5,6 +5,7 @@ const removeBeverageGallery = ({
 	files,
 	id,
 	params: { badge, brand, shortId },
+	token,
 }) => (
 	(dispatch) => {
 		dispatch({
@@ -20,6 +21,7 @@ const removeBeverageGallery = ({
 				id,
 				shortId,
 			}),
+			token,
 		})
 			.then(({ status }) => {
 				if (status === 200) {

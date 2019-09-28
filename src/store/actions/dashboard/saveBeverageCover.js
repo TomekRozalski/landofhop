@@ -4,6 +4,7 @@ import actionsName from '../../actionsName';
 const saveBeverageCover = ({
 	file,
 	params: { badge, brand, shortId },
+	token,
 }) => (
 	dispatch => (
 		new Promise((resolve, reject) => {
@@ -20,6 +21,7 @@ const saveBeverageCover = ({
 			serverCall({
 				type: constants.api_endpoints.save_cover,
 				body: formData,
+				token,
 			})
 				.then(({ status }) => {
 					if (status === 200) {

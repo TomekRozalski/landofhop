@@ -5,6 +5,7 @@ const saveImagesBeverageGallery = ({
 	files,
 	id,
 	params: { badge, brand, shortId },
+	token,
 }) => (
 	(dispatch) => {
 		dispatch({
@@ -24,6 +25,7 @@ const saveImagesBeverageGallery = ({
 		serverCall({
 			type: constants.api_endpoints.save_gallery,
 			body: formData,
+			token,
 		})
 			.then(({ status }) => {
 				if (status === 200) {
