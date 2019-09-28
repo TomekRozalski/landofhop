@@ -29,6 +29,7 @@ const onSubmit = ({
 	getInstitutionsList,
 	hide,
 	setAppError,
+	token,
 }) => (
 	values,
 	{ setSubmitting },
@@ -39,6 +40,7 @@ const onSubmit = ({
 	serverCall({
 		type: constants.api_endpoints.institution_save,
 		body: JSON.stringify(data),
+		token,
 	})
 		.then(res => res.json())
 		.then(getInstitutionsList)

@@ -24,6 +24,7 @@ const AddNewBeverage = () => (
 				setScrollPosition,
 				showSubform,
 				step,
+				token,
 			}) => {
 				if (!header) {
 					setHeader('dashboard.addNewBeverage.title');
@@ -36,6 +37,7 @@ const AddNewBeverage = () => (
 					setAppError,
 					setReadyToUnmount,
 					setScrollPosition,
+					token,
 				});
 
 				const commonProps = {

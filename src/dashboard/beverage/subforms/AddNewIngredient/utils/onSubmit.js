@@ -17,6 +17,7 @@ const onSubmit = ({
 	getIngredientsList,
 	hide,
 	setAppError,
+	token,
 }) => (
 	values,
 	{ setSubmitting },
@@ -27,6 +28,7 @@ const onSubmit = ({
 	serverCall({
 		type: constants.api_endpoints.ingredient_save,
 		body: JSON.stringify(data),
+		token,
 	})
 		.then(res => res.json())
 		.then(getIngredientsList)

@@ -1,7 +1,12 @@
 import { constants, serverCall } from 'utils';
 import actionsName from '../../actionsName';
 
-const removeBeverage = ({ files, id, params }) => (
+const removeBeverage = ({
+	files,
+	id,
+	params,
+	token,
+}) => (
 	dispatch => (
 		new Promise((resolve, reject) => {
 			dispatch({
@@ -11,6 +16,7 @@ const removeBeverage = ({ files, id, params }) => (
 			serverCall({
 				type: constants.api_endpoints.beverage_remove,
 				body: JSON.stringify({ files, id, params }),
+				token,
 			})
 				.then(({ status }) => {
 					if (status === 200) {

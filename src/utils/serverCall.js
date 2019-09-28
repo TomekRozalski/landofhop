@@ -8,6 +8,7 @@ const serverCall = ({
 		path,
 		withParams,
 	},
+	token,
 	...rest
 }) => {
 	const callTo = withParams
@@ -17,7 +18,12 @@ const serverCall = ({
 	return (
 		fetch(callTo, {
 			credentials: 'include',
-			...(!images && { headers: { 'Content-Type': 'application/json' } }),
+			...((token || !images) && {
+				headers: {
+					...(!images && { 'Content-Type': 'application/json' }),
+					...(token && { Authorization: `Bearer ${token}` }),
+				},
+			}),
 			method,
 			...rest,
 		})

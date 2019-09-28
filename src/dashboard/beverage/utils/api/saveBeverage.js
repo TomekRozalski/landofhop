@@ -15,6 +15,7 @@ const saveBeverage = ({
 	setAppError,
 	setReadyToUnmount,
 	setScrollPosition,
+	token,
 }) => ({
 	setSubmitting,
 	values,
@@ -42,6 +43,7 @@ const saveBeverage = ({
 	return serverCall({
 		type: constants.api_endpoints.beverage_save,
 		body: JSON.stringify(accumulator),
+		token,
 	})
 		.then(res => res.json())
 		.then((res) => {

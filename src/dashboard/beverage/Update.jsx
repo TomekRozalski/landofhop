@@ -68,6 +68,7 @@ const UpdateBeverage = ({
 						setScrollPosition,
 						showSubform,
 						step,
+						token,
 					}) => {
 						if (!header) {
 							setHeader('dashboard.updateBeverage.title');
@@ -81,6 +82,7 @@ const UpdateBeverage = ({
 							setAppError,
 							setReadyToUnmount,
 							setScrollPosition,
+							token,
 						});
 
 						const commonProps = {

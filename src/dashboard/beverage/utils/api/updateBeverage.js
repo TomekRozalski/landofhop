@@ -16,6 +16,7 @@ const updateBeverage = ({
 	setAppError,
 	setReadyToUnmount,
 	setScrollPosition,
+	token,
 }) => ({
 	setSubmitting,
 	values,
@@ -43,6 +44,7 @@ const updateBeverage = ({
 	return serverCall({
 		type: constants.api_endpoints.beverage_update,
 		body: JSON.stringify(accumulator),
+		token,
 	})
 		.then(res => res.json())
 		.then(getBeveragesList)

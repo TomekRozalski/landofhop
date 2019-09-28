@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { connect } from 'react-redux';
 
-import { AppErrorContext } from 'config';
+import { AppErrorContext, AuthenticationContext } from 'config';
 import { getCountriesList as getCountriesListAction } from 'store/actions';
 import { SecondaryForm } from '../../elements';
 import { initialFormValues, onSubmit, validationSchema } from './utils';
 import FormBody from './FormBody';
 
-const AddNewPlace = ({ hide, getCountriesList }) => {
+const AddNewCountry = ({ hide, getCountriesList }) => {
+	const { token } = useContext(AuthenticationContext);
 	const { setAppError } = useContext(AppErrorContext);
 
 	return (
@@ -20,6 +21,7 @@ const AddNewPlace = ({ hide, getCountriesList }) => {
 					getCountriesList,
 					hide,
 					setAppError,
+					token,
 				})}
 				validationSchema={validationSchema}
 				render={FormBody({ hide })}
@@ -28,7 +30,7 @@ const AddNewPlace = ({ hide, getCountriesList }) => {
 	);
 };
 
-AddNewPlace.propTypes = {
+AddNewCountry.propTypes = {
 	getCountriesList: PropTypes.func.isRequired,
 	hide: PropTypes.func.isRequired,
 };
@@ -37,4 +39,4 @@ const mapDispatchToProps = {
 	getCountriesList: getCountriesListAction,
 };
 
-export default connect(null, mapDispatchToProps)(AddNewPlace);
+export default connect(null, mapDispatchToProps)(AddNewCountry);
