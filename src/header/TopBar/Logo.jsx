@@ -35,10 +35,10 @@ const Title = styled.h1`
 `;
 
 const Logo = () => {
-	const { setNavbar } = useContext(NavigationContext);
+	const { setLoginbar, setNavbar } = useContext(NavigationContext);
 
 	return (
-		<StyledLink onClick={() => setNavbar(false)} to="/">
+		<StyledLink onClick={() => { setNavbar(false); setLoginbar(false); }} to="/">
 			<Title>Land of Hop</Title>
 		</StyledLink>
 	);

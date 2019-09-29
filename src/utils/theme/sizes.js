@@ -14,7 +14,7 @@ export default {
 		},
 	},
 	loginbar: {
-		height: 40,
+		height: 80,
 	},
 	navbar: {
 		height: 80,

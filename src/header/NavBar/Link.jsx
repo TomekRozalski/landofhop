@@ -9,7 +9,7 @@ import { colors } from 'utils/theme';
 const StyledLink = styled(RouterLink)`
 	display: flex;
 	align-items: center;
-	padding: 10px;
+	padding: 1rem;
 	color: ${colors.gray[100]};
 	background-color: ${colors.gray[700]};
 	transition: color .2s, background-color .2s;
@@ -31,12 +31,12 @@ const StyledLink = styled(RouterLink)`
 `;
 
 const Link = ({ children, disabled, to }) => {
-	const { toggleNavbar } = useContext(NavigationContext);
+	const { setLoginbar, toggleNavbar } = useContext(NavigationContext);
 
 	return (
 		<StyledLink
 			disabled={disabled}
-			onClick={toggleNavbar}
+			onClick={() => { toggleNavbar(); setLoginbar(false); }}
 			to={to}
 		>
 			{children}

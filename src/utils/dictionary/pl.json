@@ -208,6 +208,7 @@
 	"navbar.login": "Zaloguj",
 	"navbar.logout": "Wyloguj",
 	"navbar.searchLabel": "Szukaj",
+	"navbar.stats": "Statystyki",
 	"notFound.countDown": "Przekierowanie do strony głównej za { seconds, plural, one {# sekundę} other {# sekundy}}",
 	"notFound.title": "404 Nie znaleziono"
 }

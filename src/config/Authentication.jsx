@@ -62,6 +62,8 @@ const Authentication = ({ children }) => {
 		} else {
 			setLogout();
 		}
+
+		return rawResponse.status;
 	};
 
 	const logOut = () => {

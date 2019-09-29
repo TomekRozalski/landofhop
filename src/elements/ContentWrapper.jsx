@@ -11,6 +11,7 @@ const Main = styled.main`
 	overflow-y: scroll;
 	background-color: ${colors.gray[700]};
 	z-index: ${indexes.main};
+	position: inherit !important;
 
 	&::before {
 		display: block;
