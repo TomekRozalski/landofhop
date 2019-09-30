@@ -30,11 +30,11 @@ const GlobalStateProvider = () => (
 			contexts={[
 				<Device />,
 				<Language />,
+				<Dictionary />,
 				<AppError />,
 				<Navigation />,
 				<ScrollPosition />,
 				<Authentication />,
-				<Dictionary />,
 				<BeverageDetails />,
 				<DetailsControlPanel />,
 			]}

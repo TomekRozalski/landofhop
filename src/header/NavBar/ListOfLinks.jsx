@@ -22,7 +22,7 @@ const ListOfLinks = () => {
 			</li>
 			{ isLoggedIn && (
 				<li>
-					<Link to="/">
+					<Link to={constants.routes.addNewBeverage}>
 						<FormattedMessage id="navbar.addNewBeverage" />
 					</Link>
 				</li>

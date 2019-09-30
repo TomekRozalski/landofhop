@@ -1,14 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { differenceInSeconds, fromUnixTime } from 'date-fns';
+import { differenceInSeconds, formatDistanceToNow, fromUnixTime } from 'date-fns';
 import jwt from 'jsonwebtoken';
 
+import pl from 'date-fns/locale/pl';
+
 import { constants, serverCall } from 'utils';
-import { NavigationContext } from './Navigation';
+import { AppErrorContext, NavigationContext } from '.';
 
 export const AuthenticationContext = React.createContext({});
 
 const Authentication = ({ children }) => {
+	const { success } = useContext(AppErrorContext);
 	const { setLoginbar, setNavbar } = useContext(NavigationContext);
 
 	const [tokenExpiration, setTokenExpiration] = useState(null);
@@ -22,7 +25,6 @@ const Authentication = ({ children }) => {
 	};
 
 	const checkTokenExpiration = (value) => {
-		console.log('value', value);
 		const decodedToken = jwt.decode(value, { complete: true });
 
 		if (decodedToken) {
@@ -30,6 +32,14 @@ const Authentication = ({ children }) => {
 
 			if (differenceInSeconds(expirationDate, new Date()) > 10) {
 				console.log('-->', differenceInSeconds(expirationDate, new Date()));
+
+				success({
+					id: 'notify.success.tokenValidityTime',
+					values: {
+						diff: formatDistanceToNow(new Date(expirationDate), { addSuffix: true, locale: pl }),
+					},
+				});
+
 				setToken(value);
 				setTokenExpiration(expirationDate);
 				setLoggedIn(true);

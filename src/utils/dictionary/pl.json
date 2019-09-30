@@ -210,5 +210,7 @@
 	"navbar.searchLabel": "Szukaj",
 	"navbar.stats": "Statystyki",
 	"notFound.countDown": "Przekierowanie do strony głównej za { seconds, plural, one {# sekundę} other {# sekundy}}",
-	"notFound.title": "404 Nie znaleziono"
+	"notFound.title": "404 Nie znaleziono",
+
+	"notify.success.tokenValidityTime": "Czas ważności tokena mija { diff }"
 }
