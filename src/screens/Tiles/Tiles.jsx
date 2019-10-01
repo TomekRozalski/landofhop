@@ -8,7 +8,7 @@ import {
 import { connect } from 'react-redux';
 import AutoSizer from 'react-virtualized-auto-sizer';
 
-import { AppErrorContext } from 'config';
+import { NotificationContext } from 'config';
 import { getBeveragesList as getBeveragesListAction } from 'store/actions';
 import { beverageBasics } from 'utils/types';
 import { Spinner, WithTitle } from 'elements';
@@ -20,7 +20,7 @@ const Tiles = ({
 	isLoading,
 	list,
 }) => {
-	const { setAppError } = useContext(AppErrorContext);
+	const { notify } = useContext(NotificationContext);
 
 	useEffect(() => {
 		if (!list.length) {
@@ -29,7 +29,11 @@ const Tiles = ({
 	}, []);
 
 	if (isError) {
-		setAppError('appError.fetchFailed.beverageList');
+		notify({
+			id: 'appError.fetchFailed.beverageList',
+			type: 'danger',
+		});
+
 		return null;
 	}
 

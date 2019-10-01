@@ -29,7 +29,7 @@ const normalizeData = ({
 const onSubmit = ({
 	getPlacesList,
 	hide,
-	setAppError,
+	notify,
 	token,
 }) => (
 	values,
@@ -47,8 +47,12 @@ const onSubmit = ({
 		.then(getPlacesList)
 		.then(() => setSubmitting(false))
 		.then(hide)
-		.catch((err) => {
-			setAppError(err);
+		.catch((error) => {
+			notify({
+				id: '--',
+				type: 'danger',
+				error,
+			});
 			setSubmitting(false);
 		});
 };

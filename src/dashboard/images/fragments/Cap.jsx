@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { useDropzone } from 'react-dropzone';
 import { FormattedMessage } from 'react-intl';
 
-import { AppErrorContext, AuthenticationContext } from 'config';
+import { AuthenticationContext, NotificationContext } from 'config';
 import { Button } from 'elements';
 import { constants } from 'utils';
 import { removeCap as removeCapAction, saveCap as saveCapAction } from 'store/actions';
@@ -34,10 +34,13 @@ const Cap = ({
 	const [savedImage, setSavedImage] = useState(false);
 
 	const { token } = useContext(AuthenticationContext);
-	const { setAppError } = useContext(AppErrorContext);
+	const { notify } = useContext(NotificationContext);
 
 	if (isError) {
-		setAppError('appError.fetchFailed.imageGallery');
+		notify({
+			id: 'appError.fetchFailed.imageGallery', // @ToDo: change
+			type: 'danger',
+		});
 		return null;
 	}
 

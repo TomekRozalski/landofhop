@@ -11,7 +11,7 @@ import NProgress from 'nprogress';
 import Header from 'header';
 import { constants } from 'utils';
 import { GlobalStyle } from 'utils/theme';
-import { ContentWrapper, ErrorMessage, Spinner } from 'elements';
+import { ContentWrapper, Spinner } from 'elements';
 import { AuthenticationContext } from './index';
 
 export const AddNewBeverage = lazy(() => {
@@ -84,7 +84,6 @@ const Routes = () => (
 					</Switch>
 				</Suspense>
 			</ContentWrapper>
-			<ErrorMessage />
 			<GlobalStyle />
 		</>
 	</Router>

@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import get from 'lodash/get';
 import isNil from 'lodash/isNil';
 
-import { AppErrorContext } from 'config';
+import { NotificationContext } from 'config';
 import { Spinner } from 'elements';
 import { getBeverageDetails as getBeverageDetailsAction } from 'store/actions';
 import { MainHeader, Wrapper } from 'dashboard/common/elements';
@@ -25,7 +25,7 @@ const UpdateBeverageImages = ({
 	savedBeverage,
 }) => {
 	const [errors, setErrors] = useState([]);
-	const { setAppError } = useContext(AppErrorContext);
+	const { notify } = useContext(NotificationContext);
 
 	useEffect(() => {
 		if (!savedBeverage) {
@@ -34,7 +34,10 @@ const UpdateBeverageImages = ({
 	}, [savedBeverage]);
 
 	if (isError) {
-		setAppError('appError.fetchFailed.beverageDetails');
+		notify({
+			id: 'appError.fetchFailed.beverageDetails', // @ToDo: change
+			type: 'danger',
+		});
 		return null;
 	}
 

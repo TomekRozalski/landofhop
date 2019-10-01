@@ -1,17 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { differenceInSeconds, formatDistanceToNow, fromUnixTime } from 'date-fns';
+import { differenceInSeconds, formatDistanceStrict, fromUnixTime } from 'date-fns';
 import jwt from 'jsonwebtoken';
 
 import pl from 'date-fns/locale/pl';
 
 import { constants, serverCall } from 'utils';
-import { AppErrorContext, NavigationContext } from '.';
+import { NavigationContext, NotificationContext } from './index';
 
 export const AuthenticationContext = React.createContext({});
 
 const Authentication = ({ children }) => {
-	const { success } = useContext(AppErrorContext);
+	const { notify } = useContext(NotificationContext);
 	const { setLoginbar, setNavbar } = useContext(NavigationContext);
 
 	const [tokenExpiration, setTokenExpiration] = useState(null);
@@ -24,19 +24,22 @@ const Authentication = ({ children }) => {
 		setLoggedIn(false);
 	};
 
-	const checkTokenExpiration = (value) => {
+	const checkTokenExpiration = (value, type) => {
 		const decodedToken = jwt.decode(value, { complete: true });
 
 		if (decodedToken) {
 			const expirationDate = fromUnixTime(decodedToken.payload.exp);
 
 			if (differenceInSeconds(expirationDate, new Date()) > 10) {
-				console.log('-->', differenceInSeconds(expirationDate, new Date()));
-
-				success({
-					id: 'notify.success.tokenValidityTime',
+				notify({
+					id: type === 'init' ? 'tokenExpiresIn' : 'loggedIn',
+					type: 'success',
 					values: {
-						diff: formatDistanceToNow(new Date(expirationDate), { addSuffix: true, locale: pl }),
+						diff: formatDistanceStrict(
+							new Date(expirationDate),
+							new Date(),
+							{ addSuffix: true, locale: pl },
+						),
 					},
 				});
 
@@ -49,6 +52,18 @@ const Authentication = ({ children }) => {
 				return true;
 			}
 
+			notify({
+				id: 'tokenExpired',
+				type: 'warning',
+				values: {
+					diff: formatDistanceStrict(
+						new Date(expirationDate),
+						new Date(),
+						{ addSuffix: true, locale: pl },
+					),
+				},
+			});
+
 			setLogout();
 			setNavbar(true);
 			setLoginbar(true);
@@ -56,7 +71,11 @@ const Authentication = ({ children }) => {
 		}
 
 		setLogout();
-		// setAppError('appError.invalidToken');
+		notify({
+			id: 'invalidToken',
+			type: 'warning',
+		});
+
 		return false;
 	};
 
@@ -68,9 +87,13 @@ const Authentication = ({ children }) => {
 
 		if (rawResponse.status === 200) {
 			const response = await rawResponse.json();
-			checkTokenExpiration(response.token);
+			checkTokenExpiration(response.token, 'login');
 		} else {
 			setLogout();
+			notify({
+				id: 'wrongLoginAttempt',
+				type: 'warning',
+			});
 		}
 
 		return rawResponse.status;
@@ -84,13 +107,18 @@ const Authentication = ({ children }) => {
 		setLogout();
 		setLoginbar(false);
 		setNavbar(false);
+
+		notify({
+			id: 'successfullyLoggedOut',
+			type: 'success',
+		});
 	};
 
 	useEffect(() => {
 		const storageToken = window.localStorage.getItem('token');
 
 		if (storageToken) {
-			checkTokenExpiration(storageToken);
+			checkTokenExpiration(storageToken, 'init');
 		}
 	}, []);
 

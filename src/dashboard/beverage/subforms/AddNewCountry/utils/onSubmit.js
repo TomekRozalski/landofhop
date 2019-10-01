@@ -12,7 +12,7 @@ const normalizeData = ({
 const onSubmit = ({
 	getCountriesList,
 	hide,
-	setAppError,
+	notify,
 	token,
 }) => (
 	values,
@@ -30,8 +30,12 @@ const onSubmit = ({
 		.then(getCountriesList)
 		.then(() => setSubmitting(false))
 		.then(hide)
-		.catch((err) => {
-			setAppError(err);
+		.catch((error) => {
+			notify({
+				id: '--',
+				type: 'danger',
+				error,
+			});
 			setSubmitting(false);
 		});
 };

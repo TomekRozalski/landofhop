@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import { AppErrorContext, BeverageDetailsContext, ScrollPositionContext } from 'config';
+import { BeverageDetailsContext, NotificationContext, ScrollPositionContext } from 'config';
 import { getBeverageDetails as getBeverageDetailsAction } from 'store/actions';
 import { grid } from 'utils';
 import { Spinner } from 'elements';
@@ -36,12 +36,16 @@ const Details = ({
 		params,
 	},
 }) => {
-	const { setAppError } = useContext(AppErrorContext);
 	const { beverage, setBeverage } = useContext(BeverageDetailsContext);
+	const { notify } = useContext(NotificationContext);
 	const { setScrollPosition } = useContext(ScrollPositionContext);
 
 	if (isError) {
-		setAppError('appError.fetchFailed.beverageDetails');
+		notify({
+			id: 'appError.fetchFailed.beverageDetails', // @ToDo: change
+			type: 'danger',
+		});
+
 		return null;
 	}
 

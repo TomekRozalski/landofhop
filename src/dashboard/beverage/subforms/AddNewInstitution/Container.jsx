@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { connect } from 'react-redux';
 
-import { AppErrorContext, AuthenticationContext } from 'config';
+import { AuthenticationContext, NotificationContext } from 'config';
 import { getInstitutionsList as getInstitutionsListAction } from 'store/actions';
 import { SecondaryForm } from '../../elements';
 import { initialFormValues, onSubmit, validationSchema } from './utils';
@@ -11,7 +11,7 @@ import FormBody from './FormBody';
 
 const AddNewInstitution = ({ hide, getInstitutionsList }) => {
 	const { token } = useContext(AuthenticationContext);
-	const { setAppError } = useContext(AppErrorContext);
+	const { notify } = useContext(NotificationContext);
 
 	return (
 		<SecondaryForm>
@@ -20,7 +20,7 @@ const AddNewInstitution = ({ hide, getInstitutionsList }) => {
 				onSubmit={onSubmit({
 					getInstitutionsList,
 					hide,
-					setAppError,
+					notify,
 					token,
 				})}
 				validationSchema={validationSchema}

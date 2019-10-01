@@ -15,10 +15,10 @@ const AddNewBeverage = () => (
 				header,
 				moveBack,
 				moveOn,
+				notify,
 				push,
 				savedForms,
 				saveFormValues,
-				setAppError,
 				setHeader,
 				setReadyToUnmount,
 				setScrollPosition,
@@ -32,9 +32,9 @@ const AddNewBeverage = () => (
 
 				const finalSubmit = saveBeverage({
 					getBeveragesList,
+					notify,
 					push,
 					savedForms,
-					setAppError,
 					setReadyToUnmount,
 					setScrollPosition,
 					token,

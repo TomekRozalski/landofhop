@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { useDropzone } from 'react-dropzone';
 import { FormattedMessage } from 'react-intl';
 
-import { AppErrorContext, AuthenticationContext } from 'config';
+import { AuthenticationContext, NotificationContext } from 'config';
 import { Button } from 'elements';
 import { saveBeverageCover as saveBeverageCoverAction } from 'store/actions';
 import { DragableArea, SubSection } from '../elements/common';
@@ -28,10 +28,14 @@ const Cover = ({
 	const [fileToRequest, setFileToRequest] = useState(null);
 
 	const { token } = useContext(AuthenticationContext);
-	const { setAppError } = useContext(AppErrorContext);
+	const { notify } = useContext(NotificationContext);
 
 	if (isError) {
-		setAppError('appError.fetchFailed.imageGallery');
+		notify({
+			id: 'appError.fetchFailed.imageGallery', // @ToDo: change
+			type: 'danger',
+		});
+
 		return null;
 	}
 

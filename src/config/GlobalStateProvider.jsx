@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 
 import store from 'store/store';
 import {
-	AppError,
 	Authentication,
 	BeverageDetails,
 	DetailsControlPanel,
@@ -11,6 +10,7 @@ import {
 	Dictionary,
 	Language,
 	Navigation,
+	Notification,
 	Routes,
 	ScrollPosition,
 } from './index';
@@ -31,7 +31,7 @@ const GlobalStateProvider = () => (
 				<Device />,
 				<Language />,
 				<Dictionary />,
-				<AppError />,
+				<Notification />,
 				<Navigation />,
 				<ScrollPosition />,
 				<Authentication />,

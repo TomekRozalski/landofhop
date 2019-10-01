@@ -5,7 +5,8 @@ import {
 	normalize,
 	nprogress,
 	slider,
-} from './css/index';
+	toastify,
+} from './css';
 import colors from './colors';
 import fonts from './fonts';
 
@@ -14,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
 	${nprogress}
 	${getFonts}
 	${slider}
+	${toastify}
 
 	*, *:before, *:after {
 		box-sizing: border-box;

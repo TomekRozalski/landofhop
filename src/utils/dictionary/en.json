@@ -211,5 +211,9 @@
 	"notFound.countDown": "Redirecting to the home page in { seconds, plural, one {# second} other {# seconds}}",
 	"notFound.title": "404 Not Found",
 
-	"notify.success.tokenValidityTime": "Czas ważności tokena mija "
+	"notify.success.loggedIn": "Successfully logged in. Access token expires in { diff }",
+	"notify.success.successfullyLoggedOut": "Successfully logged out",
+	"notify.success.tokenExpiresIn": "Access token expires in { diff }",
+	"notify.warning.invalidToken": "Invalid access token found",
+	"notify.warning.tokenExpired": "Access token expired {diff}. Log in again"
 }

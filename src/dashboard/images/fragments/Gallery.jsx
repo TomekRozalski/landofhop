@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { useDropzone } from 'react-dropzone';
 import { FormattedMessage } from 'react-intl';
 
-import { AppErrorContext, AuthenticationContext } from 'config';
+import { AuthenticationContext, NotificationContext } from 'config';
 import { constants } from 'utils';
 import { Button } from 'elements';
 import {
@@ -37,10 +37,13 @@ const Gallery = ({
 	const [savedImages, setSavedImages] = useState(false);
 
 	const { token } = useContext(AuthenticationContext);
-	const { setAppError } = useContext(AppErrorContext);
+	const { notify } = useContext(NotificationContext);
 
 	if (isError) {
-		setAppError('appError.fetchFailed.imageGallery');
+		notify({
+			id: 'appError.fetchFailed.imageGallery', // @ToDo: change
+			type: 'danger',
+		});
 		return null;
 	}
 

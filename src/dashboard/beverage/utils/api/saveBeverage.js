@@ -10,9 +10,9 @@ import {
 
 const saveBeverage = ({
 	getBeveragesList,
+	notify,
 	push,
 	savedForms,
-	setAppError,
 	setReadyToUnmount,
 	setScrollPosition,
 	token,
@@ -59,8 +59,12 @@ const saveBeverage = ({
 				throw new Error('shortId is missing!');
 			}
 		})
-		.catch((err) => {
-			setAppError(err);
+		.catch((error) => {
+			notify({
+				id: '--',
+				type: 'danger',
+				error,
+			});
 			setSubmitting(false);
 		});
 };

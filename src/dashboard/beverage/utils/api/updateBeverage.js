@@ -13,7 +13,7 @@ const updateBeverage = ({
 	getBeveragesList,
 	push,
 	savedForms,
-	setAppError,
+	notify,
 	setReadyToUnmount,
 	setScrollPosition,
 	token,
@@ -61,8 +61,12 @@ const updateBeverage = ({
 		.then(() => {
 			push(`${constants.routes.updateBeverageImages}/${shortId}/${brand}/${badge}`);
 		})
-		.catch((err) => {
-			setAppError(err);
+		.catch((error) => {
+			notify({
+				id: '--',
+				type: 'danger',
+				error,
+			});
 			setSubmitting(false);
 		});
 };

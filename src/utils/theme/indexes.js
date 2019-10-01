@@ -10,4 +10,6 @@ export default {
 	loading: 30,
 	overlay: 50,
 	popup: 51,
+
+	toast: 52,
 };

@@ -212,5 +212,10 @@
 	"notFound.countDown": "Przekierowanie do strony głównej za { seconds, plural, one {# sekundę} other {# sekundy}}",
 	"notFound.title": "404 Nie znaleziono",
 
-	"notify.success.tokenValidityTime": "Czas ważności tokena mija { diff }"
+	"notify.success.loggedIn": "Zalogowano poprawnie. Czas ważności tokena dostępowego mija { diff }",
+	"notify.success.successfullyLoggedOut": "Wylogowano poprawnie",
+	"notify.success.tokenExpiresIn": "Czas ważności tokena dostępowego mija { diff }",
+	"notify.warning.invalidToken": "Znaleziono nieprawidłowy token dostępowy",
+	"notify.warning.tokenExpired": "Token dostępowy wygasł {diff}. Zaloguj się ponownie",
+	"notify.warning.wrongLoginAttempt": "Nieudana próba logowania"
 }
