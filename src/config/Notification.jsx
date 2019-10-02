@@ -9,7 +9,7 @@ const Notification = ({ children, intl }) => {
 	const [appError, setAppError] = useState(null);
 
 	const notify = ({ id, type, values }) => toast[type](
-		intl.formatMessage({ id: `notify.${type}.${id}` }, { ...values }),
+		intl.formatMessage({ id: `notify.${type}.${id}` }, { ...(values || {}) }),
 	);
 
 	return (

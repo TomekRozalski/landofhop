@@ -3,13 +3,10 @@ export default {
 	dropdown: 4,
 	langLink: 6,
 	main: 13,
-	loginbar: 14,
-	navbar: 15,
-	mainBorder: 16,
-	header: 17,
-	loading: 30,
-	overlay: 50,
-	popup: 51,
-
+	spinner: 14,
+	loginbar: 15,
+	navbar: 16,
+	mainBorder: 17,
+	header: 18,
 	toast: 52,
 };

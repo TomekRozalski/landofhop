@@ -7,19 +7,12 @@ import { colors, gutters, indexes } from 'utils/theme';
 const SpinnerWrapper = styled.div`
 	display: block;
 	width: 100%;
+	height: ${({ center }) => (center ? '100%' : `calc(100vh - ${gutters.headerHeight.lg}`)};
 	background-color: ${colors.gray[700]};
 	position: absolute;
 	top: 0;
 	left: 0;
-	${({ center }) => (
-		center ? (`
-			height: 100%;
-			z-index: -1;
-		`) : (`
-			height: calc(100vh - ${gutters.headerHeight.lg});
-			z-index: ${indexes.loading - 1};
-		`)
-	)}
+	z-index: ${indexes.spinner};
 `;
 
 const CubesWrapper = styled.ul`
@@ -27,7 +20,7 @@ const CubesWrapper = styled.ul`
 	height: 40px;
 	position: absolute;
 	left: 50%;
-	z-index: ${indexes.loading};
+	z-index: ${indexes.spinner};
 	${({ center }) => {
 		if (center) {
 			return (`
