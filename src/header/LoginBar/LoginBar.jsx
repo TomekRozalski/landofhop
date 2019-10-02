@@ -35,8 +35,8 @@ const LoginBar = () => {
 		<Wrapper loginState={loginState}>
 			<Formik
 				initialValues={{
-					email: 'ta@ta.com',
-					password: 'sdf',
+					email: '',
+					password: '',
 				}}
 				onSubmit={(values, { setSubmitting }) => {
 					logIn(values).then((status) => {

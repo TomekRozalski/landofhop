@@ -7,13 +7,6 @@
 	"alcoholRelate.capacity": "obj.",
 	"alcoholUnit.degree": "°",
 	"alcoholUnit.percent": "%",
-	"appError.close": "Zamknij okno",
-	"appError.fetchFailed.beverageDetails": "Nie udało się pobrać szczegółów pozycji",
-	"appError.fetchFailed.beverageList": "Nie udało się pobrać listy pozycji",
-	"appError.fetchFailed.imageGallery": "Nie udało się uaktualnić zdjęć w galerii",
-	"appError.goBackToMainPage": "Wróć do strony głównej",
-	"appError.reloadTheAppIfNecessary": "Przeładuj okno jeśli zajdzie taka potrzeba",
-	"appError.title": "Wystąpił błąd",
 	"app.fullTitle": "Land of Hop, reaktywny katalog piw",
 	"appWarning.areYouSureYouWantToLeave": "Masz niezapisane zmiany, czy na pewno chcesz opuścić stronę?",
 
@@ -212,6 +205,8 @@
 	"notFound.countDown": "Przekierowanie do strony głównej za { seconds, plural, one {# sekundę} other {# sekundy}}",
 	"notFound.title": "404 Nie znaleziono",
 
+	"notify.error.beverageList.fetchFailed": "Nie udało się pobrać listy napojów",
+	"notify.error.beverageDetails.fetchFailed": "Nie udało się pobrać szczegółowych informacji o napoju",
 	"notify.success.loggedIn": "Zalogowano poprawnie. Czas ważności tokena dostępowego mija { diff }",
 	"notify.success.successfullyLoggedOut": "Wylogowano poprawnie",
 	"notify.success.tokenExpiresIn": "Czas ważności tokena dostępowego mija { diff }",

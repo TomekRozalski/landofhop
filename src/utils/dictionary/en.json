@@ -7,13 +7,6 @@
 	"alcoholRelate.capacity": "Capacity",
 	"alcoholUnit.degree": "°",
 	"alcoholUnit.percent": "%",
-	"appError.close": "Close the window",
-	"appError.fetchFailed.beverageDetails": "Beverage details fetch failed",
-	"appError.fetchFailed.beverageList": "Beverage list fetch failed",
-	"appError.fetchFailed.imageGallery": "Gallery image fetch failed",
-	"appError.goBackToMainPage": "Go back to the main page",
-	"appError.reloadTheAppIfNecessary": "Reload the app if necessary",
-	"appError.title": "An error has occurred",
 	"app.fullTitle": "Land of Hop, reactive beer catalog",
 	"appWarning.areYouSureYouWantToLeave": "You have unsaved changes, are you sure you want to leave?",
 
@@ -211,6 +204,8 @@
 	"notFound.countDown": "Redirecting to the home page in { seconds, plural, one {# second} other {# seconds}}",
 	"notFound.title": "404 Not Found",
 
+	"notify.error.beverageList.fetchFailed": "Beverage list fetch failed",
+	"notify.error.beverageDetails.fetchFailed": "Beverage details fetch failed",
 	"notify.success.loggedIn": "Successfully logged in. Access token expires in { diff }",
 	"notify.success.successfullyLoggedOut": "Successfully logged out",
 	"notify.success.tokenExpiresIn": "Access token expires in { diff }",

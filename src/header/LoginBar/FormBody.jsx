@@ -1,4 +1,5 @@
 import React from 'react';
+import { bool } from 'prop-types';
 import styled from 'styled-components';
 import { FastField, Form } from 'formik';
 import { FormattedMessage } from 'react-intl';
@@ -66,5 +67,10 @@ const FormBody = ({ isSubmitting, isValid }) => (
 		</Button>
 	</LoginBarContainer>
 );
+
+FormBody.propTypes = {
+	isSubmitting: bool.isRequired,
+	isValid: bool.isRequired,
+};
 
 export default FormBody;

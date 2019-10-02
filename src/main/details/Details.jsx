@@ -42,8 +42,8 @@ const Details = ({
 
 	if (isError) {
 		notify({
-			id: 'appError.fetchFailed.beverageDetails', // @ToDo: change
-			type: 'danger',
+			id: 'beverageDetails.fetchFailed',
+			type: 'error',
 		});
 
 		return null;

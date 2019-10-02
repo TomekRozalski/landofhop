@@ -30,8 +30,8 @@ const Tiles = ({
 
 	if (isError) {
 		notify({
-			id: 'appError.fetchFailed.beverageList',
-			type: 'danger',
+			id: 'beverageList.fetchFailed',
+			type: 'error',
 		});
 
 		return null;
