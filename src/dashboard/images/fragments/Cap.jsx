@@ -38,9 +38,10 @@ const Cap = ({
 
 	if (isError) {
 		notify({
-			id: 'appError.fetchFailed.imageGallery', // @ToDo: change
-			type: 'danger',
+			id: 'cap.fetchFailed',
+			type: constants.notify.type.error,
 		});
+
 		return null;
 	}
 

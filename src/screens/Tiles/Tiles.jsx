@@ -10,6 +10,7 @@ import AutoSizer from 'react-virtualized-auto-sizer';
 
 import { NotificationContext } from 'config';
 import { getBeveragesList as getBeveragesListAction } from 'store/actions';
+import { constants } from 'utils';
 import { beverageBasics } from 'utils/types';
 import { Spinner, WithTitle } from 'elements';
 import ListWrapper from './components/ListWrapper';
@@ -31,7 +32,7 @@ const Tiles = ({
 	if (isError) {
 		notify({
 			id: 'beverageList.fetchFailed',
-			type: 'error',
+			type: constants.notify.type.error,
 		});
 
 		return null;

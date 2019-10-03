@@ -206,9 +206,13 @@
 
 	"notify.error.beverageList.fetchFailed": "Beverage list fetch failed",
 	"notify.error.beverageDetails.fetchFailed": "Beverage details fetch failed",
+	"notify.error.cap.fetchFailed": "Connection failed",
+	"notify.error.cover.fetchFailed": "Connection failed",
+	"notify.error.gallery.fetchFailed": "Connection failed",
 	"notify.success.loggedIn": "Successfully logged in. Access token expires in { diff }",
 	"notify.success.successfullyLoggedOut": "Successfully logged out",
 	"notify.success.tokenExpiresIn": "Access token expires in { diff }",
-	"notify.warning.invalidToken": "Invalid access token found",
-	"notify.warning.tokenExpired": "Access token expired {diff}. Log in again"
+	"notify.warn.invalidToken": "Invalid access token found",
+	"notify.warn.tokenExpired": "Access token expired {diff}. Log in again",
+	"notify.warn.wrongLoginAttempt": "Wrong login attempt"
 }

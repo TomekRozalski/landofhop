@@ -12,6 +12,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { AuthenticationContext, NotificationContext } from 'config';
 import { Button } from 'elements';
+import { constants } from 'utils';
 import { saveBeverageCover as saveBeverageCoverAction } from 'store/actions';
 import { DragableArea, SubSection } from '../elements/common';
 import { CurrentCover, Preview, Wrapper } from '../elements/cover';
@@ -32,8 +33,8 @@ const Cover = ({
 
 	if (isError) {
 		notify({
-			id: 'appError.fetchFailed.imageGallery', // @ToDo: change
-			type: 'danger',
+			id: 'cover.fetchFailed',
+			type: constants.notify.type.error,
 		});
 
 		return null;

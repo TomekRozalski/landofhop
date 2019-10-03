@@ -49,7 +49,7 @@ const onSubmit = ({
 		.catch((error) => {
 			notify({
 				id: '--',
-				type: 'danger',
+				type: constants.notify.type.error,
 				error,
 			});
 			setSubmitting(false);

@@ -33,7 +33,7 @@ const Authentication = ({ children }) => {
 			if (differenceInSeconds(expirationDate, new Date()) > 10) {
 				notify({
 					id: type === 'init' ? 'tokenExpiresIn' : 'loggedIn',
-					type: 'success',
+					type: constants.notify.type.success,
 					values: {
 						diff: formatDistanceStrict(
 							new Date(expirationDate),
@@ -54,7 +54,7 @@ const Authentication = ({ children }) => {
 
 			notify({
 				id: 'tokenExpired',
-				type: 'warning',
+				type: constants.notify.type.warning,
 				values: {
 					diff: formatDistanceStrict(
 						new Date(expirationDate),
@@ -73,7 +73,7 @@ const Authentication = ({ children }) => {
 		setLogout();
 		notify({
 			id: 'invalidToken',
-			type: 'warning',
+			type: constants.notify.type.warning,
 		});
 
 		return false;
@@ -92,7 +92,7 @@ const Authentication = ({ children }) => {
 			setLogout();
 			notify({
 				id: 'wrongLoginAttempt',
-				type: 'warning',
+				type: constants.notify.type.warning,
 			});
 		}
 
@@ -110,7 +110,7 @@ const Authentication = ({ children }) => {
 
 		notify({
 			id: 'successfullyLoggedOut',
-			type: 'success',
+			type: constants.notify.type.success,
 		});
 	};
 

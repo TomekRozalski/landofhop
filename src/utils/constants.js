@@ -203,6 +203,13 @@ export default {
 		spontaneous: 'spontaneous',
 	},
 	none: '-',
+	notify: {
+		type: {
+			error: 'error',
+			warning: 'warn',
+			success: 'success',
+		},
+	},
 	routes: {
 		main: '/',
 		details: '/details',

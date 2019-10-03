@@ -12,6 +12,7 @@ import isNil from 'lodash/isNil';
 
 import { NotificationContext } from 'config';
 import { Spinner } from 'elements';
+import { constants } from 'utils';
 import { getBeverageDetails as getBeverageDetailsAction } from 'store/actions';
 import { MainHeader, Wrapper } from 'dashboard/common/elements';
 import { ErrorBox, MoveToDetails, Other } from './elements/common';
@@ -35,9 +36,10 @@ const UpdateBeverageImages = ({
 
 	if (isError) {
 		notify({
-			id: 'appError.fetchFailed.beverageDetails', // @ToDo: change
-			type: 'danger',
+			id: 'beverageDetails.fetchFailed',
+			type: constants.notify.type.error,
 		});
+
 		return null;
 	}
 

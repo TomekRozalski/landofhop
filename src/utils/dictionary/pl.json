@@ -207,10 +207,13 @@
 
 	"notify.error.beverageList.fetchFailed": "Nie udało się pobrać listy napojów",
 	"notify.error.beverageDetails.fetchFailed": "Nie udało się pobrać szczegółowych informacji o napoju",
+	"notify.error.cap.fetchFailed": "Błąd połączenia z serwerem",
+	"notify.error.cover.fetchFailed": "Błąd połączenia z serwerem",
+	"notify.error.gallery.fetchFailed": "Błąd połączenia z serwerem",
 	"notify.success.loggedIn": "Zalogowano poprawnie. Czas ważności tokena dostępowego mija { diff }",
 	"notify.success.successfullyLoggedOut": "Wylogowano poprawnie",
 	"notify.success.tokenExpiresIn": "Czas ważności tokena dostępowego mija { diff }",
-	"notify.warning.invalidToken": "Znaleziono nieprawidłowy token dostępowy",
-	"notify.warning.tokenExpired": "Token dostępowy wygasł {diff}. Zaloguj się ponownie",
-	"notify.warning.wrongLoginAttempt": "Nieudana próba logowania"
+	"notify.warn.invalidToken": "Znaleziono nieprawidłowy token dostępowy",
+	"notify.warn.tokenExpired": "Token dostępowy wygasł {diff}. Zaloguj się ponownie",
+	"notify.warn.wrongLoginAttempt": "Nieudana próba logowania"
 }

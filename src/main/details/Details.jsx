@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { BeverageDetailsContext, NotificationContext, ScrollPositionContext } from 'config';
 import { getBeverageDetails as getBeverageDetailsAction } from 'store/actions';
-import { grid } from 'utils';
+import { constants, grid } from 'utils';
 import { Spinner } from 'elements';
 import {
 	Admin,
@@ -43,7 +43,7 @@ const Details = ({
 	if (isError) {
 		notify({
 			id: 'beverageDetails.fetchFailed',
-			type: 'error',
+			type: constants.notify.type.error,
 		});
 
 		return null;
