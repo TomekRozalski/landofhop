@@ -50,12 +50,11 @@ const Tale = () => {
 					: acc
 			);
 		}, [])
-		.filter(item => item.value.find(description => description.language === language))
 		.reduce((acc, { type, value }) => [
 			...acc,
 			{
 				type,
-				value: value.find(description => description.language === language),
+				value: value.find(description => description.language === language) || value[0],
 			},
 		], [])
 		.map(({ type, value }) => (

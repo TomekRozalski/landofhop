@@ -206,6 +206,7 @@ export default {
 	notify: {
 		type: {
 			error: 'error',
+			info: 'info',
 			warning: 'warn',
 			success: 'success',
 		},

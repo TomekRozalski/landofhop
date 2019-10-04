@@ -215,5 +215,7 @@
 	"notify.success.tokenExpiresIn": "Czas ważności tokena dostępowego mija { diff }",
 	"notify.warn.invalidToken": "Znaleziono nieprawidłowy token dostępowy",
 	"notify.warn.tokenExpired": "Token dostępowy wygasł {diff}. Zaloguj się ponownie",
-	"notify.warn.wrongLoginAttempt": "Nieudana próba logowania"
+	"notify.warn.wrongLoginAttempt": "Nieudana próba logowania",
+
+	"notify.info.tokenExpiresIn": "Token wygasa za {diff}"
 }

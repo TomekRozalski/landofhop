@@ -21,7 +21,7 @@ const isValidDate = (value, options = {}) => {
 
 	const isAfterAppBorn = isAfter(
 		new Date(formattedString),
-		new Date('2017-06-20'),
+		new Date('2017-06-19'),
 	);
 
 	const isBeforeTomorrow = differenceInDays(
