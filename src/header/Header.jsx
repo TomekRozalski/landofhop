@@ -4,7 +4,7 @@ import { NavigationContext } from 'config';
 import { LoginBar, NavBar, TopBar } from './index';
 
 const Header = () => {
-	const { loginbar, navbar } = useContext(NavigationContext);
+	const { loginbar } = useContext(NavigationContext);
 
 	return (
 		<>

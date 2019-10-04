@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
 
 import { NavigationContext } from 'config';
-import { colors, sizes } from 'utils/theme';
+import { colors, mq, sizes } from 'utils/theme';
 import { Loupe } from 'elements/icons';
 
 const Wrapper = styled.div`
@@ -16,9 +16,17 @@ const Button = styled.button`
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	padding: ${sizes.container.padding}px;
+	padding: ${sizes.container.padding.xs}px 3rem;
 	background: ${colors.gray[100]};
 	cursor: pointer;
+
+	${mq.md`
+		padding: ${sizes.container.padding.md}px;
+	`}
+
+	${mq.xl`
+		padding: ${sizes.container.padding.xl}px;
+	`}
 
 	&:focus {
 		outline: none;
@@ -26,10 +34,20 @@ const Button = styled.button`
 
 	svg {
 		display: block;
-		width: 30px;
-		height: 30px;
+		width: 10px;
+		height: 10px;
 		opacity: 1;
 		transition: opacity .2s;
+
+		${mq.md`
+			width: 20px;
+			height: 20px;
+		`}
+
+		${mq.xl`
+			width: 30px;
+			height: 30px;
+		`}
 	}
 
 	&:hover svg {

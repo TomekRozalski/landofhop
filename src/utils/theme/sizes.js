@@ -1,23 +1,29 @@
 export default {
 	container: {
 		border: {
-			width: 30,
+			width: {
+				xs: 10,
+				md: 20,
+				xl: 30,
+			},
 		},
-		padding: 30,
-		width: 1200,
-	},
-	gutters: {
-		narrow: {
-			sm: '10px',
-			md: '10px',
-			lg: '10px',
+		padding: {
+			xs: 10,
+			md: 20,
+			xl: 30,
+		},
+		width: {
+			xl: 1200,
 		},
 	},
 	loginbar: {
 		height: 80,
 	},
 	navbar: {
-		height: 80,
+		height: {
+			xs: 80,
+			xl: 80,
+		},
 	},
 	tiles: {
 		column: {
@@ -38,6 +44,10 @@ export default {
 		},
 	},
 	topbar: {
-		height: 120,
+		height: {
+			xs: 40,
+			md: 60,
+			xl: 120,
+		},
 	},
 };

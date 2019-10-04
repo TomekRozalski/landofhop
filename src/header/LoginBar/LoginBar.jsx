@@ -3,7 +3,12 @@ import styled from 'styled-components';
 import { Formik } from 'formik';
 
 import { AuthenticationContext } from 'config';
-import { colors, indexes, sizes } from 'utils/theme';
+import {
+	colors,
+	indexes,
+	mq,
+	sizes,
+} from 'utils/theme';
 import { FormBody, validationSchema } from './index';
 
 const Wrapper = styled.div`
@@ -22,9 +27,13 @@ const Wrapper = styled.div`
 		return colors.gray[500];
 	}};
 	position: fixed;
-	top: ${sizes.navbar.height}px;
+	top: ${sizes.navbar.height.xs}px;
 	left: 0;
 	z-index: ${indexes.loginbar};
+
+	${mq.xl`
+		top: ${sizes.navbar.height.xl}px;
+	`}
 `;
 
 const LoginBar = () => {

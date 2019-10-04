@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
 
 import { NavigationContext } from 'config';
-import { colors, sizes } from 'utils/theme';
+import { colors, mq, sizes } from 'utils/theme';
 import { More } from 'elements/icons';
 
 const Button = styled.button`
@@ -11,9 +11,17 @@ const Button = styled.button`
 	display: flex;
     justify-content: center;
 	align-items: center;
-	padding: ${sizes.container.padding}px;
+	padding: ${sizes.container.padding.xs}px;
 	background: ${colors.gray[100]};
 	cursor: pointer;
+
+	${mq.md`
+		padding: ${sizes.container.padding.md}px;
+	`}
+
+	${mq.xl`
+		padding: ${sizes.container.padding.xl}px;
+	`}
 
 	&:focus {
 		outline: none;
@@ -21,10 +29,20 @@ const Button = styled.button`
 
 	svg {
 		display: block;
-		width: 40px;
-		height: 8px;
+		width: 20px;
+		height: 4px;
 		opacity: 1;
 		transition: opacity .2s;
+
+		${mq.md`
+			width: 30px;
+			height: 6px;
+		`}
+
+		${mq.xl`
+			width: 40px;
+			height: 8px;
+		`}
 	}
 
 	&:hover svg {

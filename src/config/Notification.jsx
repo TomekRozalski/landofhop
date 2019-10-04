@@ -6,13 +6,11 @@ import { ToastContainer, toast } from 'react-toastify';
 export const NotificationContext = React.createContext({});
 
 const Notification = ({ children, intl }) => {
-	const notify = ({ id, type, values }) => {
-		console.log('object');
-
-		return toast[type](
+	const notify = ({ id, type, values }) => (
+		toast[type](
 			intl.formatMessage({ id: `notify.${type}.${id}` }, { ...(values || {}) }),
-		);
-	};
+		)
+	);
 
 	return (
 		<NotificationContext.Provider value={{ notify }}>

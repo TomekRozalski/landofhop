@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import { NavigationContext } from 'config';
-import { timingFunctions } from 'utils/theme';
+import { mq, timingFunctions } from 'utils/theme';
 
 const StyledLink = styled(Link)`
 	grid-area: logo;
@@ -16,12 +16,20 @@ const StyledLink = styled(Link)`
 `;
 
 const Title = styled.h1`
-	width: 5rem;
+	width: 3rem;
 	height: 100%;
 	overflow: hidden;
 	position: relative;
 	transform: scaleX(1);
 	transition: transform ${timingFunctions.default};
+
+	${mq.md`
+		width: 4rem;
+	`}
+
+	${mq.xl`
+		width: 5rem;
+	`}
 
 	&::before {
 		content: '';

@@ -11,7 +11,7 @@ import styled from 'styled-components';
 import { ScrollPositionContext } from 'config';
 import { setContainerHeight } from 'utils';
 import { beverageBasics } from 'utils/types';
-import { sizes } from 'utils/theme';
+import { indexes, sizes } from 'utils/theme';
 import { List, Tile } from './index';
 
 const HiddenButton = styled.button`
@@ -68,6 +68,7 @@ const ListWrapper = ({ dimension, list }) => {
 
 					return (Math.max(...listOfContainerSizes) + sizes.tiles.padding.top);
 				}}
+				style={{ 'z-index': indexes.content.toString() }}
 				width={dimension.width}
 				itemData={list}
 			>

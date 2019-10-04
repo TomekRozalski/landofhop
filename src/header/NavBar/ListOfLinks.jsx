@@ -1,31 +1,36 @@
 import React, { useContext } from 'react';
 import { FormattedMessage } from 'react-intl';
+import styled from 'styled-components';
 
 import { AuthenticationContext } from 'config';
 import { constants } from 'utils';
 import { ButtonsWrapper, Link } from './index';
+
+const Item = styled.li`
+	display: flex;
+`;
 
 const ListOfLinks = () => {
 	const { isLoggedIn } = useContext(AuthenticationContext);
 
 	return (
 		<ButtonsWrapper as="ul">
-			<li>
+			<Item>
 				<Link to={constants.routes.contact}>
 					<FormattedMessage id="navbar.aboutName" />
 				</Link>
-			</li>
-			<li>
+			</Item>
+			<Item>
 				<Link to="/" disabled>
 					<FormattedMessage id="navbar.stats" />
 				</Link>
-			</li>
+			</Item>
 			{ isLoggedIn && (
-				<li>
+				<Item>
 					<Link to={constants.routes.addNewBeverage}>
 						<FormattedMessage id="navbar.addNewBeverage" />
 					</Link>
-				</li>
+				</Item>
 			)}
 		</ButtonsWrapper>
 	);

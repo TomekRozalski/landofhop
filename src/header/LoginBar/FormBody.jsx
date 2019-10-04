@@ -5,14 +5,18 @@ import { FastField, Form } from 'formik';
 import { FormattedMessage } from 'react-intl';
 
 import { Button, Input } from 'elements';
-import { fonts, sizes } from 'utils/theme';
+import { fonts, mq, sizes } from 'utils/theme';
 
 const LoginBarContainer = styled(Form)`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: ${sizes.container.width}px;
+	width: 100%;
 	margin: 0 auto;
+
+	${mq.xl`
+		width: ${sizes.container.width.xl}px;
+	`};
 `;
 
 const FieldWrapper = styled.div`
