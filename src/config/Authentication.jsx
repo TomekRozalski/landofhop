@@ -1,11 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import {
-	differenceInMinutes,
-	differenceInSeconds,
-	formatDistanceStrict,
-	fromUnixTime,
-} from 'date-fns';
+import { differenceInSeconds, formatDistanceStrict, fromUnixTime } from 'date-fns';
 import jwt from 'jsonwebtoken';
 
 import pl from 'date-fns/locale/pl';
@@ -24,35 +19,90 @@ const Authentication = ({ children }) => {
 	const [isLoggedIn, setLoggedIn] = useState(false);
 
 	const setLogout = () => {
+		if (window.localStorage.getItem('token')) {
+			window.localStorage.removeItem('token');
+		}
+
 		setToken(null);
 		setTokenExpiration(null);
 		setLoggedIn(false);
+	};
+
+	const logOut = () => {
+		setLogout();
+		setLoginbar(false);
+		setNavbar(false);
+
+		notify({
+			id: 'successfullyLoggedOut',
+			type: constants.notify.type.success,
+		});
+	};
+
+	const checkTimeToLogout = () => {
+		const secondsToExpiration = differenceInSeconds(
+			new Date(tokenExpiration),
+			new Date(),
+		);
+
+		if (secondsToExpiration < 5) {
+			setLogout();
+			setNavbar(true);
+			setLoginbar(true);
+
+			notify({
+				id: 'successfullyLoggedOut',
+				type: constants.notify.type.success,
+			});
+
+			return false;
+		}
+
+		if (secondsToExpiration < 15 * 60) {
+			notify({
+				id: 'tokenExpiresIn',
+				type: constants.notify.type.info,
+				values: {
+					diff: formatDistanceStrict(
+						new Date(tokenExpiration),
+						new Date(),
+						{ addSuffix: true, locale: pl },
+					),
+				},
+			});
+		}
+
+		let delay;
+
+		if (secondsToExpiration < 10) {
+			delay = 3000;
+		} else if (secondsToExpiration < 60) {
+			delay = 10 * 1000;
+		} else if (secondsToExpiration < 5 * 60) {
+			delay = 60 * 1000;
+		} else if (secondsToExpiration < 15 * 60) {
+			delay = 5 * 60 * 1000;
+		} else {
+			delay = 15 * 60 * 1000;
+		}
+
+		return setTimeout(checkTimeToLogout, delay);
 	};
 
 	useEffect(() => {
 		let timeout;
 
 		if (tokenExpiration) {
-			timeout = setTimeout(() => {
-				const diff = differenceInMinutes(
-					new Date(tokenExpiration),
-					new Date(),
-				);
+			const secondsToExpiration = differenceInSeconds(
+				new Date(tokenExpiration),
+				new Date(),
+			);
 
-				if (diff < 15) {
-					notify({
-						id: 'tokenExpiresIn',
-						type: constants.notify.type.info,
-						values: {
-							diff: formatDistanceStrict(
-								new Date(tokenExpiration),
-								new Date(),
-								{ addSuffix: true, locale: pl },
-							),
-						},
-					});
-				}
-			}, 5 * 60 * 1000);
+			timeout = setTimeout(checkTimeToLogout, secondsToExpiration > 5 * 60 ? 60 * 1000 : 10000);
+
+			if (!timeout) {
+				clearTimeout(timeout);
+			}
 		} else {
 			clearTimeout(timeout);
 		}
@@ -105,10 +155,14 @@ const Authentication = ({ children }) => {
 			setLogout();
 			setNavbar(true);
 			setLoginbar(true);
+
 			return false;
 		}
 
 		setLogout();
+		setNavbar(true);
+		setLoginbar(true);
+
 		notify({
 			id: 'invalidToken',
 			type: constants.notify.type.warning,
@@ -135,21 +189,6 @@ const Authentication = ({ children }) => {
 		}
 
 		return rawResponse.status;
-	};
-
-	const logOut = () => {
-		if (window.localStorage.getItem('token')) {
-			window.localStorage.removeItem('token');
-		}
-
-		setLogout();
-		setLoginbar(false);
-		setNavbar(false);
-
-		notify({
-			id: 'successfullyLoggedOut',
-			type: constants.notify.type.success,
-		});
 	};
 
 	useEffect(() => {

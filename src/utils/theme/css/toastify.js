@@ -30,8 +30,8 @@ export default css`
 		left: 50%;
 		margin-left: -160px; }
 	.Toastify__toast-container--bottom-right {
-		bottom: 1em;
-		right: 1em; }
+		bottom: 0;
+		right: 0; }
 
 	@media only screen and (max-width: 480px) {
 	.Toastify__toast-container {
@@ -51,7 +51,7 @@ export default css`
 		position: relative;
 		min-height: 64px;
 		box-sizing: border-box;
-		margin-bottom: 1rem;
+		margin-top: 1rem;
 		padding: 8px 3rem;
 		border-radius: 1px;
 		box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1), 0 2px 15px 0 rgba(0, 0, 0, 0.05);

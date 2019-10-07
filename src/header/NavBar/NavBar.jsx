@@ -15,6 +15,7 @@ const Wrapper = styled.nav`
 	display: block;
 	width: 100%;
 	height: ${sizes.navbar.height.xs}px;
+	background: ${colors.gray[700]};
 	position: fixed;
 	top: 0;
 	transform: translateY(${({ isNavbar }) => (isNavbar ? 0 : `-${sizes.topbar.height.xs}px`)});
@@ -41,7 +42,6 @@ const NavBarContainer = styled.div`
 	height: ${sizes.navbar.height.xs - sizes.container.border.width.xs}px;
 	margin: ${sizes.container.border.width.xs}px auto 0 auto;
 	padding: 0 3rem;
-	background: ${colors.gray[700]};
 
 	${mq.md`
 		height: ${sizes.navbar.height.xs - sizes.container.border.width.md}px;

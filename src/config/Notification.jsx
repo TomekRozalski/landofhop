@@ -9,6 +9,7 @@ const Notification = ({ children, intl }) => {
 	const notify = ({ id, type, values }) => (
 		toast[type](
 			intl.formatMessage({ id: `notify.${type}.${id}` }, { ...(values || {}) }),
+			{ position: toast.POSITION.BOTTOM_RIGHT },
 		)
 	);
 

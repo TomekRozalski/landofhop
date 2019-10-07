@@ -154,6 +154,7 @@
 	"details.no": "no",
 	"details.owner": "(belonging to { brand })",
 	"details.pasteurization": "pasteurization",
+	"details.power": "power",
 	"details.price": "cena",
 	"details.removeBeverage.areYouSure": "Are you sure?",
 	"details.removeBeverage.remove": "Remove from the database",
@@ -214,5 +215,7 @@
 	"notify.success.tokenExpiresIn": "Access token expires in { diff }",
 	"notify.warn.invalidToken": "Invalid access token found",
 	"notify.warn.tokenExpired": "Access token expired {diff}. Log in again",
-	"notify.warn.wrongLoginAttempt": "Wrong login attempt"
+	"notify.warn.wrongLoginAttempt": "Wrong login attempt",
+
+	"notify.info.tokenExpiresIn": "Token wygasa {diff}"
 }

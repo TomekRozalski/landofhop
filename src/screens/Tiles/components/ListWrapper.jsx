@@ -68,7 +68,7 @@ const ListWrapper = ({ dimension, list }) => {
 
 					return (Math.max(...listOfContainerSizes) + sizes.tiles.padding.top);
 				}}
-				style={{ 'z-index': indexes.content.toString() }}
+				style={{ zIndex: indexes.content.toString() }}
 				width={dimension.width}
 				itemData={list}
 			>

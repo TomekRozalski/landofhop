@@ -18,7 +18,7 @@ const setTopGutter = (withLoginbar, withNavbar, breakpoint) => {
 	}
 
 	if (withNavbar && withLoginbar) {
-		return sizes.navbar.height[breakpoint] + sizes.loginbar.height;
+		return sizes.navbar.height[breakpoint] + sizes.loginbar.height[breakpoint];
 	}
 
 	return 0;
