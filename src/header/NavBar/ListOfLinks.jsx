@@ -4,7 +4,8 @@ import styled from 'styled-components';
 
 import { AuthenticationContext } from 'config';
 import { constants } from 'utils';
-import { ButtonsWrapper, Link } from './index';
+import { ButtonsWrapper } from './elements';
+import { Link } from './index';
 
 const Item = styled.li`
 	display: flex;

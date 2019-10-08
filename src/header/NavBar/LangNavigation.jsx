@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 
 import { LanguageContext } from 'config';
 import { constants } from 'utils';
-import { Button, ButtonsWrapper } from './index';
+import { ButtonsWrapper } from './elements';
+import { Button } from './index';
 
 const LangNavigation = () => {
 	const { changeLanguage } = useContext(LanguageContext);

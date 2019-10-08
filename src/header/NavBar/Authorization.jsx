@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { AuthenticationContext, NavigationContext } from 'config';
-import { Button, ButtonsWrapper } from './index';
+import { ButtonsWrapper } from './elements';
+import { Button } from './index';
 
 const Authorization = () => {
 	const { isLoggedIn, logOut } = useContext(AuthenticationContext);

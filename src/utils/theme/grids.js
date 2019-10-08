@@ -5,7 +5,7 @@ import sizes from './sizes';
 
 const headerGrid = css`
 	display: grid;
-	grid-template-columns: ${'minmax(10rem, auto) 1fr minmax(10rem, auto)'};
+	grid-template-columns: minmax(10rem, auto) 1fr minmax(10rem, auto);
 	grid-template-areas: 'search logo more';
 	width: 100%;
 	margin: 0 auto;
