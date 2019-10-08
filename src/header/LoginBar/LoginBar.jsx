@@ -47,7 +47,6 @@ const Wrapper = styled.div`
 
 	${mq.xl`
 		height: ${sizes.loginbar.height.xl}px;
-		top: ${sizes.navbar.height.xl}px;
 		transform: translateY(${({ isActive, isNavbar }) => setTranslate(isActive, isNavbar, 'xl')}px);
 	`}
 `;

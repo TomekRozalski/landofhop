@@ -4,10 +4,9 @@ import styled from 'styled-components';
 import { get } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 
-import { BeverageDetailsContext, LanguageContext } from 'config';
+import { BeverageDetailsContext } from 'config';
 import { constants } from 'utils';
 import { Highlight } from 'elements';
-import { getNameByLanguage } from 'utils/helpers';
 import { fonts } from 'utils/theme';
 
 const Wrapper = styled.div`
@@ -16,7 +15,6 @@ const Wrapper = styled.div`
 
 const Series = () => {
 	const { beverage } = useContext(BeverageDetailsContext);
-	const { language } = useContext(LanguageContext);
 
 	const labelValues = get(beverage, 'label.general.series');
 	const producerValues = get(beverage, 'producer.general.series');
@@ -40,29 +38,34 @@ const Series = () => {
 					: acc
 			);
 		}, [])
-		.map((item) => {
-			if (item === separators.section) {
-				return item;
+		.reduce((acc, curr) => {
+			if (curr !== separators.section) {
+				const typeArray = curr.value
+					.reduce((acc, curr) => (
+						acc.length
+							? [...acc, separators.item, curr]
+							: [curr]
+					), [])
+					.map(item => (
+						item === separators.item
+							? item
+							: <span key={item.value} lang={item.language}>{item.value}</span>
+					));
+
+				const withHighligh = (
+					<Highlight key={curr.type} type={curr.type}>
+						<FormattedMessage
+							id="details.fromSeries"
+							values={{ series: <>{typeArray}</> }}
+						/>
+					</Highlight>
+				);
+
+				return [...acc, withHighligh];
 			}
 
-			const {
-				value: series,
-				language: seriesLanguage,
-			} = getNameByLanguage({ values: item.value, language });
-
-			return (
-				<Highlight
-					key={`${item.type} ${series}`}
-					lang={seriesLanguage === language ? null : seriesLanguage}
-					type={item.type}
-				>
-					<FormattedMessage
-						id="details.fromSeries"
-						values={{ series }}
-					/>
-				</Highlight>
-			);
-		});
+			return [...acc, curr];
+		}, []);
 
 	return formattedValue.length ? (
 		<Wrapper>{ formattedValue }</Wrapper>
