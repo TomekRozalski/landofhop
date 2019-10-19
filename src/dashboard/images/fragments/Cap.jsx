@@ -48,7 +48,7 @@ const Cap = ({
 	const { getRootProps, getInputProps } = useDropzone({
 		accept: ['image/jpg', 'image/jpeg'],
 		minSize: 30 * 1024,
-		maxSize: 500 * 1024,
+		maxSize: 700 * 1024,
 		multiple: false,
 		onDrop: (acceptedFiles, rejectedFiles) => {
 			if (rejectedFiles.length) {

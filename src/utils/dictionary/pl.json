@@ -112,7 +112,7 @@
 	"dashboard.updateBeverageImages.cover": "Zdjęcie główne",
 	"dashboard.updateBeverageImages.gallery": "Galeria",
 	"dashboard.updateBeverageImages.title": "Popraw grafiki dla napoju",
-	"dashboard.updateBeverageImages.wrongFileUploaded.instruction": "Ładowane pliki muszą być w formacie .jpg lub .jpge oraz mieć między 50 a 800 KB w przypadku zdjęcia głównego, 30 a 500 KB w przypadku zdjęcia kapsla i między 100 a 500 KB w przypadku zdjęcia do galerii. Wskazane jest, by miał 880 pikseli szerokości",
+	"dashboard.updateBeverageImages.wrongFileUploaded.instruction": "Ładowane pliki muszą być w formacie .jpg lub .jpge oraz mieć między 50 a 800 KB w przypadku zdjęcia głównego, 30 a 500 KB w przypadku zdjęcia kapsla i między 100 a 700 KB w przypadku zdjęcia do galerii. Wskazane jest, by miał 880 pikseli szerokości",
 	"dashboard.updateBeverageImages.wrongFileUploaded.title": "Wystąpił błąd",
 	"dashboard.updateBeverageImages.wrongFileUploaded.rejectedFiles": "Odrzucono { value, plural, one {# plik} few {# pliki} other {# plików}}:",
 	"dashboard.updateBeverageImages.wrongFileUploaded.rejectedFileInfo": "{name} o rozmiarze {size} KB i typie zdefiniowanym jako {type}",
