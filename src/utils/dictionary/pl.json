@@ -187,12 +187,13 @@
 	"language.English": "angielski",
 	"language.French": "francuski",
 	"language.German": "niemiecki",
+	"language.Italian": "włoski",
 	"language.Latin": "łacina",
 	"language.notApplicable": "nie dotyczy",
 	"language.Polish": "polski",
 	"language.Spanish": "hiszpański",
 	"language.Ukrainian": "ukraiński",
-	
+
 	"loginbar.emailLabel": "Email",
 	"loginbar.passwordLabel": "Hasło",
 	"loginbar.submit": "wyślij",

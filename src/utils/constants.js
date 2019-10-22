@@ -169,6 +169,10 @@ export default {
 			code: 'fr',
 			phrase: 'French',
 		},
+		it: {
+			code: 'it',
+			phrase: 'Italian',
+		},
 		la: {
 			code: 'la',
 			phrase: 'Latin',
