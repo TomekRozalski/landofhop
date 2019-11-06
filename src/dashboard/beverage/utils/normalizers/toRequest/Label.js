@@ -133,10 +133,11 @@ const Label = ({
 						...(wood && { wood }),
 					})),
 				}),
-				...(isArray(dryHopped) && {
-					dryHopped: dryHopped.length
-						? dryHopped.map(hop => hop.value)
-						: true,
+				...(isArray(dryHopped) && !dryHopped.length && {
+					isDryHopped: true,
+				}),
+				...(isArray(dryHopped) && dryHopped.length && {
+					dryHopped: dryHopped.map(hop => hop.value),
 				}),
 				...(!isNull(expirationDate) && {
 					expirationDate: {

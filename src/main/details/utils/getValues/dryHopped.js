@@ -4,16 +4,19 @@ import { constants } from 'utils';
 import removeEmptyValues from '../removeEmptyValues';
 
 const dryHopped = (beverage) => {
-	const labelValue = get(beverage, 'label.brewing.dryHopped');
-	const producerValue = get(beverage, 'producer.brewing.dryHopped');
-	const editorialValue = get(beverage, 'editorial.brewing.dryHopped');
+	const getValue = (section) => {
+		const isDryHopped = get(beverage, `${section}.brewing.isDryHopped`);
+		const hops = get(beverage, `${section}.brewing.dryHopped.hops`);
+
+		return hops || isDryHopped;
+	};
 
 	const { type } = constants.details;
 
 	const values = [
-		{ type: type.label, value: labelValue },
-		{ type: type.producer, value: producerValue },
-		{ type: type.editorial, value: editorialValue },
+		{ type: type.label, value: getValue('label') },
+		{ type: type.producer, value: getValue('producer') },
+		{ type: type.editorial, value: getValue('editorial') },
 	];
 
 	return removeEmptyValues({

@@ -34,6 +34,7 @@ const Producer = (beverage) => {
 	const filtration = get(beverage, 'producer.brewing.filtration');
 	const pasteurization = get(beverage, 'producer.brewing.pasteurization');
 	const aged = get(beverage, 'producer.brewing.aged');
+	const isDryHopped = get(beverage, 'producer.brewing.isDryHopped');
 	const dryHopped = get(beverage, 'producer.brewing.dryHopped');
 	const expirationDate = get(beverage, 'producer.brewing.expirationDate');
 	// ingredients
@@ -129,8 +130,9 @@ const Producer = (beverage) => {
 				...(wood && { wood }),
 			})),
 		}),
+		...(isDryHopped && { dryHopped: [] }),
 		...(dryHopped && {
-			dryHopped: dryHopped === true ? [] : dryHopped.map(({ id, name, type }) => ({
+			dryHopped: dryHopped.hops.map(({ id, name, type }) => ({
 				type,
 				label: getNameByLanguage({ values: name, language: constants.siteLanguages.pl }).value,
 				value: id,

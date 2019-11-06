@@ -27,6 +27,7 @@ const Editorial = (beverage) => {
 	const filtration = get(beverage, 'editorial.brewing.filtration');
 	const pasteurization = get(beverage, 'editorial.brewing.pasteurization');
 	const aged = get(beverage, 'editorial.brewing.aged');
+	const isDryHopped = get(beverage, 'editorial.brewing.isDryHopped');
 	const dryHopped = get(beverage, 'editorial.brewing.dryHopped');
 	// impressions
 	const color = get(beverage, 'editorial.impressions.color');
@@ -96,8 +97,9 @@ const Editorial = (beverage) => {
 				...(wood && { wood }),
 			})),
 		}),
+		...(isDryHopped && { dryHopped: [] }),
 		...(dryHopped && {
-			dryHopped: dryHopped === true ? [] : dryHopped.map(({ id, name, type }) => ({
+			dryHopped: dryHopped.hops.map(({ id, name, type }) => ({
 				type,
 				label: getNameByLanguage({ values: name, language: constants.siteLanguages.pl }).value,
 				value: id,
