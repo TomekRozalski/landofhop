@@ -22,9 +22,13 @@ const Cover = ({
 	isLoading,
 	params,
 	saveBeverageCover,
-	savedBeverage,
+	savedBeverage: {
+		container,
+		id,
+	},
 	setErrors,
 }) => {
+	const [dimension, setDimension] = useState({});
 	const [fileToPreview, setFileToPreview] = useState(null);
 	const [fileToRequest, setFileToRequest] = useState(null);
 
@@ -52,9 +56,20 @@ const Cover = ({
 				})));
 			} else {
 				setErrors([]);
+				setDimension({});
+
+				const preview = URL.createObjectURL(acceptedFiles[0]);
+				const img = new Image();
+
+				img.onload = () => {
+					const { height, width } = img;
+					setDimension({ height, width });
+				};
+
+				img.src = preview;
 
 				setFileToRequest(acceptedFiles[0]);
-				setFileToPreview({ ...acceptedFiles[0], preview: URL.createObjectURL(acceptedFiles[0]) });
+				setFileToPreview({ ...acceptedFiles[0], preview });
 			}
 		},
 	});
@@ -68,7 +83,13 @@ const Cover = ({
 	const onSaveImages = (e) => {
 		e.preventDefault();
 
-		saveBeverageCover({ file: fileToRequest, params, token })
+		saveBeverageCover({
+			dimension,
+			file: fileToRequest,
+			id,
+			params,
+			token,
+		})
 			.then(() => {
 				setFileToPreview(null);
 				setFileToRequest(null);
@@ -82,7 +103,7 @@ const Cover = ({
 				title="dashboard.updateBeverageImages.cover"
 			/>
 			<DragableArea
-				container={savedBeverage.container}
+				container={container}
 				getInputProps={getInputProps}
 				getRootProps={getRootProps}
 			>

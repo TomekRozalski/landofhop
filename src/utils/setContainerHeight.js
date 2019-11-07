@@ -12,6 +12,7 @@ const setContainerHeight = ({ unit, type, value }) => {
 			case 375:
 			case 330:
 			case 300:
+			case 250:
 				return 446;
 			default:
 				return 0;

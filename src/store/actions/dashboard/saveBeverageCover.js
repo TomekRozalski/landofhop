@@ -2,7 +2,9 @@ import { constants, serverCall } from 'utils';
 import actionsName from '../../actionsName';
 
 const saveBeverageCover = ({
+	dimension,
 	file,
+	id,
 	params: { badge, brand, shortId },
 	token,
 }) => (
@@ -15,8 +17,11 @@ const saveBeverageCover = ({
 			const formData = new FormData();
 			formData.append('badge', badge);
 			formData.append('brand', brand);
+			formData.append('height', dimension.height);
+			formData.append('id', id);
 			formData.append('image', file);
 			formData.append('shortId', shortId);
+			formData.append('width', dimension.width);
 
 			serverCall({
 				type: constants.api_endpoints.save_cover,
