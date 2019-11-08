@@ -1,7 +1,14 @@
 import { number, string } from 'prop-types';
 
-const setContainerHeight = ({ unit, type, value }) => {
-	if (unit === 'ml') {
+const setCoverHeight = ({ container, cover }) => {
+	if (cover) {
+		const { height, width } = cover;
+		return (height / width).toFixed(5);
+	}
+
+	if (container) {
+		const { type, value } = container;
+
 		if (type === 'bottle') {
 			switch (value) {
 			case 750:
@@ -27,10 +34,10 @@ const setContainerHeight = ({ unit, type, value }) => {
 	return 100;
 };
 
-setContainerHeight.propTypes = {
+setCoverHeight.propTypes = {
 	unit: string.isRequired,
 	type: string.isRequired,
 	value: number.isRequired,
 };
 
-export default setContainerHeight;
+export default setCoverHeight;

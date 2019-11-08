@@ -18,7 +18,11 @@ export default styled(Link)`
 	justify-content: center;
 	align-items: flex-end;
 	width: 100%;
-	height: ${({ height }) => (height || 300)}px;
+	${({ height }) => (height < 50 ? `
+		padding-bottom: ${height * 100}%;
+	` : `
+		height: ${height}px;
+	`)};
 	position: relative;
 
 	&:hover ${Image} {

@@ -9,7 +9,7 @@ import { VariableSizeGrid } from 'react-window';
 import styled from 'styled-components';
 
 import { ScrollPositionContext } from 'config';
-import { setContainerHeight } from 'utils';
+import { setCoverHeight } from 'utils';
 import { beverageBasics } from 'utils/types';
 import { indexes, sizes } from 'utils/theme';
 import { List, Tile } from './index';
@@ -64,7 +64,7 @@ const ListWrapper = ({ dimension, list }) => {
 
 					const listOfContainerSizes = list
 						.slice((index * 5) - 5, index * 5)
-						.map(({ container }) => setContainerHeight(container));
+						.map(({ container }) => setCoverHeight({container}));
 
 					return (Math.max(...listOfContainerSizes) + sizes.tiles.padding.top);
 				}}

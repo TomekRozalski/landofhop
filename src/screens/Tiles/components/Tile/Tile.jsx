@@ -2,7 +2,7 @@ import React, { useContext, useMemo, useState } from 'react';
 import { arrayOf, number, shape } from 'prop-types';
 
 import { DeviceContext, LanguageContext } from 'config';
-import { constants, setContainerHeight } from 'utils';
+import { constants, setCoverHeight } from 'utils';
 import { getNameByLanguage } from 'utils/helpers';
 import { beverageBasics } from 'utils/types';
 import {
@@ -39,6 +39,7 @@ const Tile = ({
 		},
 		container,
 		name,
+		photos,
 		shortId,
 	} = data[index];
 
@@ -50,7 +51,7 @@ const Tile = ({
 	return (
 		<Item style={style}>
 			<StyledLink
-				height={setContainerHeight(container)}
+				height={setCoverHeight({ container, cover: photos ? photos.cover : null })}
 				to={`details/${shortId}/${brandBadge}/${badge}`}
 			>
 				{ failure && <BrokenContainer type={container.type} /> }

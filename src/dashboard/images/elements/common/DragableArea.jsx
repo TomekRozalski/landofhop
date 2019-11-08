@@ -9,7 +9,7 @@ import {
 import styled from 'styled-components';
 
 import { colors } from 'utils/theme';
-import { setContainerHeight } from 'utils';
+import { setCoverHeight } from 'utils';
 import { DragAndDrop } from '../icons';
 
 const Area = styled.section`
@@ -77,7 +77,7 @@ const DragableArea = ({
 	getRootProps,
 	type,
 }) => (
-	<Area {...getRootProps()} height={container && setContainerHeight(container)} type={type}>
+	<Area {...getRootProps()} height={container && setCoverHeight({ container })} type={type}>
 		<input {...getInputProps()} />
 		<DragAndDrop />
 		{ children }

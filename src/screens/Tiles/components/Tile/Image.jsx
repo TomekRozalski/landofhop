@@ -8,4 +8,8 @@ export default styled.img`
 	transform: scale(1);
 	transition: transform ${timingFunctions.default};
 	pointer-events: none;
+
+	position: absolute;
+	top: 0;
+	left: 0;
 `;
