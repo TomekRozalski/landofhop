@@ -97,8 +97,8 @@ const mapStateToProps = ({ beverages }, { match: { params } }) => {
 	));
 
 	const id = get(beverageToChange, 'id');
-	const gallery = get(beverageToChange, 'editorial.images', 0);
-	const cap = get(beverageToChange, 'editorial.cap', false);
+	const gallery = get(beverageToChange, 'editorial.photos.gallery', 0);
+	const cap = get(beverageToChange, 'editorial.photos.cap', false);
 	const container = {
 		type: get(beverageToChange, 'label.container.type'),
 		unit: get(beverageToChange, 'label.container.unit'),

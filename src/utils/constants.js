@@ -181,6 +181,10 @@ export default {
 			code: 'nl',
 			phrase: 'Dutch',
 		},
+		se: {
+			code: 'se',
+			phrase: 'Swedish',
+		},
 		ua: {
 			code: 'ua',
 			phrase: 'Ukrainian',

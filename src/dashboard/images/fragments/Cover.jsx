@@ -28,7 +28,6 @@ const Cover = ({
 	},
 	setErrors,
 }) => {
-	const [dimension, setDimension] = useState({});
 	const [fileToPreview, setFileToPreview] = useState(null);
 	const [fileToRequest, setFileToRequest] = useState(null);
 
@@ -56,20 +55,9 @@ const Cover = ({
 				})));
 			} else {
 				setErrors([]);
-				setDimension({});
-
-				const preview = URL.createObjectURL(acceptedFiles[0]);
-				const img = new Image();
-
-				img.onload = () => {
-					const { height, width } = img;
-					setDimension({ height, width });
-				};
-
-				img.src = preview;
 
 				setFileToRequest(acceptedFiles[0]);
-				setFileToPreview({ ...acceptedFiles[0], preview });
+				setFileToPreview({ ...acceptedFiles[0], preview: URL.createObjectURL(acceptedFiles[0]) });
 			}
 		},
 	});
@@ -84,7 +72,6 @@ const Cover = ({
 		e.preventDefault();
 
 		saveBeverageCover({
-			dimension,
 			file: fileToRequest,
 			id,
 			params,

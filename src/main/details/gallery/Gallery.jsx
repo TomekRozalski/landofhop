@@ -46,7 +46,7 @@ const Gallery = () => {
 
 		const { resources } = loader;
 
-		const imagesAmount = get(beverage, 'editorial.images', 0);
+		const imagesAmount = get(beverage, 'editorial.photos.gallery', 0);
 		const imagesPath = `${constants.servers.images}${brand}/${badge}/${shortId}/container/${webpSupport ? 'webp' : 'jpg'}/${pixelRatio}`;
 
 		if (imagesAmount) {

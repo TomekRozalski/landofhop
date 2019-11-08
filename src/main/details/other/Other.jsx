@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 const Other = () => {
 	const { beverage } = useContext(BeverageDetailsContext);
 
-	const cap = get(beverage, 'editorial.cap', false);
+	const cap = get(beverage, 'editorial.photos.cap', false);
 
 	const {
 		badge,
