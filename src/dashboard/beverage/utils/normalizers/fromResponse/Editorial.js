@@ -1,5 +1,7 @@
 /* eslint no-shadow: 0 */
-import { get, isBoolean, isNumber } from 'lodash';
+import get from 'lodash/get';
+import isBoolean from 'lodash/isBoolean';
+import isObject from 'lodash/isObject';
 
 import { constants } from 'utils';
 import { getNameByLanguage } from 'utils/helpers';
@@ -34,8 +36,7 @@ const Editorial = (beverage) => {
 	const clarity = get(beverage, 'editorial.impressions.clarity');
 	// other
 	const price = get(beverage, 'editorial.price');
-	const images = get(beverage, 'editorial.images');
-	const cap = get(beverage, 'editorial.cap');
+	const photos = get(beverage, 'editorial.photos');
 	const added = get(beverage, 'added');
 	const updated = get(beverage, 'updated');
 	const notes = get(beverage, 'editorial.notes');
@@ -116,8 +117,7 @@ const Editorial = (beverage) => {
 				value,
 			})),
 		}),
-		...(isNumber(images) && { images }),
-		...(cap === true && { cap }),
+		...(isObject(photos) && { photos }),
 		...(added && { added: convertDateToString(added) }),
 		...(updated && { updated: convertDateToString(updated) }),
 		...(notes && { notes }),

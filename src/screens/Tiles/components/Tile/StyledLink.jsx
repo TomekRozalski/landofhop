@@ -21,6 +21,7 @@ export default styled(Link)`
 	${({ height }) => (height < 50 ? `
 		padding-bottom: ${height * 100}%;
 	` : `
+		opacity: .5;
 		height: ${height}px;
 	`)};
 	position: relative;

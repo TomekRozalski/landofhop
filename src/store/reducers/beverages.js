@@ -100,7 +100,10 @@ export default (state = initialState, action) => (
 				...dataToUpdate,
 				editorial: {
 					...dataToUpdate.editorial,
-					images: action.payload.files,
+					photos: {
+						...dataToUpdate.editorial.photos,
+						gallery: action.payload.files,
+					},
 				},
 			};
 			draft.details.list = unionBy([beverageToUpdate], state.details.list, 'id');
@@ -109,7 +112,7 @@ export default (state = initialState, action) => (
 
 		case actionsName.REMOVE_BEVERAGE_GALLERY_FULFILLED: {
 			const dataToUpdate = state.details.list.find(({ id }) => id === action.payload.id);
-			delete (dataToUpdate.editorial.images);
+			delete (dataToUpdate.editorial.photos.gallery);
 			draft.details.list = unionBy([dataToUpdate], state.details.list, 'id');
 			draft.details.isError = false;
 			draft.details.isLoading = false;

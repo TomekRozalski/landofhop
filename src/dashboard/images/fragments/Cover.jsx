@@ -13,11 +13,15 @@ import { FormattedMessage } from 'react-intl';
 import { AuthenticationContext, NotificationContext } from 'config';
 import { Button } from 'elements';
 import { constants } from 'utils';
-import { saveBeverageCover as saveBeverageCoverAction } from 'store/actions';
+import {
+	getBeveragesList as getBeveragesListAction,
+	saveBeverageCover as saveBeverageCoverAction,
+} from 'store/actions';
 import { DragableArea, SubSection } from '../elements/common';
 import { CurrentCover, Preview, Wrapper } from '../elements/cover';
 
 const Cover = ({
+	getBeveragesList,
 	isError,
 	isLoading,
 	params,
@@ -80,6 +84,7 @@ const Cover = ({
 			.then(() => {
 				setFileToPreview(null);
 				setFileToRequest(null);
+				getBeveragesList();
 			});
 	};
 
@@ -112,6 +117,7 @@ const Cover = ({
 };
 
 Cover.propTypes = {
+	getBeveragesList: func.isRequired,
 	isError: bool.isRequired,
 	isLoading: bool.isRequired,
 	params: shape({
@@ -139,6 +145,7 @@ const mapStateToProps = ({ dashboard }) => ({
 });
 
 const mapDispatchToProps = {
+	getBeveragesList: getBeveragesListAction,
 	saveBeverageCover: saveBeverageCoverAction,
 };
 

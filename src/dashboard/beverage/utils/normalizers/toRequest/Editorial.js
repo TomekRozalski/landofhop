@@ -1,10 +1,9 @@
-import {
-	get,
-	isArray,
-	isEmpty,
-	isNull,
-	isNumber,
-} from 'lodash';
+import get from 'lodash/get';
+import isArray from 'lodash/isArray';
+import isEmpty from 'lodash/isEmpty';
+import isNull from 'lodash/isNull';
+import isNumber from 'lodash/isNumber';
+import isObject from 'lodash/isObject';
 
 import { constants } from 'utils';
 import { convertStringToDate } from 'dashboard/beverage/utils';
@@ -28,8 +27,7 @@ const Editorial = ({
 	clarity,
 	// -----------
 	price,
-	images,
-	cap,
+	photos,
 	added,
 	updated,
 	notes,
@@ -98,8 +96,7 @@ const Editorial = ({
 					value,
 				})),
 			}),
-			...(isNumber(images) && { images }),
-			...(cap === true && { cap: true }),
+			...(isObject(photos) && { photos }),
 			...(!isNull(notes) && { notes }),
 		},
 		...(!isNull(added) && { added: convertStringToDate(added) }),

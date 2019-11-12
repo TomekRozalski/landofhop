@@ -19,6 +19,7 @@
 
 	"contact.header": "About",
 	"contact.body": "**Land of Hop** is a web application, created to practice programming (React, Node.js, MongoDB). It is list of ales which I drunk from October 2017. It is beta version of course, not working as it should. I try to develop it a little everyday. I plan to release version 1.0.0 at the beginning of 2021. [Tomek Różalski](http://tomaszrozalski.pl)",
+	"container.color.black": "black",
 	"container.color.brown": "brown",
 	"container.color.green": "green",
 	"container.color.silver": "silver",

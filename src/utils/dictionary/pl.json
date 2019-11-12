@@ -19,6 +19,7 @@
 
 	"contact.header": "O stronie",
 	"contact.body": "**Land of Hop** to aplikacja webowa, którą stworzyłem, by poćwiczyć programowanie (React, Node.js, MongoDB). Jest to katalog piw, które wypiłem od października 2017. Oczywiście jest to wersja demo, nie działa w pełni. Staram się codziennie nad nią pracować, by do końca 2020 roku wypuścić wersję 1.0.0. [Tomek Różalski](http://tomaszrozalski.pl)",
+	"container.color.black": "czarna",
 	"container.color.brown": "brązowa",
 	"container.color.green": "zielona",
 	"container.color.silver": "srebrna",

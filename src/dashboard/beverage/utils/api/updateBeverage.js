@@ -27,6 +27,8 @@ const updateBeverage = ({
 	const { label, producer } = dashboardConstants.forms.beverage;
 	const { shortId } = values;
 
+	console.log('values', values);
+
 	const labelData = LabelNormalizer(savedForms[label]);
 	const producerData = ProducerNormalizer(savedForms[producer]);
 	const editorialData = EditorialNormalizer(values);

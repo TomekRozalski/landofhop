@@ -6,6 +6,10 @@ const colors = (language = constants.siteLanguages.pl) => ([
 		value: 'brown',
 	},
 	{
+		label: dictionary[language]['container.color.black'],
+		value: 'black',
+	},
+	{
 		label: dictionary[language]['container.color.green'],
 		value: 'green',
 	},
