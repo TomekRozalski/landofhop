@@ -51,7 +51,7 @@ const Gallery = ({
 	const { getRootProps, getInputProps } = useDropzone({
 		accept: ['image/jpg', 'image/jpeg'],
 		minSize: 100 * 1024,
-		maxSize: 500 * 1024,
+		maxSize: 700 * 1024,
 		onDrop: (acceptedFiles, rejectedFiles) => {
 			if (rejectedFiles.length) {
 				setErrors(rejectedFiles.map(({ name, size, type }) => ({

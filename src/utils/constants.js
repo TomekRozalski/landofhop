@@ -181,6 +181,10 @@ export default {
 			code: 'nl',
 			phrase: 'Dutch',
 		},
+		pt: {
+			code: 'pt',
+			phrase: 'Portuguese',
+		},
 		se: {
 			code: 'se',
 			phrase: 'Swedish',
