@@ -19,6 +19,10 @@ const previousContent = () => ([
 		label: 'cognac',
 		value: 'cognac',
 	},
+	{
+		label: 'rum',
+		value: 'rum',
+	},
 ]);
 
 export default previousContent;
