@@ -32,12 +32,12 @@ export default Yup.object().shape({
 		}),
 	[fields.longitude]: Yup
 		.number()
-		.min(0, 'danger')
+		.min(-180, 'danger')
 		.max(180, 'danger')
 		.nullable(true),
 	[fields.latitude]: Yup
 		.number()
-		.min(0, 'danger')
+		.min(-180, 'danger')
 		.max(180, 'danger')
 		.nullable(true),
 });
