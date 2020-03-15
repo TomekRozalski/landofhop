@@ -17,6 +17,10 @@ const colors = (language = constants.siteLanguages.pl) => ([
 		label: dictionary[language]['container.color.silver'],
 		value: 'silver',
 	},
+	{
+		label: dictionary[language]['container.color.transparent'],
+		value: 'transparent',
+	},
 ]);
 
 export default colors;
